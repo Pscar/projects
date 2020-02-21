@@ -1,0 +1,13 @@
+{
+    "fields" : [
+        {
+            "name": "name_category",
+            "type": "integer"
+        },
+       
+        {
+            "name": "category_id",
+            "type": "integer#unsigned"
+        }
+    ]
+ }

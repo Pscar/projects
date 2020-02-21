@@ -1,0 +1,26 @@
+{
+    "fields": [
+        {
+            "name": "pro_name",
+            "type": "string"
+        },
+        {
+            "name": "detail",
+            "type": "text"
+        },     
+        {
+            "name": "sale_price",
+            "type": "integer"
+        },
+        
+        {
+            "name": "drug_id",
+            "type": "integer#unsigned"
+        },
+        {
+            "name": "category_id",
+            "type": "integer#unsigned"
+        }
+        
+    ]
+ }

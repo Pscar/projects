@@ -1,0 +1,25 @@
+{
+    "fields": [
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "lastname",
+            "type": "string"
+        },
+        {
+            "name": "address",
+            "type": "string"
+        },   
+        {
+            "name": "tel",
+            "type": "integer"
+        },
+        
+        {
+            "name": "staff_id",
+            "type": "integer#unsigned"
+        }
+    ]
+ }
