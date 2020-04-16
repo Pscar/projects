@@ -30,7 +30,8 @@ class HomeController extends Controller
             ['user_id' => Auth::id()],
             ['role' => 'guest'] 
         );
-        return view('home' , compact('information') );
+        
+        return view('home',compact('information'));
     }
     
 }

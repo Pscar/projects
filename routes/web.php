@@ -16,19 +16,19 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::middleware(['auth', 'role:pharmacist'])->group(function () {
+Route::middleware(['auth', 'role: เภสัชกร'])->group(function () {
     Route::resource('bills', 'billsController');
     Route::resource('categorys', 'categorysController');
     Route::resource('lots', 'lotsController');
     Route::resource('sale', 'saleController');
 });
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::resource('informations', 'informationsController');
+    
 });
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::resource('informations', 'informationsController');
 
 Route::resource('products', 'ProductsController');
