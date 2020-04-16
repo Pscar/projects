@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class product extends Model
+class Product extends Model
 {
     /**
      * The database table used by the model.
@@ -25,7 +25,7 @@ class product extends Model
      *
      * @var array
      */
-    protected $fillable = ['pro_name', 'detail', 'sale_price', 'drug_id', 'category_id'];
+    protected $fillable = ['pro_name', 'barcode','contain', 'status_sale', 'saleprice', 'stock_ps', 'category_id'];
 
     
 }

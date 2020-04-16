@@ -16,9 +16,11 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('pro_name')->nullable();
-            $table->text('detail')->nullable();
-            $table->integer('sale_price')->nullable();
-            $table->integer('drug_id')->unsigned();
+            $table->string('barcode')->nullable();
+            $table->string('contain')->nullable();
+            $table->string('status_sale')->nullable();
+            $table->integer('saleprice')->nullable();
+            $table->integer('stock_ps')->nullable();
             $table->integer('category_id')->unsigned();
             });
     }

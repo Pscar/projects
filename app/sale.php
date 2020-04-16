@@ -25,7 +25,7 @@ class sale extends Model
      *
      * @var array
      */
-    protected $fillable = ['sale_price', 'name', 'category_id', 'staff_id', 'sale_id'];
+    protected $fillable = ['category_id', 'drug_id', 'amount', 'total_sale', 'saleprice_sale'];
 
     
 }

@@ -25,7 +25,7 @@ class bill extends Model
      *
      * @var array
      */
-    protected $fillable = ['amount', 'sale', 'sale_items', 'receipt_id', 'sale_id'];
+    protected $fillable = ['staff_id', 'total_bill','sale_id'];
 
     
 }

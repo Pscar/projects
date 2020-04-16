@@ -25,7 +25,7 @@ class lot extends Model
      *
      * @var array
      */
-    protected $fillable = ['dete_exp', 'dete_enday', 'drug_id', 'cost', 'lot_id'];
+    protected $fillable = ['drug_id', 'cost', 'deteexp_at', 'stock_im',];
 
     
 }

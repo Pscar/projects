@@ -5,18 +5,26 @@
             "type": "string"
         },
         {
-            "name": "detail",
-            "type": "text"
-        },     
+            "name": "barcode",
+            "type": "string"
+        },   
         {
-            "name": "sale_price",
+            "name": "contain",
+            "type": "string"
+        }, 
+        {
+            "name": "status_sale",
+            "type": "string"
+        },   
+        {
+            "name": "saleprice",
+            "type": "integer"
+        },
+        {
+            "name": "stock_ps",
             "type": "integer"
         },
         
-        {
-            "name": "drug_id",
-            "type": "integer#unsigned"
-        },
         {
             "name": "category_id",
             "type": "integer#unsigned"

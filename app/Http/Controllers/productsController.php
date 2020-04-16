@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\product;
+use App\Product;
 use Illuminate\Http\Request;
 
-class productsController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,14 +21,17 @@ class productsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $products = product::where('pro_name', 'LIKE', "%$keyword%")
-                ->orWhere('detail', 'LIKE', "%$keyword%")
-                ->orWhere('sale_price', 'LIKE', "%$keyword%")
-                ->orWhere('drug_id', 'LIKE', "%$keyword%")
+            $products = Product::where('pro_name', 'LIKE', "%$keyword%")
+                ->orWhere('barcode', 'LIKE', "%$keyword%")
+                ->orWhere('barcode', 'LIKE', "%$keyword%")
+                ->orWhere('contain', 'LIKE', "%$keyword%")
+                ->orWhere('status_sale', 'LIKE', "%$keyword%")
+                ->orWhere('saleprice', 'LIKE', "%$keyword%")
+                ->orWhere('stock_ps', 'LIKE', "%$keyword%")
                 ->orWhere('category_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $products = product::latest()->paginate($perPage);
+            $products = Product::latest()->paginate($perPage);
         }
 
         return view('products.index', compact('products'));
@@ -56,9 +59,9 @@ class productsController extends Controller
         
         $requestData = $request->all();
         
-        product::create($requestData);
+        Product::create($requestData);
 
-        return redirect('products')->with('flash_message', 'product added!');
+        return redirect('products')->with('flash_message', 'Product added!');
     }
 
     /**
@@ -70,7 +73,7 @@ class productsController extends Controller
      */
     public function show($id)
     {
-        $product = product::findOrFail($id);
+        $product = Product::findOrFail($id);
 
         return view('products.show', compact('product'));
     }
@@ -84,7 +87,7 @@ class productsController extends Controller
      */
     public function edit($id)
     {
-        $product = product::findOrFail($id);
+        $product = Product::findOrFail($id);
 
         return view('products.edit', compact('product'));
     }
@@ -102,10 +105,10 @@ class productsController extends Controller
         
         $requestData = $request->all();
         
-        $product = product::findOrFail($id);
+        $product = Product::findOrFail($id);
         $product->update($requestData);
 
-        return redirect('products')->with('flash_message', 'product updated!');
+        return redirect('products')->with('flash_message', 'Product updated!');
     }
 
     /**
@@ -117,8 +120,8 @@ class productsController extends Controller
      */
     public function destroy($id)
     {
-        product::destroy($id);
+        Product::destroy($id);
 
-        return redirect('products')->with('flash_message', 'product deleted!');
+        return redirect('products')->with('flash_message', 'Product deleted!');
     }
 }

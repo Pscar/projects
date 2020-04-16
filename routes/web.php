@@ -20,7 +20,6 @@ Route::middleware(['auth', 'role:pharmacist'])->group(function () {
     Route::resource('bills', 'billsController');
     Route::resource('categorys', 'categorysController');
     Route::resource('lots', 'lotsController');
-    Route::resource('products', 'productsController');
     Route::resource('sale', 'saleController');
 });
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -31,3 +30,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+
+Route::resource('products', 'ProductsController');
