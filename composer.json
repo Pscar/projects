@@ -12,7 +12,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "milon/barcode": "^6.0"
+        "milon/barcode": "^5.8"
     },
     "require-dev": {
         "appzcoder/crud-generator": "^3.1",

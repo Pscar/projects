@@ -176,21 +176,21 @@
           <li class="nav-header">Menu</li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('/products') }}" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>ข้อมูลยา</p>
             </a>
           </li> 
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('/lots') }}" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>ข้อมูลสต็อค</p>
             </a>
           </li> 
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('/informations') }}" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>ข้อมูลเภสัชกร</p>
             </a>

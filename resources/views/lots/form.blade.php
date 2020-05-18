@@ -1,27 +1,22 @@
-<div class="form-group {{ $errors->has('dete_exp') ? 'has-error' : ''}}">
-    <label for="dete_exp" class="control-label">{{ 'Dete Exp' }}</label>
-    <input class="form-control" name="dete_exp" type="number" id="dete_exp" value="{{ isset($lot->dete_exp) ? $lot->dete_exp : ''}}" >
-    {!! $errors->first('dete_exp', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('dete_enday') ? 'has-error' : ''}}">
-    <label for="dete_enday" class="control-label">{{ 'Dete Enday' }}</label>
-    <input class="form-control" name="dete_enday" type="datetime-local" id="dete_enday" value="{{ isset($lot->dete_enday) ? $lot->dete_enday : ''}}" >
-    {!! $errors->first('dete_enday', '<p class="help-block">:message</p>') !!}
-</div>
 <div class="form-group {{ $errors->has('drug_id') ? 'has-error' : ''}}">
-    <label for="drug_id" class="control-label">{{ 'Drug Id' }}</label>
-    <input class="form-control" name="drug_id" type="number" id="drug_id" value="{{ isset($lot->drug_id) ? $lot->drug_id : ''}}" >
+    <label for="drug_id" class="control-label">{{ 'drug_id' }}</label>
+    <input class="form-control" name="drug_id" type="number" id="drug_id" value="{{ isset($lot->drug_id) ? $lot->drug_id : $product->id }}" >
     {!! $errors->first('drug_id', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('deteexp_at') ? 'has-error' : ''}}">
+    <label for="deteexp_at" class="control-label">{{ 'deteexp_at' }}</label>
+    <input class="form-control" name="deteexp_at" type="datetime-local" id="deteexp_at" value="{{ isset($lot->deteexp_at) ? $lot->deteexp_at : ''}}" >
+    {!! $errors->first('deteexp_at', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('cost') ? 'has-error' : ''}}">
     <label for="cost" class="control-label">{{ 'Cost' }}</label>
     <input class="form-control" name="cost" type="number" id="cost" value="{{ isset($lot->cost) ? $lot->cost : ''}}" >
     {!! $errors->first('cost', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('lot_id') ? 'has-error' : ''}}">
-    <label for="lot_id" class="control-label">{{ 'Lot Id' }}</label>
-    <input class="form-control" name="lot_id" type="number" id="lot_id" value="{{ isset($lot->lot_id) ? $lot->lot_id : ''}}" >
-    {!! $errors->first('lot_id', '<p class="help-block">:message</p>') !!}
+<div class="form-group {{ $errors->has('stock_im') ? 'has-error' : ''}}">
+    <label for="stock_im" class="control-label">{{ 'stock_im' }}</label>
+    <input class="form-control" name="stock_im" type="text" id="stock_im" value="{{ isset($lot->stock_im) ? $lot->stock_im : ''}}" >
+    {!! $errors->first('stock_im', '<p class="help-block">:message</p>') !!}
 </div>
 
 

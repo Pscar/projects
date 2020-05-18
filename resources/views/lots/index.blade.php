@@ -28,24 +28,23 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>วันหมดอายุ</th>
-                                        <th>วันรับเข้าายา</th>
-                                        <th>รหัสยา</th
-                                        ><th>ต้นทุน</th>
                                         <th>รหัส lot</th>
+                                        <th>รหัสยา</th>
+                                        <th>วันสต็อคเข้าใหม่</th>
+                                        <th>ต้นทุน</th>
+                                        <th>สต็อคเข้าใหม่</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($lots as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->dete_exp }}</td>
-                                        <td>{{ $item->dete_enday }}</td>
+                                        <td>{{ $loop->iteration }}</td> 
                                         <td>{{ $item->drug_id }}</td>
+                                        <td>{{ $item->deteexp_at}}</td>
                                         <td>{{ $item->cost }}</td>
-                                        <td>{{ $item->lot_id }}</td>
+                                        <td>{{$item->stock_im}}</td>
+                                        <td></td>
                                         <td>
                                             <a href="{{ url('/lots/' . $item->id) }}" title="View lot"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/lots/' . $item->id . '/edit') }}" title="Edit lot"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

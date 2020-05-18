@@ -25,10 +25,10 @@ class information extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'lastname', 'address', 'tel', 'staff_id' , 'role', 'user_id'];
+    protected $fillable = ['name','lastname', 'address', 'tel','role','user_id'];
 
-    public function User(){
-        return $this->hasOne('App\information', 'staff_id'); 
+    public function user(){
+        return $this->hasOne('App\information','user_id'); 
     }
 
     

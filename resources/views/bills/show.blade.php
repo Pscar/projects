@@ -24,7 +24,8 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $bill->id }}</td>
+                                        <th>ID</th>
+                                        <td>{{ $bill->id }}</td>
                                     </tr>
                                     <tr><th> Amount </th><td> {{ $bill->amount }} </td></tr><tr><th> Sale </th><td> {{ $bill->sale }} </td></tr><tr><th> Sale Items </th><td> {{ $bill->sale_items }} </td></tr><tr><th> Receipt Id </th><td> {{ $bill->receipt_id }} </td></tr><tr><th> Sale Id </th><td> {{ $bill->sale_id }} </td></tr>
                                 </tbody>

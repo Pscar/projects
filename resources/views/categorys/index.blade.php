@@ -29,14 +29,24 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Name Category</th><th>Category Id</th><th>Actions</th>
+                                        <th>Id</th>
+                                        <th>Name Category</th>
+                                        <th>name_subprkun</th>
+                                        <th>name_howto</th>
+                                        <th>name_warning</th>
+                                        <th>name_storage</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($categorys as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->name_category }}</td><td>{{ $item->category_id }}</td>
+                                        <td>{{ $item->name_category }}</td>
+                                        <td>{{ $item->name_subprkun }}</td>
+                                        <td>{{ $item->name_howto }}</td>
+                                        <td>{{ $item->name_warning }}</td>
+                                        <td>{{ $item->name_storage }}</td>
                                         <td>
                                             <a href="{{ url('/categorys/' . $item->id) }}" title="View category"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/categorys/' . $item->id . '/edit') }}" title="Edit category"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

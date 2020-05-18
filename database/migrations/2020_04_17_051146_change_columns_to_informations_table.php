@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeColumnsToProductsTable extends Migration
+class ChangeColumnsToInformationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class ChangeColumnsToProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->integer('category_id')->nullable()->change();
+        Schema::table('informations', function (Blueprint $table) {
+            $table->string('tel')->nullable()->change();
         });
     }
 
@@ -25,7 +25,7 @@ class ChangeColumnsToProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
+        Schema::table('informations', function (Blueprint $table) {
             //
         });
     }

@@ -25,13 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $information = information::firstOrCreate(
+        /*$information = information::firstOrCreate(
 
             ['user_id' => Auth::id()],
             ['role' => 'guest'] 
-        );
+        );**/
         
-        return view('home',compact('information'));
+        return view('home');
     }
     
 }

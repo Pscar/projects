@@ -27,5 +27,8 @@ class category extends Model
      */
     protected $fillable = ['name_category','name_subprkun','name_howto','name_warning','name_storage'];
 
+    public function products(){
+        return $this->hasMany('App\category','category_id'); 
+    }
     
 }

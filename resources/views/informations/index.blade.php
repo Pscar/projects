@@ -24,18 +24,30 @@
 
                         <br/>
                         <br/>
-                        <div class="table-responsive">
+                        <div class="table-responsive text-center">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Name</th><th>Lastname</th><th>Address</th><th>Tel</th><th>Staff Id</th><th>Actions</th>
+                                        <th>#</th>
+                                        <th>ชื่อ</th>
+                                        <th>นามสกุล</th>
+                                        <th>ที่อยู่</th>
+                                        <th>เบอร์โทร</th>
+                                        <th>สถานะ</th>
+                                        <th class="d-none">ชื่อผู้ใช้งาน</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($informations as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->name }}</td><td>{{ $item->lastname }}</td><td>{{ $item->address }}</td><td>{{ $item->tel }}</td><td>{{ $item->staff_id }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->lastname }}</td>
+                                        <td>{{ $item->address }}</td>
+                                        <td>{{ $item->tel }}</td>
+                                        <td>{{ $item->role }}</td>
+                                        <td class="d-none">{{ $item->user_id }}</td>
                                         <td>
                                             <a href="{{ url('/informations/' . $item->id) }}" title="View information"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/informations/' . $item->id . '/edit') }}" title="Edit information"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

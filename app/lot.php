@@ -25,7 +25,9 @@ class lot extends Model
      *
      * @var array
      */
-    protected $fillable = ['drug_id', 'cost', 'deteexp_at', 'stock_im',];
+    protected $fillable = ['drug_id', 'cost', 'deteexp_at', 'stock_im'];
 
-    
+    public function product(){
+        return $this->belongTo('App\Product','drug_id'); 
+    }
 }

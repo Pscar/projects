@@ -5,10 +5,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Products</div>
-                    <div class="card-body">
-                        <a href="{{ url('/products/create') }}" class="btn btn-success btn-sm" title="Add New Product">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
+                        <div class="card-body">
+                            <a href="{{ url('/products/create') }}" class="btn btn-success btn-sm" title="Add New Product">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            </a>
 
                         <form method="GET" action="{{ url('/products') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
@@ -23,18 +23,18 @@
 
                         <br/>
                         <br/>
-                        <div class="table-responsive">
-                            <table class="table">
+                        <div class="table-responsive text-center">
+                            <table class="table table-sm">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>ผลิตภัณฑ์</th>
-                                        <th>บาร์โค้ด</th>
+                                        <th>รหัสสินค้า</th>
+                                        <th>ผลิตภัณฑ์</th>                                      
                                         <th>บรรจุ</th>
-                                        <th>สถานะการขาย</th>
+                                        <!--<th>สถานะการขาย</th> -->
                                         <th>ราคา</th>
                                         <th>สต็อคขั้นต่ำ</th>
-                                        <th>ประเภท</th>
+                                        <th colspan="2">ประเภท</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -42,14 +42,19 @@
                                 @foreach($products as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                        <div> <!--<img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($item->barcode, "C128") }} " alt="barcode"   /> !--></div>
+                                        {{ $item->barcode }}
+                                        </td>
                                         <td>{{ $item->pro_name }}</td>
-                                        <td>{{ $item->barcode }}</td>
                                         <td>{{ $item->contain }}</td>
-                                        <td>{{ $item->status_sale }}</td>
+                                        <!--<td>{{ $item->status_sale }}</td> -->
                                         <td>{{ $item->saleprice }}</td>
                                         <td>{{ $item->stock_ps }}</td>
-                                        <td>{{ $item->category_id }}</td>
-                                        <td>
+                                        <td  class="d-none">{{$item->category_id}}</td>
+                                        
+                                        <td colspan="2">{{ $item->categorys->name_category }}</td>
+                                        <td >
                                             <a href="{{ url('/products/' . $item->id) }}" title="View Product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 

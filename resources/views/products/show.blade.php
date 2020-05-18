@@ -3,9 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
-
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Product {{ $product->id }}</div>
                     <div class="card-body">
@@ -27,7 +25,13 @@
                                     <tr>
                                         <th>ID</th><td>{{ $product->id }}</td>
                                     </tr>
-                                    <tr><th> Pro Name </th><td> {{ $product->pro_name }} </td></tr><tr><th> Barcode </th><td> {{ $product->barcode }} </td></tr><tr><th> Barcode </th><td> {{ $product->barcode }} </td></tr><tr><th> Contain </th><td> {{ $product->contain }} </td></tr><tr><th> Status Sale </th><td> {{ $product->status_sale }} </td></tr><tr><th> Saleprice </th><td> {{ $product->saleprice }} </td></tr><tr><th> Stock Ps </th><td> {{ $product->stock_ps }} </td></tr><tr><th> Category Id </th><td> {{ $product->category_id }} </td></tr>
+                                    <tr><th> Pro Name </th><td> {{ $product->pro_name }} </td></tr>
+                                    <tr><th> Barcode </th><td> {{ $product->barcode }} </td></tr>
+                                    <tr><th> Contain </th><td> {{ $product->contain }} </td></tr>
+                                    <tr><th> Status Sale </th><td> {{ $product->status_sale }} </td></tr>
+                                    <tr><th> Saleprice </th><td> {{ $product->saleprice }} </td></tr>
+                                    <tr><th> Stock Ps </th><td> {{ $product->stock_ps }} </td></tr>
+                                    <tr><th> Category Id </th><td> {{ $product->category_id }} </td></tr>
                                 </tbody>
                             </table>
                         </div>
