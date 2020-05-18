@@ -17,15 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::middleware(['auth', 'role:guest'])->group(function () {
-    Route::resource('bills', 'billsController');
-    Route::resource('categorys', 'categorysController');
-    Route::resource('lots', 'lotsController');
-    Route::resource('sale', 'saleController');
-    Route::resource('products', 'ProductsController');
+    Route::resource('bills', 'BillController');
+    Route::resource('categorys', 'CategoryController');
+    Route::resource('lots', 'LotController');
+    Route::resource('sale', 'SaleController');
+    Route::resource('products', 'ProductController');
 });
 Route::middleware(['auth', 'role:admin'])->group(function () {
     
 });
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('informations', 'informationsController');
+Route::resource('informations', 'InformationController');

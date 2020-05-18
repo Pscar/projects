@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Product;
+use App\Lot;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class LotController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,20 +21,17 @@ class ProductsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $products = Product::where('pro_name', 'LIKE', "%$keyword%")
-                ->orWhere('barcode', 'LIKE', "%$keyword%")
-                ->orWhere('barcode', 'LIKE', "%$keyword%")
-                ->orWhere('contain', 'LIKE', "%$keyword%")
-                ->orWhere('status_sale', 'LIKE', "%$keyword%")
-                ->orWhere('saleprice', 'LIKE', "%$keyword%")
-                ->orWhere('stock_ps', 'LIKE', "%$keyword%")
-                ->orWhere('category_id', 'LIKE', "%$keyword%")
+            $lots = Lot::where('dete_exp', 'LIKE', "%$keyword%")
+                ->orWhere('dete_enday', 'LIKE', "%$keyword%")
+                ->orWhere('drug_id', 'LIKE', "%$keyword%")
+                ->orWhere('cost', 'LIKE', "%$keyword%")
+                ->orWhere('lot_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $products = Product::latest()->paginate($perPage);
+            $lots = Lot::latest()->paginate($perPage);
         }
 
-        return view('products.index', compact('products'));
+        return view('lots.index', compact('lots'));
     }
 
     /**
@@ -44,7 +41,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('lots.create');
     }
 
     /**
@@ -59,9 +56,9 @@ class ProductsController extends Controller
         
         $requestData = $request->all();
         
-        Product::create($requestData);
+        Lot::create($requestData);
 
-        return redirect('products')->with('flash_message', 'Product added!');
+        return redirect('lots')->with('flash_message', 'lot added!');
     }
 
     /**
@@ -73,9 +70,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id);
+        $lot = Lot::findOrFail($id);
 
-        return view('products.show', compact('product'));
+        return view('lots.show', compact('lot'));
     }
 
     /**
@@ -87,9 +84,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
+        $lot = Lot::findOrFail($id);
 
-        return view('products.edit', compact('product'));
+        return view('lots.edit', compact('lot'));
     }
 
     /**
@@ -105,10 +102,10 @@ class ProductsController extends Controller
         
         $requestData = $request->all();
         
-        $product = Product::findOrFail($id);
-        $product->update($requestData);
+        $lot = Lot::findOrFail($id);
+        $lot->update($requestData);
 
-        return redirect('products')->with('flash_message', 'Product updated!');
+        return redirect('lots')->with('flash_message', 'lot updated!');
     }
 
     /**
@@ -120,8 +117,8 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        Product::destroy($id);
+        Lot::destroy($id);
 
-        return redirect('products')->with('flash_message', 'Product deleted!');
+        return redirect('lots')->with('flash_message', 'lot deleted!');
     }
 }

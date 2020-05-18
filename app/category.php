@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class category extends Model
+class Category extends Model
 {
     /**
      * The database table used by the model.
@@ -28,7 +28,6 @@ class category extends Model
     protected $fillable = ['name_category','name_subprkun','name_howto','name_warning','name_storage'];
 
     public function products(){
-        return $this->hasMany('App\category','category_id'); 
-    }
-    
+        return $this->hasMany('App\Product','category_id'); 
+    }   
 }

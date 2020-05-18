@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\category;
+use App\Product;
 use Illuminate\Http\Request;
 
-class categorysController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,14 +21,20 @@ class categorysController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $categorys = category::where('name_category', 'LIKE', "%$keyword%")
+            $products = Product::where('pro_name', 'LIKE', "%$keyword%")
+                ->orWhere('barcode', 'LIKE', "%$keyword%")
+                ->orWhere('barcode', 'LIKE', "%$keyword%")
+                ->orWhere('contain', 'LIKE', "%$keyword%")
+                ->orWhere('status_sale', 'LIKE', "%$keyword%")
+                ->orWhere('saleprice', 'LIKE', "%$keyword%")
+                ->orWhere('stock_ps', 'LIKE', "%$keyword%")
                 ->orWhere('category_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $categorys = category::latest()->paginate($perPage);
+            $products = Product::latest()->paginate($perPage);
         }
 
-        return view('categorys.index', compact('categorys'));
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -38,7 +44,7 @@ class categorysController extends Controller
      */
     public function create()
     {
-        return view('categorys.create');
+        return view('products.create');
     }
 
     /**
@@ -53,9 +59,9 @@ class categorysController extends Controller
         
         $requestData = $request->all();
         
-        category::create($requestData);
+        Product::create($requestData);
 
-        return redirect('categorys')->with('flash_message', 'category added!');
+        return redirect('products')->with('flash_message', 'Product added!');
     }
 
     /**
@@ -67,9 +73,9 @@ class categorysController extends Controller
      */
     public function show($id)
     {
-        $category = category::findOrFail($id);
+        $product = Product::findOrFail($id);
 
-        return view('categorys.show', compact('category'));
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -81,9 +87,9 @@ class categorysController extends Controller
      */
     public function edit($id)
     {
-        $category = category::findOrFail($id);
+        $product = Product::findOrFail($id);
 
-        return view('categorys.edit', compact('category'));
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -99,10 +105,10 @@ class categorysController extends Controller
         
         $requestData = $request->all();
         
-        $category = category::findOrFail($id);
-        $category->update($requestData);
+        $product = Product::findOrFail($id);
+        $product->update($requestData);
 
-        return redirect('categorys')->with('flash_message', 'category updated!');
+        return redirect('products')->with('flash_message', 'Product updated!');
     }
 
     /**
@@ -114,8 +120,8 @@ class categorysController extends Controller
      */
     public function destroy($id)
     {
-        category::destroy($id);
+        Product::destroy($id);
 
-        return redirect('categorys')->with('flash_message', 'category deleted!');
+        return redirect('products')->with('flash_message', 'Product deleted!');
     }
 }

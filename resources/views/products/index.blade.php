@@ -52,8 +52,7 @@
                                         <td>{{ $item->saleprice }}</td>
                                         <td>{{ $item->stock_ps }}</td>
                                         <td  class="d-none">{{$item->category_id}}</td>
-                                        
-                                        <td colspan="2">{{ $item->categorys->name_category }}</td>
+                                        <td colspan="2">{{ $item->category->name_category }}</td>
                                         <td >
                                             <a href="{{ url('/products/' . $item->id) }}" title="View Product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

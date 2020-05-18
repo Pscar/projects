@@ -5,7 +5,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Product {{ $product->id }}</div>
+                    <div class="card-header text-center"> 
+                        <img src="data:image/png;base64, {{ DNS1D::getBarcodePNG($product->barcode,"C128")}} " alt="barcode"/> 
+                        <br>{{$product->barcode}} 
+                    </div>
                     <div class="card-body">
 
                         <a href="{{ url('/products') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
@@ -23,15 +26,15 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $product->id }}</td>
+                                        <th>#</th><td>{{ $product->id }}</td>
                                     </tr>
-                                    <tr><th> Pro Name </th><td> {{ $product->pro_name }} </td></tr>
-                                    <tr><th> Barcode </th><td> {{ $product->barcode }} </td></tr>
-                                    <tr><th> Contain </th><td> {{ $product->contain }} </td></tr>
-                                    <tr><th> Status Sale </th><td> {{ $product->status_sale }} </td></tr>
-                                    <tr><th> Saleprice </th><td> {{ $product->saleprice }} </td></tr>
-                                    <tr><th> Stock Ps </th><td> {{ $product->stock_ps }} </td></tr>
-                                    <tr><th> Category Id </th><td> {{ $product->category_id }} </td></tr>
+                                    <tr><th> ชื่อสินค้่า </th><td> {{ $product->pro_name }} </td></tr>
+                                    <tr><th> รหัสสินค้า </th><td> {{ $product->barcode }} </td></tr>
+                                    <tr><th> บรรจุ </th><td> {{ $product->contain }} </td></tr>
+                                    <tr><th> สถานะ </th><td> {{ $product->status_sale }} </td></tr>
+                                    <tr><th> ราคาขาย </th><td> {{ $product->saleprice }} </td></tr>
+                                    <tr><th> สต็อคขั้นต่ำ </th><td> {{ $product->stock_ps }} </td></tr>
+                                    <tr><th> ประเภท </th><td> {{ $product->category->name_category }} </td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -41,4 +44,5 @@
             </div>
         </div>
     </div>
+    
 @endsection

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class information extends Model
+class Information extends Model
 {
     /**
      * The database table used by the model.
@@ -28,7 +28,7 @@ class information extends Model
     protected $fillable = ['name','lastname', 'address', 'tel','role','user_id'];
 
     public function user(){
-        return $this->hasOne('App\information','user_id'); 
+        return $this->hasOne('App\Information','user_id'); 
     }
 
     

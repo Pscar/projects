@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\information;
+use App\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class informationsController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,17 +21,14 @@ class informationsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $informations = information::where('name', 'LIKE', "%$keyword%")
-                ->orWhere('lastname', 'LIKE', "%$keyword%")
-                ->orWhere('address', 'LIKE', "%$keyword%")
-                ->orWhere('tel', 'LIKE', "%$keyword%")
-                ->orWhere('staff_id', 'LIKE', "%$keyword%")
+            $categorys = Category::where('name_category', 'LIKE', "%$keyword%")
+                ->orWhere('category_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $informations = information::latest()->paginate($perPage);
+            $categorys = Category::latest()->paginate($perPage);
         }
 
-        return view('informations.index', compact('informations'));
+        return view('categorys.index', compact('categorys'));
     }
 
     /**
@@ -42,7 +38,7 @@ class informationsController extends Controller
      */
     public function create()
     {
-        return view('informations.create');
+        return view('categorys.create');
     }
 
     /**
@@ -57,9 +53,9 @@ class informationsController extends Controller
         
         $requestData = $request->all();
         
-        information::create($requestData);
+        Category::create($requestData);
 
-        return redirect('informations')->with('flash_message', 'information added!');
+        return redirect('categorys')->with('flash_message', 'category added!');
     }
 
     /**
@@ -71,9 +67,9 @@ class informationsController extends Controller
      */
     public function show($id)
     {
-        $information = information::findOrFail($id);
+        $category = Category::findOrFail($id);
 
-        return view('informations.show', compact('information'));
+        return view('categorys.show', compact('category'));
     }
 
     /**
@@ -85,9 +81,9 @@ class informationsController extends Controller
      */
     public function edit($id)
     {
-        $information = information::findOrFail($id);
+        $category = Category::findOrFail($id);
 
-        return view('informations.edit', compact('information'));
+        return view('categorys.edit', compact('category'));
     }
 
     /**
@@ -103,10 +99,10 @@ class informationsController extends Controller
         
         $requestData = $request->all();
         
-        $information = information::findOrFail($id);
-        $information->update($requestData);
+        $category = Category::findOrFail($id);
+        $category->update($requestData);
 
-        return redirect('informations')->with('flash_message', 'information updated!');
+        return redirect('categorys')->with('flash_message', 'Category updated!');
     }
 
     /**
@@ -118,8 +114,8 @@ class informationsController extends Controller
      */
     public function destroy($id)
     {
-        information::destroy($id);
+        Category::destroy($id);
 
-        return redirect('informations')->with('flash_message', 'information deleted!');
+        return redirect('categorys')->with('flash_message', 'category deleted!');
     }
 }

@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\lot;
+use App\Information;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class lotsController extends Controller
+class InformationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,17 +22,17 @@ class lotsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $lots = lot::where('dete_exp', 'LIKE', "%$keyword%")
-                ->orWhere('dete_enday', 'LIKE', "%$keyword%")
-                ->orWhere('drug_id', 'LIKE', "%$keyword%")
-                ->orWhere('cost', 'LIKE', "%$keyword%")
-                ->orWhere('lot_id', 'LIKE', "%$keyword%")
+            $informations = Information::where('name', 'LIKE', "%$keyword%")
+                ->orWhere('lastname', 'LIKE', "%$keyword%")
+                ->orWhere('address', 'LIKE', "%$keyword%")
+                ->orWhere('tel', 'LIKE', "%$keyword%")
+                ->orWhere('staff_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $lots = lot::latest()->paginate($perPage);
+            $informations = Information::latest()->paginate($perPage);
         }
 
-        return view('lots.index', compact('lots'));
+        return view('informations.index', compact('informations'));
     }
 
     /**
@@ -41,7 +42,7 @@ class lotsController extends Controller
      */
     public function create()
     {
-        return view('lots.create');
+        return view('informations.create');
     }
 
     /**
@@ -56,9 +57,9 @@ class lotsController extends Controller
         
         $requestData = $request->all();
         
-        lot::create($requestData);
+        Information::create($requestData);
 
-        return redirect('lots')->with('flash_message', 'lot added!');
+        return redirect('informations')->with('flash_message', 'information added!');
     }
 
     /**
@@ -70,9 +71,9 @@ class lotsController extends Controller
      */
     public function show($id)
     {
-        $lot = lot::findOrFail($id);
+        $information = Information::findOrFail($id);
 
-        return view('lots.show', compact('lot'));
+        return view('informations.show', compact('information'));
     }
 
     /**
@@ -84,9 +85,9 @@ class lotsController extends Controller
      */
     public function edit($id)
     {
-        $lot = lot::findOrFail($id);
+        $information = Information::findOrFail($id);
 
-        return view('lots.edit', compact('lot'));
+        return view('informations.edit', compact('information'));
     }
 
     /**
@@ -102,10 +103,10 @@ class lotsController extends Controller
         
         $requestData = $request->all();
         
-        $lot = lot::findOrFail($id);
-        $lot->update($requestData);
+        $information = Information::findOrFail($id);
+        $information->update($requestData);
 
-        return redirect('lots')->with('flash_message', 'lot updated!');
+        return redirect('informations')->with('flash_message', 'information updated!');
     }
 
     /**
@@ -117,8 +118,8 @@ class lotsController extends Controller
      */
     public function destroy($id)
     {
-        lot::destroy($id);
+        Information::destroy($id);
 
-        return redirect('lots')->with('flash_message', 'lot deleted!');
+        return redirect('informations')->with('flash_message', 'information deleted!');
     }
 }

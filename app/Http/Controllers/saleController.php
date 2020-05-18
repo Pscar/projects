@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\sale;
+use App\Sale;
 use Illuminate\Http\Request;
 
-class saleController extends Controller
+class SaleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,14 +21,14 @@ class saleController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $sale = sale::where('sale_price', 'LIKE', "%$keyword%")
+            $sale = Sale::where('sale_price', 'LIKE', "%$keyword%")
                 ->orWhere('name', 'LIKE', "%$keyword%")
                 ->orWhere('category_id', 'LIKE', "%$keyword%")
                 ->orWhere('staff_id', 'LIKE', "%$keyword%")
                 ->orWhere('sale_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $sale = sale::latest()->paginate($perPage);
+            $sale = Sale::latest()->paginate($perPage);
         }
 
         return view('sale.index', compact('sale'));
@@ -56,7 +56,7 @@ class saleController extends Controller
         
         $requestData = $request->all();
         
-        sale::create($requestData);
+        Sale::create($requestData);
 
         return redirect('sale')->with('flash_message', 'sale added!');
     }
@@ -70,7 +70,7 @@ class saleController extends Controller
      */
     public function show($id)
     {
-        $sale = sale::findOrFail($id);
+        $sale = Sale::findOrFail($id);
 
         return view('sale.show', compact('sale'));
     }
@@ -84,7 +84,7 @@ class saleController extends Controller
      */
     public function edit($id)
     {
-        $sale = sale::findOrFail($id);
+        $sale = Sale::findOrFail($id);
 
         return view('sale.edit', compact('sale'));
     }
@@ -102,7 +102,7 @@ class saleController extends Controller
         
         $requestData = $request->all();
         
-        $sale = sale::findOrFail($id);
+        $sale = Sale::findOrFail($id);
         $sale->update($requestData);
 
         return redirect('sale')->with('flash_message', 'sale updated!');
@@ -117,7 +117,7 @@ class saleController extends Controller
      */
     public function destroy($id)
     {
-        sale::destroy($id);
+        Sale::destroy($id);
 
         return redirect('sale')->with('flash_message', 'sale deleted!');
     }

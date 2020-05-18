@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\bill;
+use App\Bill;
 use Illuminate\Http\Request;
 
-class billsController extends Controller
+class BillController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,14 +21,14 @@ class billsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $bills = bill::where('amount', 'LIKE', "%$keyword%")
+            $bills = Bil::where('amount', 'LIKE', "%$keyword%")
                 ->orWhere('sale', 'LIKE', "%$keyword%")
                 ->orWhere('sale_items', 'LIKE', "%$keyword%")
                 ->orWhere('receipt_id', 'LIKE', "%$keyword%")
                 ->orWhere('sale_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $bills = bill::latest()->paginate($perPage);
+            $bills = Bil::latest()->paginate($perPage);
         }
 
         return view('bills.index', compact('bills'));
@@ -56,7 +56,7 @@ class billsController extends Controller
         
         $requestData = $request->all();
         
-        bill::create($requestData);
+        Bill::create($requestData);
 
         return redirect('bills')->with('flash_message', 'bill added!');
     }
@@ -70,7 +70,7 @@ class billsController extends Controller
      */
     public function show($id)
     {
-        $bill = bill::findOrFail($id);
+        $bill = Bill::findOrFail($id);
 
         return view('bills.show', compact('bill'));
     }
@@ -84,7 +84,7 @@ class billsController extends Controller
      */
     public function edit($id)
     {
-        $bill = bill::findOrFail($id);
+        $bill = Bill::findOrFail($id);
 
         return view('bills.edit', compact('bill'));
     }
@@ -102,7 +102,7 @@ class billsController extends Controller
         
         $requestData = $request->all();
         
-        $bill = bill::findOrFail($id);
+        $bill = Bill::findOrFail($id);
         $bill->update($requestData);
 
         return redirect('bills')->with('flash_message', 'bill updated!');
@@ -117,7 +117,7 @@ class billsController extends Controller
      */
     public function destroy($id)
     {
-        bill::destroy($id);
+        Bill::destroy($id);
 
         return redirect('bills')->with('flash_message', 'bill deleted!');
     }

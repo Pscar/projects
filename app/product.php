@@ -28,9 +28,9 @@ class Product extends Model
     protected $fillable = ['pro_name', 'barcode','contain', 'status_sale', 'saleprice', 'stock_ps', 'category_id'];
 
     public function lots(){
-        return $this->hasMany('App\lot','drug_id'); 
+        return $this->hasMany('App\Lot','drug_id'); 
     }
-    public function categorys(){
-        return $this->belongsTo('App\category','category_id'); 
+    public function category(){
+        return $this->belongsTo('App\Category','category_id'); 
     }
 }

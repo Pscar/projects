@@ -23,10 +23,11 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $lot->id }}</td>
-                                    </tr>
-                                    <tr><th> Dete Exp </th><td> {{ $lot->dete_exp }} </td></tr><tr><th> Dete Enday </th><td> {{ $lot->dete_enday }} </td></tr><tr><th> Drug Id </th><td> {{ $lot->drug_id }} </td></tr><tr><th> Cost </th><td> {{ $lot->cost }} </td></tr><tr><th> Lot Id </th><td> {{ $lot->lot_id }} </td></tr>
+                                    <tr><th>ลำดับ</th><td>{{ $lot->id }}</td></tr>
+                                    <tr><th> วันหมดอายุ </th><td> {{ $lot->dete_exp }} </td></tr>
+                                    <tr><th> รหัสยา </th><td> {{$lot->product->barcode}}</td></tr>
+                                    <tr><th> Drug Id </th><td> {{ $lot->drug_id }} </td></tr>
+                                    <tr><th> Cost </th><td> {{ $lot->cost }} </td></tr><tr>
                                 </tbody>
                             </table>
                         </div>
