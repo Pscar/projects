@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-center"> 
-                        <img src="data:image/png;base64, {{ DNS1D::getBarcodePNG($product->barcode,"C128")}} " alt="barcode"/> 
+                        
                         <br>{{$product->barcode}} 
                     </div>
                     <div class="card-body">
@@ -34,7 +34,7 @@
                                     <tr><th> สถานะ </th><td> {{ $product->status_sale }} </td></tr>
                                     <tr><th> ราคาขาย </th><td> {{ $product->saleprice }} </td></tr>
                                     <tr><th> สต็อคขั้นต่ำ </th><td> {{ $product->stock_ps }} </td></tr>
-                                    <tr><th> ประเภท </th><td> {{ $product->category->name_category }} </td></tr>
+                                    
                                 </tbody>
                             </table>
                         </div>

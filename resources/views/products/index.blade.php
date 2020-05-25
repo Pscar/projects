@@ -31,10 +31,10 @@
                                         <th>รหัสสินค้า</th>
                                         <th>ผลิตภัณฑ์</th>                                      
                                         <th>บรรจุ</th>
-                                        <!--<th>สถานะการขาย</th> -->
+                                        <th>สถานะการขาย</th>
                                         <th>ราคา</th>
                                         <th>สต็อคขั้นต่ำ</th>
-                                        <th colspan="2">ประเภท</th>
+                                        <th>ประเภท</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -43,16 +43,15 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                        <div> <!--<img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($item->barcode, "C128") }} " alt="barcode"   /> !--></div>
-                                        {{ $item->barcode }}
+                                        <div> {{ $item->barcode }}</div>
+                                        
                                         </td>
                                         <td>{{ $item->pro_name }}</td>
                                         <td>{{ $item->contain }}</td>
-                                        <!--<td>{{ $item->status_sale }}</td> -->
+                                        <td>{{ $item->status_sale }}</td>
                                         <td>{{ $item->saleprice }}</td>
                                         <td>{{ $item->stock_ps }}</td>
-                                        <td  class="d-none">{{$item->category_id}}</td>
-                                        <td colspan="2">{{ $item->category->name_category }}</td>
+                                        <td>{{ $item->category->name_category }}</td>
                                         <td >
                                             <a href="{{ url('/products/' . $item->id) }}" title="View Product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

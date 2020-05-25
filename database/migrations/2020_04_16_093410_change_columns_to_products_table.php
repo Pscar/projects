@@ -13,9 +13,9 @@ class ChangeColumnsToProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
+        /*Schema::table('products', function (Blueprint $table) {
             $table->integer('category_id')->nullable()->change();
-        });
+        });*/
     }
 
     /**

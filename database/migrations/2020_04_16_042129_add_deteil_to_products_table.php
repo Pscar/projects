@@ -13,10 +13,7 @@ class AddDeteilToProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('drug_id');
-        });
-
+       
         Schema::table('sales', function (Blueprint $table) {
             $table->dropColumn('receipt_id');
         });

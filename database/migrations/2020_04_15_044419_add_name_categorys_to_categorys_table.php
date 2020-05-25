@@ -19,14 +19,6 @@ class AddNameCategorysToCategorysTable extends Migration
             $table->string('name_warning')->nullable();
             $table->string('name_storage')->nullable();
         });
-
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('saleprice')->nullable();
-            $table->string('stock_ps')->nullable();
-            $table->string('contain')->nullable();
-            $table->string('status_sale')->nullable();
-        });
-
         Schema::table('lots', function (Blueprint $table) {
             $table->dropColumn('dete_enday');
             $table->dropColumn('dete_exp');

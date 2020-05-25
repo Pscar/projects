@@ -28,7 +28,7 @@ class Information extends Model
     protected $fillable = ['name','lastname', 'address', 'tel','role','user_id'];
 
     public function user(){
-        return $this->hasOne('App\Information','user_id'); 
+        return $this->belongsTo('App\Information','user_id'); 
     }
 
     
