@@ -6,8 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-center"> 
-                        
-                        <br>{{$product->barcode}} 
+                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($product->barcode, 'C128') }}" alt="barcode"/>
                     </div>
                     <div class="card-body">
 

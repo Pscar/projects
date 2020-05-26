@@ -8,8 +8,9 @@
                     <div class="card-header">แก้ไขข้อมูลสินค้า </div>
                     
                     <div class="card-body text-center">
-                    <img src="data:image/png;base64, {{ DNS1D::getBarcodePNG($product->barcode,"C128")}}" alt="barcode"/> 
+                        
                         <br>{{$product->barcode}} 
+
                     </div>
                     
                     <div class="card-body">
@@ -24,15 +25,15 @@
                                 @endforeach
                             </ul>
                         @endif
-
+               
                         <form method="POST" action="{{ url('/products/' . $product->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
 
                             @include ('products.form', ['formMode' => 'edit'])
-
+                
                         </form>
-
+                        
                     </div>
                 </div>
             </div>

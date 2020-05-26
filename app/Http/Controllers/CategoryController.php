@@ -27,7 +27,7 @@ class CategoryController extends Controller
         } else {
             $categorys = Category::latest()->paginate($perPage);
         }
-
+        
         return view('categorys.index', compact('categorys'));
     }
 

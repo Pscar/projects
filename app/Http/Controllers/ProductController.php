@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -33,6 +34,9 @@ class ProductController extends Controller
         } else {
             $products = Product::latest()->paginate($perPage);
         }
+            
+
+
 
         return view('products.index', compact('products'));
     }
@@ -44,7 +48,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+            $category = Category::all(); //ส่งค่า category เป็น id <!--เป็นการดึง PK จาก category มาแสดงผลในหน้า products-->
+            return view('products.create', compact('category'));
     }
 
     /**
@@ -60,7 +65,8 @@ class ProductController extends Controller
         $requestData = $request->all();
         
         Product::create($requestData);
-
+        
+        
         return redirect('products')->with('flash_message', 'Product added!');
     }
 
@@ -87,9 +93,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $category = Category::all(); //ส่งค่า category เป็น id <!--เป็นการดึง PK จาก category มาแสดงผลในหน้า products-->
         $product = Product::findOrFail($id);
 
-        return view('products.edit', compact('product'));
+        return view('products.edit', compact('product','category'));
     }
 
     /**

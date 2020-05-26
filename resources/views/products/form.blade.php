@@ -30,11 +30,17 @@
 </div>
 <div class="form-group {{ $errors->has('category_id') ? 'has-error' : ''}}">
     <label for="category_id" class="control-label">{{ 'ประเภท' }}</label>
-        <input class="form-control d-none" name="category_id" type="number" id="category_id" value="{{ isset($product->category_id) ? $product->category_id : $category->id }}" >
-        <input class="form-control" name="name_category" type="text" id="name_category" value="{{ isset($product->category_id) ? $product->category->name_category : $category->name_category }}" > <!-- เวลาเรียกใช้ข้ามตาราง $ตาราง -> โมเดลรีเรชั่น -> ข้อมูลในตารางที่จะแสดง-->
+    
+    <select name="category_id" class="form-control form-control-sm" id=category_id" onchange="var category_id = document.querySelector('#category_id');">
+    @foreach ($category as $optionValue)
+        <option value="{{ $optionValue->id }}"> {{ $optionValue->name_category}}<!--เป็นตัวที่จะแสดงผล--></option>
+    @endforeach<!--เป็นการดึง PK จาก category มาแสดงผล-->
+    </select>
+    <script>
+        document.querySelector("#category_id").value = "{{ isset($product->category_id) ? $product->category_id : ''}}";
+    </script>
     {!! $errors->first('category_id', '<p class="help-block">:message</p>') !!}
 </div>
-
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
