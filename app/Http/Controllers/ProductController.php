@@ -65,6 +65,11 @@ class ProductController extends Controller
         $requestData = $request->all();
         
         Product::create($requestData);
+            Product::where('drug_id', $product->drug_id)
+                ->update([
+                    'status_sale' => 'redysale',
+                    'redysale_at' => date('Y-m-d H:i:s'),
+                ]);
         
         
         return redirect('products')->with('flash_message', 'Product added!');
@@ -111,8 +116,23 @@ class ProductController extends Controller
     {
         
         $requestData = $request->all();
+        $product = Product::findOrFail($id); // ประกาศ product ให้  update รู้จัก
+            if(!empty($requestData['status_sale'])){
+            switch($requestData['status_sale']){
+                case "redysale" :
+                    $requestData['redysale_at'] = date('Y-m-d H:i:s');  
+                break;
+                
+                case "mostout" :
+                    $requestData['mostout_at'] = date('Y-m-d H:i:s');
+                break;
+
+                case "souout" :
+                    $requestData['souout_at'] = date('Y-m-d H:i:s');
+                break;    
+                } 
+             }
         
-        $product = Product::findOrFail($id);
         $product->update($requestData);
 
         return redirect('products')->with('flash_message', 'Product updated!');

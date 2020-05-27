@@ -3,10 +3,10 @@
     <input class="form-control" name="pro_name" type="text" id="pro_name" value="{{ isset($product->pro_name) ? $product->pro_name : ''}}" >
     {!! $errors->first('pro_name', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('barcode') ? 'has-error' : ''}}">
-    <label for="barcode" class="control-label">{{ 'รหัสสินค้า' }}</label>
-    <input class="form-control" name="barcode" type="text" id="barcode" value="{{ isset($product->barcode) ? $product->barcode : ''}}" >
-    {!! $errors->first('barcode', '<p class="help-block">:message</p>') !!}
+<div class="form-group {{ $errors->has('drug_id') ? 'has-error' : ''}}">
+    <label for="drug_id" class="control-label">{{ 'รหัสสินค้า' }}</label>
+    <input class="form-control" name="drug_id" type="text" id="drug_id" value="{{ isset($product->drug_id) ? $product->drug_id : ''}}" >
+    {!! $errors->first('drug_id', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('contain') ? 'has-error' : ''}}">
     <label for="contain" class="control-label">{{ 'บรรจุ' }}</label>

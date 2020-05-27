@@ -31,10 +31,10 @@
                                     <th>รหัสสินค้า</th>
                                     <th>ผลิตภัณฑ์</th>                                      
                                     <th>บรรจุ</th>
-                                    <th>สถานะการขาย</th>
                                     <th>ราคา</th>
                                     <th>สต็อคขั้นต่ำ</th>
                                     <th>ประเภท</th>
+                                    <th>สถานะการขาย</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -45,10 +45,29 @@
                                     <td>{{ $item->drug_id }}</td>
                                     <td>{{ $item->pro_name }}</td>
                                     <td>{{ $item->contain }}</td>
-                                    <td>{{ $item->status_sale }}</td>
                                     <td>{{ $item->saleprice }}</td>
                                     <td>{{ $item->stock_ps }}</td>
                                     <td>{{ $item->category->name_category }}</td>
+                                    <td>
+                                        @switch($item->status_sale)
+                                                @case("redysale")
+                                                    <div><span class="badge badge-primary">พร้อมจำหน่าย</span></div>
+                                                    <div>{{ $item->redysale_at }}</div>
+                                                @break
+
+                                                @case("mostout")
+                                                    <div><span class="badge badge-primary">ใกล้จะหมด</span></div>
+                                                    <div>{{ $item->mostout_at }}</div>
+                                                @break
+                                            
+                                                @case("souout")
+                                                    <div><span class="badge badge-primary">หมดสต็อต</span></div>
+                                                    <div>{{ $item->souout_at }}</div>
+                                                @break
+                                            
+                                        @endswitch
+                                                
+                                    </td>
                                     <td >
                                         <a href="{{ url('/products/' . $item->id) }}" title="View Product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                         <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

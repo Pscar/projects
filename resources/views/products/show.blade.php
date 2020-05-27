@@ -29,7 +29,7 @@
                                         <th>#</th><td>{{ $product->id }}</td>
                                     </tr>
                                     <tr><th> ชื่อสินค้่า </th><td> {{ $product->pro_name }} </td></tr>
-                                    <tr><th> รหัสสินค้า </th><td> {{ $product->barcode }} </td></tr>
+                                    <tr><th> รหัสสินค้า </th><td> {{ $product->drug_id }} </td></tr>
                                     <tr><th> บรรจุ </th><td> {{ $product->contain }} </td></tr>
                                     <tr><th> สถานะ </th><td> {{ $product->status_sale }} </td></tr>
                                     <tr><th> ราคาขาย </th><td> {{ $product->saleprice }} </td></tr>

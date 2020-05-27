@@ -42,6 +42,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->drug_id}}</td>
+                                        
                                         <td>{{ $item->cost }}</td>
                                         <td>{{ $item->stock_im}}</td>
                                         <td>{{ $item->created_at}}</td>
