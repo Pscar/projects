@@ -25,7 +25,6 @@
                                 <tbody>
                                     <tr><th>ลำดับ</th><td>{{ $lot->id }}</td></tr>
                                     <tr><th> วันหมดอายุ </th><td> {{ $lot->dete_exp }} </td></tr>
-                                    <tr><th> รหัสยา </th><td> {{$lot->product->barcode}}</td></tr>
                                     <tr><th> Drug Id </th><td> {{ $lot->drug_id }} </td></tr>
                                     <tr><th> Cost </th><td> {{ $lot->cost }} </td></tr><tr>
                                 </tbody>

@@ -15,9 +15,15 @@
 </div>
 <div class="form-group {{ $errors->has('drug_id') ? 'has-error' : ''}}">
     <label for="drug_id" class="control-label">{{ 'รหัสยา' }}</label>
-    <input class="form-control d-none" name="drug_id" type="number" id="drug_id" value="{{ isset($lot->drug_id) ? $lot->drug_id : ''}}" >
-    <input class="form-control" name="barcode" type="text" id="barcode" value="{{ isset($lot->drug_id) ? $lot->product->barcode : $product->barcode}}" >
-    {!! $errors->first('drug_id', '<p class="help-block">:message</p>') !!}
+    <select name="drug_id" class="form-control form-control-sm" id=drug_id" onchange="var drug_id = document.querySelector('#drug_id');">
+    @foreach ($product as $optionValue)
+        <option value="{{ $optionValue->drug_id }}"> {{ $optionValue->pro_name}}<!--เป็นตัวที่จะแสดงผลใน select form--></option>
+    @endforeach<!--เป็นการดึง drug_id จาก product มาแสดงผล-->
+    </select>
+    <script>
+        document.querySelector("#drug_id").value = "{{ isset($lot->drug_id) ? $lot->drug_id : ''}}";
+    </script>
+   
 </div>
 
 

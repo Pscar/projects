@@ -41,12 +41,16 @@
                                 @foreach($lots as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->product->barcode}}</td> 
                                         <td>{{ $item->drug_id}}</td>
                                         <td>{{ $item->cost }}</td>
                                         <td>{{ $item->stock_im}}</td>
                                         <td>{{ $item->created_at}}</td>
-                                        <td>{{ $item->deteexp_at}}</td>
+                                        <td>
+                                        <?php
+                                        echo date("Y-m-d H:i:s",strtotime("+2 year"))."<br>";
+                                         ?>
+                                        {{ $item->deteexp_at}}
+                                        </td>
                                         <td>
                                             <a href="{{ url('/lots/' . $item->id) }}" title="View lot"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/lots/' . $item->id . '/edit') }}" title="Edit lot"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

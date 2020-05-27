@@ -9,8 +9,8 @@
                     
                     <div class="card-body text-center">
                         
-                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($product->barcode, 'C128') }}" alt="barcode"/><br>
-                    {{$product->barcode}}
+                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($product->drug_id, 'C128') }}" alt="barcode"/><br>
+                    {{$product->drug_id}}
 
                     </div>
                     

@@ -2,11 +2,13 @@
 @section('content')
     <div class="container">
         <div class="row">
-           
-
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Edit lot #{{ $lot->id }}</div>
+                    <div class="card-header">Edit lot {{$lot->id}}</div>
+                        <div class="card-body text-center">
+                            <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($lot->drug_id, 'C128') }}" alt="barcode"/><br>
+                            {{$lot->drug_id}}
+                        </div>
                     <div class="card-body">
                         <a href="{{ url('/lots') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />

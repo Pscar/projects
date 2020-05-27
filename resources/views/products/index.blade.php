@@ -42,7 +42,7 @@
                             @foreach($products as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->barcode }}</td>
+                                    <td>{{ $item->drug_id }}</td>
                                     <td>{{ $item->pro_name }}</td>
                                     <td>{{ $item->contain }}</td>
                                     <td>{{ $item->status_sale }}</td>

@@ -25,7 +25,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['pro_name', 'barcode','contain', 'status_sale', 'saleprice', 'stock_ps', 'category_id'];
+    protected $fillable = ['pro_name', 'drug_id','contain', 'status_sale', 'saleprice', 'stock_ps', 'category_id'];
 
     public function lots(){
         return $this->hasMany('App\Lot','drug_id'); 

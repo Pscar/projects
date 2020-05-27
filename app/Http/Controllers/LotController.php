@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Lot;
+use App\Product;
 use Illuminate\Http\Request;
 
 class LotController extends Controller
@@ -41,7 +42,9 @@ class LotController extends Controller
      */
     public function create()
     {
-        return view('lots.create');
+        $product = Product::all();
+            
+        return view('lots.create', compact('product'));
     }
 
     /**
@@ -84,9 +87,10 @@ class LotController extends Controller
      */
     public function edit($id)
     {
+        $product = Product::all();
         $lot = Lot::findOrFail($id);
 
-        return view('lots.edit', compact('lot'));
+        return view('lots.edit', compact('lot','product'));;
     }
 
     /**
