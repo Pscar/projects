@@ -44,7 +44,7 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `created_at`, `updated_at`, `pro_name`, `barcode`, `contain`, `status_sale`, `saleprice`, `stock_ps`, `category_id`) VALUES
+INSERT INTO `products` (`id`, `created_at`, `updated_at`, `pro_name`, `drug_id`, `contain`, `status_sale`, `saleprice`, `stock_ps`, `category_id`) VALUES
 (1, NULL, '2020-05-25 23:27:11', 'Cemol 500 ml (ยาลดไข้ ระดับต้น)', 'CE001101', 'ขวด', NULL, 35, 1000, 5),
 (2, NULL, '2020-05-25 23:27:26', 'Panadol (ยาลดไข้ ระดับต้น)', 'PA001102', 'แผง', NULL, 39, 1000, 5),
 (3, NULL, '2020-05-25 23:27:37', 'Paracap 500 ml (ยาลดไข้ ระดับต้น)', 'PA001101', 'ขวด', NULL, 50, 1000, 5),

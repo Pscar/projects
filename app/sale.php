@@ -27,5 +27,10 @@ class Sale extends Model
      */
     protected $fillable = ['category_id', 'drug_id', 'amount', 'total_sale', 'saleprice_sale'];
 
-    
+    public function product(){
+        return $this->belongsTo('App\Sale','drug_id');
+    }
+    public function bills(){
+        return $this->hasMany('App\Bill','sale_id');
+    }
 }

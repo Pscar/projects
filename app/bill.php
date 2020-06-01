@@ -27,4 +27,8 @@ class Bill extends Model
      */
     protected $fillable = ['staff_id', 'total_bill','sale_id'];
     
+    public function bill(){
+        return $this->belongsTo('App\Bill','sale_id');
+    }
+
 }

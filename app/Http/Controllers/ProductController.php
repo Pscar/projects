@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Product;
 use App\Category;
+use App\Sale;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
