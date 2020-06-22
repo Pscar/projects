@@ -1,4 +1,4 @@
-<div class="form-group {{ $errors->has('deteexp_at') ? 'has-error' : ''}}">
+<div class="form-group d-none {{ $errors->has('deteexp_at') ? 'has-error' : ''}}">
     <label for="deteexp_at" class="control-label">{{ 'วันหมดอายุ' }}</label>
     <input class="form-control" name="deteexp_at" type="datetime-local" id="deteexp_at" value="{{ isset($lot->deteexp_at) ? $lot->deteexp_at : ''}}" >
     {!! $errors->first('deteexp_at', '<p class="help-block">:message</p>') !!}
@@ -10,7 +10,7 @@
 </div>
 <div class="form-group {{ $errors->has('stock_im') ? 'has-error' : ''}}">
     <label for="stock_im" class="control-label">{{ 'สต็อคเข้าใหม่' }}</label>
-    <input class="form-control" name="stock_im" type="text" id="stock_im" value="{{ isset($lot->stock_im) ? $lot->stock_im : ''}}" >
+    <input class="form-control" name="stock_im" type="number" id="stock_im" value="{{ isset($lot->stock_im) ? $lot->stock_im : ''}}" >
     {!! $errors->first('stock_im', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('drug_id') ? 'has-error' : ''}}">
@@ -23,7 +23,8 @@
     <script>
         document.querySelector("#drug_id").value = "{{ isset($lot->drug_id) ? $lot->drug_id : ''}}";
     </script>
-   
+    <input class="form-control d-none" name="drug_id" type="text" id="drug_id" value="{{ isset($lot->drug_id) ? $lot->drug_id : ''}}" >
+    {!! $errors->first('drug_id', '<p class="help-block">:message</p>') !!}
 </div>
 
 

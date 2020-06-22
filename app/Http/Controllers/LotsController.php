@@ -9,7 +9,7 @@ use App\Lot;
 use App\Product;
 use Illuminate\Http\Request;
 
-class LotController extends Controller
+class LotsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,11 +22,10 @@ class LotController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $lots = Lot::where('dete_exp', 'LIKE', "%$keyword%")
-                ->orWhere('dete_enday', 'LIKE', "%$keyword%")
+            $lots = Lot::where('deteexp_at', 'LIKE', "%$keyword%")
                 ->orWhere('drug_id', 'LIKE', "%$keyword%")
                 ->orWhere('cost', 'LIKE', "%$keyword%")
-                ->orWhere('lot_id', 'LIKE', "%$keyword%")
+                ->orWhere('stock_im', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
             $lots = Lot::latest()->paginate($perPage);
@@ -43,7 +42,6 @@ class LotController extends Controller
     public function create()
     {
         $product = Product::all();
-            
         return view('lots.create', compact('product'));
     }
 
@@ -61,7 +59,7 @@ class LotController extends Controller
         
         Lot::create($requestData);
 
-        return redirect('lots')->with('flash_message', 'lot added!');
+        return redirect('lots')->with('flash_message', 'Lot added!');
     }
 
     /**
@@ -90,7 +88,7 @@ class LotController extends Controller
         $product = Product::all();
         $lot = Lot::findOrFail($id);
 
-        return view('lots.edit', compact('lot','product'));;
+        return view('lots.edit', compact('lot'));
     }
 
     /**
@@ -109,7 +107,7 @@ class LotController extends Controller
         $lot = Lot::findOrFail($id);
         $lot->update($requestData);
 
-        return redirect('lots')->with('flash_message', 'lot updated!');
+        return redirect('lots')->with('flash_message', 'Lot updated!');
     }
 
     /**
@@ -123,6 +121,6 @@ class LotController extends Controller
     {
         Lot::destroy($id);
 
-        return redirect('lots')->with('flash_message', 'lot deleted!');
+        return redirect('lots')->with('flash_message', 'Lot deleted!');
     }
 }

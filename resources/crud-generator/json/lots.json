@@ -1,25 +1,22 @@
 {
     "fields": [
         {
-            "name": "dete_exp",
-            "type": "integer"
-        },
-        {
-            "name":"dete_enday",
-            "type":"datetime"
-        },
-        {
-            "name": "drug_id",
-            "type": "integer#unsigned"
-        },     
-        {
-            "name": "cost",
-            "type": "integer"
+            "name": "deteexp_at",
+            "type": "datetime"
         },
         
         {
-            "name": "lot_id",
-            "type": "integer#unsigned"
+            "name": "drug_id",
+            "type": "string"
+        },     
+        {
+            "name": "cost",
+            "type": "float"
+        },
+        
+        {
+            "name": "stock_im",
+            "type": "integer"
         }
     ]
  }

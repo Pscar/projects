@@ -24,8 +24,7 @@ class ProductController extends Controller
 
         if (!empty($keyword)) {
             $products = Product::where('pro_name', 'LIKE', "%$keyword%")
-                ->orWhere('barcode', 'LIKE', "%$keyword%")
-                ->orWhere('barcode', 'LIKE', "%$keyword%")
+                ->orWhere('drug_id', 'LIKE', "%$keyword%")
                 ->orWhere('contain', 'LIKE', "%$keyword%")
                 ->orWhere('status_sale', 'LIKE', "%$keyword%")
                 ->orWhere('saleprice', 'LIKE', "%$keyword%")
@@ -66,12 +65,7 @@ class ProductController extends Controller
         $requestData = $request->all();
         
         Product::create($requestData);
-            Product::where('drug_id', $product->drug_id)
-                ->update([
-                    'status_sale' => 'redysale',
-                    'redysale_at' => date('Y-m-d H:i:s'),
-                ]);
-        
+          
         
         return redirect('products')->with('flash_message', 'Product added!');
     }

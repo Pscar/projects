@@ -19,9 +19,9 @@ Auth::routes();
 Route::middleware(['auth', 'role:guest'])->group(function () {
     Route::resource('bills', 'BillController');
     Route::resource('categorys', 'CategoryController');
-    Route::resource('lots', 'LotController');
     Route::resource('sale', 'SaleController');
     Route::resource('products', 'ProductController');
+    Route::resource('lots', 'LotsController');
 });
 Route::middleware(['auth', 'role:admin'])->group(function () {
     

@@ -15,11 +15,10 @@ class CreateLotsTable extends Migration
         Schema::create('lots', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('dete_exp')->nullable();
-            $table->dateTime('dete_enday')->nullable();
-            $table->integer('drug_id')->unsigned();
-            $table->integer('cost')->nullable();
-            $table->integer('lot_id')->unsigned();
+            $table->dateTime('deteexp_at')->nullable();
+            $table->string('drug_id')->nullable();
+            $table->float('cost')->nullable();
+            $table->integer('stock_im')->nullable();
             });
     }
 
