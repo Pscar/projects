@@ -23,7 +23,6 @@
     <script>
         document.querySelector("#drug_id").value = "{{ isset($lot->drug_id) ? $lot->drug_id : ''}}";
     </script>
-    <input class="form-control d-none" name="drug_id" type="text" id="drug_id" value="{{ isset($lot->drug_id) ? $lot->drug_id : ''}}" >
     {!! $errors->first('drug_id', '<p class="help-block">:message</p>') !!}
 </div>
 

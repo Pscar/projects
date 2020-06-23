@@ -88,7 +88,7 @@ class LotsController extends Controller
         $product = Product::all();
         $lot = Lot::findOrFail($id);
 
-        return view('lots.edit', compact('lot'));
+        return view('lots.edit', compact('lot','product'));
     }
 
     /**

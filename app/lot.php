@@ -30,5 +30,4 @@ class Lot extends Model
     public function product(){
         return $this->belongsTo('App\Product','drug_id'); 
     }
-    
 }

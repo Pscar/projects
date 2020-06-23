@@ -41,13 +41,13 @@
                                 @foreach($lots as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{$item->created_at}}</td>
+                                        <td>{{ $item->created_at}}</td>
                                         <td><!--วันหมดอายุ-->
                                         <?php
                                         echo date("Y-m-d H:i:s",strtotime("+2 year"))."<br>";
                                          ?> 
                                         </td>
-                                        <td>{{ $item->product->drug_id}}</td>                              
+                                        <td>{{ $item->drug_id}}</td>           
                                         <td>{{ $item->cost }}</td>
                                         <td>{{ $item->stock_im }}</td>
                                         <td>
