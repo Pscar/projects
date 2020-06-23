@@ -9,7 +9,7 @@ use App\Sale;
 use App\Product;
 use Illuminate\Http\Request;
 
-class SaleController extends Controller
+class SalesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,19 +20,19 @@ class SaleController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-
         if (!empty($keyword)) {
-            $sale = Sale::where('sale_price', 'LIKE', "%$keyword%")
+            $sales = Sale::where('saleprice', 'LIKE', "%$keyword%")
                 ->orWhere('name', 'LIKE', "%$keyword%")
                 ->orWhere('category_id', 'LIKE', "%$keyword%")
-                ->orWhere('staff_id', 'LIKE', "%$keyword%")
-                ->orWhere('sale_id', 'LIKE', "%$keyword%")
+                ->orWhere('user_id', 'LIKE', "%$keyword%")
+                ->orWhere('amount', 'LIKE', "%$keyword%")
+                ->orWhere('total_sale', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $sale = Sale::latest()->paginate($perPage);
+            $sales = Sale::latest()->paginate($perPage);
         }
 
-        return view('sale.index', compact('sale'));
+        return view('sales.index', compact('sales'));
     }
 
     /**
@@ -43,8 +43,7 @@ class SaleController extends Controller
     public function create()
     {
         $product = Product::all();
-        
-        return view('sale.create');
+        return view('sales.create', compact('product'));
     }
 
     /**
@@ -60,8 +59,9 @@ class SaleController extends Controller
         $requestData = $request->all();
         
         Sale::create($requestData);
+    
 
-        return redirect('sale')->with('flash_message', 'sale added!');
+        return redirect('sales')->with('flash_message', 'Sale added!');
     }
 
     /**
@@ -75,7 +75,7 @@ class SaleController extends Controller
     {
         $sale = Sale::findOrFail($id);
 
-        return view('sale.show', compact('sale'));
+        return view('sales.show', compact('sale'));
     }
 
     /**
@@ -87,9 +87,10 @@ class SaleController extends Controller
      */
     public function edit($id)
     {
+        $product = Product::all();
         $sale = Sale::findOrFail($id);
 
-        return view('sale.edit', compact('sale'));
+        return view('sales.edit', compact('sale','product'));
     }
 
     /**
@@ -108,7 +109,7 @@ class SaleController extends Controller
         $sale = Sale::findOrFail($id);
         $sale->update($requestData);
 
-        return redirect('sale')->with('flash_message', 'sale updated!');
+        return redirect('sales')->with('flash_message', 'Sale updated!');
     }
 
     /**
@@ -122,6 +123,6 @@ class SaleController extends Controller
     {
         Sale::destroy($id);
 
-        return redirect('sale')->with('flash_message', 'sale deleted!');
+        return redirect('sales')->with('flash_message', 'Sale deleted!');
     }
 }

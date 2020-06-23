@@ -26,7 +26,11 @@
                             <table class="table">
                                 <tbody>
                                     <tr><th>ID</th><td>{{ $lot->id }}</td></tr>
-                                    <tr><th> วันหมดอายุ </th><td> {{ $lot->deteexp_at }} </td></tr>
+                                    <tr><th> วันหมดอายุ </th><td> 
+                                    <?php
+                                        echo date("Y-m-d H:i:s",strtotime("+2 year"))."<br>";
+                                    ?> 
+                                    </td></tr>
                                     <tr><th> วันแรกเข้า </th><td>{{ $lot->created_at}}</td></tr>
                                     <tr><th> รหัสยา </th><td> {{ $lot->drug_id }} </td></tr>
                                     <tr><th> ต้นทุน </th><td> {{ $lot->cost }} </td></tr>

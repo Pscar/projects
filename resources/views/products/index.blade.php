@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Products</div>
+                <div class="card-header">สินค้า</div>
                     <div class="card-body">
                         <a href="{{ url('/products/create') }}" class="btn btn-success btn-sm" title="Add New Product">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มสินค้า
                         </a>
 
                     <form method="GET" action="{{ url('/products') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
@@ -33,7 +33,7 @@
                                     <th>บรรจุ</th>
                                     <th>ราคา</th>
                                     <th>สต็อคขั้นต่ำ</th>
-                                    <th>ประเภท</th>
+                                    <th class="d-none">ประเภท</th>
                                     <th>สถานะการขาย</th>
                                     <th>Actions</th>
                                 </tr>
@@ -47,7 +47,7 @@
                                     <td>{{ $item->contain }}</td>
                                     <td>{{ $item->saleprice }}</td>
                                     <td>{{ $item->stock_ps }}</td>
-                                    <td>{{ $item->category->name_category }}</td>
+                                    <td class="d-none">{{ $item->category_id }}</td>
                                     <td>
                                         @switch($item->status_sale)
                                                 @case("redysale")

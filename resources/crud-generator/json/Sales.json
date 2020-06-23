@@ -1,0 +1,30 @@
+{
+    "fields": [
+        {
+            "name": "saleprice",
+            "type": "float"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "category_id",
+            "type": "integer"
+        },
+        {
+            "name": "user_id",
+            "type": "integer"
+        },
+        {
+            "name": "amount",
+            "type": "float"
+        },
+        {
+            "name": "total_sale",
+            "type": "float"
+        }
+        
+        
+    ]
+ }

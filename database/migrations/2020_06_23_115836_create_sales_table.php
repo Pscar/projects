@@ -15,11 +15,12 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('sale_price')->nullable();
+            $table->float('saleprice')->nullable();
             $table->string('name')->nullable();
-            $table->integer('category_id')->unsigned();
-            $table->integer('staff_id')->unsigned();
-            $table->integer('sale_id')->unsigned();
+            $table->integer('category_id')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->float('amount')->nullable();
+            $table->float('total_sale')->nullable();
             });
     }
 

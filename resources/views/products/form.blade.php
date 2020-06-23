@@ -13,11 +13,7 @@
     <input class="form-control" name="contain" type="text" id="contain" value="{{ isset($product->contain) ? $product->contain : ''}}" >
     {!! $errors->first('contain', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('status_sale') ? 'has-error' : ''}}">
-    <label for="status_sale" class="control-label">{{ 'สถานะ' }}</label>
-    <input class="form-control" name="status_sale" type="text" id="status_sale" value="{{ isset($product->status_sale) ? $product->status_sale : ''}}" >
-    {!! $errors->first('status_sale', '<p class="help-block">:message</p>') !!}
-</div>
+
 <div class="form-group {{ $errors->has('saleprice') ? 'has-error' : ''}}">
     <label for="saleprice" class="control-label">{{ 'ราคาขาย' }}</label>
     <input class="form-control" name="saleprice" type="number" id="saleprice" value="{{ isset($product->saleprice) ? $product->saleprice : ''}}" >

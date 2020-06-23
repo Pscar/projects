@@ -38,7 +38,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/sale') }}" class="nav-link">หน้าจอขาย</a>
+        <a href="{{ url('/sales') }}" class="nav-link">หน้าจอขาย</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
@@ -134,7 +134,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ url('/sale') }}" class="brand-link">
+    <a href="{{ url('/sales/create') }}" class="brand-link">
       <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light"> ร้านหมอยาราชพฤกษ์ </span>
@@ -158,7 +158,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="{{ url('/sales') }}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>หน้าจอขาย
                 <i class="right fas fa-angle-left"></i>

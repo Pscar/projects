@@ -30,7 +30,7 @@
                                     <tr><th> รหัสสินค้า </th><td> {{ $product->drug_id }} </td></tr>
                                     <tr><th> บรรจุ </th><td> {{ $product->contain }} </td></tr>
                                     <tr><th> ประเภท </th><td>{{ $product->category->name_category}}</td></tr>
-                                    <tr><th> สถานะ </th><td> {{ $product->status_sale }} </td></tr>
+                                    <tr><th class="d-none"> สถานะ </th><td class="d-none"> {{ $product->status_sale }} </td></tr>
                                     <tr><th> ราคาขาย </th><td> {{ $product->saleprice }} </td></tr>
                                     <tr><th> สต็อคขั้นต่ำ </th><td> {{ $product->stock_ps }} </td></tr>
                                     

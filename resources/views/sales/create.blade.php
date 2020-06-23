@@ -1,14 +1,14 @@
-@extends('layouts.admin')
+@extends('layouts.app')
+
 @section('content')
     <div class="container">
         <div class="row">
-           
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Create New sale</div>
+                    <div class="card-header">หน้าจอขาย</div>
                     <div class="card-body">
-                        <a href="{{ url('/sale') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/sales') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -20,10 +20,10 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/sale') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/sales') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('sale.form', ['formMode' => 'create'])
+                            @include ('sales.form', ['formMode' => 'create'])
 
                         </form>
 
