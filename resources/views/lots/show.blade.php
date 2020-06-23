@@ -3,11 +3,12 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
-
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Lot {{ $lot->id }}</div>
+                <div class="card-header text-center"> 
+                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($lot->drug_id, 'C128') }}" alt="barcode"/><br>
+                    {{$lot->drug_id}}
+                    </div>
                     <div class="card-body">
 
                         <a href="{{ url('/lots') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
@@ -24,10 +25,12 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $lot->id }}</td>
-                                    </tr>
-                                    <tr><th> Deteexp At </th><td> {{ $lot->deteexp_at }} </td></tr><tr><th> Drug Id </th><td> {{ $lot->drug_id }} </td></tr><tr><th> Cost </th><td> {{ $lot->cost }} </td></tr><tr><th> Stock Im </th><td> {{ $lot->stock_im }} </td></tr>
+                                    <tr><th>ID</th><td>{{ $lot->id }}</td></tr>
+                                    <tr><th> วันหมดอายุ </th><td> {{ $lot->deteexp_at }} </td></tr>
+                                    <tr><th> วันแรกเข้า </th><td>{{ $lot->created_at}}</td></tr>
+                                    <tr><th> รหัสยา </th><td> {{ $lot->drug_id }} </td></tr>
+                                    <tr><th> ต้นทุน </th><td> {{ $lot->cost }} </td></tr>
+                                    <tr><th> สต็อคเข้าใหม่ </th><td> {{ $lot->stock_im }} </td></tr>
                                 </tbody>
                             </table>
                         </div>
