@@ -25,15 +25,15 @@
                         <br/>
                         <br/>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table text-center">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>วันแรกเข้า</th>
-                                        <th>วันหมดอายุ</th>
                                         <th>รหัสยา</th>
                                         <th>ต้นทุน</th>
                                         <th>สต็อคเข้าใหม่</th>
+                                        <th>วันแรกเข้า</th>
+                                        <th>วันหมดอายุ</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -41,15 +41,19 @@
                                 @foreach($lots as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                         <td>
+                                            <a href="{{ url('lots' . '/' . $item->id) }}">
+                                                {{ $item->drug_id}}
+                                            </a>
+                                        </td>        
+                                        <td>{{ $item->cost }}</td>
+                                        <td>{{ $item->stock_im }}</td>
                                         <td>{{ $item->created_at}}</td>
                                         <td><!--วันหมดอายุ-->
                                         <?php
                                         echo date("Y-m-d H:i:s",strtotime("+2 year"))."<br>";
                                          ?> 
                                         </td>
-                                        <td>{{ $item->drug_id}}</td>           
-                                        <td>{{ $item->cost }}</td>
-                                        <td>{{ $item->stock_im }}</td>
                                         <td>
                                             <a href="{{ url('/lots/' . $item->id) }}" title="View Lot"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/lots/' . $item->id . '/edit') }}" title="Edit Lot"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

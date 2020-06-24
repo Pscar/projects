@@ -59,19 +59,13 @@
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Sale" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         </td>
-                                      
-                                    </tr>
 
-                                    
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                             <div class="pagination-wrapper"> {!! $sales->appends(['search' => Request::get('search')])->render() !!} </div>
-                        </div>
-                            <form method="POST" action="{{ url('/sales') }}" accept-charset="UTF-8" class="form-horizontal text-center" enctype="multipart/form-data">
-                                {{ csrf_field() }}
-                                <span>รวมราคาสินค้า {{ number_format($sales->sum('saleprice')) }} บาท</span>
-                            </form>
+                        </div> 
                     </div>
                 </div>
             </div>

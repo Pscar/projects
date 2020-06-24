@@ -25,7 +25,7 @@
 </div>
 <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
     <label for="user_id" class="control-label">{{ 'คนให้บริการ' }}</label>
-    <input class="form-control" name="user_id " type="number" id="user_id" value="{{ isset($sale->user_id) ? $sale->user_id : Auth::user()->information->id}}" > 
+    <input class="form-control d-none" name="user_id " type="number" id="user_id" value="{{ isset($sale->user_id) ? $sale->user_id : Auth::user()->information->id}}" > 
     <input class="form-control" name="user_name" type="text" id="user_name" value="{{ isset($information->user_id) ? $information->name : Auth::user()->information->name}}" >
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div>

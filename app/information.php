@@ -30,6 +30,12 @@ class Information extends Model
     public function user(){
         return $this->belongsTo('App\Information','user_id'); 
     }
+    public function information(){
+        return $this->hasOne('App\Information', 'user_id'); 
+    }
+    public function sale(){
+        return $this->belongsTo('App\Sale', 'user_id'); 
+    }
 
     
 }

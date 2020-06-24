@@ -22,10 +22,15 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $sale->id }}</td>
-                                    </tr>
-                                    <tr><th> Saleprice </th><td> {{ $sale->saleprice }} </td></tr><tr><th> Name </th><td> {{ $sale->name }} </td></tr><tr><th> Category Id </th><td> {{ $sale->category_id }} </td></tr><tr><th> User Id </th><td> {{ $sale->user_id }} </td></tr><tr><th> Amount </th><td> {{ $sale->amount }} </td></tr><tr><th> Total Sale </th><td> {{ $sale->total_sale }} </td></tr>
+                                    <tr><th>ID</th><td>{{ $sale->id }}</td></tr>
+                                    <tr><th> ยา </th><td> {{ $sale->pro_name }} </td></tr>
+                                    <tr><th> ราคาขาย </th><td> {{ $sale->saleprice }} </td></tr>
+                                    <tr><th> ประเภท </th><td> {{ $sale->category_id }} </td></tr>
+                                    <tr><th> ผู้ใช้งาน </th><td> {{ $sale->user_id }} </td></tr>
+                                    <tr><th> จำนวน </th><td> {{ $sale->amount }} </td></tr>
+                                    <tr><th> ราคาไม่รวมภาษี </th><td> {{ number_format ($sale->saleprice * $sale->amount,2) }} </td></tr>
+                                    <tr><th> ราคารวมภาษี 7% </th><td> {{ number_format ($sale->saleprice * $sale->amount * $sale->vatpercent / 100,2) }} </td></tr>
+                                    <tr><th> ราคาทั้งหมด </th><td> {{ number_format ($sale->saleprice * $sale->amount +  $sale->saleprice * $sale->amount * $sale->vatpercent / 100,2) }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

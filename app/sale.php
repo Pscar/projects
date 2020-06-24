@@ -25,7 +25,7 @@ class Sale extends Model
      *
      * @var array
      */
-    protected $fillable = ['saleprice', 'name', 'category_id', 'user_id', 'amount', 'total_sale'];
+    protected $fillable = ['saleprice', 'name', 'category_id', 'user_id', 'amount', 'total_beforesale','vat','vatpercent','vat_totalafter','total'];
 
     public function product(){
         return $this->belongsTo('App\Product','saleprice','saleprice'); 

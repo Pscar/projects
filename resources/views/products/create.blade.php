@@ -23,9 +23,7 @@
                             {{ csrf_field() }}
 
                             @include ('products.form', ['formMode' => 'create'])
-
                         </form>
-
                     </div>
                 </div>
             </div>

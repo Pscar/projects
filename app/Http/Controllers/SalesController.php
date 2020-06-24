@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Sale;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SalesController extends Controller
 {
@@ -42,9 +41,14 @@ class SalesController extends Controller
      */
     public function create()
     {
-        $product = Product::all();
+        /*ดึงข้อมูล**/
+        $product = DB::table('products') 
+            ->select('pro_name','drug_id','saleprice')
+            ->get();
+
         return view('sales.create', compact('product'));
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -57,8 +61,9 @@ class SalesController extends Controller
     {
         
         $requestData = $request->all();
-        
         Sale::create($requestData);
+       
+
     
 
         return redirect('sales')->with('flash_message', 'Sale added!');

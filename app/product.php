@@ -34,6 +34,6 @@ class Product extends Model
         return $this->belongsTo('App\Category','category_id'); 
     }
     public function sales(){
-        return $this->hasMany('App\Sale','drug_id');
+        return $this->hasMany('App\Sale','saleprice','saleprice');
     }
 }

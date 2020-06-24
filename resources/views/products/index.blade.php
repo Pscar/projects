@@ -42,7 +42,11 @@
                             @foreach($products as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->drug_id }}</td>
+                                    <td>
+                                        <a href="{{ url('products' . '/' . $item->id) }}">
+                                        {{ $item->drug_id }} <!--detail-->
+                                        </a>
+                                    </td>
                                     <td>{{ $item->pro_name }}</td>
                                     <td>{{ $item->contain }}</td>
                                     <td>{{ $item->saleprice }}</td>
@@ -69,7 +73,7 @@
                                                 
                                     </td>
                                     <td >
-                                        <a href="{{ url('/products/' . $item->id) }}" title="View Product"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                        <a href="{{ url('/products/' . $item->id) }}" title="View Product"><button class="btn btn-info btn-sm d-none"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                         <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                         <form method="POST" action="{{ url('/products' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
