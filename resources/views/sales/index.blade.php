@@ -43,7 +43,7 @@
                                 @foreach($sales as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->product->pro_name }}</td>
                                         <td>{{ $item->saleprice }}</td>
                                         <td>{{ $item->category_id }}</td>
                                         <td>{{ $item->amount }}</td>

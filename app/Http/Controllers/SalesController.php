@@ -7,6 +7,8 @@ use App\Sale;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class SalesController extends Controller
 {
@@ -49,6 +51,7 @@ class SalesController extends Controller
         return view('sales.create', compact('product'));
     }
     
+    
 
     /**
      * Store a newly created resource in storage.
@@ -61,7 +64,10 @@ class SalesController extends Controller
     {
         
         $requestData = $request->all();
+        
         Sale::create($requestData);
+        
+
        
 
     
@@ -92,7 +98,9 @@ class SalesController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::all();
+        $product = DB::table('products') 
+            ->select('pro_name','drug_id','saleprice')
+            ->get();
         $sale = Sale::findOrFail($id);
 
         return view('sales.edit', compact('sale','product'));
