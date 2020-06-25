@@ -25,10 +25,12 @@ class Bill extends Model
      *
      * @var array
      */
-    protected $fillable = ['staff_id', 'total_bill','sale_id'];
-    
-    public function bill(){
-        return $this->belongsTo('App\Bill','sale_id');
-    }
+    protected $fillable = ['user_id', 'total', 'checking_at : ', 'paid_at :', 'cancelled_at', 'completed_at'];
 
+    public function sales(){
+        return $this->hasMany('App\Sale','bill_id');
+    }
+    public function user(){
+        return $this->belongsTo('App\User','user_id');
+    }
 }

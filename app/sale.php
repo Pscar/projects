@@ -25,12 +25,12 @@ class Sale extends Model
      *
      * @var array
      */
-    protected $fillable = ['saleprice', 'name', 'category_id', 'user_id', 'amount', 'total_beforesale','vat','vatpercent','vat_totalafter','total'];
+    protected $fillable = ['saleprice', 'name', 'category_id', 'user_id', 'amount', 'total_beforesale','vat','vatpercent','vat_totalafter','total','bill_id'];
 
     public function product(){
         return $this->belongsTo('App\Product','saleprice','saleprice'); 
     }
-    public function information(){
-        return $this->belongsTo('App\Information','user_id');
+    public function sale(){
+        return $this->belongsTo('App\Sale','bill_id');
     }
 }

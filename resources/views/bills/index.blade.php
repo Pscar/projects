@@ -1,14 +1,15 @@
-@extends('layouts.admin')
+@extends('layouts.app')
+
 @section('content')
     <div class="container">
         <div class="row">
-            
+            @include('admin.sidebar')
 
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Bills</div>
                     <div class="card-body">
-                        <a href="{{ url('/bills/create') }}" class="btn btn-success btn-sm" title="Add New bill">
+                        <a href="{{ url('/bills/create') }}" class="btn btn-success btn-sm" title="Add New Bill">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
@@ -30,9 +31,12 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Sale Id</th>
-                                        <th>staff_id</th>
-                                        <th>total_bill</th>
+                                        <th>User Id</th>
+                                        <th>Total</th>
+                                        <th>Checking At :</th>
+                                        <th>Paid At :</th>
+                                        <th>Cancelled At</th>
+                                        <th>Completed At</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -40,17 +44,20 @@
                                 @foreach($bills as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->staff_id }}</td>
-                                        <td>{{ $item->total_bill }}</td>
-                                        <td>{{ $item->sale_id }}</td>
+                                        <td>{{ $item->user_id }}</td>
+                                        <td>{{ $item->total }}</td>
+                                        <td>{{ $item->checking_at : }}</td>
+                                        <td>{{ $item->paid_at : }}</td>
+                                        <td>{{ $item->cancelled_at }}</td>
+                                        <td>{{ $item->completed_at }}</td>
                                         <td>
-                                            <a href="{{ url('/bills/' . $item->id) }}" title="View bill"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/bills/' . $item->id . '/edit') }}" title="Edit bill"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/bills/' . $item->id) }}" title="View Bill"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/bills/' . $item->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/bills' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete bill" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Bill" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         </td>
                                     </tr>

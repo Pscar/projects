@@ -16,16 +16,18 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::middleware(['auth', 'role:guest'])->group(function () {
+Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::resource('bills', 'BillController');
     Route::resource('categorys', 'CategoryController');
     Route::resource('sales', 'SalesController');
     Route::resource('products', 'ProductController');
     Route::resource('lots', 'LotsController');
+    Route::resource('bills', 'BillsController');
 });
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::resource('informations', 'InformationController');
+    
 });
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 

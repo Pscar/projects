@@ -1,25 +1,29 @@
 { 
     "fields" :[
         {
-            "name": "amount",
+            "name": "user_id",
             "type": "integer"
         },
         {
-            "name": "sale",
-            "type": "integer"
+            "name": "total",
+            "type": "float"
         },     
         {
-            "name": "sale_items",
-            "type": "integer"
+            "name": "checking_at : ",
+            "type": "datetime"
         },
         
         {
-            "name": "receipt_id",
-            "type": "integer#unsigned"
+            "name": "paid_at :",
+            "type": "datetime"
         },
         {
-            "name": "sale_id",
-            "type": "integer#unsigned"
+            "name": "cancelled_at",
+            "type": "datetime"
+        },
+        {
+            "name": "completed_at",
+            "type": "datetime"
         }
         
     ]

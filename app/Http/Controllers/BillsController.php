@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Information;
+use App\Bill;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class InformationController extends Controller
+class BillsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,17 +21,18 @@ class InformationController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $informations = Information::where('name', 'LIKE', "%$keyword%")
-                ->orWhere('lastname', 'LIKE', "%$keyword%")
-                ->orWhere('address', 'LIKE', "%$keyword%")
-                ->orWhere('tel', 'LIKE', "%$keyword%")
-                ->orWhere('staff_id', 'LIKE', "%$keyword%")
+            $bills = Bill::where('user_id', 'LIKE', "%$keyword%")
+                ->orWhere('total', 'LIKE', "%$keyword%")
+                ->orWhere('checking_at :', 'LIKE', "%$keyword%")
+                ->orWhere('paid_at :', 'LIKE', "%$keyword%")
+                ->orWhere('cancelled_at', 'LIKE', "%$keyword%")
+                ->orWhere('completed_at', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $informations = Information::latest()->paginate($perPage);
+            $bills = Bill::latest()->paginate($perPage);
         }
 
-        return view('informations.index', compact('informations'));
+        return view('bills.index', compact('bills'));
     }
 
     /**
@@ -42,7 +42,7 @@ class InformationController extends Controller
      */
     public function create()
     {
-        return view('informations.create');
+        return view('bills.create');
     }
 
     /**
@@ -57,9 +57,9 @@ class InformationController extends Controller
         
         $requestData = $request->all();
         
-        Information::create($requestData);
+        Bill::create($requestData);
 
-        return redirect('informations')->with('flash_message', 'information added!');
+        return redirect('bills')->with('flash_message', 'Bill added!');
     }
 
     /**
@@ -71,9 +71,9 @@ class InformationController extends Controller
      */
     public function show($id)
     {
-        $information = Information::findOrFail($id);
+        $bill = Bill::findOrFail($id);
 
-        return view('informations.show', compact('information'));
+        return view('bills.show', compact('bill'));
     }
 
     /**
@@ -85,9 +85,9 @@ class InformationController extends Controller
      */
     public function edit($id)
     {
-        $information = Information::findOrFail($id);
+        $bill = Bill::findOrFail($id);
 
-        return view('informations.edit', compact('information'));
+        return view('bills.edit', compact('bill'));
     }
 
     /**
@@ -103,10 +103,10 @@ class InformationController extends Controller
         
         $requestData = $request->all();
         
-        $information = Information::findOrFail($id);
-        $information->update($requestData);
+        $bill = Bill::findOrFail($id);
+        $bill->update($requestData);
 
-        return redirect('informations')->with('flash_message', 'information updated!');
+        return redirect('bills')->with('flash_message', 'Bill updated!');
     }
 
     /**
@@ -118,8 +118,8 @@ class InformationController extends Controller
      */
     public function destroy($id)
     {
-        Information::destroy($id);
+        Bill::destroy($id);
 
-        return redirect('informations')->with('flash_message', 'information deleted!');
+        return redirect('bills')->with('flash_message', 'Bill deleted!');
     }
 }

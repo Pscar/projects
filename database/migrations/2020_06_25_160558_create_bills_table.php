@@ -15,11 +15,12 @@ class CreateBillsTable extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('amount')->nullable();
-            $table->integer('sale')->nullable();
-            $table->integer('sale_items')->nullable();
-            $table->integer('receipt_id')->unsigned();
-            $table->integer('sale_id')->unsigned();
+            $table->integer('user_id')->nullable();
+            $table->float('total')->nullable();
+            $table->dateTime('checking_at :')->nullable();
+            $table->dateTime('paid_at :')->nullable();
+            $table->dateTime('cancelled_at')->nullable();
+            $table->dateTime('completed_at')->nullable();
             });
     }
 
