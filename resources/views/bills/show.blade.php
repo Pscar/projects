@@ -24,10 +24,13 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $bill->id }}</td>
-                                    </tr>
-                                    <tr><th> User Id </th><td> {{ $bill->user_id }} </td></tr><tr><th> Total </th><td> {{ $bill->total }} </td></tr><tr><th> Checking At : </th><td> {{ $bill->checking_at : }} </td></tr><tr><th> Paid At : </th><td> {{ $bill->paid_at : }} </td></tr><tr><th> Cancelled At </th><td> {{ $bill->cancelled_at }} </td></tr><tr><th> Completed At </th><td> {{ $bill->completed_at }} </td></tr>
+                                    <tr><th>ID</th><td>{{ $bill->id }}</td></tr>
+                                    <tr><th> User Id </th><td> {{ $bill->user_id }} </td></tr>
+                                    <tr><th> Total </th><td> {{ $bill->total }} </td></tr>
+                                    <tr><th> Checking At </th><td> {{ $bill->checking_at }} </td></tr>
+                                    <tr><th> Paid At </th><td> {{ $bill->paid_at }} </td></tr>
+                                    <tr><th> Cancelled At </th><td> {{ $bill->cancelled_at }} </td></tr>
+                                    <tr><th> Completed At </th><td> {{ $bill->completed_at }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

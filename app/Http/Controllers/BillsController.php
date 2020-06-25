@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Bill;
+use App\Sale;
 use Illuminate\Http\Request;
 
 class BillsController extends Controller
@@ -42,7 +43,10 @@ class BillsController extends Controller
      */
     public function create()
     {
-        return view('bills.create');
+        $id_keyword = $request->get('id');//ดึงnumber จาก url : order/create?number=08x-xxx-xxxx*/
+        //ดึงข้อมูล where ขึ้นมาเฉพาะเบอร์ที่เราต้องการ 
+        $id = Sale::where('id',$id_keyword)->firstOrFail(); //FirstOrFail หมายถึง ถ้าเจอหลายตัวให้ดึงตัวแรก แต่ถ้าไม่เจอสักตัวให้ 404*/
+        return view('bills.create', compact('sales'));
     }
 
     /**

@@ -46,9 +46,9 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->user_id }}</td>
                                         <td>{{ $item->total }}</td>
-                                        <td>{{ $item->checking_at : }}</td>
-                                        <td>{{ $item->paid_at : }}</td>
-                                        <td>{{ $item->cancelled_at }}</td>
+                                        <td>{{ $item->checking_at }}</td>
+                                        <td>{{ $item->paid_at }}</td>
+                                        <td>{{ $item->cancelled_at}}</td>
                                         <td>{{ $item->completed_at }}</td>
                                         <td>
                                             <a href="{{ url('/bills/' . $item->id) }}" title="View Bill"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>

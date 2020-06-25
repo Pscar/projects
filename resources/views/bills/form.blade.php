@@ -9,14 +9,14 @@
     {!! $errors->first('total', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('checking_at :') ? 'has-error' : ''}}">
-    <label for="checking_at :" class="control-label">{{ 'Checking At :' }}</label>
-    <input class="form-control" name="checking_at :" type="datetime-local" id="checking_at :" value="{{ isset($bill->checking_at :) ? $bill->checking_at : : ''}}" >
-    {!! $errors->first('checking_at :', '<p class="help-block">:message</p>') !!}
+    <label for="checking_at" class="control-label">{{ 'Checking At' }}</label>
+    <input class="form-control" name="checking_at" type="datetime-local" id="checking_at :" value="{{ isset($bill->checking_at) ? $bill->checking_at : ''}}" >
+    {!! $errors->first('checking_at', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('paid_at :') ? 'has-error' : ''}}">
-    <label for="paid_at :" class="control-label">{{ 'Paid At :' }}</label>
-    <input class="form-control" name="paid_at :" type="datetime-local" id="paid_at :" value="{{ isset($bill->paid_at :) ? $bill->paid_at : : ''}}" >
-    {!! $errors->first('paid_at :', '<p class="help-block">:message</p>') !!}
+    <label for="paid_at" class="control-label">{{ 'Paid At' }}</label>
+    <input class="form-control" name="paid_at" type="datetime-local" id="paid_at :" value="{{ isset($bill->paid_at) ? $bill->paid_at : ''}}" >
+    {!! $errors->first('paid_at', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('cancelled_at') ? 'has-error' : ''}}">
     <label for="cancelled_at" class="control-label">{{ 'Cancelled At' }}</label>

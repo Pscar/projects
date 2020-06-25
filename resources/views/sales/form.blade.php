@@ -1,6 +1,6 @@
 <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
     <label for="name" class="control-label">{{ 'สินค้า' }}</label>
-    <input class="form-control" name="name" type="text" id="name" value="{{ isset($sale->name) ? $sale->name : $product->pro_name }}" >
+    <input class="form-control" name="name" type="text" id="name" value="{{ isset($sale->name) ? $sale->name : ''  }}" >
     {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('saleprice') ? 'has-error' : ''}}">
@@ -25,9 +25,14 @@
 </div>
 <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
     <label for="user_id" class="control-label">{{ 'คนให้บริการ' }}</label>
-    <input class="form-control d-none" name="user_id " type="number" id="user_id" value="{{ isset($sale->user_id) ? $sale->user_id : Auth::user()->information->id}}" > 
-    <input class="form-control" name="user_name" type="text" id="user_name" value="{{ isset($information->user_id) ? $information->name : Auth::user()->information->name}}" >
+    <input class="form-control d-none" name="user_id " type="number" id="user_id" value="{{ isset($sale->user_id) ? $sale->user_id : Auth::user()->id}}" > 
+    <input class="form-control" name="user_name" type="text" id="user_name" value="{{ isset($information->user_id) ? $information->name : Auth::user()->name}}" >
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('bill_id') ? 'has-error' : ''}}">
+    <label for="bill_id" class="control-label">{{ 'ประเภท' }}</label>
+    <input class="form-control" name="bill_id" type="number" id="bill_id" value="{{ isset($sale->bill_id) ? $sale->bill_id : ''}}" >
+    {!! $errors->first('bill_id', '<p class="help-block">:message</p>') !!}
 </div>
 
 <div class="form-group">

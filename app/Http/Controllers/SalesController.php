@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Sale;
 use App\Product;
+use App\Bill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -41,14 +42,18 @@ class SalesController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
+
         /*ดึงข้อมูล**/
         $product = DB::table('products') 
             ->select('pro_name','drug_id','saleprice')
             ->get();
+        /*$drug_id_keyword = $request->get('drug_id');//ดึงnumber จาก url : order/create?number=08x-xxx-xxxx*/
+        //ดึงข้อมูล where ขึ้นมาเฉพาะเบอร์ที่เราต้องการ 
+        /*$drug_id = Product::where('drug_id',$drug_id_keyword)->firstOrFail(); //FirstOrFail หมายถึง ถ้าเจอหลายตัวให้ดึงตัวแรก แต่ถ้าไม่เจอสักตัวให้ 404*/
 
-        return view('sales.create', compact('product'));
+        return view('sales.create',compact('product'));
     }
     
     
@@ -64,7 +69,7 @@ class SalesController extends Controller
     {
         
         $requestData = $request->all();
-        
+        $product = Product::all();
         Sale::create($requestData);
         
 

@@ -43,9 +43,12 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
-                                        <a href="{{ url('products' . '/' . $item->id) }}">
-                                        {{ $item->drug_id }} <!--detail-->
-                                        </a>
+                                        <!--ข้อมูลที่ถูกแนบไปแสดงผล หน้า sale/create-->
+                                        @if( $item->drug_id)
+                                            <a href="{{ url('/sales/create') }}?drug-id={{ $item->drug_id }}" title="View Product"><button class="btn btn-success btn-sm"><i class="fa fa-shopping-cart" aria-hidden="true"></i> สั่งซื้อ</button></a>
+                                        @else
+                                        @endif
+                                        {{$item->drug_id}}
                                     </td>
                                     <td>{{ $item->pro_name }}</td>
                                     <td>{{ $item->contain }}</td>
