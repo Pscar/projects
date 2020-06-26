@@ -45,15 +45,11 @@ class SalesController extends Controller
     public function create(Request $request)
     {
 
-        /*ดึงข้อมูล**/
-        $product = DB::table('products') 
-            ->select('pro_name','drug_id','saleprice')
-            ->get();
-        /*$drug_id_keyword = $request->get('drug_id');//ดึงnumber จาก url : order/create?number=08x-xxx-xxxx*/
-        //ดึงข้อมูล where ขึ้นมาเฉพาะเบอร์ที่เราต้องการ 
-        /*$drug_id = Product::where('drug_id',$drug_id_keyword)->firstOrFail(); //FirstOrFail หมายถึง ถ้าเจอหลายตัวให้ดึงตัวแรก แต่ถ้าไม่เจอสักตัวให้ 404*/
+        $drug_id_keyword = $request->get('drug_id');//ดึง drug_id จาก url : sale/create?product=AB111112111*/
+        //ดึงข้อมูล where ขึ้นมาเฉพาะสินค้าที่เราต้องการ 
+        $drug_id = Product::where('drug_id',$drug_id_keyword)->firstOrFail(); //ถ้าเจอหลายตัวให้ดึงตัวแรก แต่ถ้าไม่เจอสักตัวให้ 404*/
 
-        return view('sales.create',compact('product'));
+        return view('sales.create', compact('drug_id'));
     }
     
     

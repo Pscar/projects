@@ -21,7 +21,6 @@
 
                         <form method="POST" action="{{ url('/products') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
-
                             @include ('products.form', ['formMode' => 'create'])
                         </form>
                     </div>
