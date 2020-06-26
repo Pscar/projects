@@ -65,14 +65,14 @@ class SalesController extends Controller
     {
         
         $requestData = $request->all();
-        $product = Product::all();
+        //คำนวณจำนวนสินค้า
+        $requestData['total'] = $requestData['amount'] * $requestData['saleprice'];
+        //ระบุ bill_id
+        /*$requestData['bill_id'] = Sale::id();**/
+
+
         Sale::create($requestData);
         
-
-       
-
-    
-
         return redirect('sales')->with('flash_message', 'Sale added!');
     }
 

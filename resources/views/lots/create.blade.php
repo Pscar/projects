@@ -27,7 +27,7 @@
                             @include ('lots.form', ['formMode' => 'create'])
 
                         </form>
-
+                        
                     </div>
                 </div>
             </div>

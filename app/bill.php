@@ -25,7 +25,7 @@ class Bill extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'total', 'checking_at : ', 'paid_at :', 'cancelled_at', 'completed_at'];
+    protected $fillable = ['user_id', 'total', 'checking_at', 'paid_at', 'cancelled_at', 'completed_at'];
 
     public function sales(){
         return $this->hasMany('App\Sale','bill_id');

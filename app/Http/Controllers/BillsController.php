@@ -41,12 +41,12 @@ class BillsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
         $id_keyword = $request->get('id');//ดึงnumber จาก url : order/create?number=08x-xxx-xxxx*/
         //ดึงข้อมูล where ขึ้นมาเฉพาะเบอร์ที่เราต้องการ 
         $id = Sale::where('id',$id_keyword)->firstOrFail(); //FirstOrFail หมายถึง ถ้าเจอหลายตัวให้ดึงตัวแรก แต่ถ้าไม่เจอสักตัวให้ 404*/
-        return view('bills.create', compact('sales'));
+        return view('bills.create', compact('id'));
     }
 
     /**

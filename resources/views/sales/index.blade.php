@@ -32,7 +32,7 @@
                                         <th>#</th>
                                         <th>ยา</th>
                                         <th>ราคาขาย</th>
-                                        <th>ประเภทยา</th>
+                                        <th class="d-none">ประเภทยา</th>
                                         <th>จำนวน</th>
                                         <th class="d-none">ราคารวม</th>
                                         <th>คนให้บริการ</th>
@@ -45,11 +45,10 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->saleprice }}</td>
-                                        <td>{{ $item->category_id }}</td>
+                                        <td class="d-none">{{ $item->category_id }}</td>
                                         <td>{{ $item->amount }}</td>
                                         <td class="d-none">{{ $item->total_sale }}</td> 
                                         <td>{{ $item->user_id }}</td>
-                                        <td>{{ $item->bill_id }}</td>
                                         <td>
                                             <a href="{{ url('/sales/' . $item->id) }}" title="View Sale"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/sales/' . $item->id . '/edit') }}" title="Edit Sale"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
