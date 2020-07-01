@@ -27,7 +27,7 @@ class SalesController extends Controller
             ->where('user_id', Auth::id() )
             ->latest()->paginate($perPage); 
             
-        return view('sales.index', compact('sales'));
+        return view('sales.index', compact('sales','product'));
     }
 
     /**
@@ -58,11 +58,23 @@ class SalesController extends Controller
     {
         //ยืนยันการสั่งซื้อ
         $requestData = $request->all();
-        //คำนวณจำนวนสินค้า
+        //คำนวณราคาสินค้า
+        $total = Sale::whereNull('bill_id')
+            ->where('user_id', Auth::id() )->sum('saleprice');
         $requestData['total'] = $requestData['amount'] * $requestData['saleprice'];
-    
+        // create sale
         Sale::create($requestData);
-        
+        //update bill_id ในตาราง sales
+        /*Sale::whereNull('bill_id')
+            ->where('user_id', Auth::id()) 
+            ->update(['bill_id'=> $sales->id]);
+        /*$sales = $product->sales;
+        foreach($product as $item)
+        {
+            Product::where('id',$item->product_id)->decrement('quantity', $item->quantity);
+        }*/
+    
+
         return redirect('sales')->with('flash_message', 'Sale added!');
     }
 

@@ -42,21 +42,8 @@
                                                         <th>Actions</th>
                                                     </tr>
                                                 </thead>
-                                                @php
-                                                    $sales = $products->sales
-                                                @endphp
-                                                <tbody>
+                                                
                                                
-                                                    @foreach($products as $item)
-                                                        <tr>
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td> <a href="{{ url('/products/' . $item->id) }}"> {{$item->drug_id}} </a></td>
-                                                            <td>{{ $item->pro_name }}</td>
-                                                            <td>{{ $item->contain }}</td>
-                                                            <td>{{ $item->saleprice }}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -103,7 +90,7 @@
                                         <td>{{ $item->category_id }}</td>
                                         <td>{{ $item->amount }}</td>
                                         <td>{{ $item->total }}</td>
-                                        <td>{{ $item->user->name }}</td>
+                                        <td>{{ $item->user->id }}</td>
                                         <td>
                                             <a href="{{ url('/sales/' . $item->id) }}" title="View Sale"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/sales/' . $item->id . '/edit') }}" title="Edit Sale"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

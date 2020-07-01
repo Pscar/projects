@@ -19,15 +19,14 @@
     <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : ''}}" >
     {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group d-none{{ $errors->has('total_sale') ? 'has-error' : ''}}">
-    <label for="total_sale" class="control-label">{{ 'ราคาทั้งหมด' }}</label>
-    <input class="form-control" name="total_sale" type="number" id="total_sale" value="{{ isset($sale->total_sale) ? $sale->total_sale : ''}}" >
-    {!! $errors->first('total_sale', '<p class="help-block">:message</p>') !!}
+<div class="form-group d-none{{ $errors->has('total') ? 'has-error' : ''}}">
+    <label for="total" class="control-label">{{ 'ราคาทั้งหมด' }}</label>
+    <input class="form-control" name="total" type="number" id="total" value="{{ isset($sale->total) ? $sale->total : ''}}" >
+    {!! $errors->first('total', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
     <label for="user_id" class="control-label">{{ 'คนให้บริการ' }}</label>
     <input class="form-control" name="user_id " type="number" id="user_id" value="{{ isset($sale->user_id) ? $sale->user_id : Auth::user()->id}}" > 
-   
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div>
 
