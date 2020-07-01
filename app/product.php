@@ -8,7 +8,7 @@ class Product extends Model
 {
     protected $table = 'products';
     protected $primaryKey = 'id';
-    protected $fillable = ['pro_name', 'drug_id','contain', 'status_sale', 'saleprice', 'stock_ps', 'category_id'];
+    protected $fillable = ['pro_name', 'drug_id','contain', 'status_sale', 'saleprice', 'stock_ps', 'category_id','user_id'];
 
    
     public function lots(){
@@ -20,7 +20,8 @@ class Product extends Model
     public function sales(){
         return $this->hasMany('App\Sale','saleprice','saleprice');
     }
-    public function scan(){
-        return $this->belongsTo('App\Scan','drug_id'); 
+    public function user(){
+        return $this->belongsTo('App\User','user_id'); 
     }
+    
 }

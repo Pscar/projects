@@ -51,27 +51,22 @@
                                     <td>{{ $item->stock_ps }}</td>
                                     <td>{{ $item->category_id }}</td>
                                     <td>
-                                        @switch($item->status_sale)
-                                                @case("redysale")
-                                                    <div><span class="badge badge-primary">พร้อมจำหน่าย</span></div>
-                                                    <div>{{ $item->redysale_at }}</div>
-                                                @break
-
-                                                @case("mostout")
-                                                    <div><span class="badge badge-primary">ใกล้จะหมด</span></div>
-                                                    <div>{{ $item->mostout_at }}</div>
-                                                @break
-                                            
-                                                @case("souout")
-                                                    <div><span class="badge badge-primary">หมดสต็อต</span></div>
-                                                    <div>{{ $item->souout_at }}</div>
-                                                @break
-                                            
-                                        @endswitch
-                                            
+                                    
+                                        @if($stock_ps <= "1000") {
+                                            $status_sale = "redysale" ;
+                                        } 
+                                        elseif($stock_ps > "150") {
+                                            $status_sale = "mostout" ;
+                                        }
+                                        else($stock_ps >= "0"){
+                                            $status_sale = "souout" ;
+                                        }
+                                        @endif
+                   
+                                
                                     </td>
                                     <td >
-                                        <a href="{{ url('/products/' . $item->id) }}" title="scan"><button class="btn btn-info btn-sm "><i class="fa fa-eye" aria-hidden="true"></i> สแกนสินค้า</button></a>
+                                        <a href="{{ url('/sales/create') }}?drug_id={{ $item->drug_id }}" title="scan"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> สแกนสินค้า</button></a>
                                         <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                         <form method="POST" action="{{ url('/products' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

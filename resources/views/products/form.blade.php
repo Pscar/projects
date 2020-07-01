@@ -36,6 +36,11 @@
     </script>
     {!! $errors->first('category_id', '<p class="help-block">:message</p>') !!}
 </div>
+<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
+    <label for="user_id" class="control-label">{{ 'ผู้ใช้งาน' }}</label>
+    <input class="form-control" name="user_id" type="text" id="user_id" value="{{ isset($product->user_id) ? $product->user_id : Auth::user()->id}}" >
+    {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+</div>
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">

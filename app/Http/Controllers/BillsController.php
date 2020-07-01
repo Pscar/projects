@@ -43,6 +43,7 @@ class BillsController extends Controller
      */
     public function create(Request $request)
     {
+   
         
         return view('bills.create');
     }

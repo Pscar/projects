@@ -20,20 +20,13 @@ class SalesController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('search');
+       
         $perPage = 25;
-        if (!empty($keyword)) {
-            $sales = Sale::where('saleprice', 'LIKE', "%$keyword%")
-                ->orWhere('name', 'LIKE', "%$keyword%")
-                ->orWhere('category_id', 'LIKE', "%$keyword%")
-                ->orWhere('user_id', 'LIKE', "%$keyword%")
-                ->orWhere('amount', 'LIKE', "%$keyword%")
-                ->orWhere('total_sale', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
-        } else {
-            $sales = Sale::latest()->paginate($perPage);
-        }
 
+        $sales = Sale::whereNull('bill_id')
+            ->where('user_id', Auth::id() )
+            ->latest()->paginate($perPage); 
+            
         return view('sales.index', compact('sales'));
     }
 
@@ -44,12 +37,12 @@ class SalesController extends Controller
      */
     public function create(Request $request)
     {
+        //อ่านค่า url product
+        $drug_id  = $request->get('drug_id');
+        //แสดงคิวรี่
+        $product = Product::where('drug_id',$drug_id)->firstOrFail();
 
-        $drug_id_keyword = $request->get('drug_id');//ดึง drug_id จาก url : sale/create?product=AB111112111*/
-        //ดึงข้อมูล where ขึ้นมาเฉพาะสินค้าที่เราต้องการ 
-        $drug_id = Product::where('drug_id',$drug_id_keyword)->firstOrFail(); //ถ้าเจอหลายตัวให้ดึงตัวแรก แต่ถ้าไม่เจอสักตัวให้ 404*/
-
-        return view('sales.create', compact('drug_id'));
+        return view('sales.create', compact('product'));
     }
     
     
@@ -63,12 +56,11 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //ยืนยันการสั่งซื้อ
         $requestData = $request->all();
         //คำนวณจำนวนสินค้า
         $requestData['total'] = $requestData['amount'] * $requestData['saleprice'];
-        //ระบุ bill_id
-        /*$requestData['bill_id'] = Sale::id();**/
+    
 
 
         Sale::create($requestData);

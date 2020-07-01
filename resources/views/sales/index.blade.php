@@ -48,7 +48,7 @@
                                         <td>{{ $item->category_id }}</td>
                                         <td>{{ $item->amount }}</td>
                                         <td>{{ $item->total }}</td>
-                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->user->name }}</td>
                                         <td>
                                             <a href="{{ url('/sales/' . $item->id) }}" title="View Sale"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/sales/' . $item->id . '/edit') }}" title="Edit Sale"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
@@ -57,17 +57,23 @@
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Sale" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
+
+                                             </form>
+                                            
                                         </td>
+                                        
 
                                     </tr>
                                 @endforeach
+                               
                                 </tbody>
+                                
                             </table>
                             <div class="pagination-wrapper"> {!! $sales->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div> 
                     </div>
                 </div>
+                <h1>รวมราคาสินค้า {{ number_format($sales->sum('total')) }} บาท</h1>
             </div>
         </div>
     </div>

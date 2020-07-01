@@ -48,6 +48,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        //1. สร้างข้อมูลสินค้า
             $category = Category::all(); //ส่งค่า category เป็น id <!--เป็นการดึง PK จาก category มาแสดงผลในหน้า products-->
             return view('products.create', compact('category'));
     }
@@ -112,7 +113,7 @@ class ProductController extends Controller
         
         $requestData = $request->all();
         $product = Product::findOrFail($id); // ประกาศ product ให้  update รู้จัก
-            if(!empty($requestData['status_sale'])){
+            if(!empty($requestData['status_sale'])){ //อัพเดทสถานะ+เวลา
             switch($requestData['status_sale']){
                 case "redysale" :
                     $requestData['redysale_at'] = date('Y-m-d H:i:s');  

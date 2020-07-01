@@ -10,7 +10,7 @@
 
                         <a href="{{ url('/sales') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <a href="{{ url('/sales/' . $sale->id . '/edit') }}" title="Edit Sale"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
+                        
                         <form method="POST" action="{{ url('sales' . '/' . $sale->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
@@ -28,8 +28,7 @@
                                     <tr><th> ประเภท </th><td> {{ $sale->category_id }} </td></tr>
                                     <tr><th> ผู้ใช้งาน </th><td> {{ $sale->user_id }} </td></tr>
                                     <tr><th> จำนวน </th><td> {{ $sale->amount }} </td></tr>
-                                    <tr><th> ราคาไม่รวมภาษี </th><td> {{ number_format ($sale->saleprice * $sale->amount ,2) }} </td></tr>
-                                    <tr><th> ราคารวมภาษี 7% </th><td> {{ number_format ($sale->saleprice * $sale->amount * $sale->vatpercent / 100,2) }} </td></tr>
+                                    <tr><th> ภาษี 7% </th><td> {{ number_format ($sale->saleprice * $sale->amount * $sale->vatpercent / 100,2) }} </td></tr>
                                     <tr><th> ราคาทั้งหมด </th><td> {{ number_format ($sale->saleprice * $sale->amount +  $sale->saleprice * $sale->amount * $sale->vatpercent / 100,2) }} </td></tr>
                                 </tbody>
                             </table>
