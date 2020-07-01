@@ -6,27 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
     protected $table = 'products';
-
-    /**
-    * The database primary key value.
-    *
-    * @var string
-    */
     protected $primaryKey = 'id';
-
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['pro_name', 'drug_id','contain', 'status_sale', 'saleprice', 'stock_ps', 'category_id'];
 
+   
     public function lots(){
         return $this->hasMany('App\Lot','drug_id'); 
     }
@@ -35,5 +19,8 @@ class Product extends Model
     }
     public function sales(){
         return $this->hasMany('App\Sale','saleprice','saleprice');
+    }
+    public function scan(){
+        return $this->belongsTo('App\Scan','drug_id'); 
     }
 }

@@ -22,7 +22,8 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr><th>ID</th><td>{{ $sale->id }}</td></tr>
+                                    <tr><th>ID</th> <td>{{ $sale->id }}</td></tr>
+                                    <tr><th> ยา </th> <td>{{ $sale->pro_name }} </td></tr>
                                     <tr><th> ราคาขาย </th><td> {{ $sale->saleprice }} </td></tr>
                                     <tr><th> ประเภท </th><td> {{ $sale->category_id }} </td></tr>
                                     <tr><th> ผู้ใช้งาน </th><td> {{ $sale->user_id }} </td></tr>

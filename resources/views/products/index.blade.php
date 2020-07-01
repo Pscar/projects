@@ -33,9 +33,8 @@
                                     <th>บรรจุ</th>
                                     <th>ราคา</th>
                                     <th>สต็อคขั้นต่ำ</th>
-                                    <th class="d-none">ประเภท</th>
+                                    <th>ประเภท</th>
                                     <th>สถานะการขาย</th>
-                                    <th>สั่งซื้อ</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -43,14 +42,14 @@
                             @foreach($products as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>
-                                    <a href="{{ url('/products/' . $item->id) }}"> {{$item->drug_id}} </a>
-                                    </td>
+                                    <td> <a href="{{ url('/products/' . $item->id) }}"> {{$item->drug_id}} </a></td>
+                                   
+                                    
                                     <td>{{ $item->pro_name }}</td>
                                     <td>{{ $item->contain }}</td>
                                     <td>{{ $item->saleprice }}</td>
                                     <td>{{ $item->stock_ps }}</td>
-                                    <td class="d-none">{{ $item->category_id }}</td>
+                                    <td>{{ $item->category_id }}</td>
                                     <td>
                                         @switch($item->status_sale)
                                                 @case("redysale")
@@ -69,16 +68,10 @@
                                                 @break
                                             
                                         @endswitch
-                                            <td>
-                                                @if( $item->drug_id)
-                                                <a href="{{ url('/sales/create') }}?drug_id={{ $item->drug_id }}" title="View Product">{{$item->drug_id}}
-                                                @else
-                                                    {{$item->drug_id}}
-                                                @endif
-                                            </td>   
+                                            
                                     </td>
                                     <td >
-                                        <a href="{{ url('/products/' . $item->id) }}" title="View Product"><button class="btn btn-info btn-sm d-none"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                        <a href="{{ url('/products/' . $item->id) }}" title="scan"><button class="btn btn-info btn-sm "><i class="fa fa-eye" aria-hidden="true"></i> สแกนสินค้า</button></a>
                                         <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                         <form method="POST" action="{{ url('/products' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

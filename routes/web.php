@@ -23,6 +23,7 @@ Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::resource('products', 'ProductController');
     Route::resource('lots', 'LotsController');
     Route::resource('bills', 'BillsController');
+    Route::get('products/{id}/scan', 'ScanController@scan');
 });
 Route::middleware(['auth', 'role:admin'])->group(function () {
     
@@ -31,3 +32,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+
+Route::resource('scan', 'ScanController');

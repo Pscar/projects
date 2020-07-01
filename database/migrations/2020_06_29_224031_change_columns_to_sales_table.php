@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUsersToInformationsTable extends Migration
+class ChangeColumnsToSalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class AddUsersToInformationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('informations', function (Blueprint $table) {
-
-            $table->string("role")->nullable();
-            $table->integer("user_id");    //foreign key
-        });
+        Schema::table('sales', function (Blueprint $table) {
+            $table->renameColumn('name','pro_name');        
+            });     
+    
     }
 
     /**
@@ -27,7 +26,7 @@ class AddUsersToInformationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('informations', function (Blueprint $table) {
+        Schema::table('sales', function (Blueprint $table) {
             //
         });
     }

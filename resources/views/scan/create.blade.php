@@ -3,12 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row">
+            @include('admin.sidebar')
 
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">หน้าจอขาย</div>
+                    <div class="card-header">Create New Scan</div>
                     <div class="card-body">
-                        <a href="{{ url('/sales') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/scan') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -20,13 +21,12 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/sales') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/scan') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            
-                            @include ('sales.form', ['formMode' => 'create'])
+
+                            @include ('scan.form', ['formMode' => 'create'])
 
                         </form>
-                        
 
                     </div>
                 </div>

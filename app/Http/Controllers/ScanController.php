@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
-use App\Bill;
+use Illuminate\Support\Facades\DB;
+use App\Product;
 use App\Sale;
+use App\Scan;
+
 use Illuminate\Http\Request;
 
-class BillsController extends Controller
+class ScanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,29 +24,21 @@ class BillsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $bills = Bill::where('user_id', 'LIKE', "%$keyword%")
-                ->orWhere('total', 'LIKE', "%$keyword%")
-                ->orWhere('checking_at :', 'LIKE', "%$keyword%")
-                ->orWhere('paid_at :', 'LIKE', "%$keyword%")
-                ->orWhere('cancelled_at', 'LIKE', "%$keyword%")
-                ->orWhere('completed_at', 'LIKE', "%$keyword%")
+            $scan = Scan::where('drug_id', 'LIKE', "%$keyword%")
+                ->orWhere('sale_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $bills = Bill::latest()->paginate($perPage);
+            $scan = Scan::latest()->paginate($perPage);
         }
 
-        return view('bills.index', compact('bills'));
+        return view('scan.index', compact('scan'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\View\View
-     */
+   
     public function create(Request $request)
     {
         
-        return view('bills.create');
+
+        return view('scan.create');
     }
 
     /**
@@ -54,14 +48,17 @@ class BillsController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        
-        $requestData = $request->all();
-        
-        Bill::create($requestData);
-
-        return redirect('bills')->with('flash_message', 'Bill added!');
+       /* $product = Product::findOrFail($id);
+        $scan = Scan::where('drug_id', $product)
+            ->where('drug_id',$product->drug_id)
+            ->select('*')
+            ->get();
+            $requestData = $request->all();
+            Scan::create($requestData);
+            return redirect('sales/' . $product->drug_id .'/scan');
+            return view('event.scan', compact('product','scan','sales'));*/
     }
 
     /**
@@ -73,9 +70,9 @@ class BillsController extends Controller
      */
     public function show($id)
     {
-        $bill = Bill::findOrFail($id);
+        $scan = Scan::findOrFail($id);
 
-        return view('bills.show', compact('bill'));
+        return view('scan.show', compact('scan'));
     }
 
     /**
@@ -87,9 +84,9 @@ class BillsController extends Controller
      */
     public function edit($id)
     {
-        $bill = Bill::findOrFail($id);
+        $scan = Scan::findOrFail($id);
 
-        return view('bills.edit', compact('bill'));
+        return view('scan.edit', compact('scan'));
     }
 
     /**
@@ -105,10 +102,10 @@ class BillsController extends Controller
         
         $requestData = $request->all();
         
-        $bill = Bill::findOrFail($id);
-        $bill->update($requestData);
+        $scan = Scan::findOrFail($id);
+        $scan->update($requestData);
 
-        return redirect('bills')->with('flash_message', 'Bill updated!');
+        return redirect('scan')->with('flash_message', 'Scan updated!');
     }
 
     /**
@@ -120,8 +117,8 @@ class BillsController extends Controller
      */
     public function destroy($id)
     {
-        Bill::destroy($id);
+        Scan::destroy($id);
 
-        return redirect('bills')->with('flash_message', 'Bill deleted!');
+        return redirect('scan')->with('flash_message', 'Scan deleted!');
     }
 }

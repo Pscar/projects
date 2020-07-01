@@ -32,9 +32,9 @@
                                         <th>#</th>
                                         <th>ยา</th>
                                         <th>ราคาขาย</th>
-                                        <th class="d-none">ประเภทยา</th>
+                                        <th>ประเภทยา</th>
                                         <th>จำนวน</th>
-                                        <th class="d-none">ราคารวม</th>
+                                        <th>ราคารวม</th>
                                         <th>คนให้บริการ</th>
                                         <th>Actions</th>
                                     </tr>
@@ -43,12 +43,12 @@
                                 @foreach($sales as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->pro_name }}</td>
                                         <td>{{ $item->saleprice }}</td>
-                                        <td class="d-none">{{ $item->category_id }}</td>
+                                        <td>{{ $item->category_id }}</td>
                                         <td>{{ $item->amount }}</td>
-                                        <td class="d-none">{{ $item->total_sale }}</td> 
-                                        <td>{{ $item->user_id }}</td>
+                                        <td>{{ $item->total }}</td>
+                                        <td>{{ $item->name }}</td>
                                         <td>
                                             <a href="{{ url('/sales/' . $item->id) }}" title="View Sale"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/sales/' . $item->id . '/edit') }}" title="Edit Sale"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

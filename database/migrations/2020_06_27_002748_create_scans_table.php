@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateInformationsTable extends Migration
+class CreateScansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,11 @@ class CreateInformationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('informations', function (Blueprint $table) {
+        Schema::create('scans', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('name')->nullable();
-            $table->string('lastname')->nullable();
-            $table->string('address')->nullable();
-            $table->integer('tel')->nullable();
-            $table->integer('staff_id')->unsigned();
+            $table->integer('product_id')->nullable();
+            $table->integer('sale_id')->nullable();
             });
     }
 
@@ -30,6 +27,6 @@ class CreateInformationsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('informations');
+        Schema::drop('scans');
     }
 }

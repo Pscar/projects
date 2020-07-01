@@ -25,12 +25,19 @@ class Sale extends Model
      *
      * @var array
      */
-    protected $fillable = ['saleprice', 'name', 'category_id', 'user_id', 'amount', 'total_beforesale','vat','vatpercent','vat_totalafter','total','bill_id'];
+    protected $fillable = ['saleprice', 'pro_name', 'category_id', 'user_id', 'amount', 'total_beforesale','vat','vatpercent','vat_totalafter','total','bill_id'];
 
+    public function user(){
+        return $this->belongsTo('App\User','user_id');
+    }
     public function product(){
         return $this->belongsTo('App\Product','saleprice','saleprice'); 
     }
     public function sale(){
         return $this->belongsTo('App\Sale','bill_id');
     }
+    public function scans(){
+        return $this->hasMany('App\Scan','sale_id'); 
+    }
+
 }
