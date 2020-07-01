@@ -9,7 +9,7 @@
     <input class="form-control" name="saleprice" type="number" id="saleprice" value="{{ isset($sale->saleprice) ? $sale->saleprice : $product->saleprice}}" >
     {!! $errors->first('saleprice', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group  {{ $errors->has('category_id') ? 'has-error' : ''}}">
+<div class="form-group d-none {{ $errors->has('category_id') ? 'has-error' : ''}}">
     <label for="category_id" class="control-label">{{ 'ประเภท' }}</label>
     <input class="form-control" name="category_id" type="number" id="category_id" value="{{ isset($sale->category_id) ? $sale->category_id : $product->category_id}}" >
     {!! $errors->first('category_id', '<p class="help-block">:message</p>') !!}

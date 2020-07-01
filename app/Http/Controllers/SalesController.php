@@ -22,7 +22,7 @@ class SalesController extends Controller
     {
        
         $perPage = 25;
-
+        $product = Product::all();
         $sales = Sale::whereNull('bill_id')
             ->where('user_id', Auth::id() )
             ->latest()->paginate($perPage); 
@@ -61,8 +61,6 @@ class SalesController extends Controller
         //คำนวณจำนวนสินค้า
         $requestData['total'] = $requestData['amount'] * $requestData['saleprice'];
     
-
-
         Sale::create($requestData);
         
         return redirect('sales')->with('flash_message', 'Sale added!');

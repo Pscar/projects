@@ -39,44 +39,42 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach($products as $item)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td> <a href="{{ url('/products/' . $item->id) }}"> {{$item->drug_id}} </a></td>
-                                   
+                                @foreach($products as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td> <a href="{{ url('/products/' . $item->id) }}"> {{$item->drug_id}} </a></td>
+                                        <td>{{ $item->pro_name }}</td>
+                                        <td>{{ $item->contain }}</td>
+                                        <td>{{ $item->saleprice }}</td>
+                                        <td>{{ $item->stock_ps }}</td>
+                                        <td>{{ $item->category_id }}</td>
+                                        <td>
+                                        
+                                        <?php
+                                            $stock_ps = 1000;
+                                                if($stock_ps >= "1000") {
+                                                    echo $status_sale = "พร้อมขาย" ;
+                                                }elseif($stock_ps < "150") {
+                                                    echo $status_sale = "ใกล้จะหมด" ;
+                                                }else{
+                                                    echo $status_sale = "หมดแล้ว";
+                                                }
+                                        ?>
+                    
                                     
-                                    <td>{{ $item->pro_name }}</td>
-                                    <td>{{ $item->contain }}</td>
-                                    <td>{{ $item->saleprice }}</td>
-                                    <td>{{ $item->stock_ps }}</td>
-                                    <td>{{ $item->category_id }}</td>
-                                    <td>
-                                    
-                                        @if($stock_ps <= "1000") {
-                                            $status_sale = "redysale" ;
-                                        } 
-                                        elseif($stock_ps > "150") {
-                                            $status_sale = "mostout" ;
-                                        }
-                                        else($stock_ps >= "0"){
-                                            $status_sale = "souout" ;
-                                        }
-                                        @endif
-                   
-                                
-                                    </td>
-                                    <td >
-                                        <a href="{{ url('/sales/create') }}?drug_id={{ $item->drug_id }}" title="scan"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> สแกนสินค้า</button></a>
-                                        <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                        </td>
+                                        <td >
+                                            <a href="{{ url('/sales/create') }}?drug_id={{ $item->drug_id }}" title="scan"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> สแกนสินค้า</button></a>
+                                            <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                                        <form method="POST" action="{{ url('/products' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                            {{ method_field('DELETE') }}
-                                            {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Product" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบรายการขาย</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                            <form method="POST" action="{{ url('/products' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Product" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบรายการขาย</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <div class="pagination-wrapper"> {!! $products->appends(['search' => Request::get('search')])->render() !!} </div>
