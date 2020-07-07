@@ -23,6 +23,6 @@ class CheckRole
                 return  $next($request);
             }
         } 
-        return redirect('/sales');    
+        return redirect('/home');    
     }
 }
