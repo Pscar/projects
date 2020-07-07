@@ -5,7 +5,7 @@
             "type": "string"
         },
         {
-            "name": "barcode",
+            "name": "drug_id",
             "type": "string"
         },   
         {

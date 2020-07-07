@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
 @section('content')
     <div class="container">
         <div class="row">
@@ -33,29 +32,22 @@
                                             <table class="table table-sm">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
-                                                        <th>รหัสสินค้า</th>
-                                                        <th>ผลิตภัณฑ์</th>                                      
+                                                        <th>รหัสยา</th>
+                                                        <th>ยา</th>                                      
                                                         <th>ราคา</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @if(isset($item->product_id))
+                                                    @foreach($products as $item)
                                                         <tr>
-                                                            <td>{{ $item->product->drug_id}} </td>
-                                                            <td>{{ $item->product->pro_name }} </td>
-                                                            <td>{{ $item->product->saleprice }} </td>   
+                                                            <td>{{ $item->drug_id}}</td>
+                                                            <td>{{ $item->pro_name }}</td>                                                           
+                                                            <td>{{ $item->saleprice }}</td>
+                                                            <td><a href="{{ url('/sales/create') }}?drug_id={{ $item->drug_id }}" title="scan"><i class="fa fa-eye" aria-hidden="true"></i></td>
                                                         </tr>
-                                                    @endif
+                                                    @endforeach
                                                 </tbody>
-                                                <script>
-	                                                document.addEventListener("DOMContentLoaded", function(event) {
-                                                        $('#exampleModal').on('show.bs.modal', function (e) {
-                                                            showProduct();
-                                                        });
-                                                    }
-                                                </script>
                                             </table>
                                             
                                         </div>
@@ -82,18 +74,16 @@
                         <br/>
                         <br/>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table text-center">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>ยา</th>
                                         <th>ราคาขาย</th>
-                                        <th>ประเภทยา</th>
                                         <th>จำนวน</th>
                                         <th>ราคารวม</th>
-                                        <th>vat</th>
                                         <th>คนให้บริการ</th>
-                                        <th>Actions</th>
+                                        <th class="d-none">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -102,19 +92,20 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->pro_name }}</td>
                                         <td>{{ $item->saleprice }}</td>
-                                        <td>{{ $item->category_id }}</td>
-                                        <td>{{ $item->amount }}</td>
+                                        <td class="d-none">{{ $item->category_id }}</td>
+                                        <td><input type="number" name="amount" id="amount" onkeyup="onChanage"></td>
+          
                                         <td>{{ $item->total }}</td>
-                                        <td>{{ $item->vatpercent}}
                                         <td>{{ $item->user->name }}</td>
-                                        <td>
+                                        
+                                        <td class="d-none">
                                             <a href="{{ url('/sales/' . $item->id) }}" title="View Sale"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/sales/' . $item->id . '/edit') }}" title="Edit Sale"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/sales' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Sale" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Sale" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
 
                                              </form>                                          
                                         </td>    
@@ -142,4 +133,6 @@
         </div>
     </div>
 @endsection
+
+
 

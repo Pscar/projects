@@ -22,16 +22,16 @@ class SalesController extends Controller
     {
        
         $perPage = 25;
-        $product = DB::table('products')
+        //ส่งข้อมูลไปที่ exampleModalmodel
+        $products = DB::table('products')//array products
             ->select('drug_id','pro_name','saleprice')
             ->get();
-
         //สินค้ารอจ่ายเงิน 
         $sales = Sale::whereNull('bill_id')
             ->where('user_id', Auth::id() )
             ->latest()->paginate($perPage); 
-            
-        return view('sales.index', compact('sales','product'));
+        
+        return view('sales.index', compact('sales','products'));//compact สร้าง array 
     }
 
     /**
@@ -44,7 +44,7 @@ class SalesController extends Controller
         //อ่านค่า url product
         $drug_id  = $request->get('drug_id');
         //แสดงคิวรี่
-        $product = Product::where('drug_id',$drug_id)->firstOrFail();
+        $product = Product::where('drug_id',$drug_id)->firstOrFail();//ความสัมพันธ์ตาม model
         //แสดงใน products
 
         return view('sales.create', compact('product'));
@@ -99,7 +99,7 @@ class SalesController extends Controller
      */
     public function edit($id)
     {
-        $product = DB::table('products') 
+        $products = DB::table('products') 
             ->select('pro_name','drug_id','saleprice')
             ->get();
         $sale = Sale::findOrFail($id);

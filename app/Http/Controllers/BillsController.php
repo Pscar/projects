@@ -47,7 +47,7 @@ class BillsController extends Controller
     public function create(Request $request)
     {
         $bill_id  = $request->get('bill_id');
-        $sale = Sale::findOrFail($bill_id);
+        $sales = Sale::findOrFail($bill_id);
         
         return view('bills.create',compact('sales'));
     }
@@ -77,10 +77,10 @@ class BillsController extends Controller
         //update bill_id
         Sale::whereNull('bill_id') 
             ->where('user_id', Auth::id())->update(['bill_id'=> $bill->id]);
-        /*$sale =$bill->sale;
-            foreach($sale as $item)
+        /*$sales = $bills->sales;
+            foreach($sales as $item)
             {
-                Product::where('id',$item->product_id)->decrement('stock_ps', $item->stock_ps);
+                Product::where('id',$item->product_id)->decrement('amount', $item->stock_ps);
             }*/
 
 
