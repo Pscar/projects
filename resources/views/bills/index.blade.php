@@ -3,9 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
-
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Bills</div>
                     <div class="card-body">
@@ -27,29 +25,33 @@
                         <br/>
                         <br/>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table text-center">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>User Id</th>
-                                        <th>Total</th>
-                                        <th>Checking At :</th>
-                                        <th>Paid At :</th>
-                                        <th>Cancelled At</th>
-                                        <th>Completed At</th>
+                                        <th>ผู้ใช้งาน</th>
+                                        <th>ราคารวม</th>
+                                        <th>เวลาขาย</th>
+                                        <th class="d-none">Checking At :</th>
+                                        <th class="d-none">Paid At :</th>
+                                        <th class="d-none">Cancelled At</th>
+                                        <th class="d-none">Completed At</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($bills as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->user_id }}</td>
+                                        <td>{{ $item->id }}</td>
+                                        <!-- controller bills store-->
+                                        <td>{{ $item->user->name }}</td>
                                         <td>{{ $item->total }}</td>
-                                        <td>{{ $item->checking_at }}</td>
-                                        <td>{{ $item->paid_at }}</td>
-                                        <td>{{ $item->cancelled_at}}</td>
-                                        <td>{{ $item->completed_at }}</td>
+                                        <!--------------------------->
+                                        <td>{{ $item->created_at }}</td>
+                                        <td class="d-none">{{ $item->checking_at }}</td>
+                                        <td class="d-none">{{ $item->paid_at }}</td>
+                                        <td class="d-none">{{ $item->cancelled_at}}</td>
+                                        <td class="d-none">{{ $item->completed_at }}</td>
                                         <td>
                                             <a href="{{ url('/bills/' . $item->id) }}" title="View Bill"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/bills/' . $item->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

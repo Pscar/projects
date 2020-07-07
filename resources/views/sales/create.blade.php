@@ -25,7 +25,6 @@
                             
                             @include ('sales.form', ['formMode' => 'create'])
 
-
                         </form>
                         
 

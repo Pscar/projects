@@ -33,8 +33,8 @@ class Sale extends Model
     public function product(){
         return $this->belongsTo('App\Product','saleprice','saleprice'); 
     }
-    public function sale(){
-        return $this->belongsTo('App\Sale','bill_id');
+    public function bill(){
+        return $this->belongsTo('App\Bill','bill_id');
     }
     public function scans(){
         return $this->hasMany('App\Scan','sale_id'); 

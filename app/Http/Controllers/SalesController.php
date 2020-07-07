@@ -22,7 +22,11 @@ class SalesController extends Controller
     {
        
         $perPage = 25;
-        $product = Product::all();
+        $product = DB::table('products')
+            ->select('drug_id','pro_name','saleprice')
+            ->get();
+
+        //สินค้ารอจ่ายเงิน 
         $sales = Sale::whereNull('bill_id')
             ->where('user_id', Auth::id() )
             ->latest()->paginate($perPage); 
@@ -41,6 +45,7 @@ class SalesController extends Controller
         $drug_id  = $request->get('drug_id');
         //แสดงคิวรี่
         $product = Product::where('drug_id',$drug_id)->firstOrFail();
+        //แสดงใน products
 
         return view('sales.create', compact('product'));
     }
@@ -58,21 +63,14 @@ class SalesController extends Controller
     {
         //ยืนยันการสั่งซื้อ
         $requestData = $request->all();
-        //คำนวณราคาสินค้า
-        $total = Sale::whereNull('bill_id')
-            ->where('user_id', Auth::id() )->sum('saleprice');
+        //คำนวณราคาสินค้า 
         $requestData['total'] = $requestData['amount'] * $requestData['saleprice'];
+        //ระบุ user_id
+        $requestData['user_id'] = Auth::id();
+
         // create sale
         Sale::create($requestData);
-        //update bill_id ในตาราง sales
-        /*Sale::whereNull('bill_id')
-            ->where('user_id', Auth::id()) 
-            ->update(['bill_id'=> $sales->id]);
-        /*$sales = $product->sales;
-        foreach($product as $item)
-        {
-            Product::where('id',$item->product_id)->decrement('quantity', $item->quantity);
-        }*/
+        
     
 
         return redirect('sales')->with('flash_message', 'Sale added!');

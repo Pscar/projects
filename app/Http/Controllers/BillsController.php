@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 
 use App\Bill;
 use App\Sale;
+use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class BillsController extends Controller
 {
@@ -43,9 +46,10 @@ class BillsController extends Controller
      */
     public function create(Request $request)
     {
-   
+        $bill_id  = $request->get('bill_id');
+        $sale = Sale::findOrFail($bill_id);
         
-        return view('bills.create');
+        return view('bills.create',compact('sales'));
     }
 
     /**
@@ -59,9 +63,28 @@ class BillsController extends Controller
     {
         
         $requestData = $request->all();
-        
-        Bill::create($requestData);
+        //รวมราคา   
+        $total = Sale::whereNull('bill_id')
+            ->where('user_id', Auth::id() )->sum('total');  
 
+        //กำหนดราคารวม, ผู้ใช้, สถานะ แสดงผลในหน้า blade
+        $requestData['total'] = $total;
+        $requestData['user_id'] = Auth::id();
+
+        //create bill not update bill_id
+        $bill = Bill::create($requestData);
+
+        //update bill_id
+        Sale::whereNull('bill_id') 
+            ->where('user_id', Auth::id())->update(['bill_id'=> $bill->id]);
+        /*$sale =$bill->sale;
+            foreach($sale as $item)
+            {
+                Product::where('id',$item->product_id)->decrement('stock_ps', $item->stock_ps);
+            }*/
+
+
+       
         return redirect('bills')->with('flash_message', 'Bill added!');
     }
 

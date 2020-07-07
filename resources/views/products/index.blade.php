@@ -33,8 +33,7 @@
                                     <th>บรรจุ</th>
                                     <th>ราคา</th>
                                     <th>สต็อคขั้นต่ำ</th>
-                                    <th>ประเภท</th>
-                                    <th>สถานะการขาย</th>
+                                    <th class="d-none">สถานะ</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -47,22 +46,9 @@
                                         <td>{{ $item->contain }}</td>
                                         <td>{{ $item->saleprice }}</td>
                                         <td>{{ $item->stock_ps }}</td>
-                                        <td>{{ $item->category_id }}</td>
-                                        <td>
+                                        <td class="d-none">{{ $item->category_id }}</td>
+                                        <td class="d-none">{{$item->status_sale}}</td>
                                         
-                                        <?php
-                                            $stock_ps = 1000;
-                                                if($stock_ps >= "1000") {
-                                                    echo $status_sale = "พร้อมขาย" ;
-                                                }elseif($stock_ps < "150") {
-                                                    echo $status_sale = "ใกล้จะหมด" ;
-                                                }else{
-                                                    echo $status_sale = "หมดแล้ว";
-                                                }
-                                        ?>
-                    
-                                    
-                                        </td>
                                         <td >
                                             <a href="{{ url('/sales/create') }}?drug_id={{ $item->drug_id }}" title="scan"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> สแกนสินค้า</button></a>
                                             <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
@@ -70,14 +56,20 @@
                                             <form method="POST" action="{{ url('/products' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Product" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบรายการขาย</button>
+                                                <button type="submit" class="btn btn-danger btn-sm d-none" title="Delete Product" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบรายการขาย</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="pagination-wrapper"> {!! $products->appends(['search' => Request::get('search')])->render() !!} </div>
+                        <div class="pagination-wrapper"> {!! $products->appends([
+                        'search' => Request::get('search'),
+                        'pro_name' => Request::get('pro_name'),
+                        'drug_id'=>Request::get('drug_id','asc'),
+                        'saleprice'=> Request::get('saleprice','asc'),
+                        'category_id'=>Request::get('category_id','asc')
+                        ])->render() !!} </div>
                     </div>
                 </div>
             </div>

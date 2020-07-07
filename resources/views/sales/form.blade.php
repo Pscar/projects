@@ -27,6 +27,7 @@
 <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
     <label for="user_id" class="control-label">{{ 'คนให้บริการ' }}</label>
     <input class="form-control" name="user_id " type="number" id="user_id" value="{{ isset($sale->user_id) ? $sale->user_id : Auth::user()->id}}" > 
+    
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div>
 

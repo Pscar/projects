@@ -43,5 +43,8 @@ class User extends Authenticatable
     public function sales(){
         return $this->hasMany('App\Sale','user_id');
     }
+    public function bills(){
+        return $this->hasMany('App\Bill','user_id');
+    }
 
 }

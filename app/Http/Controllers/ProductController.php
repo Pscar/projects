@@ -112,22 +112,8 @@ class ProductController extends Controller
     {
         
         $requestData = $request->all();
-        $product = Product::findOrFail($id); // ประกาศ product ให้  update รู้จัก
-            if(!empty($requestData['status_sale'])){ //อัพเดทสถานะ+เวลา
-            switch($requestData['status_sale']){
-                case "redysale" :
-                    $requestData['redysale_at'] = date('Y-m-d H:i:s');  
-                break;
-                
-                case "mostout" :
-                    $requestData['mostout_at'] = date('Y-m-d H:i:s');
-                break;
-
-                case "souout" :
-                    $requestData['souout_at'] = date('Y-m-d H:i:s');
-                break;    
-                } 
-             }
+        $product = Product::findOrFail($id); 
+        
         
         $product->update($requestData);
 
