@@ -66,9 +66,14 @@ class ProductController extends Controller
         $requestData = $request->all();
         
         Product::create($requestData);
-          
-        
-        return redirect('products')->with('flash_message', 'Product added!');
+
+        $sales = $bill->sales;
+            foreach($sales as $item)
+            {
+                Sale::where('id',$item->sale_id)->decrement('stock_ps', $item->amount);
+            }
+                                                                                                            
+        return redirect('products',compact('sale'))->with('flash_message', 'Product added!');
     }
 
     /**
