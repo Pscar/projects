@@ -42,6 +42,7 @@
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div>
 
+
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>

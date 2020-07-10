@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Lot;
 use App\Product;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class LotsController extends Controller
 {
     /**
@@ -39,9 +39,11 @@ class LotsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        $product = Product::all();
+        $product = DB::table('products')//array products
+            ->select('pro_name','drug_id')
+            ->get();
         return view('lots.create', compact('product'));
     }
 
@@ -57,7 +59,15 @@ class LotsController extends Controller
         
         $requestData = $request->all();
         
-        Lot::create($requestData);
+        $lots=Lot::create($requestData);
+        
+        $product = $lots->product;
+        /*foreach($product as $item){
+            Product::where('drug_id',$drug_id)->firstOrFail()->increment('stock_ps', $item->stock_im);
+        }*/
+        
+        
+        
 
         return redirect('lots')->with('flash_message', 'Lot added!');
     }
@@ -72,6 +82,7 @@ class LotsController extends Controller
     public function show($id)
     {
         $lot = Lot::findOrFail($id);
+        
 
         return view('lots.show', compact('lot'));
     }
@@ -85,7 +96,9 @@ class LotsController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::all();
+        $product = DB::table('products')//array products
+            ->select('id','pro_name','drug_id')
+            ->get();
         $lot = Lot::findOrFail($id);
 
         return view('lots.edit', compact('lot','product'));

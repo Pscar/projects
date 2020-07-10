@@ -25,13 +25,13 @@ class Sale extends Model
      *
      * @var array
      */
-    protected $fillable = ['saleprice', 'pro_name', 'category_id', 'user_id', 'amount', 'total_beforesale','vat','vatpercent','vat_totalafter','total','bill_id'];
+    protected $fillable = ['saleprice', 'pro_name', 'category_id', 'user_id', 'amount', 'total_beforesale','vat','vatpercent','vat_totalafter','total','bill_id','product_id'];
 
     public function user(){
         return $this->belongsTo('App\User','user_id');
     }
     public function product(){
-        return $this->belongsTo('App\Product','saleprice','saleprice'); 
+        return $this->belongsTo('App\Product','product_id'); 
     }
     public function bill(){
         return $this->belongsTo('App\Bill','bill_id');

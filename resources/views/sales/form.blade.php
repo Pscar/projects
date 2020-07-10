@@ -31,6 +31,13 @@
     
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div>
+<!--แสดงให้รับรู้ว่าข้อมูลจาก product_id มาแล้ว และ ทำการโชว์เพื่อให้สามารถตัดสต็อคได้-->
+<div class="form-group {{ $errors->has('product_id') ? 'has-error' : ''}}">
+    <label for="product_id" class="control-label">{{ 'product_id' }}</label>
+    <input class="form-control" name="product_id" type="number" id="product_id" value="{{ isset($sale->product_id) ? $sale->product_id: $product->id }}" readonly > 
+    {!! $errors->first('product_id', '<p class="help-block">:message</p>') !!}
+</div>
+
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">

@@ -93,7 +93,7 @@
                                         <td>{{ $item->pro_name }}</td>
                                         <td>{{ $item->saleprice }}</td>
                                         <td class="d-none">{{ $item->category_id }}</td>
-                                        <td><input type="number" name="amount" id="amount" onkeyup="onChanage"></td>
+                                        <td>{{ $item->amount }}</td>
           
                                         <td>{{ $item->total }}</td>
                                         <td>{{ $item->user->name }}</td>

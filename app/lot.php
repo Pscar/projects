@@ -25,9 +25,12 @@ class Lot extends Model
      *
      * @var array
      */
-    protected $fillable = ['deteexp_at', 'drug_id', 'cost', 'stock_im'];
+    protected $fillable = ['deteexp_at', 'drug_id', 'cost', 'stock_im','product_id','user_id'];
     
     public function product(){
-        return $this->belongsTo('App\Product','drug_id'); 
+        return $this->belongsTo('App\Product','product_id'); 
+    }
+    public function user(){
+        return $this->belongsTo('App\User','user_id'); 
     }
 }

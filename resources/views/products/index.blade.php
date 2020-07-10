@@ -1,14 +1,11 @@
 @extends('layouts.admin')
-
-
 @section('content')
 
-<div class="container">
+<div class="container-fluid pt-5 px-lg-5">
     <div class="row">
-        <div class="container-fluid pt-5">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">สินค้า</div>
+                    <div class="card-header text-center"style="font-size:50px;">สินค้า </div>
                         <div class="card-body">
                         <form method="GET" action="{{ url('/products') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
@@ -25,7 +22,7 @@
                         <br/>
                     
                         <div class="table-responsive text-center">
-                            <table class="table table-sm">
+                            <table class="table table-sm" id="product">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -62,6 +59,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                        <script type="text/javascript" src="js/app.js"></script>
                             </table>
                             <a href="{{ url('/products/create') }}" class="btn btn-success btn-sm" title="Add New Product">
                                 <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มสินค้า

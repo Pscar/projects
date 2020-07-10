@@ -46,5 +46,8 @@ class User extends Authenticatable
     public function bills(){
         return $this->hasMany('App\Bill','user_id');
     }
+    public function lots(){
+        return $this->hasMany('App\Lot','product_id'); 
+    }
 
 }

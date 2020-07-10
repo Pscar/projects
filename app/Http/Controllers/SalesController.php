@@ -64,7 +64,7 @@ class SalesController extends Controller
         //ยืนยันการสั่งซื้อ
         $requestData = $request->all();
         //คำนวณราคาสินค้า 
-        $requestData['total'] = $requestData['amount'] * $requestData['saleprice'];
+        $requestData['total'] = $requestData['saleprice'] * $requestData['amount'];//sumvat
         //ระบุ user_id
         $requestData['user_id'] = Auth::id();
 
@@ -100,7 +100,7 @@ class SalesController extends Controller
     public function edit($id)
     {
         $products = DB::table('products') 
-            ->select('pro_name','drug_id','saleprice')
+            ->select('pro_name','drug_id','saleprice','id')
             ->get();
         $sale = Sale::findOrFail($id);
 

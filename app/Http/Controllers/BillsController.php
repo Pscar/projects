@@ -77,9 +77,11 @@ class BillsController extends Controller
         //update bill_id
         Sale::whereNull('bill_id') 
             ->where('user_id', Auth::id())->update(['bill_id'=> $bill->id]);
-        $sales = $bill->sales;
+        //ตัดสต็อคหลังจากอัพเดท bill_id
+        $sales = $bill->sales; //เรียกข้อมูล sales ผ่าน bill
             foreach($sales as $item)
             {
+                //เรียกใช้ product_idที่มีอยู่ในรายการ sales แล้วตัดสต็อคตามจำนวน
                 Product::where('id',$item->product_id)->decrement('stock_ps', $item->amount);
             }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeColumnsToSalesTable extends Migration
+class AddProductIdToLotsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class ChangeColumnsToSalesTable extends Migration
      */
     public function up()
     {
-        Schema::table('sales', function (Blueprint $table) {
-            $table->renameColumn('name','pro_name');        
-            });     
-    
+        Schema::table('lots', function (Blueprint $table) {
+            $table->integer("product_id")->nullable();
+        });
     }
 
     /**
@@ -26,7 +25,7 @@ class ChangeColumnsToSalesTable extends Migration
      */
     public function down()
     {
-        Schema::table('sales', function (Blueprint $table) {
+        Schema::table('lots', function (Blueprint $table) {
             //
         });
     }
