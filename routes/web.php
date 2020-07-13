@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::resource('bills', 'BillController');

@@ -94,7 +94,6 @@
                                         <td>{{ $item->saleprice }}</td>
                                         <td class="d-none">{{ $item->category_id }}</td>
                                         <td>{{ $item->amount }}</td>
-          
                                         <td>{{ $item->total }}</td>
                                         <td>{{ $item->user->name }}</td>
                                         

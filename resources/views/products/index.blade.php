@@ -30,7 +30,8 @@
                                         <th>ผลิตภัณฑ์</th>                                      
                                         <th>บรรจุ</th>
                                         <th>ราคา</th>
-                                        <th>สต็อคขั้นต่ำ</th>
+                                        <th>สต็อคปัจจุบัน</th>
+                                        <th>สต็อคสินค้า</th>
                                         <th class="d-none">สถานะ</th>
                                         <th class="d-none">Actions</th>
                                     </tr>
@@ -43,7 +44,22 @@
                                             <td>{{ $item->pro_name }}</td>
                                             <td>{{ $item->contain }}</td>
                                             <td>{{ $item->saleprice }}</td>
-                                            <td>{{ $item->stock_ps }}</td>
+                                            <td>
+                                            @if($item->stock_ps >= 100)
+                                                <span class="badge badge-success">สินค้าพร้อมขาย </span>
+                                            @elseif($item->stock_ps >= 5) 
+                                                <span class="badge badge-warning">สินค้าจะหมดแล้ว </span>
+                                            @else 
+                                                <span class="badge badge-danger">สินค้าหมดแล้ว </span>
+                                            @endif
+                                            
+                                            </td>
+                                            
+                                            <td>
+                                            <a href="{{ url('lots/create') }}" class="btn btn-success btn-sm" title="Add New Product">
+                                                <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มสินค้า
+                                            </a>
+                                            </td>
                                             <td class="d-none">{{ $item->category_id }}</td>
                                             <td class="d-none">{{$item->status_sale}}</td>
                                             
@@ -59,7 +75,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                        <script type="text/javascript" src="js/app.js"></script>
+                        
                             </table>
                             <a href="{{ url('/products/create') }}" class="btn btn-success btn-sm" title="Add New Product">
                                 <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มสินค้า

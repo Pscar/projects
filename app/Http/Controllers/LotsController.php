@@ -41,9 +41,7 @@ class LotsController extends Controller
      */
     public function create(Request $request)
     {
-        $product = DB::table('products')//array products
-            ->select('pro_name','drug_id')
-            ->get();
+        $product = Product::all();
         return view('lots.create', compact('product'));
     }
 
