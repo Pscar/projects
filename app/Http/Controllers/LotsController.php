@@ -65,10 +65,12 @@ class LotsController extends Controller
 
         $lot = Lot::create($requestData);
         //update stockps in products
-        Product::where('id',$lot->product_id) //เรียก product_id ใน tabal lot ที่มี id ของ tabal product
-        //update เพิ่มสต็อคสินค้า ใน tabal product ให้เท่ากับจำนวนที่ระบุใน lot
-            ->increment('stock_ps',$lot->stock_im) 
-            ->get();
+
+        //เรียก product_id ใน tabal lot ที่มี id ของ tabal product  
+        Product::where('id',$lot->product_id)->increment('stock_ps',$lot->stock_im);//update เพิ่มสต็อคสินค้า ใน tabal product ให้เท่ากับจำนวนที่ระบุใน lot
+       
+            
+           
 
         return redirect('lots')->with('flash_message', 'Lot added!');
     }
