@@ -6,8 +6,8 @@
             <div class="col-md-12">
                 <div class="card">
                 <div class="card-header text-center"> 
-                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($lot->drug_id, 'C128') }}" alt="barcode"/><br>
-                    {{$lot->drug_id}}
+                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($lot->product->drug_id, 'C128') }}" alt="barcode"/><br>
+                    {{$lot->product->drug_id}}
                     </div>
                     <div class="card-body">
 

@@ -30,10 +30,7 @@
                                         <th>ผลิตภัณฑ์</th>                                      
                                         <th>บรรจุ</th>
                                         <th>ราคา</th>
-                                        <th>สต็อคปัจจุบัน</th>
-                                        <th>สต็อคสินค้า</th>
-                                        <th class="d-none">สถานะ</th>
-                                        <th class="d-none">Actions</th>
+                                        <th >Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,24 +43,17 @@
                                             <td>{{ $item->saleprice }}</td>
                                             <td>
                                             @if($item->stock_ps >= 100)
-                                                <span class="badge badge-success">สินค้าพร้อมขาย </span>
+                                                <span class="badge badge-success">สินค้าพร้อมขาย <br>{{$item->stock_ps}}</span>
                                             @elseif($item->stock_ps >= 5) 
-                                                <span class="badge badge-warning">สินค้าจะหมดแล้ว </span>
+                                                <span class="badge badge-warning">สินค้าจะหมดแล้ว <br>{{$item->stock_ps}}</span>
                                             @else 
-                                                <span class="badge badge-danger">สินค้าหมดแล้ว </span>
+                                                <span class="badge badge-danger">สินค้าหมดแล้ว <br>{{$item->stock_ps}}</span>
                                             @endif
                                             
                                             </td>
-                                            
-                                            <td>
-                                            <a href="{{ url('lots/create') }}" class="btn btn-success btn-sm" title="Add New Product">
-                                                <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มสินค้า
-                                            </a>
-                                            </td>
-                                            <td class="d-none">{{ $item->category_id }}</td>
-                                            <td class="d-none">{{$item->status_sale}}</td>
-                                            
+                                            <td class="d-none">{{ $item->category_id }}</td>                                       
                                             <td >
+                                            
                                                 <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                                 <form method="POST" action="{{ url('/products' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

@@ -26,7 +26,7 @@
 </div>
 <div class="form-group {{ $errors->has('category_id') ? 'has-error' : ''}}">
     <label for="category_id" class="control-label">{{ 'ประเภท' }}</label>
-    <select name="category_id" class="form-control form-control-sm" id=category_id" onchange="var category_id = document.querySelector('#category_id');">
+    <select name="category_id" class="form-control form-control-sm" id="category_id" onchange="var category_id = document.querySelector('#category_id');">
     @foreach ($category as $optionValue)
         <option value="{{ $optionValue->id }}"> {{ $optionValue->name_category}}<!--เป็นตัวที่จะแสดงผล--></option>
     @endforeach<!--เป็นการดึง PK จาก category มาแสดงผล-->

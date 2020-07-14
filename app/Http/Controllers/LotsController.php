@@ -20,18 +20,22 @@ class LotsController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-
+        
+        $products = DB::table('products')//array products
+            ->select('drug_id','pro_name','saleprice')
+            ->get();
         if (!empty($keyword)) {
-            $lots = Lot::where('deteexp_at', 'LIKE', "%$keyword%")
+            $lot = Lot::where('deteexp_at', 'LIKE', "%$keyword%")
                 ->orWhere('drug_id', 'LIKE', "%$keyword%")
                 ->orWhere('cost', 'LIKE', "%$keyword%")
                 ->orWhere('stock_im', 'LIKE', "%$keyword%")
+                ->orWhere('product_id','LIKE',"%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $lots = Lot::latest()->paginate($perPage);
+            $lot = Lot::latest()->paginate($perPage);
         }
 
-        return view('lots.index', compact('lots'));
+        return view('lots.index', compact('lot','products'));
     }
 
     /**
@@ -41,8 +45,10 @@ class LotsController extends Controller
      */
     public function create(Request $request)
     {
-        $product = Product::all();
-        return view('lots.create', compact('product'));
+        $drug_id  = $request->get('drug_id');
+        //แสดงคิวรี่
+        $product = Product::where('drug_id',$drug_id)->firstOrFail();
+        return view('lots.create',compact('product'));
     }
 
     /**
@@ -54,18 +60,15 @@ class LotsController extends Controller
      */
     public function store(Request $request)
     {
-        
+   
         $requestData = $request->all();
-        
-        $lots=Lot::create($requestData);
-        
-        $product = $lots->product;
-        /*foreach($product as $item){
-            Product::where('drug_id',$drug_id)->firstOrFail()->increment('stock_ps', $item->stock_im);
-        }*/
-        
-        
-        
+
+        $lot = Lot::create($requestData);
+        //update stockps in products
+        Product::where('id',$lot->product_id) //เรียก product_id ใน tabal lot ที่มี id ของ tabal product
+        //update เพิ่มสต็อคสินค้า ใน tabal product ให้เท่ากับจำนวนที่ระบุใน lot
+            ->increment('stock_ps',$lot->stock_im) 
+            ->get();
 
         return redirect('lots')->with('flash_message', 'Lot added!');
     }

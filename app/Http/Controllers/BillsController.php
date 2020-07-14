@@ -81,7 +81,7 @@ class BillsController extends Controller
         $sales = $bill->sales; //เรียกข้อมูล sales ผ่าน bill
             foreach($sales as $item)
             {
-                //เรียกใช้ product_idที่มีอยู่ในรายการ sales แล้วตัดสต็อคตามจำนวน
+                //เรียกใช้ product_id ที่มีอยู่ในรายการ sales แล้วตัดสต็อคตามจำนวน
                 Product::where('id',$item->product_id)->decrement('stock_ps', $item->amount);
             }
 

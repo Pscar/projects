@@ -20,7 +20,7 @@ class SalesController extends Controller
      */
     public function index(Request $request)
     {
-       
+
         $perPage = 25;
         //ส่งข้อมูลไปที่ exampleModalmodel
         $products = DB::table('products')//array products
@@ -61,7 +61,7 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        //ยืนยันการสั่งซื้อ
+        //ยืนยันการสั่งซื้อ   
         $requestData = $request->all();
         //คำนวณราคาสินค้า 
         $requestData['total'] = $requestData['saleprice'] * $requestData['amount'];//sumvat

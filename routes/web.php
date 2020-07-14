@@ -21,10 +21,13 @@ Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::resource('bills', 'BillController');
     Route::resource('categorys', 'CategoryController');
     Route::resource('sales', 'SalesController');
+    Route::get("/sales/create",'SalesController@create');
+   
+   });
+   
     Route::resource('products', 'ProductController');
     Route::resource('lots', 'LotsController');
     Route::resource('bills', 'BillsController');
-});
 Route::middleware(['auth', 'role:admin'])->group(function () {
     
 });

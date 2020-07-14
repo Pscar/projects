@@ -26,7 +26,7 @@
                                     <tr>
                                         <th>ID</th><td>{{ $category->id }}</td>
                                     </tr>
-                                    <tr><th> Name Category </th><td> {{ $category->name_category }} </td></tr><tr><th> Category Id </th><td> {{ $category->category_id }} </td></tr>
+                                    <tr><th> Name Category </th><td> {{ $category->name_category }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

@@ -6,7 +6,7 @@
                     <div class="card">
                         <div class="card-header">Lots</div>
                         <div class="card-body">
-                            <a href="{{ url('/lots/create') }}" class="btn btn-success btn-sm" title="Add New Lot">
+                            <a href="{{ url('/lots/create') }}" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="Add New Lot">
                                 <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มจำนวนสินค้า
                             </a>
 
@@ -20,7 +20,9 @@
                                     </span>
                                 </div>
                             </form>
-
+                            <body>
+                                @include('lots/model')
+                            </body>
                             <br/>
                             <br/>
                             <div class="table-responsive">
@@ -37,14 +39,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($lots as $item)
+                                    @foreach($lot as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>
-                                                <a href="{{ url('lots' . '/' . $item->id) }}">
-                                                    {{ $item->drug_id}}
-                                                </a>
-                                            </td>        
+                                            <td>{{ $item->product->drug_id }}</td>  
                                             <td>{{ $item->cost }}</td>
                                             <td>{{ $item->stock_im }}</td>
                                             <td>{{ $item->created_at}}</td>
@@ -54,6 +52,7 @@
                                             ?> 
                                             </td>
                                             <td>
+                                            
                                                 <a href="{{ url('/lots/' . $item->id) }}" title="View Lot"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                                 <a href="{{ url('/lots/' . $item->id . '/edit') }}" title="Edit Lot"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
@@ -67,7 +66,7 @@
                                     @endforeach
                                     </tbody>
                                 </table>
-                                <div class="pagination-wrapper"> {!! $lots->appends(['search' => Request::get('search')])->render() !!} </div>
+                                <div class="pagination-wrapper"> {!! $lot->appends(['search' => Request::get('search')])->render() !!} </div>
                             </div>
 
                         </div>

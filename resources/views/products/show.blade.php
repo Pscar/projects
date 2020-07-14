@@ -12,8 +12,7 @@
                     <div class="card-body">
 
                         <a href="{{ url('/products') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>  ย้อนกลับ  </button></a>
-                        <a href="{{ url('/products/' . $product->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขรายการสินค้า</button></a>
-                        <a href="{{ url('/sales/create') }}?drug_id={{ $product->drug_id }}" title="scan"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> สแกนสินค้า</button></a>
+                        <a href="{{ url('/products/' . $product->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขรายการสินค้า</button></a>
                         <form method="POST" action="{{ url('products' . '/' . $product->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
