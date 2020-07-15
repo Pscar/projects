@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('http://cdn.datatables.net/1.10.12/css/jquery.dataTables.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400&display=swap" rel="stylesheet">
   <style>
@@ -37,7 +38,10 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- jQuery -->
+<script src="{{ asset ('code.jquery.com/jquery-3.5.1.js') }}"></script>
 <script src="{{ asset ('plugins/jquery/jquery.min.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="{{ asset ('http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js')}}"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="{{ asset ('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

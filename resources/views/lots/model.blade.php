@@ -16,7 +16,7 @@
             </div>
             <div class="modal-body">
                 <div class="table-responsive text-center">
-                    <table class="table table-sm">
+                    <table id="example" class="table table-sm">
                         <thead>
                             <tr>
                                 <th>รหัสยา</th>
@@ -46,3 +46,8 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
