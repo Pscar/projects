@@ -37,7 +37,7 @@
                                         <th>#</th>
                                         <th>ยา</th>
                                         <th>ราคาขาย</th>
-                                        <th>ประเภทยา</th>
+                                        <th class="d-none">ประเภทยา</th>
                                         <th>จำนวน</th>
                                         <th>ราคารวม</th>
                                         <th>คนให้บริการ</th>
@@ -53,7 +53,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->pro_name }}</td>
                                         <td>{{ $item->saleprice }}</td>
-                                        <td>{{ $item->category_id }}</td>
+                                        <td class="d-none">{{ $item->category_id }}</td>
                                         <td>{{ $item->amount }}</td>
                                         <td>{{ $item->total }}</td>
                                         <td>{{ $item->user->name }}</td>

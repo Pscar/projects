@@ -16,12 +16,13 @@
             </div>
             <div class="modal-body">
                 <div class="table-responsive text-center">
-                    <table id="example" class="table table-sm">
+                    <table id="example" class="table-hover">
                         <thead>
                             <tr>
                                 <th>รหัสยา</th>
                                 <th>ยา</th>                                      
                                 <th>ราคา</th>
+                                <th>สถานะ</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -31,7 +32,22 @@
                                     <td>{{ $item->drug_id}}</td>
                                     <td>{{ $item->pro_name }}</td>                                                           
                                     <td>{{ $item->saleprice }}</td>
-                                    <td><a href="{{ url('/sales/create') }}?drug_id={{ $item->drug_id }}" title="scan"><i class="fa fa-eye" aria-hidden="true"></i></td>
+                                    <td>
+                                        @if($item->stock_ps >= 100)
+                                            <span class="badge badge-success">สินค้าพร้อมขาย</span>
+                                        @elseif($item->stock_ps == 0)
+                                            <span class="badge badge-danger">สินค้าหมดแล้ว</span>  
+                                        @else
+                                            <span class="badge badge-warning">สินค้าจะหมดแล้ว <br>{{$item->stock_ps}}</span>
+                                        @endif
+                                    </td>
+                                        
+                                    <!--เช็คสถานะ ถ้าสต็อคหมดจะไม่สามารถสแกนสินค้าได้-->
+                                    @if($item->stock_ps == 0)
+                                        <td><a href="{{ url('/sales/create') }}?drug_id={{ $item->drug_id }}" title="scan"><i class="fa fa-eye d-none" aria-hidden="true"></i></td>
+                                    @else
+                                        <td><a href="{{ url('/sales/create') }}?drug_id={{ $item->drug_id }}" title="scan"><i class="fa fa-eye" aria-hidden="true"></i></td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

@@ -24,7 +24,7 @@
                                     <tr><th>ID</th> <td>{{ $sale->id }}</td></tr>
                                     <tr><th> ยา </th> <td>{{ $sale->pro_name }} </td></tr>
                                     <tr><th> ราคาขาย </th><td> {{ $sale->saleprice }} </td></tr>
-                                    <tr><th> ประเภท </th><td> {{ $sale->category_id }} </td></tr>
+                                    <tr><th class="d-none"> ประเภท </th><td class="d-none"> {{ $sale->category_id }} </td></tr>
                                     <tr><th> ผู้ใช้งาน </th><td> {{ $sale->user->name }} </td></tr>
                                     <tr><th> จำนวน </th><td> {{ $sale->amount }} </td></tr>
                                     <tr><th> ราคาทั้งหมด </th><td> {{ number_format ($sale->saleprice * $sale->amount +  $sale->saleprice * $sale->amount * $sale->vatpercent / 100,2) }} </td></tr>

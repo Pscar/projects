@@ -18,13 +18,11 @@
     <label for="amount" class="control-label">{{ 'จำนวน' }}</label>
     <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : ''}}" >
     {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
+  
 </div>
-<div class="form-group d-none{{ $errors->has('total') ? 'has-error' : ''}}">
-    <label for="total" class="control-label">{{ 'ราคาทั้งหมด' }}</label>
-    <input class="form-control" name="total" type="number" id="total" value="{{ isset($sale->total) ? $sale->total : ''}}" readonly>
-    {!! $errors->first('total', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
+
+
+<div class="form-group d-none {{ $errors->has('user_id') ? 'has-error' : ''}}">
     <label for="user_id" class="control-label">{{ 'คนให้บริการ' }}</label>
     <input class="form-control d-none" name="user_id" type="number" id="user_id" value="{{ isset($sale->user_id) ? $sale->user_id : Auth::user()->id}}" readonly> 
     <input class="form-control" name="name" type="text" id="name" value="{{ isset($sale->user_id) ? $sale->user->name : Auth::user()->name}}" readonly> 
@@ -32,7 +30,7 @@
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div>
 <!--แสดงให้รับรู้ว่าข้อมูลจาก product_id มาแล้ว และ ทำการโชว์เพื่อให้สามารถตัดสต็อคได้-->
-<div class="form-group {{ $errors->has('product_id') ? 'has-error' : ''}}">
+<div class="form-group d-none {{ $errors->has('product_id') ? 'has-error' : ''}}">
     <label for="product_id" class="control-label">{{ 'product_id' }}</label>
     <input class="form-control" name="product_id" type="number" id="product_id" value="{{ isset($sale->product_id) ? $sale->product_id: $product->id }}" readonly > 
     {!! $errors->first('product_id', '<p class="help-block">:message</p>') !!}

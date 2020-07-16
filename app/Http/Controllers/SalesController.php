@@ -24,7 +24,7 @@ class SalesController extends Controller
         $perPage = 25;
         //ส่งข้อมูลไปที่ exampleModalmodel
         $products = DB::table('products')//array products
-            ->select('drug_id','pro_name','saleprice')
+            ->select('drug_id','pro_name','saleprice','stock_ps')
             ->get();
         //สินค้ารอจ่ายเงิน 
         $sales = Sale::whereNull('bill_id')
@@ -63,8 +63,8 @@ class SalesController extends Controller
     {
         //ยืนยันการสั่งซื้อ   
         $requestData = $request->all();
-        //คำนวณราคาสินค้า 
-        $requestData['total'] = $requestData['saleprice'] * $requestData['amount'];//sumvat
+        //คำนวณราคาสินค้า sumvat
+        $requestData['total'] = $requestData['saleprice'] * $requestData['amount'] + $requestData['saleprice'] * $requestData['amount'] * 0.07 ;
         //ระบุ user_id
         $requestData['user_id'] = Auth::id();
 
@@ -100,11 +100,11 @@ class SalesController extends Controller
     public function edit($id)
     {
         $products = DB::table('products') 
-            ->select('pro_name','drug_id','saleprice','id')
+            ->select('pro_name','drug_id','saleprice','stock_ps')
             ->get();
         $sale = Sale::findOrFail($id);
 
-        return view('sales.edit', compact('sale','product'));
+        return view('sales.edit', compact('sale','products'));
     }
 
     /**
