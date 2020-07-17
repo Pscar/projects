@@ -121,21 +121,19 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ url('/bills') }}" class="nav-link active">
-                 
                   <p style="font-family: 'Mitr', sans-serif;">พิมพ์ใบเสร็จ</p>
                 </a>
               </li>          
             </ul>
           </li>
           <li class="nav-header" style="font-family: 'Mitr', sans-serif;">Menu</li>
-          
-          <li class="nav-item">
-            <a href="{{ url('/products') }}" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
-              <p style="font-family: 'Mitr', sans-serif;">ข้อมูลยา</p>
-            </a>
+            <ul class="nav nav-treeview">
+              <a href="{{ url('/products') }}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p style="font-family: 'Mitr', sans-serif;">ข้อมูลยา</p>
+              </a>
+            </ul>
           </li> 
-
           <li class="nav-item">
             <a href="{{ url('/lots') }}" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
@@ -144,7 +142,16 @@
           </li> 
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
-            <p style="font-family: 'Mitr', sans-serif;">พิมพ์รายงาน </p></a>
+              <p style="font-family: 'Mitr', sans-serif;">พิมพ์รายงาน </p>
+              <i class="right fas fa-angle-left"></i>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('/stockps/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">รายงานสต็อคล่าสุด </p>
+                </a>
+              </li>
+            </ul>
           </li>
   </li>
   <li class="nav-item">

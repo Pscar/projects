@@ -53,6 +53,7 @@ class ProductController extends Controller
             return view('products.create', compact('category'));
     }
 
+
     /**
      * Store a newly created resource in storage.
      *

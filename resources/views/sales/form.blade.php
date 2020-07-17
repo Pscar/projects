@@ -18,8 +18,8 @@
     <label for="amount" class="control-label">{{ 'จำนวน' }}</label>
     <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : ''}}" >
     {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
-  
 </div>
+
 
 
 <div class="form-group d-none {{ $errors->has('user_id') ? 'has-error' : ''}}">

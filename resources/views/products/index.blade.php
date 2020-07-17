@@ -30,7 +30,7 @@
                                         <th>ผลิตภัณฑ์</th>                                      
                                         <th>บรรจุ</th>
                                         <th>ราคา</th>
-                                        <th >Actions</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>

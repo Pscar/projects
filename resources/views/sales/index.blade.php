@@ -79,21 +79,21 @@
                 </div>
                 <div class="col-md-6 text-right">
                     <div class="card">      
-                        <div class="card-header text-center">Sales</div>             
+                        <div class="card-header text-center">ยอดรวมสินค้า</div>             
                             <tr> 
                                 <td> 
                                     <form method="POST" action="{{ url('/bills') }}" accept-charset="UTF-8" class="form-horizontal text-center" enctype="multipart/form-data">
                                     {{ csrf_field() }}
-                                    <span>ยอดรวมสินค้าทั้งหมด</span>  {{ number_format($sales->sum('total')) }} <br>               
+                                    <input class="form-control" name="total" type="number" id="total" value="{{ number_format($sales->sum('total')) }}" readonly>   
                                         <button type="submit" class="btn btn-danger btn-sm"> สั่งสินค้า</button>           
                                     </form>
                                 </td>                   
                             </tr>      
                     </div>
                 </div>
+               
             </div>
     </div> 
-     
 @endsection
 
 
