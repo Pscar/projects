@@ -20,7 +20,7 @@
     {!! $errors->first('saleprice', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('stock_ps') ? 'has-error' : ''}}">
-    <label for="stock_ps" class="control-label">{{ 'สต็อคขั้นต่ำ' }}</label>
+    <label for="stock_ps" class="control-label">{{ 'สต็อคปัจจุบัน' }}</label>
     <input class="form-control" name="stock_ps" type="number" id="stock_ps" value="{{ isset($product->stock_ps) ? $product->stock_ps : ''}}" >
     {!! $errors->first('stock_ps', '<p class="help-block">:message</p>') !!}
 </div>

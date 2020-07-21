@@ -2,11 +2,9 @@
     <div class="modal-dialog modal-xl" role="document" style="max-width:1200px;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">เพิ่มรายการสินค้า</h5>
-
-                <form method="GET" action="{{ url('/sales/create') }}" accept-charset="UTF-8" class="form-inline" role="search">
+                <form method="GET" action="{{ url('/sales/create') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="drug_id" placeholder="BARCODE" value="{{ request('search') }}">
+                        <input type="text" class="form-control" name="drug_id" placeholder="BARCODE" class="form-inline my-2 my-lg-0 float-right" value="{{ request('search') }}">
                         <span class="input-group-append">
                             <button class="btn btn-secondary"type="submit">
                             <i class="fa fa-search"></i>
