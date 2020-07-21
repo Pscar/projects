@@ -14,8 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-
 Auth::routes();
 Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::resource('bills', 'BillController');
@@ -25,8 +23,7 @@ Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::resource('lots', 'LotsController');
     Route::resource('bills', 'BillsController');
    });
-   
 Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/stockps/pdf', 'StockpsController@pdf_index');
 });
 Route::get('/home', 'HomeController@index')->name('home');    
-Route::get('/stockps/pdf', 'StockpsController@pdf_index');

@@ -43,9 +43,9 @@
                                             <td>{{ $item->saleprice }}</td>
                                             <td>
                                             @if($item->stock_ps >= 100)
-                                            <span class="badge badge-success">สินค้าพร้อมขาย</span>
+                                            <span class="badge badge-success">สินค้าพร้อมขาย <br>{{$item->stock_ps}}</span>
                                             @elseif($item->stock_ps == 0)
-                                            <span class="badge badge-danger">สินค้าหมดแล้ว</span>  
+                                            <span class="badge badge-danger">สินค้าหมดแล้ว <br>{{$item->stock_ps}}</span>  
                                             @else
                                                 <span class="badge badge-warning">สินค้าจะหมดแล้ว <br>{{$item->stock_ps}}</span>
                                             @endif

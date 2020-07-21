@@ -127,19 +127,18 @@
             </ul>
           </li>
           <li class="nav-header" style="font-family: 'Mitr', sans-serif;">Menu</li>
-            <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ url('/lots') }}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p style="font-family: 'Mitr', sans-serif;">เพิ่มสต็อค</p>
+              </a>
+            </li> 
+            <li class="nav-item">
               <a href="{{ url('/products') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
                 <p style="font-family: 'Mitr', sans-serif;">ข้อมูลยา</p>
               </a>
-            </ul>
-          </li> 
-          <li class="nav-item">
-            <a href="{{ url('/lots') }}" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
-              <p style="font-family: 'Mitr', sans-serif;">ข้อมูลสต็อค</p>
-            </a>
-          </li> 
+            </li> 
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <p style="font-family: 'Mitr', sans-serif;">พิมพ์รายงาน </p>
@@ -155,10 +154,15 @@
           </li>
   </li>
   <li class="nav-item">
-            <a href="#" class="nav-link">
-              <p style="font-family: 'Mitr', sans-serif;">ออกจากระบบ</p>
-            </a>
-          </li>
+    <a class="dropdown-item" href="{{ route('logout') }}"
+        onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
+        {{ __('ออกจากระบบ') }}
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+  </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
