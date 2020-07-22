@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddVatIdToSalesTable extends Migration
+class ChangeColumnsDelToSalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,17 @@ class AddVatIdToSalesTable extends Migration
     public function up()
     {
         Schema::table('sales', function (Blueprint $table) {
-            $table->float('vat')->nullable();
+            $table->dropColumn('vat');
+            $table->dropColumn('vat_totalafter');
+            $table->dropColumn('stock_ps');
+            });
+        Schema::table('bills', function (Blueprint $table) {
+            $table->dropColumn('checking_at');
+            $table->dropColumn('paid_at');
+            $table->dropColumn('cancelled_at');
+            $table->dropColumn('completed_at');
         });
+        
     }
 
     /**

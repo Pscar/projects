@@ -25,14 +25,6 @@ class ChangeColumnsToSalesTable extends Migration
      */
     public function down()
     {
-        Schema::table('sales', function (Blueprint $table) {
-            $table->dropColumn('vat');
-        });
-        Schema::table('bills', function (Blueprint $table) {
-            $table->dropColumn('checking_at');
-            $table->dropColumn('paid_at');
-            $table->dropColumn('cancelled_at');
-            $table->dropColumn('completed_at');
-        });
+        
     }
 }

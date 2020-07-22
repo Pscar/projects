@@ -40,6 +40,7 @@
 <!-- jQuery -->
 <script src="{{ asset ('code.jquery.com/jquery-3.5.1.js') }}"></script>
 <script src="{{ asset ('plugins/jquery/jquery.min.js') }}"></script>
+<script src="https://kit.fontawesome.com/d59a8a2721.js"></script>
 <script type="text/javascript" charset="utf8" src="{{ asset ('http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js')}}"></script>
 
 <!-- jQuery UI 1.11.4 -->

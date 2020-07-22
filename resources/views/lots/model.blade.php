@@ -16,7 +16,7 @@
             </div>
             <div class="modal-body">
                 <div class="table-responsive text-center">
-                    <table id="example" class="table table-sm">
+                    <table id="example" class="table-hover">
                         <thead>
                             <tr>
                                 <th>รหัสยา</th>
@@ -36,7 +36,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    
                 </div>
             </div>
             <div class="modal-footer">

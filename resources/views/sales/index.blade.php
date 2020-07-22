@@ -7,9 +7,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>วันที่ปัจจุบัน</label>
-                            <div>
-                                <input class="form-control" size="2" value="<?php echo date ("d-m-Y H:i:s"); ?>"></input>
-                            </div>
+                            <input class="form-control" size="2" value="<?php echo date ("d-m-Y H:i:s"); ?>"></input>
                         </div>
                         <div class="form-group">
                             <label class="control-label">ผู้ใช้ปัจจุบัน</label>
@@ -19,32 +17,34 @@
                             <label class="control-label">สถานะผู้ใช้</label>
                             <input class="form-control" value="{{ Auth::user()->role }}"></input>
                         </div>
-                    </div>
-                              
+                    </div>  
                 </div>   
             </div>
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body"style="height:300px;">
+                        <label class="control-label">สแกนสินค้า</label>
                         <form method="GET" action="{{ url('/sales/create') }}"role="search">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="drug_id" placeholder="BARCODE" value="{{ request('search') }}">
-                                <span class="input-group-append">
-                                    <a href="{{ url('/sales/create') }}" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"title="Add New Sale"> 
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                    </a>
-                                    <body>
-                                        @include('sales/model')
-                                    </body>
-                                </span>
+                                <input type="text" class="form-control" name="drug_id" placeholder="BARCODE" value="{{ request('search') }}"></input>
                             </div>
                         </form>
+                        <label class="control-label pt-3">จำนวน</label>
                         <div class="form-group">
-                            <label class="control-label">จำนวน</label>
                             <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : ''}}" >
                         </div>
+                        <div class="form-group text-center">
+                            <a href="{{ url('/sales/create') }}" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="Showproduct">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i> เพิ่มจำนวนสินค้า
+                            </a>
+                            <a href="{{ url('/bills') }}" class="btn btn-success btn-sm">
+                                <i class="fa fa-shopping-basket" aria-hidden="true"></i> รายการขาย
+                            </a>
+                        </div>  
+                        <body>
+                            @include('sales/model')
+                        </body>
                     </div>
-                
                 </div>   
             </div>
             <div class="col-md-2">

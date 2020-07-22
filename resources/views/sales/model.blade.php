@@ -46,15 +46,14 @@
                                         @elseif($item->stock_ps == 0)
                                             <span class="badge badge-danger">สินค้าหมดแล้ว</span>  
                                         @else
-                                            <span class="badge badge-warning">สินค้าจะหมดแล้ว <br>{{$item->stock_ps}}</span>
+                                            <span class="badge badge-warning">สินค้าจะหมดแล้ว</span>
                                         @endif
                                     </td>
-                                        
                                     <!--เช็คสถานะ ถ้าสต็อคหมดจะไม่สามารถสแกนสินค้าได้-->
                                     @if($item->stock_ps == 0)
-                                        <td><a href="{{ url('/lots/create') }}?drug_id={{ $item->drug_id }}" title="scan"><button type="button" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"> เพิ่มสินค้า</i></td></button>
+                                        <td>{{$item->stock_ps}}</td>
                                     @else
-                                        <td><a href="{{ url('/lots/create') }}?drug_id={{ $item->drug_id }}" title="scan"><i class="fa fa-eye d-none" aria-hidden="true"></i></td>
+                                        <td></td>
                                     @endif
                                 </tr>
                             @endforeach
