@@ -48,7 +48,7 @@
                                             <td>{{ $item->created_at}}</td>
                                             <td><!--วันหมดอายุ-->
                                             <?php
-                                            echo date("Y-m-d H:i:s",strtotime("+2 year"))."<br>";
+                                            echo date("d-m-Y H:i:s",strtotime("+6 mount"))."<br>";
                                             ?> 
                                             </td>
                                             <td>

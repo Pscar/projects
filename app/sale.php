@@ -36,8 +36,8 @@ class Sale extends Model
     public function bill(){
         return $this->belongsTo('App\Bill','bill_id');
     }
-    public function scans(){
-        return $this->hasMany('App\Scan','sale_id'); 
+    public function sales(){
+        return $this->hasMany('App\Sale','product_id');
     }
 
 }

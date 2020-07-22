@@ -16,7 +16,7 @@
 <div class="form-group {{ $errors->has('stock_ps') ? 'has-error' : ''}}">
     <label for="pro_name" class="control-label">{{ 'คงเหลือ' }}</label>
     <input class="form-control" name="stock_ps" type="text" id="stock_ps" value="{{ isset($sale->stock_ps) ? $sale->stock_ps : $product->stock_ps }}" readonly> 
-    {!! $errors->first('pro_name', '<p class="help-block">:message</p>') !!}
+    {!! $errors->first('stock_ps', '<p class="help-block">:message</p>') !!}
 </div>
 <!-- class d-none -->
 <div class="form-group d-none {{ $errors->has('category_id') ? 'has-error' : ''}}">

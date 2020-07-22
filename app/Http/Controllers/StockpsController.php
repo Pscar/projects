@@ -13,9 +13,8 @@ class StockpsController extends Controller
       $products = DB::table('products') 
         ->select('*')
         ->get();
-        $pdf = PDF::loadView('product_pdf', ['products'=>$products] );
+        $pdf = PDF::loadView('report/product_pdf', ['products'=>$products] );
         return $pdf->stream('product.pdf'); //แบบนี้จะ stream มา preview
         //return $pdf->download('test.pdf'); //แบบนี้จะดาวโหลดเลย
   }
-
 }

@@ -22,13 +22,9 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr><th>รายการขาย</th><td>{{ $bill->id }}</td></tr>
+                                    <tr><th>หมายเลขที่</th><td>{{ $bill->id }}</td></tr>
                                     <tr><th>ผู้ใช้งาน</th><td> {{ $bill->user->name }} </td></tr>
                                     <tr><th>ราคารวม</th><td> {{ $bill->total }} </td></tr>
-                                    <tr><th class="d-none"> Checking At </th><td class="d-none"> {{ $bill->checking_at }} </td></tr>
-                                    <tr><th class="d-none"> Paid At </th><td class="d-none"> {{ $bill->paid_at }} </td></tr>
-                                    <tr><th class="d-none"> Cancelled At </th><td class="d-none"> {{ $bill->cancelled_at }} </td></tr>
-                                    <tr><th class="d-none"> Completed At </th><td class="d-none"> {{ $bill->completed_at }} </td></tr>
                                 </tbody>
                             </table>
                             <table class="table text-center">

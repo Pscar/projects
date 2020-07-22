@@ -32,10 +32,6 @@
                                         <th>ผู้ใช้งาน</th>
                                         <th>ราคารวม</th>
                                         <th>เวลาขาย</th>
-                                        <th class="d-none">Checking At :</th>
-                                        <th class="d-none">Paid At :</th>
-                                        <th class="d-none">Cancelled At</th>
-                                        <th class="d-none">Completed At</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -48,10 +44,6 @@
                                         <td>{{ $item->total }}</td>
                                         <!--------------------------->
                                         <td>{{ $item->created_at }}</td>
-                                        <td class="d-none">{{ $item->checking_at }}</td>
-                                        <td class="d-none">{{ $item->paid_at }}</td>
-                                        <td class="d-none">{{ $item->cancelled_at}}</td>
-                                        <td class="d-none">{{ $item->completed_at }}</td>
                                         <td>
                                             <a href="{{ url('/bills/' . $item->id) }}" title="View Bill"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/bills/' . $item->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

@@ -11,7 +11,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">ผู้ใช้ปัจจุบัน</label>
-                            <input class="form-control" value="{{ Auth::user()->name }}{{ Auth::user()->role }}"></input>
+                            <input class="form-control" value="{{ Auth::user()->name }}"></input>
                         </div>
                         <div class="form-group">
                             <label class="control-label">สถานะผู้ใช้</label>
@@ -85,11 +85,11 @@
                                             <td class="text-center">{{ $item->amount }}</td>
                                             <td class="text-center">
                                                 <a href="{{ url('/sales/' . $item->id) }}" title="View Sale"><button class="btn btn-info btn-sm d-none"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                                <a href="{{ url('/sales/' . $item->id . '/edit') }}" title="Edit Sale"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                                <a href="{{ url('/sales/' . $item->id . '/edit') }}" title="Edit Sale"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                 <form method="POST" action="{{ url('/sales' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                     {{ method_field('DELETE') }}
                                                     {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Sale" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Sale" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
                                                     </form>                                          
                                             </td>
                                         </tr>

@@ -147,7 +147,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/stockps/pdf') }}" class="nav-link active">
+                <a href="{{ url('report/stockps/pdf') }}" class="nav-link active">
                   <p style="font-family: 'Mitr', sans-serif;">รายงานสต็อคล่าสุด </p>
                 </a>
               </li>
