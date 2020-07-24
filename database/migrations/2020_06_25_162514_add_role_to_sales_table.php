@@ -14,7 +14,7 @@ class AddRoleToSalesTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string("role")->default("staff")->nullable();
+            $table->string("role")->default("stranger")->nullable();
             $table->string("tel")->nullable();
             
         });

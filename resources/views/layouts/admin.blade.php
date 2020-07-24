@@ -150,12 +150,18 @@
             </li>
         @endif
         @if(Auth::user()->role == "admin") 
+           
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <p style="font-family: 'Mitr', sans-serif;">พิมพ์รายงาน </p>
               <i class="right fas fa-angle-left"></i>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('/user') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ข้อมูลผู้ใช้งาน</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="{{ url('report/stockps/pdf') }}" class="nav-link active">
                   <p style="font-family: 'Mitr', sans-serif;">รายงานสต็อคล่าสุด </p>

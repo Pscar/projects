@@ -26,9 +26,10 @@ Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::resource('bills', 'BillsController');
    });
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    
+    Route::resource('user', 'UserController');
     Route::get('/report/expend/pdf', 'ExpenditureController@pdf_expenditure');
     Route::get('/report/sales/pdf', 'SalesmonthController@pdf_salesmonth');
+    Route::get('/report/stockps/pdf', 'StockpsController@pdf_index');
 });
 Route::get('/home', 'HomeController@index')->name('home');    
-Route::get('/report/stockps/pdf', 'StockpsController@pdf_index');
+
