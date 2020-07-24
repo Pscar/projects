@@ -5,9 +5,9 @@
     <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header text-center"style="font-size:50px;">สินค้า </div>
+                    <div class="card text-center"style="font-size:80px;">รายการสินค้า</div>
                         <div class="card-body">
-                        <form method="GET" action="{{ url('/products') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
+                        <form method="GET" action="{{ url('/products') }}" accept-charset="UTF-8" role="search">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
                                 <span class="input-group-append">
@@ -30,6 +30,7 @@
                                         <th>ผลิตภัณฑ์</th>                                      
                                         <th>บรรจุ</th>
                                         <th>ราคา</th>
+                                        <th>สถานะ</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>

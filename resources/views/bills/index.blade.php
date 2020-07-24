@@ -1,17 +1,16 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
 @section('content')
-    <div class="container">
+    <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Bills</div>
+                    <div class="card text-center"style="font-size:80px;">รายการขาย</div>
                     <div class="card-body">
-                        <a href="{{ url('/bills/create') }}" class="btn btn-success btn-sm" title="Add New Bill">
+                        <a href="{{ url('/bills/create') }}" class="btn btn-success btn-sm d-none" title="Add New Bill">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
-                        <form method="GET" action="{{ url('/bills') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
+                        <form method="GET" action="{{ url('/bills') }}" accept-charset="UTF-8"  role="search">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
                                 <span class="input-group-append">
@@ -28,7 +27,7 @@
                             <table class="table text-center">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>รายการขาย</th>
                                         <th>ผู้ใช้งาน</th>
                                         <th>ราคารวม</th>
                                         <th>เวลาขาย</th>
@@ -46,12 +45,12 @@
                                         <td>{{ $item->created_at }}</td>
                                         <td>
                                             <a href="{{ url('/bills/' . $item->id) }}" title="View Bill"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/bills/' . $item->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/bills/' . $item->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/bills' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Bill" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm d-none" title="Delete Bill" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         </td>
                                     </tr>

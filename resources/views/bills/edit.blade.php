@@ -1,13 +1,10 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
 @section('content')
-    <div class="container">
+    <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
-            @include('admin.sidebar')
-
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Edit Bill #{{ $bill->id }}</div>
+                    <div class="card-header">แก้ไขรายการบิลที่ {{ $bill->id }}</div>
                     <div class="card-body">
                         <a href="{{ url('/bills') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />

@@ -1,11 +1,10 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
 @section('content')
-    <div class="container">
+    <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Bill {{ $bill->id }}</div>
+                    <div class="card-header">รายการขายที่ {{ $bill->id }}</div>
                     <div class="card-body">
 
                         <a href="{{ url('/bills') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
@@ -20,29 +19,18 @@
                         <br/>
 
                         <div class="table-responsive">
-                            <table class="table">
-                                <tbody>
-                                    <tr><th>หมายเลขที่</th><td>{{ $bill->id }}</td></tr>
-                                    <tr><th>ผู้ใช้งาน</th><td> {{ $bill->user->name }} </td></tr>
-                                    <tr><th>ราคารวม</th><td> {{ $bill->total }} </td></tr>
-                                </tbody>
-                            </table>
                             <table class="table text-center">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>ยา</th>
+                                        <th>รายการขายที่ {{ $bill->id }}</th>
+                                        <th>รายการยา</th>
                                         <th>ราคาขาย</th>
                                         <th class="d-none">ประเภทยา</th>
-                                        <th>จำนวน</th>
-                                        <th>ราคารวม</th>
-                                        <th>คนให้บริการ</th>
-                                    </tr>
-                                </thead>
+                                        <th>จำนวน</th> 
+                                        <th>ราคารวม</th> 
                                 @php
                                     $sales = $bill->sales;
                                 @endphp
-
                                 <tbody>
                                 @foreach($sales as $item)
                                     <tr>
@@ -50,12 +38,15 @@
                                         <td>{{ $item->pro_name }}</td>
                                         <td>{{ $item->saleprice }}</td>
                                         <td class="d-none">{{ $item->category_id }}</td>
-                                        <td>{{ $item->amount }}</td>
+                                        <td>{{ $item->amount }}</td>       
                                         <td>{{ $item->total }}</td>
-                                        <td>{{ $item->user->name }}</td>
                                     </tr>
-                                @endforeach
-                                </tbody>
+                                @endforeach                                    
+                                </tbody>                   
+                                        <tr><td colspan="6">ราคารวม {{ number_format($sales->sum('total')) }}</td></tr>
+                                        <tr><td colspan="6">ผู้ให้บริการ {{ $item->user->name }}</td></tr>        
+                                    </tr> 
+                                </thead>        
                             </table>
                         </div>
                     </div>

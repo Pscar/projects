@@ -28,7 +28,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400&display=swap" rel="stylesheet">
   <style>
-        h1, h2, h3, h4, h5, h6, nav, .nav, .menu, button, .button, .btn, .price, ._heading, .wp-block-pullquote blockquote, blockquote, label, legend, a, .card-header, th,td,input {
+        h1, h2, h3, h4, h5, h6, nav, .nav, .menu, button, .button, .btn, .price, ._heading, .wp-block-pullquote blockquote, blockquote, label, legend, a, .card-header, th,td,input,.card {
             font-family: "Mitr", sans-serif !important;
             font-weight: 120 !important;
             
@@ -130,7 +130,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ url('/bills') }}" class="nav-link active">
-                  <p style="font-family: 'Mitr', sans-serif;">พิมพ์ใบเสร็จ</p>
+                  <p style="font-family: 'Mitr', sans-serif;">รายการขาย</p>
                 </a>
               </li>          
             </ul>

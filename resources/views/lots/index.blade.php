@@ -4,7 +4,7 @@
         <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">Lots</div>
+                        <div class="card text-center"style="font-size:80px;">สต็อคเข้าใหม่</div>
                         <div class="card-body">
                             <a href="{{ url('/lots/create') }}" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="Add New Lot">
                                 <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มจำนวนสินค้า
