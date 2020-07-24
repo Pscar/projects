@@ -14,7 +14,7 @@ class ExpenditureController extends Controller
           ->select('drug_id','cost')
           ->get();
           $pdf = PDF::loadView('report/expend_pdf', ['lots'=>$lots] );
-          return $pdf->stream('expend.pdf'); //แบบนี้จะ stream มา preview
+          return $pdf->stream('รายงานสั่งซื้อยา.pdf'); //แบบนี้จะ stream มา preview
           //return $pdf->download('test.pdf'); //แบบนี้จะดาวโหลดเลย
   }
 }

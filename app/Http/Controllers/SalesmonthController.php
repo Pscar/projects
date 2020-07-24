@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PDF;
 use DB;
-use App\Bill;
+use App\Sale;
 
 
 class SalesmonthController extends Controller
 {
     public function pdf_salesmonth() {
-        $bills = DB::table('bills') 
+        $sale = DB::table('sales') 
           ->select('*')
           ->get();
-        $pdf = PDF::loadView('report/sales_pdf', ['bills'=>$bills]);
-        return $pdf->stream('sales.pdf');
+        $pdf = PDF::loadView('report/sales_pdf', ['sales'=>$sale]);
+        return $pdf->stream('รายงานการขาย.pdf');//ชื่อไฟล์ PDF
   }
 }

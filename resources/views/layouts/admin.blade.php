@@ -77,7 +77,7 @@
 <script src="{{ asset ('dist/js/demo.js') }}"></script>
 <div class="wrapper">
 
-  <!-- Navbar -->
+  @if(Auth::user()->role == "staff")
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -87,9 +87,16 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ url('/sales') }}" class="nav-link" style="font-family: 'Mitr', sans-serif;">หน้าจอขาย</a>
       </li>
-    </ul>
-   
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ url('/products')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">สต็อคข้อมูลปัจจุบัน</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ url('/lots')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">สต็อคเข้าใหม่</a>
+      </li>
+    </ul> 
+  @endif
   </nav>
+ 
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -108,11 +115,12 @@
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
+  
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+        @if(Auth::user()->role == "staff")
           <li class="nav-item has-treeview menu-open">
             <a href="{{ url('/sales') }}" class="nav-link active">
               <p style="font-family: 'Mitr', sans-serif;">หน้าจอขาย
@@ -127,7 +135,7 @@
               </li>          
             </ul>
           </li>
-          <li class="nav-header" style="font-family: 'Mitr', sans-serif;">Menu</li>
+          <li class="nav-header" style="font-family: 'Mitr', sans-serif;">Menu</li>          
             <li class="nav-item">
               <a href="{{ url('/lots') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
@@ -139,7 +147,9 @@
                 <i class="nav-icon fas fa-file"></i>
                 <p style="font-family: 'Mitr', sans-serif;">ข้อมูลยา</p>
               </a>
-            </li> 
+            </li>
+        @endif
+        @if(Auth::user()->role == "admin") 
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <p style="font-family: 'Mitr', sans-serif;">พิมพ์รายงาน </p>
@@ -151,8 +161,19 @@
                   <p style="font-family: 'Mitr', sans-serif;">รายงานสต็อคล่าสุด </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ url('report/sales/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">รายงานการขาย </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/expand/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">รายงานการสั่งซื้อยา </p>
+                </a>
+              </li>
             </ul>
           </li>
+      @endif
   </li>
   <li class="nav-item">
     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -177,7 +198,7 @@
   <!-- /.content-wrapper -->
 </div>
   <footer class="main-footer">
-    <span>Copyright &copy; 2014-2019 AdminLTE.io All rights reserved.</span>
+    <span>Copyright </span>
     <div class="float-right d-none d-sm-inline-block">
     </div>
   </footer>

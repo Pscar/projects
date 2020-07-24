@@ -7,24 +7,8 @@
         {
             "name": "total",
             "type": "float"
-        },     
-        {
-            "name": "checking_at : ",
-            "type": "datetime"
-        },
-        
-        {
-            "name": "paid_at :",
-            "type": "datetime"
-        },
-        {
-            "name": "cancelled_at",
-            "type": "datetime"
-        },
-        {
-            "name": "completed_at",
-            "type": "datetime"
         }
+        
         
     ]
  }

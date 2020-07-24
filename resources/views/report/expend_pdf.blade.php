@@ -46,7 +46,7 @@ body{
 
 
 <h1 style="text-align:center">ร้านขายยาราชพฤกษ์</h1>
-<h2 style="text-align:center">ยอดขายทั้งหมด</h2>
+<h2 style="text-align:center">รายงานสั่งซื้อยา</h2>
 <h3 style="text-align:center"><b>พิมพ์ ณ วันที่ <?php echo date ("d-m-Y H:i:s"); ?><br></h3>
 
 <div class="table-responsive text-center">
@@ -63,7 +63,7 @@ body{
                 <td>{{ $p->drug_id }}</td>
                 <td>{{ $p->cost}}</td>
             </tr>
-        @endforeach
+          @endforeach
             <tr>
                 <td>รวมรายจ่าย</td>
                 <td>{{number_format($lots->sum('cost'))}}</td>

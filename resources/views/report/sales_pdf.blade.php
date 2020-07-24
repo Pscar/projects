@@ -50,7 +50,7 @@ body{
 </style>
 
 <h1 style="text-align:center">ร้านขายยาราชพฤกษ์</h1>
-<h2 style="text-align:center">รายการสต็อคสินค้า</h2>
+<h2 style="text-align:center">ยอดขายในช่วงเดือน</h2>
 <h3 style="text-align:center"><b>พิมพ์ ณ วันที่ <?php echo date ("d-m-Y H:i:s"); ?><br></h3>
 
 <div class="table-responsive">
@@ -58,25 +58,30 @@ body{
         <thead>
             <tr>
                 <th>#</th>
-                <th>ราคารวม</th>
                 <th>เวลาขาย</th>
+                <th>ชื่อยา</th>
+                <th>จำนวน</th> 
+                <th>ราคาขาย</th> 
             </tr>
         </thead>
         <tbody>
-        @foreach($bills as $item)
+        @foreach($sales as $item)
             <tr>
                 <td>{{ $item->id }}</td>
-                <td>{{ $item->total }}</td>
                 <td>{{ $item->created_at }}</td>
+                <td>{{ $item->pro_name }}</td>
+                <td>{{ $item->amount }}</td>
+                <td>{{ $item->total}}</td>
             </tr>
-            @foreach($bills->sales as $item)
-                <tr>
-                    <td>{{ $item->pro_name }}</td>
-                    <td>{{ $item->saleprice }}</td>
-                </tr>
-            @endforeach
         @endforeach
-       
+            <tr>
+                <td colspan="3">จำนวนของที่ขายได้</td>
+                <td rowspan="2">{{number_format($sales->sum('amount'))}}</td>
+                <td rowspan="2">{{number_format($sales->sum('total'))}}</td>
+            </tr>
+            <tr> 
+                <td colspan="3">ราคาที่ขายได้ทั้งหมด</td>
+            </tr>
         </tbody>
     </table>
 </div>
