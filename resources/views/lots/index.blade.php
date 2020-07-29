@@ -42,13 +42,13 @@
                                     @foreach($lot as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->product->drug_id }}</td>  
+                                            <td><a href="{{ url('/lots/' . $item->id) }}"> {{$item->drug_id}} </a></td>  
                                             <td>{{ $item->cost }}</td>
                                             <td>{{ $item->stock_im }}</td>
                                             <td>{{ $item->created_at}}</td>
                                             <td><!--วันหมดอายุ-->
                                             <?php
-                                            echo date("d-m-Y H:i:s",strtotime("+6 mount"))."<br>";
+                                                echo date("d-m-Y H:i:s",strtotime("+6 mounth"))."<br>";
                                             ?> 
                                             </td>
                                             <td>

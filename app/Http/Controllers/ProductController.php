@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Product;
+use App\Lot;
 use App\Category;
 use App\Sale;
 use Illuminate\Http\Request;
@@ -20,6 +21,10 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->get('search');
+        $pro_name =$request->get('pro_name');
+        $drug_id =$request->get('drug_id','asc');
+        $stock_ps =$request->get('stock_ps','asc');
+
         $perPage = 25;
 
         if (!empty($keyword)) {

@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -12,7 +12,7 @@
                     <div class="card-body">
 
                         <a href="{{ url('/products') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>  ย้อนกลับ  </button></a>
-                        <a href="{{ url('/products/' . $product->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขรายการสินค้า</button></a>
+                        <a href="{{ url('/products/' . $product->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขรายการสินค้า</button></a>
                         <form method="POST" action="{{ url('products' . '/' . $product->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
@@ -22,20 +22,57 @@
                         <br/>
 
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table text-center">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th> ชื่อสินค้า</th>
+                                        <th> บรรจุ </th>
+                                        <th> ประเภท </th>
+                                        <th> ราคาขาย </th>
+                                        <th> สต็อคปัจจุบัน </th>
+                                    </tr>                          
+                                </thead>
                                 <tbody>
-                                    <tr><th>#</th><td>{{ $product->id }}</td></tr>
-                                    <tr><th> ชื่อสินค้่า </th><td> {{ $product->pro_name }} </td></tr>
-                                    <tr><th> รหัสสินค้า </th><td> {{ $product->drug_id }} </td></tr>
-                                    <tr><th> บรรจุ </th><td> {{ $product->contain }} </td></tr>
-                                    <tr><th> ประเภท </th><td>{{ $product->category->name_category}}</td></tr>
-                                    <tr><th class="d-none"> สถานะ </th><td class="d-none"> {{ $product->status_sale }} </td></tr>
-                                    <tr><th> ราคาขาย </th><td> {{ $product->saleprice }} </td></tr>
-                                    <tr><th> สต็อคปัจจุบัน </th><td> {{ $product->stock_ps }} </td></tr>                                   
+                                    <td> {{ $product->id }}</td>
+                                    <td> {{ $product->pro_name }} </td>
+                                    <td> {{ $product->contain }} </td>
+                                    <td> {{ $product->category->name_category}}</td>
+                                    <td> {{ $product->saleprice }} </td>
+                                    <td> {{ $product->stock_ps }} </td>
                                 </tbody>
                             </table>
                         </div>
-                           
+                        
+                        <div class="table-responsive">
+                            <table class="table text-center">
+                                <thead>
+                                    <tr>
+                                        <th>รอบเข้า</th>
+                                        <th>สต็อคเข้าใหม่</th>
+                                        <th>วันเข้าใหม่</th>
+                                        <th>วันหมดอายุ</th>
+
+                                </thead>
+                            @php
+                                $lots = $product->lots;
+                            @endphp
+                                <tbody>
+                                    @foreach($lots as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->stock_im }}</td>
+                                            <td>{{ $item->created_at}}</td>
+                                            <td><!--วันหมดอายุ-->
+                                            <?php
+                                                echo date("d-m-Y H:i:s",strtotime("+6 mounth"))."<br>";
+                                            ?> 
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>  
 
                     </div>
                 </div>

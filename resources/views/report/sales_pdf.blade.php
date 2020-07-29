@@ -65,19 +65,21 @@ body{
             </tr>
         </thead>
         <tbody>
-        @foreach($sales as $item)
+        @foreach($bills as $item)
+            @foreach($item->sales as $sale)
             <tr>
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->created_at }}</td>
-                <td>{{ $item->pro_name }}</td>
-                <td>{{ $item->amount }}</td>
+                <td>{{ $sale->pro_name }}</td>
+                <td>{{ $sale->amount }}</td>
                 <td>{{ $item->total}}</td>
             </tr>
+            @endforeach
         @endforeach
             <tr>
                 <td colspan="3">จำนวนของที่ขายได้</td>
-                <td rowspan="2">{{number_format($sales->sum('amount'))}}</td>
-                <td rowspan="2">{{number_format($sales->sum('total'))}}</td>
+                <td rowspan="2">{{number_format($sale->sum('amount'))}}</td>
+                <td rowspan="2">{{number_format($bills->sum('total'))}}</td>
             </tr>
             <tr> 
                 <td colspan="3">ราคาที่ขายได้ทั้งหมด</td>

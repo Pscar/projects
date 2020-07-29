@@ -13,7 +13,7 @@
                         <form method="POST" action="{{ url('bills' . '/' . $bill->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Bill" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Bill" onclick="return confirm(&quot;ยืนยันการลบรายการ?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                         </form>
                         <br/>
                         <br/>
@@ -28,21 +28,22 @@
                                         <th class="d-none">ประเภทยา</th>
                                         <th>จำนวน</th> 
                                         <th>ราคารวม</th> 
+                                    </tr>
                                 @php
                                     $sales = $bill->sales;
                                 @endphp
-                                <tbody>
-                                @foreach($sales as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->pro_name }}</td>
-                                        <td>{{ $item->saleprice }}</td>
-                                        <td class="d-none">{{ $item->category_id }}</td>
-                                        <td>{{ $item->amount }}</td>       
-                                        <td>{{ $item->total }}</td>
-                                    </tr>
-                                @endforeach                                    
-                                </tbody>                   
+                                    <tbody>
+                                        @foreach($sales as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->pro_name }}</td>
+                                                <td>{{ $item->saleprice }}</td>
+                                                <td class="d-none">{{ $item->category_id }}</td>
+                                                <td>{{ $item->amount }}</td>       
+                                                <td>{{ $item->total }}</td>
+                                            </tr>
+                                        @endforeach                                    
+                                    </tbody>                   
                                         <tr><td colspan="6">ราคารวม {{ number_format($sales->sum('total')) }}</td></tr>
                                         <tr><td colspan="6">ผู้ให้บริการ {{ $item->user->name }}</td></tr>        
                                     </tr> 

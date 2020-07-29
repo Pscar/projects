@@ -88,7 +88,7 @@
         <a href="{{ url('/sales') }}" class="nav-link" style="font-family: 'Mitr', sans-serif;">หน้าจอขาย</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/products')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">สต็อคข้อมูลปัจจุบัน</a>
+        <a href="{{ url('/products')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">สต็อคยาปัจจุบัน</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ url('/lots')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">สต็อคเข้าใหม่</a>
@@ -137,9 +137,9 @@
           </li>
           <li class="nav-header" style="font-family: 'Mitr', sans-serif;">Menu</li>          
             <li class="nav-item">
-              <a href="{{ url('/lots') }}" class="nav-link">
+              <a href="{{ url('/bills') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
-                <p style="font-family: 'Mitr', sans-serif;">เพิ่มสต็อค</p>
+                <p style="font-family: 'Mitr', sans-serif;">รายการขาย</p>
               </a>
             </li> 
             <li class="nav-item">
@@ -173,7 +173,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('report/expand/pdf') }}" class="nav-link active">
+                <a href="{{ url('report/expend/pdf') }}" class="nav-link active">
                   <p style="font-family: 'Mitr', sans-serif;">รายงานการสั่งซื้อยา </p>
                 </a>
               </li>

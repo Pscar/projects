@@ -29,8 +29,7 @@
                                         <th>รหัสสินค้า</th>
                                         <th>ผลิตภัณฑ์</th>                                      
                                         <th>บรรจุ</th>
-                                        <th>ราคา</th>
-                                        <th>สถานะ</th>
+                                        <th>คงเหลือ</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -41,21 +40,21 @@
                                             <td> <a href="{{ url('/products/' . $item->id) }}"> {{$item->drug_id}} </a></td>
                                             <td>{{ $item->pro_name }}</td>
                                             <td>{{ $item->contain }}</td>
-                                            <td>{{ $item->saleprice }}</td>
+                                            <td>{{ $item->stock_ps }}</td>
                                             <td>
                                             @if($item->stock_ps >= 100)
-                                            <span class="badge badge-success">สินค้าพร้อมขาย <br>{{$item->stock_ps}}</span>
+                                            <span class="badge badge-success">สินค้าพร้อมขาย</span>
                                             @elseif($item->stock_ps == 0)
-                                            <span class="badge badge-danger">สินค้าหมดแล้ว <br>{{$item->stock_ps}}</span>  
+                                            <span class="badge badge-danger">สินค้าหมดแล้ว</span>  
                                             @else
-                                                <span class="badge badge-warning">สินค้าจะหมดแล้ว <br>{{$item->stock_ps}}</span>
+                                                <span class="badge badge-warning">สินค้าจะหมดแล้ว</span>
                                             @endif
                                             
                                             </td>
                                             <td class="d-none">{{ $item->category_id }}</td>                                       
                                             <td >
                                             
-                                                <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                                <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                                 <form method="POST" action="{{ url('/products' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                     {{ method_field('DELETE') }}
@@ -76,7 +75,7 @@
                             'search' => Request::get('search'),
                             'pro_name' => Request::get('pro_name'),
                             'drug_id'=>Request::get('drug_id','asc'),
-                            'saleprice'=> Request::get('saleprice','asc'),
+                            'stock_ps'=> Request::get('stock_ps','asc'),
                             'category_id'=>Request::get('category_id','asc')
                             ])->render() !!} 
                             </div>

@@ -37,5 +37,5 @@
     {!! $errors->first('product_id', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'ยืนยันการแก้ไข' ? 'อัพเดทรายการ' : 'ยืนยันการขาย' }}">
 </div>

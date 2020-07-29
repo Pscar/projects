@@ -7,15 +7,15 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>วันที่ปัจจุบัน</label>
-                            <input class="form-control" size="2" value="<?php echo date ("d-m-Y H:i:s"); ?>"></input>
+                            <input class="form-control" size="2" value="<?php echo date ("d-m-Y H:i:s"); ?>" readonly></input>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">ผู้ใช้ปัจจุบัน</label>
-                            <input class="form-control" value="{{ Auth::user()->name }}"></input>
+                            <label class="control-label">ผู้ใช้ปัจจุบัน </label>
+                            <input class="form-control" value="{{ Auth::user()->name }}" readonly></input>
                         </div>
                         <div class="form-group">
                             <label class="control-label">สถานะผู้ใช้</label>
-                            <input class="form-control" value="{{ Auth::user()->role }}"></input>
+                            <input class="form-control" value="{{ Auth::user()->role }}" readonly></input>
                         </div>
                     </div>  
                 </div>   

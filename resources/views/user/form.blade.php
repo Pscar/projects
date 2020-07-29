@@ -10,7 +10,7 @@
 </div>
 <div class="form-group {{ $errors->has('role') ? 'has-error' : ''}}">
     <label for="role" class="control-label">{{ 'Role' }}</label>
-    <input class="form-control"name="role" type="text" id="role" value="{{ isset($user->role) ? $user->role : ''}}">
+    <input class="form-control"name="role" type="text" id="role" value="{{ isset($user->role) ? $user->role : ''}}">  
     {!! $errors->first('role', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('tel') ? 'has-error' : ''}}">

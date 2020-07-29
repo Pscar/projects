@@ -36,14 +36,14 @@
     </script>
     {!! $errors->first('category_id', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('status_sale') ? 'has-error' : ''}}">
+<div class="form-group d-none{{ $errors->has('status_sale') ? 'has-error' : ''}}">
     <label for="status_sale" class="control-label">{{ 'สถานะยา' }}</label>
     <input name="status_sale" class="form-control form-control-sm" id="status_sale" value="{{ isset($product->status_sale) ? $product->status_sale : ''}}">
     {!! $errors->first('category_id', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
+<div class="form-group d-none{{ $errors->has('user_id') ? 'has-error' : ''}}">
     <label for="user_id" class="control-label">{{ 'ผู้ใช้งาน' }}</label>
-    <input class="form-control" name="user_id" type="text" id="user_id" value="{{ isset($product->user_id) ? $product->user->name : Auth::user()->name}}" readonly>
+    <input class="form-control" name="user_id" type="text" id="user_id" value="{{ isset($product->user_id) ? $product->user_id : Auth::user()->id}}" readonly>
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div>
 
