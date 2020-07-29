@@ -20,7 +20,6 @@ class LotsController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-        
         $products = DB::table('products')//array products
             ->select('drug_id','pro_name','saleprice')
             ->get();
@@ -121,6 +120,7 @@ class LotsController extends Controller
         $lot->update($requestData);
 
         return redirect('lots')->with('flash_message', 'Lot updated!');
+    
     }
 
     /**

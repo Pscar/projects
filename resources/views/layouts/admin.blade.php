@@ -37,6 +37,8 @@
     </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+<script src="{{ asset('js/moment-with-locales.min.js') }}" ></script>
+
 <!-- jQuery -->
 <script src="{{ asset ('code.jquery.com/jquery-3.5.1.js') }}"></script>
 <script src="{{ asset ('plugins/jquery/jquery.min.js') }}"></script>
@@ -204,7 +206,7 @@
   <!-- /.content-wrapper -->
 </div>
   <footer class="main-footer">
-    <span>Copyright </span>
+  <span class="text-muted">Copyright {{ date("Y") }} © <strong>ร้านหมอยาราชพฤกษ์</strong></span>
     <div class="float-right d-none d-sm-inline-block">
     </div>
   </footer>

@@ -27,10 +27,6 @@ class BillsController extends Controller
         if (!empty($keyword)) {
             $bills = Bill::where('user_id', 'LIKE', "%$keyword%")
                 ->orWhere('total', 'LIKE', "%$keyword%")
-                ->orWhere('checking_at :', 'LIKE', "%$keyword%")
-                ->orWhere('paid_at :', 'LIKE', "%$keyword%")
-                ->orWhere('cancelled_at', 'LIKE', "%$keyword%")
-                ->orWhere('completed_at', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
             $bills = Bill::latest()->paginate($perPage);

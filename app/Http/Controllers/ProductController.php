@@ -119,12 +119,13 @@ class ProductController extends Controller
         
         $requestData = $request->all();
         $product = Product::findOrFail($id); 
-        
+      
         
         $product->update($requestData);
 
         return redirect('products')->with('flash_message', 'Product updated!');
-    }
+    
+}
 
     /**
      * Remove the specified resource from storage.

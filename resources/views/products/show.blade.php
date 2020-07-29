@@ -22,7 +22,7 @@
                         <br/>
 
                         <div class="table-responsive">
-                            <table class="table text-center">
+                            <table class="table     text-center">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -65,7 +65,7 @@
                                             <td>{{ $item->created_at}}</td>
                                             <td><!--วันหมดอายุ-->
                                             <?php
-                                                echo date("d-m-Y H:i:s",strtotime("+6 mounth"))."<br>";
+                                               echo date("d-m-Y",strtotime("+6 month"));
                                             ?> 
                                             </td>
                                         </tr>
