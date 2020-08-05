@@ -7,21 +7,21 @@
                 <div class="card">
                     <div class="card text-center"style="font-size:80px;">รายการสินค้า</div>
                         <div class="card-body">
-                        <form method="GET" action="{{ url('/products') }}" accept-charset="UTF-8" role="search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
-                                <span class="input-group-append">
-                                    <button class="btn btn-secondary" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
+                            <form method="GET" action="{{ url('/products') }}" accept-charset="UTF-8" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                                    <span class="input-group-append">
+                                        <button class="btn btn-secondary" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
 
-                        <br/>
-                        <br/>
-                    
-                        <div class="table-responsive text-center">
+                            <br/>
+                            <br/>
+                        
+                            <div class="table-responsive text-center">
                             <table class="table table-sm" id="product">
                                 <thead>
                                     <tr>
@@ -30,6 +30,7 @@
                                         <th>ผลิตภัณฑ์</th>                                      
                                         <th>บรรจุ</th>
                                         <th>คงเหลือ</th>
+                                        <th>สถานะ</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -41,18 +42,20 @@
                                             <td>{{ $item->pro_name }}</td>
                                             <td>{{ $item->contain }}</td>
                                             <td>{{ $item->stock_ps }}</td>
+                                            <td>{{ $item->status_sale}}</td>
                                             <td>
-                                            @if($item->stock_ps >= 100)
-                                            <span class="badge badge-success">สินค้าพร้อมขาย</span>
-                                            @elseif($item->stock_ps == 0)
-                                            <span class="badge badge-danger">สินค้าหมดแล้ว</span>  
-                                            @else
-                                                <span class="badge badge-warning">สินค้าจะหมดแล้ว</span>
-                                            @endif
+                                                @if($item->stock_ps >= 100)
+                                                <span class="badge badge-success">สินค้าพร้อมขาย</span>
+                                                @elseif($item->stock_ps == 0)
+                                                <span class="badge badge-danger">สินค้าหมดแล้ว</span>  
+                                                @else
+                                                    <span class="badge badge-warning">สินค้าจะหมดแล้ว</span>
+                                                @endif
                                             
                                             </td>
-                                            <td class="d-none">{{ $item->category_id }}</td>                                       
-                                            <td >
+                                            
+                                               
+                                            <td>
                                             
                                                 <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 

@@ -68,7 +68,7 @@ class SalesController extends Controller
         //ระบุ user_id
         $requestData['user_id'] = Auth::id();
 
-        // create sale
+        // create sale submit
         Sale::create($requestData);
         
     

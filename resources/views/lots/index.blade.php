@@ -33,8 +33,7 @@
                                             <th>รหัสยา</th>
                                             <th>ต้นทุน</th>
                                             <th>สต็อคเข้าใหม่</th>
-                                            <th>วันแรกเข้า</th>
-                                            <th>วันหมดอายุ</th>
+                                            <th>คงเหลือ</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -45,10 +44,11 @@
                                             <td><a href="{{ url('/lots/' . $item->id) }}"> {{$item->drug_id}} </a></td>  
                                             <td>{{ $item->cost }}</td>
                                             <td>{{ $item->stock_im }}</td>
-                                            <td>{{ $item->created_at}}</td>
-                                            <td><!--วันหมดอายุ-->
+                                            <td>{{ $item->stock_amount }}</td>
+                                            <td class="d-none"> {{($item->created_at)->format('d-m-Y H:i:s')}}</td>
+                                            <td class="d-none"><!--วันหมดอายุ-->
                                             <?php
-                                                echo date("d-m-Y H:i:s ",strtotime("+6 months"))."<br>";
+                                                echo date("d-m-Y",strtotime("+6 months"))."<br>";
                                             ?> 
                                             </td>
                                             <td>

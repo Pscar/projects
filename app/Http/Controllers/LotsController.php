@@ -9,6 +9,7 @@ use App\Lot;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 class LotsController extends Controller
 {
     /**
@@ -61,15 +62,21 @@ class LotsController extends Controller
     {
    
         $requestData = $request->all();
-
-        $lot = Lot::create($requestData);
         //update stockps in products
-
+        $lot = Lot::create($requestData);
+    
+        //update stock_amount = stock_im 
+        Lot::whereNull('stock_amount') 
+            ->where('user_id', Auth::id())
+            ->update(['stock_amount'=> $lot->stock_im]);
+            
+            
         //เรียก product_id ใน tabal lot ที่มี id ของ tabal product  
         Product::where('id',$lot->product_id)->increment('stock_ps',$lot->stock_im);//update เพิ่มสต็อคสินค้า ใน tabal product ให้เท่ากับจำนวนที่ระบุใน lot
            
         return redirect('lots')->with('flash_message', 'Lot added!');
-    }
+    
+}
 
     /**
      * Display the specified resource.
@@ -117,7 +124,12 @@ class LotsController extends Controller
         $requestData = $request->all();
         
         $lot = Lot::findOrFail($id);
+       
+   
+
         $lot->update($requestData);
+    
+        
 
         return redirect('lots')->with('flash_message', 'Lot updated!');
     

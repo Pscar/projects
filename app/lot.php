@@ -33,4 +33,8 @@ class Lot extends Model
     public function user(){
         return $this->belongsTo('App\User','user_id'); 
     }
+    public function sale(){
+        return $this->belongsTo('App\Sale','product_id');
+    }
+   
 }

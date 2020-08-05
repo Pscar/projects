@@ -45,7 +45,7 @@
                                         @endforeach                                    
                                     </tbody>                   
                                         <tr><td colspan="6">ราคารวม {{ number_format($sales->sum('total')) }}</td></tr>
-                                        <tr><td colspan="6">ผู้ให้บริการ {{ $item->user->name }}</td></tr>        
+                                        <tr><td colspan="6">ผู้ให้บริการ </td></tr>        
                                     </tr> 
                                 </thead>        
                             </table>

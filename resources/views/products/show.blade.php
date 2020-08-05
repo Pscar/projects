@@ -29,6 +29,7 @@
                                         <th> ชื่อสินค้า</th>
                                         <th> บรรจุ </th>
                                         <th> ประเภท </th>
+                                        <th> วันหมดอายุ </th>
                                         <th> ราคาขาย </th>
                                         <th> สต็อคปัจจุบัน </th>
                                     </tr>                          
@@ -38,6 +39,35 @@
                                     <td> {{ $product->pro_name }} </td>
                                     <td> {{ $product->contain }} </td>
                                     <td> {{ $product->category->name_category}}</td>
+                                    <td>
+                                    @if($product->category_id == 1 )
+                                        <span class="badge badge-primary">
+                                            {{($product->created_at->modify('+3 month'))->format('d-m-Y H:i')}}
+                                        </span>                                       
+                                    @elseif($product->category_id == 2)
+                                        <span class="badge badge-primary">
+                                            {{($product->created_at->modify('+3 month'))->format('d-m-Y H:i')}}
+                                        </span>
+                                    @elseif($product->category_id == 3)
+                                        <span class="badge badge-success">
+                                            {{($product->created_at->modify('+2 year'))->format('d-m-Y H:i')}}
+                                        </span>
+                                    @elseif($product->category_id == 4)
+                                        <span class="badge badge-secondary">
+                                            {{($product->created_at->modify('+1 year'))->format('d-m-Y H:i')}}
+                                        </span>  
+                                    @elseif($product->category_id == 5)
+                                        <span class="badge badge-primary">
+                                            {{($product->created_at->modify('+3 month'))->format('d-m-Y H:i')}}
+                                        </span>  
+                                    @elseif($product->category_id == 6)
+                                        <span class="badge badge-success"> 
+                                            {{($product->created_at->modify('+2 year'))->format('d-m-Y H:i')}}
+                                        </span>    
+                                    @else
+                                        <span></span>
+                                    @endif
+                                    </td>
                                     <td> {{ $product->saleprice }} </td>
                                     <td> {{ $product->stock_ps }} </td>
                                 </tbody>
@@ -50,8 +80,8 @@
                                     <tr>
                                         <th>รอบเข้า</th>
                                         <th>สต็อคเข้าใหม่</th>
+                                        <th>คงเหลือ</th>
                                         <th>วันเข้าใหม่</th>
-                                        <th>วันหมดอายุ</th>
 
                                 </thead>
                             @php
@@ -62,12 +92,8 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->stock_im }}</td>
-                                            <td>{{ $item->created_at}}</td>
-                                            <td><!--วันหมดอายุ-->
-                                            <?php
-                                               echo date("d-m-Y",strtotime("+6 month"));
-                                            ?> 
-                                            </td>
+                                            <td>{{ $item->stock_amount}}</td>        
+                                            <td>{{($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

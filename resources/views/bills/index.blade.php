@@ -9,7 +9,6 @@
                         <a href="{{ url('/bills/create') }}" class="btn btn-success btn-sm d-none" title="Add New Bill">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
-
                         <form method="GET" action="{{ url('/bills') }}" accept-charset="UTF-8"  role="search">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
@@ -42,7 +41,8 @@
                                         <td>{{ $item->user->name }}</td>
                                         <td>{{ $item->total }}</td>
                                         <!--------------------------->
-                                        <td>{{ $item->created_at }}</td>
+                                        <td>{{($item->created_at)->format('d-m-Y H:i:s')}}
+                                        </td>
                                         <td>
                                             <a href="{{ url('/bills/' . $item->id) }}" title="View Bill"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/bills/' . $item->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
@@ -59,6 +59,9 @@
                             </table>
                             <div class="pagination-wrapper"> {!! $bills->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
-
                     </div>
-                </div>x
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
