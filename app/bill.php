@@ -30,7 +30,11 @@ class Bill extends Model
     public function sales(){
         return $this->hasMany('App\Sale','bill_id');
     }
+    public function lots(){
+        return $this->belongsTo('App\Lot','user_id');
+    }
     public function user(){
         return $this->belongsTo('App\User','user_id');
     }
+  
 }

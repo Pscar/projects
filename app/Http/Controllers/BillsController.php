@@ -9,7 +9,9 @@ use App\Bill;
 use App\Sale;
 use App\Product;
 use App\Lot;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -62,7 +64,8 @@ class BillsController extends Controller
         $requestData = $request->all();
         //รวมราคา   
         $total = Sale::whereNull('bill_id')
-            ->where('user_id', Auth::id() )->sum('total');  
+                ->where('user_id', Auth::id() )->sum('total');  
+            
 
         //กำหนดราคารวม, ผู้ใช้, สถานะ แสดงผลในหน้า blade
         $requestData['total'] = $total;
@@ -75,26 +78,26 @@ class BillsController extends Controller
         Sale::whereNull('bill_id') 
             ->where('user_id', Auth::id())
             ->update(['bill_id'=> $bill->id]);
-        
+       
         //ตัดสต็อคหลังจากอัพเดท bill_id
         $sales = $bill->sales; //เรียกข้อมูล sales ผ่าน bill
-        Lot::where('product_id')->orderBy('stock_amount','asc');//คิวรี่ ข้อมูล Lots โดยใช้ Product_id เรียงค่า stock_amount จากน้อยไปมาก
-            foreach($sales as $item)//เรียกใช้ product_id ที่มีอยู่ในรายการ sales
-            {         
-                $lot = Lot::where('product_id',$item->product_id); // ดึงข้อมูล product_id จาก sales ใน lot
-                Product::where('id',$item->product_id)->decrement('stock_ps', $item->amount); //cut stock_ps
-            
-                if($amount > $stock_amount){                 
-                    // ตัดสต็อค stockamount
-                }else{    
-                    Lot::where('product_id',$item->product_id)->decrement('stock_amount', $item->amount); // ตัดสต็อค stockamount
-                }
+            foreach($sales as $sale){ //เรียกข้อมูล ใน salesที่ผ่าน bill เก็บตัวแปร sale
+                Lot::where('product_id')//คิวรี่ ข้อมูล Lots โดยใช้ Product_id เรียงค่า created_at จากน้อยไปมาก
+                    ->orderBy('created_at','asc');
+                /*Product::where('id',$sale->product_id)->decrement('stock_ps', $sale->amount); */ 
+            foreach($sale->product->lots as $lot){//เรียกข้อมูล ใน saleผ่าน product ผ่าน lots เก็บตัวแปร lot 
+                if($lot->stock_amount > $sale->amount){
+                    $product = Product::where('id',$lots->id);
+                    Lot::where('id',$sale->product_id)->decrement('stock_amount', $sale->amount); 
+                }                    
             }
+                return redirect('bills')->with('flash_message', 'Bill added!');
+            }
+        }
+        
 
-             return redirect('bills')->with('flash_message', 'Bill added!');
-            }
-    /**
-     * Display the specified resource.
+        //Lot::where('product_id',$item->product_id)->decrement('stock_amount', $item->amount);
+     /**Display the specified resource.
      *
      * @param  int  $id
      *

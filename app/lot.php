@@ -36,5 +36,8 @@ class Lot extends Model
     public function sale(){
         return $this->belongsTo('App\Sale','product_id');
     }
+    public function bill(){
+        return $this->belongsTo('App\Bill','user_id');
+    }
    
 }

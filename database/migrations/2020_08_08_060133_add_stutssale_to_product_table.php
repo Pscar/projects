@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeColumnsToStatusSaleTable extends Migration
+class AddStutssaleToProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class ChangeColumnsToStatusSaleTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('status_sale')->default("redysale")->nullable()->change();
+            $table->string('status_sale')->default("redysale")->nullable();
         });
     }
 
