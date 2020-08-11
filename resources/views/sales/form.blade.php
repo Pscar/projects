@@ -15,7 +15,7 @@
 </div>
 <div class="form-group {{ $errors->has('stock_ps') ? 'has-error' : ''}}">
     <label for="pro_name" class="control-label">{{ 'คงเหลือ' }}</label>
-    <input class="form-control" name="stock_ps" type="text" id="stock_ps" value="{{ isset($sale->stock_ps) ? $sale->stock_ps : $product->stock_ps }}" readonly> 
+    <input class="form-control" name="stock_ps" type="text" id="stock_ps" alert value="{{ isset($sale->stock_ps) ? $sale->stock_ps : $product->stock_ps }}" readonly> 
     {!! $errors->first('stock_ps', '<p class="help-block">:message</p>') !!}
 </div>
 <!-- class d-none -->
@@ -39,3 +39,8 @@
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'ยืนยันการแก้ไข' ? 'อัพเดทรายการ' : 'ยืนยันการขาย' }}">
 </div>
+@if($product->stock_ps == 0)
+<script>
+   alert("สินค้าของคุณหมดแล้ว"); 
+</script>
+@endif

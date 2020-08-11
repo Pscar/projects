@@ -82,21 +82,34 @@ class BillsController extends Controller
         //ตัดสต็อคหลังจากอัพเดท bill_id
         $sales = $bill->sales; //เรียกข้อมูล sales ผ่าน bill
             foreach($sales as $sale){ //เรียกข้อมูล ใน salesที่ผ่าน bill เก็บตัวแปร sale
-                Lot::where('product_id')//คิวรี่ ข้อมูล Lots โดยใช้ Product_id เรียงค่า created_at จากน้อยไปมาก
-                    ->orderBy('created_at','asc');
-                /*Product::where('id',$sale->product_id)->decrement('stock_ps', $sale->amount); */ 
-            foreach($sale->product->lots as $lot){//เรียกข้อมูล ใน saleผ่าน product ผ่าน lots เก็บตัวแปร lot 
-                if($lot->stock_amount > $sale->amount){
-                    $product = Product::where('id',$lots->id);
-                    Lot::where('id',$sale->product_id)->decrement('stock_amount', $sale->amount); 
-                }                    
-            }
+                
+                Product::where('id',$sale->product_id)->decrement('stock_ps', $sale->amount); 
+                //ไม่ได้ใช้เก็บไว้ดูเล่น
+                // Lot::join('products', 'product.id', '=', 'lots.product_id') // innerjoin products product_id กับ lots product_id
+                    // ->join('sales','product_id', '=', 'products.product_id') // innerjoin sales product_id กับ products product_id
+                    // ->where('lots.product_id',$sales->product_id)                    
+                    // ->orderBy('created_at','asc'); 
+                $lots = $sale->product->lots()->orderBy('created_at','asc')->get();//คิวรี่ ข้อมูล Lots โดยใช้ Product_id เรียงค่า created_at จากน้อยไปมาก 
+                foreach($lots as $lot){//เรียกข้อมูล ใน saleผ่าน product ผ่าน lots เก็บตัวแปร lot 
+                    if($lot->stock_amount > $sale->amount){
+                        //$lot = $product->lots;
+                        Lot::where('id',$lot->id)->decrement('stock_amount', $sale->amount);
+                        $sale->amount = 0; // เมื่อ amount = 0 จะออกจาก loop
+                        break; 
+                    }else if($lot->stock_amount <= $sale->amount){
+                        //เช็คจำนวน stock_amount ใน lots //$id =  $lot->id; เรียก lot id มาใช้งาน // $new_lot = Lot::where('id',$lot->id)->firstOrFail();    // $stock_amount = $new_lot->stock_amount;
+                        $stock_amount =  $lot->stock_amount; // where amount จาก ตาราง lots             
+                        //ตัดสต๊อกใน Lot
+                            Lot::where('id',$lot->id)->decrement('stock_amount',$sale->amount);
+                        //order ของลูกค้าต้องลดลงตามจำนวนที่ตัดสต๊อก
+                            $sale->amount = $sale->amount - $lot->stock_amount;
+                            //$sale->amount -= $lot->stock_amount;
+                    }                    
+                }
                 return redirect('bills')->with('flash_message', 'Bill added!');
             }
         }
         
-
-        //Lot::where('product_id',$item->product_id)->decrement('stock_amount', $item->amount);
      /**Display the specified resource.
      *
      * @param  int  $id

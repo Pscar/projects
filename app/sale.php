@@ -25,7 +25,7 @@ class Sale extends Model
      *
      * @var array
      */
-    protected $fillable = ['saleprice', 'pro_name', 'category_id', 'user_id', 'amount', 'total_beforesale','vat','vatpercent','vat_totalafter','total','bill_id','product_id'];
+    protected $fillable = ['saleprice', 'pro_name', 'category_id', 'user_id', 'amount', 'total_beforesale','vat','vatpercent','vat_totalafter','total','bill_id','product_id','lot_id'];
 
     public function user(){
         return $this->belongsTo('App\User','user_id');
@@ -35,6 +35,9 @@ class Sale extends Model
     }
     public function bill(){
         return $this->belongsTo('App\Bill','bill_id');
+    }
+    public function lot(){
+        return $this->belongsTo('App\Lot','lot_id');
     }
    
 
