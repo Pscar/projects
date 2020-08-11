@@ -55,7 +55,7 @@
                             <div class="form-group">
                                 <label class="control-label">ราคารวม</label>
                                 <h1 class="style font-size:50px;">{{ number_format($sales->sum('total')) }}</h6>   
-                                <button type="submit" class="btn btn-success btn-sm" onclick="return confirm(&quot;สินค้าคุณเหลือ 0 แล้ว ?&quot;)"> สั่งสินค้า</button> 
+                                <button type="submit" class="btn btn-success btn-sm">สั่งสินค้า</button> 
                             </div>
                             
                         </form>

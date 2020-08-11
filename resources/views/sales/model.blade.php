@@ -30,7 +30,7 @@
                                 <th>รหัสยา</th>
                                 <th>ยา</th>                                      
                                 <th>ราคา</th>
-                                <th>สถานะ</th>
+                                <th>คงเหลือ</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -40,6 +40,12 @@
                                     <td>{{ $item->drug_id}}</td>
                                     <td>{{ $item->pro_name }}</td>                                                           
                                     <td>{{ $item->saleprice }}</td>
+                                    <!--เช็คสถานะ ถ้าสต็อคหมดจะไม่สามารถสแกนสินค้าได้-->
+                                    @if($item->stock_ps == 0)
+                                        <td>{{$item->stock_ps}}</td>
+                                    @else
+                                        <td></td>
+                                    @endif 
                                     <td>
                                         @if($item->stock_ps >= 100)
                                             <span class="badge badge-success">สินค้าพร้อมขาย</span>
@@ -49,12 +55,6 @@
                                             <span class="badge badge-warning">สินค้าจะหมดแล้ว</span>
                                         @endif
                                     </td>
-                                    <!--เช็คสถานะ ถ้าสต็อคหมดจะไม่สามารถสแกนสินค้าได้-->
-                                    @if($item->stock_ps == 0)
-                                        <td>{{$item->stock_ps}}</td>
-                                    @else
-                                        <td></td>
-                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
