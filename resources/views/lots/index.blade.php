@@ -33,6 +33,7 @@
                                             <th>รหัสยา</th>
                                             <th>ต้นทุน</th>
                                             <th>สต็อคเข้าใหม่</th>
+                                            <th>ต้นทุนต่อชิ้น</th>
                                             <th>คงเหลือ</th>
                                             <th>Actions</th>
                                         </tr>
@@ -44,6 +45,7 @@
                                             <td><a href="{{ url('/lots/' . $item->id) }}"> {{$item->drug_id}} </a></td>  
                                             <td>{{ $item->cost }}</td>
                                             <td>{{ $item->stock_im }}</td>
+                                            <td>{{ $item->percost}}</td>
                                             <td>{{ $item->stock_amount }}</td>
                                             <td class="d-none"> {{($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                             <td class="d-none"><!--วันหมดอายุ-->

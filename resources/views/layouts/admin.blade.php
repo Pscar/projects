@@ -54,8 +54,8 @@
 <!-- Bootstrap 4 -->
 <script src="{{ asset ('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- ChartJS -->
-<script src="https://www.chartjs.org/dist/2.8.0/Chart.min.js" ></script>
-<script src="https://www.chartjs.org/samples/latest/utils.js" ></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
 <!-- Sparkline -->
 <script src="{{ asset ('plugins/sparklines/sparkline.js') }}"></script>
 <!-- JQVMap -->

@@ -8,6 +8,7 @@
     <input class="form-control" name="saleprice" type="number" id="saleprice" value="{{ isset($sale->saleprice) ? $sale->saleprice : $product->saleprice}}" readonly>
     {!! $errors->first('saleprice', '<p class="help-block">:message</p>') !!}
 </div>
+
 <div class="form-group {{ $errors->has('amount') ? 'has-error' : ''}}">
     <label for="amount" class="control-label">{{ 'จำนวน' }}</label>
     <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : ''}}" >

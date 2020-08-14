@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Information;
+use App\Sale;
+
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -26,6 +27,13 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    public function chart(){
+        $sales = DB::table('sales')
+                        ->select('saleprice','amount')
+                        ->orderBy('saleprice', 'ASC')
+                        ->get();
+      return response()->json($sales);
     }
     
 }
