@@ -98,9 +98,29 @@
         <a href="{{ url('/lots')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">สต็อคเข้าใหม่</a>
       </li>
     </ul> 
-  @endif
-  </nav>
  
+  </nav>
+  @endif
+  @if(Auth::user()->role == "admin")
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ url('/bills') }}" class="nav-link" style="font-family: 'Mitr', sans-serif;">รายการขาย</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ url('/products')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">ข้อมูลสต็อคปัจจุบัน</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ url('/lots')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">ข้อมูลสต็อคใหม่</a>
+      </li>
+    </ul> 
+ 
+  </nav>
+  @endif
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->

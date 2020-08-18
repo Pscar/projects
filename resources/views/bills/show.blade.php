@@ -7,13 +7,13 @@
                     <div class="card-header">รายการขายที่ {{ $bill->id }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/bills') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/bills/' . $bill->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/bills') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
+                        <a href="{{ url('/bills/' . $bill->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไขรายการ</button></a>
 
                         <form method="POST" action="{{ url('bills' . '/' . $bill->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Bill" onclick="return confirm(&quot;ยืนยันการลบรายการ?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Bill" onclick="return confirm(&quot;ยืนยันลบรายการขาย?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบรายการ</button>
                         </form>
                         <br/>
                         <br/>

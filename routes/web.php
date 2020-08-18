@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 Auth::routes();
-Route::middleware(['auth', 'role:staff'])->group(function () {
+Route::middleware(['auth', 'role:staff,admin'])->group(function () {
     Route::resource('bills', 'BillController');
     Route::resource('categorys', 'CategoryController');
     Route::resource('sales', 'SalesController');

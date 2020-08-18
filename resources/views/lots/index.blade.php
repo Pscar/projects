@@ -33,8 +33,8 @@
                                             <th>รหัสยา</th>
                                             <th>ต้นทุน</th>
                                             <th>สต็อคเข้าใหม่</th>
-                                            <th>ต้นทุนต่อชิ้น</th>
-                                            <th>คงเหลือ</th>
+                                            <th class="d-none">ต้นทุนต่อชิ้น</th>
+                                            <th class="d-none">คงเหลือ</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -45,8 +45,8 @@
                                             <td><a href="{{ url('/lots/' . $item->id) }}"> {{$item->drug_id}} </a></td>  
                                             <td>{{ $item->cost }}</td>
                                             <td>{{ $item->stock_im }}</td>
-                                            <td>{{ $item->percost}}</td>
-                                            <td>{{ $item->stock_amount }}</td>
+                                            <td class="d-none">{{ $item->percost}}</td>
+                                            <td class="d-none">{{ $item->stock_amount }}</td>
                                             <td class="d-none"> {{($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                             <td class="d-none"><!--วันหมดอายุ-->
                                             <?php
@@ -56,12 +56,12 @@
                                             <td>
                                             
                                                 <a href="{{ url('/lots/' . $item->id) }}" title="View Lot"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                                <a href="{{ url('/lots/' . $item->id . '/edit') }}" title="Edit Lot"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                                <a href="{{ url('/lots/' . $item->id . '/edit') }}" title="Edit Lot"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                                 <form method="POST" action="{{ url('/lots' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                     {{ method_field('DELETE') }}
                                                     {{ csrf_field() }}
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete Lot" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm d-none" title="Delete Lot" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>

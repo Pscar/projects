@@ -11,18 +11,18 @@
                     </div>
                     <div class="card-body">
 
-                        <a href="{{ url('/products') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>  ย้อนกลับ  </button></a>
+                        <a href="{{ url('/products') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>  กลับ  </button></a>
                         <a href="{{ url('/products/' . $product->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขรายการสินค้า</button></a>
                         <form method="POST" action="{{ url('products' . '/' . $product->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                        <button type="submit" class="btn btn-danger btn-sm " title="Delete Product" onclick="return confirm(&quot;ยืนยันการลบสินค้า?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm " title="Delete Product" onclick="return confirm(&quot;ยืนยันการลบสินค้า?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบรายการ</button>
                         </form>
                         <br/>
                         <br/>
 
                         <div class="table-responsive">
-                            <table class="table     text-center">
+                            <table class="table text-center">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -81,6 +81,7 @@
                                         <th>รอบเข้า</th>
                                         <th>สต็อคเข้าใหม่</th>
                                         <th>คงเหลือ</th>
+                                        <th>ต้นทุน</th>
                                         <th>วันเข้าใหม่</th>
 
                                 </thead>
@@ -92,7 +93,8 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->stock_im }}</td>
-                                            <td>{{ $item->stock_amount}}</td>        
+                                            <td>{{ $item->stock_amount}}</td>
+                                            <td>{{ $item->percost}}</td>        
                                             <td>{{($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                         </tr>
                                     @endforeach

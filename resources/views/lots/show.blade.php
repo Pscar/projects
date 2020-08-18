@@ -11,13 +11,13 @@
                     </div>
                     <div class="card-body">
 
-                        <a href="{{ url('/lots') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/lots/' . $lot->id . '/edit') }}" title="Edit Lot"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/lots') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
+                        <a href="{{ url('/lots/' . $lot->id . '/edit') }}" title="Edit Lot"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไขรายการ</button></a>
 
                         <form method="POST" action="{{ url('lots' . '/' . $lot->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Lot" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Lot" onclick="return confirm(&quot;ยืนยันลบรายการ?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบรายการ</button>
                         </form>
                         <br/>
                         <br/>
@@ -25,7 +25,7 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr><th>ID</th><td>{{ $lot->id }}</td></tr>
+                                    <tr><th> รายการ</th><td>{{ $lot->id }}</td></tr>
                                     <tr><th> รหัสยา </th><td> {{ $lot->drug_id }} </td></tr>
                                     <tr><th> ต้นทุน </th><td> {{ $lot->cost }} </td></tr>
                                     <tr><th> ต้นทุนต่อชิ้น </th><td> {{ number_format ($lot->cost / $lot->stock_im )}}</td></tr>

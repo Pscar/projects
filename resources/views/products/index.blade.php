@@ -30,8 +30,14 @@
                                         <th>ผลิตภัณฑ์</th>                                      
                                         <th>บรรจุ</th>
                                         <th>คงเหลือ</th>
+                                        @if(Auth::user()->role == "staff")
+                                        <th>สถานะ</th>
+                                        <th>Actions</th>
+                                        @endif
+                                        @if(Auth::user()->role == "admin")
                                         <th colspan="2">สถานะ</th>
                                         <th colspan="2">Actions</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,7 +55,7 @@
                                                         <div>{{ $item->redysale_at}}</div>
                                                     @break  
                                                     @case("souout")
-                                                        <div><span class="badge badge-danger">ยกเลิกสินค้า</span></div>
+                                                        <div><span class="badge badge-danger">ยกเลิกขายสินค้า</span></div>
                                                         <div>{{ $item->souout_at}}</div>
                                                     @break
                                                 @endswitch  
@@ -65,6 +71,7 @@
                                             
                                             </td>
                                             <td>
+                                            @if(Auth::user()->role == "admin") 
                                                 <form method="POST" action="{{ url('/products' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                     {{ method_field('PATCH') }}
                                                     {{ csrf_field() }}
@@ -85,6 +92,7 @@
                                                        @break  
                                                     @endswitch  
                                                 </form>
+                                            @endif
                                             </td>                                   
                                         </tr>
                                     @endforeach
