@@ -1,7 +1,6 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
 @section('content')
-    <div class="container">
+    <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -21,6 +20,7 @@
 
                         <form method="POST" action="{{ url('/products') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
+                            
                             @include ('products.form', ['formMode' => 'create'])
                         </form>
                     </div>

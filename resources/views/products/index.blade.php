@@ -30,8 +30,8 @@
                                         <th>ผลิตภัณฑ์</th>                                      
                                         <th>บรรจุ</th>
                                         <th>คงเหลือ</th>
-                                        <th>สถานะ</th>
-                                        <th>Actions</th>
+                                        <th colspan="2">สถานะ</th>
+                                        <th colspan="2">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,7 +42,18 @@
                                             <td>{{ $item->pro_name }}</td>
                                             <td>{{ $item->contain }}</td>
                                             <td>{{ $item->stock_ps }}</td>
-                                            <td>{{ $item->status_sale}}</td>
+                                            <td> 
+                                                @switch($item->status_sale)
+                                                    @case("redysale")
+                                                        <div><span class="badge badge-success">ขายสินค้า</span></div>
+                                                        <div>{{ $item->redysale_at}}</div>
+                                                    @break  
+                                                    @case("souout")
+                                                        <div><span class="badge badge-danger">ยกเลิกสินค้า</span></div>
+                                                        <div>{{ $item->souout_at}}</div>
+                                                    @break
+                                                @endswitch  
+                                            </td>
                                             <td>
                                                 @if($item->stock_ps >= 100)
                                                 <span class="badge badge-success">สินค้าพร้อมขาย</span>
@@ -53,18 +64,28 @@
                                                 @endif
                                             
                                             </td>
-                                            
-                                               
                                             <td>
-                                            
-                                                <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
                                                 <form method="POST" action="{{ url('/products' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                    {{ method_field('DELETE') }}
+                                                    {{ method_field('PATCH') }}
                                                     {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm d-none" title="Delete Product" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบรายการขาย</button>
+                                                    @switch($item->status_sale)
+                                                        @case("redysale")  
+                                                            <select name="status_sale" onchange="status_sale">
+                                                                <option value="redysale">ขายสินค้า</option>                                                           
+                                                                <option value="souout">ยกเลิกขายสินค้า</option>  
+                                                            </select> 
+                                                        <button type="submit" class="btn btn-warning btn-sm"onclick="return confirm(&quot;ยืนยันการยกเลิกขายสินค้า?&quot;)">submit</button>
+                                                       @break
+                                                       @case("souout")  
+                                                            <select name="status_sale" onchange="status_sale">                                                          
+                                                                <option value="redysale">ขายสินค้า</option>
+                                                                <option value="souout">ยกเลิกขายสินค้า</option>  
+                                                            </select> 
+                                                        <button type="submit" class="btn btn-warning btn-sm"onclick="return confirm(&quot;ยืนยันการขายสินค้า?&quot;)">submit</button>
+                                                       @break  
+                                                    @endswitch  
                                                 </form>
-                                            </td>
+                                            </td>                                   
                                         </tr>
                                     @endforeach
                                 </tbody>

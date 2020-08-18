@@ -82,26 +82,33 @@ class BillsController extends Controller
         //ตัดสต็อคหลังจากอัพเดท bill_id
         $sales = $bill->sales; //เรียกข้อมูล sales ผ่าน bill
             foreach($sales as $sale){ //เรียกข้อมูล ใน salesที่ผ่าน bill เก็บตัวแปร sale
-                Product::where('id',$sale->product_id)->decrement('stock_ps', $sale->amount); 
-                    $lots = $sale->product->lots()->orderBy('created_at','asc')->get();//คิวรี่ ข้อมูล Lots โดยใช้ Product_id เรียงค่า created_at จากน้อยไปมาก 
+                    
+                    Product::where('id',$sale->product_id)->decrement('stock_ps', $sale->amount);
+                    //คิวรี่ ข้อมูล Lots โดยใช้ Product_id เรียงค่า created_at จากน้อยไปมาก                                         
+                    $lots = $sale->product->lots()->orderBy('created_at','asc')->get();
+                    //อัพเดท percost ใน 
+                    Sale::whereNull('percost')
+                        ->where('id',$sale->product_id)
+                        ->update(['percost'=> $sale->percost]);
                 foreach($lots as $lot){//เรียกข้อมูล ใน saleผ่าน product ผ่าน lots เก็บตัวแปร lot 
-                    if($lot->stock_amount > $sale->amount){
+                    if($lot->stock_amount > $sale->amount){ 
+                        //สต็อคที่ถูกขาย * ต้นทุนแต่ละชิ้น
+                        $sale->percost = $sale->amount * $lot->percost;
+                        //ตัดสต๊อกใน Lot
                         Lot::where('id',$lot->id)->decrement('stock_amount', $sale->amount);
-                            $stock_im = $lot->stock_im;
-                            $cost = $lot->cost;
-                            $id = $lot->id;
-                        Sale::whereNull('percost')   
-                            ->where('product_id',$sale->product_id)
-                            ->update(['percost'=> $lot->cost / $lot->stock_im]);
-                        $lot->stock_amount = 0; // เมื่อ amount = 0 จะออกจาก loop
+                        // เมื่อ amount = 0 จะออกจาก loop
+                        $lot->stock_amount = 0; 
                         break; 
                     }else if($lot->stock_amount <= $sale->amount){
                         //เช็คจำนวน stock_amount ใน lots 
-                        $stock_amount =  $lot->stock_amount; // where amount จาก ตาราง lots             
+                        $stock_amount =  $lot->stock_amount; // where amount จาก ตาราง lots      
+                        //สต็อคที่ถูกขาย * ต้นทุนแต่ละชิ้น       
+                        $sale->percost = $sale->amount * $lot->percost;
                         //ตัดสต๊อกใน Lot // ตัดโดย $lot -> stock_amount เพราะเอาค่า $sale->amount มาจากการอัพเดท
-                            Lot::where('id',$lot->id)->decrement('stock_amount', $lot->stock_amount); 
+                        Lot::where('id',$lot->id)->decrement('stock_amount', $lot->stock_amount);               
                         //product ของลูกค้าต้องลดลงตามจำนวนที่ตัดสต๊อก $sale->amount ถูก update เป็นค่าต่อไปเพื่อใช้ใน if
-                        $sale->amount = $sale->amount - $lot->stock_amount; //$sale->amount -= $lot->stock_amount; 
+                        $sale->amount = $sale->amount - $lot->stock_amount; 
+                     
                     }                    
                 }
                 return redirect('bills')->with('flash_message', 'Bill added!');
@@ -113,7 +120,7 @@ class BillsController extends Controller
                 // ->where('lots.product_id',$sales->product_id)                    
                 // ->orderBy('created_at','asc'); 
             //$id =  $lot->id; เรียก lot id มาใช้งาน // $new_lot = Lot::where('id',$lot->id)->firstOrFail();    // $stock_amount = $new_lot->stock_amount;
-        
+            //$sale->amount -= $lot->stock_amount;
      /**Display the specified resource.
      *
      * @param  int  $id

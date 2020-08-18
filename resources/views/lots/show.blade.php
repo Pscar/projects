@@ -28,7 +28,7 @@
                                     <tr><th>ID</th><td>{{ $lot->id }}</td></tr>
                                     <tr><th> รหัสยา </th><td> {{ $lot->drug_id }} </td></tr>
                                     <tr><th> ต้นทุน </th><td> {{ $lot->cost }} </td></tr>
-                                    <tr><th> ต้นทุน </th><td> {{ number_format ($lot->cost / $lot->stock_im )}}</td></tr>
+                                    <tr><th> ต้นทุนต่อชิ้น </th><td> {{ number_format ($lot->cost / $lot->stock_im )}}</td></tr>
                                 </tbody>
                             </table>
                         </div>
