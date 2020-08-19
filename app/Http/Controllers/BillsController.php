@@ -81,39 +81,44 @@ class BillsController extends Controller
        
         //ตัดสต็อคหลังจากอัพเดท bill_id
         $sales = $bill->sales; //เรียกข้อมูล sales ผ่าน bill
-            foreach($sales as $sale){ //เรียกข้อมูล ใน salesที่ผ่าน bill เก็บตัวแปร sale
+        foreach($sales as $sale){ //เรียกข้อมูล ใน salesที่ผ่าน bill เก็บตัวแปร sale
+            Product::where('id',$sale->product_id)->decrement('stock_ps', $sale->amount);
+            //คิวรี่ ข้อมูล Lots โดยใช้ Product_id เรียงค่า created_at จากน้อยไปมาก                                         
+            $lots = $sale->product->lots()->orderBy('created_at','asc')->get();//เรียกผ่าน Relations 
+            // POSITION 1
+            $sum = 0;
+            foreach($lots as $lot){//เรียกข้อมูล ใน saleผ่าน product ผ่าน lots เก็บตัวแปร lot 
+                if($lot->stock_amount > $sale->amount){                    
+                    $percost = $sale->amount * $lot->percost;
+                    $sum += $percost;
+                    //ตัดสต๊อกใน Lot
+                    Lot::where('id',$lot->id)->decrement('stock_amount', $sale->amount);
+                    // เมื่อ amount = 0 จะออกจาก loop
+                    $lot->stock_amount = 0; 
+                    break; 
+                }else if($lot->stock_amount <= $sale->amount){
+                    //เช็คจำนวน stock_amount ใน lots 
+                    $stock_amount =  $lot->stock_amount; // where amount จาก ตาราง lots      
+                    //สต็อคที่ถูกขาย * ต้นทุนแต่ละชิ้น       
+                    $percost = $stock_amount * $lot->percost;
+                    $sum += $percost;
+                    //ตัดสต๊อกใน Lot // ตัดโดย $lot -> stock_amount เพราะเอาค่า $sale->amount มาจากการอัพเดท
+                    Lot::where('id',$lot->id)->decrement('stock_amount', $lot->stock_amount);               
+                    //product ของลูกค้าต้องลดลงตามจำนวนที่ตัดสต๊อก $sale->amount ถูก update เป็นค่าต่อไปเพื่อใช้ใน if
+                    $sale->amount = $sale->amount - $lot->stock_amount; 
                     
-                    Product::where('id',$sale->product_id)->decrement('stock_ps', $sale->amount);
-                    //คิวรี่ ข้อมูล Lots โดยใช้ Product_id เรียงค่า created_at จากน้อยไปมาก                                         
-                    $lots = $sale->product->lots()->orderBy('created_at','asc')->get();
-                    //อัพเดท percost ใน 
-                    Sale::whereNull('percost')
-                        ->where('id',$sale->product_id)
-                        ->update(['percost'=> $sale->percost]);
-                foreach($lots as $lot){//เรียกข้อมูล ใน saleผ่าน product ผ่าน lots เก็บตัวแปร lot 
-                    if($lot->stock_amount > $sale->amount){ 
-                        //สต็อคที่ถูกขาย * ต้นทุนแต่ละชิ้น
-                        $sale->percost = $sale->amount * $lot->percost;
-                        //ตัดสต๊อกใน Lot
-                        Lot::where('id',$lot->id)->decrement('stock_amount', $sale->amount);
-                        // เมื่อ amount = 0 จะออกจาก loop
-                        $lot->stock_amount = 0; 
-                        break; 
-                    }else if($lot->stock_amount <= $sale->amount){
-                        //เช็คจำนวน stock_amount ใน lots 
-                        $stock_amount =  $lot->stock_amount; // where amount จาก ตาราง lots      
-                        //สต็อคที่ถูกขาย * ต้นทุนแต่ละชิ้น       
-                        $sale->percost = $sale->amount * $lot->percost;
-                        //ตัดสต๊อกใน Lot // ตัดโดย $lot -> stock_amount เพราะเอาค่า $sale->amount มาจากการอัพเดท
-                        Lot::where('id',$lot->id)->decrement('stock_amount', $lot->stock_amount);               
-                        //product ของลูกค้าต้องลดลงตามจำนวนที่ตัดสต๊อก $sale->amount ถูก update เป็นค่าต่อไปเพื่อใช้ใน if
-                        $sale->amount = $sale->amount - $lot->stock_amount; 
-                     
-                    }                    
-                }
-                return redirect('bills')->with('flash_message', 'Bill added!');
+                }                    
             }
+            $profit = $sale->total - $sum;
+            // POSITION 2
+            //update profit / percost
+            $bill->sales() // เรียกผ่าน Relations 
+                ->where('product_id',$sale->product_id)
+                ->update(['percost'=> $sum , 'profit'=> $profit]); // 1 array มี 2 column
+           
         }
+        return redirect('bills')->with('flash_message', 'Bill added!');
+    }
             //ไม่ได้ใช้เก็บไว้ดูเล่น
             // Lot::join('products', 'product.id', '=', 'lots.product_id') // innerjoin products product_id กับ lots product_id
                 // ->join('sales','product_id', '=', 'products.product_id') // innerjoin sales product_id กับ products product_id

@@ -2,6 +2,24 @@
 @section('content')
 <div class="container-fluid pt-5 px-lg-5">
     <div class="row">
+    <table class="table table-hover">
+        <thead class="text-center">
+            <tr>
+                <th>#</th>
+                <th>รวม</th>
+                <th>ต้นทุน</th>
+                <th>กำไร</th>
+            </tr>
+    @foreach($sales as $item)
+        <tr>
+            <td class="text-center">{{ $loop->iteration }}</td>
+            <td>{{ $item->total }}</td>
+            <td>{{ $item->percost}}</td>
+            <td>{{ $item->profit}}</td>
+           
+        </tr>
+    @endforeach
+    </table>
         <div class="col-6">
             <script type="text/javascript">
                 google.charts.load("current", {packages:['corechart']});

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Sale;
 
 use Illuminate\Support\Facades\Auth;
@@ -28,12 +29,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function chart(){
+    public function sale(){
         $sales = DB::table('sales')
-                        ->select('saleprice','amount')
-                        ->orderBy('saleprice', 'ASC')
-                        ->get();
-      return response()->json($sales);
+                ->select('total','profit','percost')
+                ->whereMonth('created_at', '8')
+                ->get();
+        return view('home',compact('sales'));
     }
     
 }

@@ -32,4 +32,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/report/stockps/pdf', 'StockpsController@pdf_index');
 });
 Route::get('/home', 'HomeController@index')->name('home');    
+Route::get('/home', 'HomeController@sale');    
 
