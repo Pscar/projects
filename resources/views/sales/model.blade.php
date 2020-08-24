@@ -2,25 +2,16 @@
     <div class="modal-dialog modal-xl" role="document" style="max-width:1200px;">
         <div class="modal-content">
             <div class="modal-header">
-                <form method="GET" action="{{ url('/sales/create') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
+                <form method="GET" action="{{ url('/sales/create') }}" accept-charset="UTF-8"   role="search">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="drug_id" placeholder="BARCODE" class="form-inline my-2 my-lg-0 float-right" value="{{ request('search') }}">
+                        <input type="text" class="form-control" name="drug_id" placeholder="BARCODE"  value="{{ request('search') }}">
                         <span class="input-group-append">
                             <button class="btn btn-secondary"type="submit">
                             <i class="fa fa-search"></i>
                             </button>
                         </span>
                     </div>
-                </form>
-                <script language="javascript">
-                    function fncAlert(){
-                        if($item->stock_ps >= 0){
-                            alert('สินค้าคุณหมดแล้วไม่สามารถขายได้');
-                        }
-                        else(){
-                        }
-                    }
-                </script>               
+                </form>         
             </div>
             <div class="modal-body">
                 <div class="table-responsive text-center">
@@ -30,6 +21,7 @@
                                 <th>รหัสยา</th>
                                 <th>ยา</th>                                      
                                 <th>ราคา</th>
+                                <th></th>
                                 <th>คงเหลือ</th>
                                 <th>Actions</th>
                             </tr>
@@ -40,6 +32,9 @@
                                     <td>{{ $item->drug_id}}</td>
                                     <td>{{ $item->pro_name }}</td>                                                           
                                     <td>{{ $item->saleprice }}</td>
+                                    <td><a href="{{ url('/sales/create') }}?drug_id={{ $item->drug_id }}" title="scan">
+                                        <button class="btn btn-success">เพิ่มสินค้า</button>
+                                    </td>
                                     <!--เช็คสถานะ ถ้าสต็อคหมดจะไม่สามารถสแกนสินค้าได้-->
                                     @if($item->stock_ps == 0)
                                         <td>{{$item->stock_ps}}</td>

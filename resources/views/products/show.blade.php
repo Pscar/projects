@@ -6,9 +6,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-center"> 
-                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($product->drug_id, 'C128') }}" alt="barcode"/><br>
-                    {{$product->drug_id}}
-                    </div>
+                        <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($product->drug_id, 'C128') }}" alt="barcode"/><br>
+                        {{$product->drug_id}}
+                        </div>
                     <div class="card-body">
 
                         <a href="{{ url('/products') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>  กลับ  </button></a>

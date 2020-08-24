@@ -10,12 +10,21 @@
 </div>
 
 <div class="form-group {{ $errors->has('amount') ? 'has-error' : ''}}">
-    <label for="amount" class="control-label">{{ 'จำนวน' }}</label>
-    <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : ''}}" >
-    {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
+    <label for="amount" class="control-label">{{ 'จำนวน' }}</label>  
+    @if($product->stock_ps == 0)
+        <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : ''}}" readonly>
+        {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
+    <script>
+        alert("สินค้าของคุณหมดแล้ว"); 
+    </script>
+    @else
+        <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : ''}}">
+        {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
+    @endif
 </div>
 <div class="form-group {{ $errors->has('stock_ps') ? 'has-error' : ''}}">
     <label for="pro_name" class="control-label">{{ 'คงเหลือ' }}</label>
+    
     <input class="form-control" name="stock_ps" type="text" id="stock_ps" alert value="{{ isset($sale->stock_ps) ? $sale->stock_ps : $product->stock_ps }}" readonly> 
     {!! $errors->first('stock_ps', '<p class="help-block">:message</p>') !!}
 </div>
@@ -40,8 +49,3 @@
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'ยืนยันการแก้ไข' ? 'อัพเดทรายการ' : 'ยืนยันการขาย' }}">
 </div>
-@if($product->stock_ps == 0)
-<script>
-   alert("สินค้าของคุณหมดแล้ว"); 
-</script>
-@endif
