@@ -2,36 +2,35 @@
 @section('content')
 <div class="container-fluid pt-5 px-lg-5">
     <div class="row">
-    <table class="table table-hover">
-        <thead class="text-center">
+        <table class="table table-hover">
+            <thead class="text-center">
+                <tr>
+                    <th>เดือน</th>
+                    <th>รวม</th>
+                    <th>ต้นทุน</th>
+                    <th>กำไร</th>
+                    
+                </tr>
             <tr>
-                <th>#</th>
-                <th>รวม</th>
-                <th>ต้นทุน</th>
-                <th>กำไร</th>
+            @foreach($sales as $item)
+                <td>{{ $item->y }} / {{ $item->m }} / {{ $item->d }}   </td> 
+                <td>{{ $item->t}}</td>
+                <td>{{ $item->cost}}</td>
+                <td>{{ $item->p }}</td>
             </tr>
-    @foreach($sales as $item)
-        <tr>
-            <td class="text-center">{{ $loop->iteration }}</td>
-            <td>{{ $item->total }}</td>
-            <td>{{ $item->percost}}</td>
-            <td>{{ $item->profit}}</td>
-           
-        </tr>
-    @endforeach
-    </table>
+            @endforeach
+        </table>
         <div class="col-6">
-            <script type="text/javascript">
+           <script type="text/javascript">
                 google.charts.load("current", {packages:['corechart']});
                 google.charts.setOnLoadCallback(drawChart);
                     function drawChart() {
                     var data = google.visualization.arrayToDataTable([
                         ["date", "total", { role: "style" } ],
-                        ["ยอดขายปีที่ 1", 15000, "#b87333"],
-                        ["ยอดขายปีที่ 2", 12000, "silver"],
-                        ["ยอดขายปีที่ 3", 10000, "gold"]
-                    ]);
-
+                    @foreach($sales as $item)   
+                        ["{{ $item->m }}", {{ $item->t }}, "#b87333"],
+                    @endforeach    
+                    ]);    
                     var view = new google.visualization.DataView(data);
                     view.setColumns([0, 1,
                                     { calc: "stringify",
@@ -41,7 +40,7 @@
                                     2]);
 
                     var options = {
-                        title: "ยอดขายรายปี",
+                        title: "ยอดขายประจำปี <?php echo date ("Y"); ?>",
                         width: 500,
                         height: 300,
                         bar: {groupWidth: "50%"},
@@ -54,24 +53,15 @@
             <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
         </div>
         <div class="col-6">
-            <script type="text/javascript">
+           <script type="text/javascript">
                 google.charts.load("current", {packages:['corechart']});
                 google.charts.setOnLoadCallback(drawChart);
                     function drawChart() {
                     var data = google.visualization.arrayToDataTable([
                         ["date", "total", { role: "style" } ],
-                        ["ยอดขายเดือน 1", 35000, "silver"],
-                        ["ยอดขายเดือน 2", 45000, "gold"],
-                        ["ยอดขายเดือน 3", 25000, "silver"],
-                        ["ยอดขายเดือน 4", 20000, "gold"],
-                        ["ยอดขายเดือน 5", 30000, "silver"],
-                        ["ยอดขายเดือน 6", 50000, "gold"],
-                        ["ยอดขายเดือน 7", 40000, "silver"],
-                        ["ยอดขายเดือน 8", 55000, "gold"],
-                        ["ยอดขายเดือน 9", 45500, "silver"],
-                        ["ยอดขายเดือน 10", 35500, "gold"],
-                        ["ยอดขายเดือน 11", 15000, "silver"],
-                        ["ยอดขายเดือน 12", 17500, "gold"]
+                        @foreach($sales as $item)
+                        ["{{ $item->d }}",{{$item->t}}, "#b87333"],
+                        @endforeach
                     ]);
 
                     var view = new google.visualization.DataView(data);
@@ -83,7 +73,7 @@
                                     2]);
 
                     var options = {
-                        title: "ยอดขายแต่ละเดือน",
+                        title: "ยอดขายประจำเดือน <?php echo date ("m-Y"); ?>",
                         width: 500,
                         height: 300,
                         bar: {groupWidth: "50%"},
@@ -95,6 +85,8 @@
             </script>
             <div id="columnchart" style="width: 900px; height: 300px;"></div>
         </div>
+        
+    </div>
     </div>  
 </div>
 @endsection

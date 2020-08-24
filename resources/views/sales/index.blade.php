@@ -26,7 +26,7 @@
                         <label class="control-label">สแกนสินค้า</label>
                         <form method="GET" action="{{ url('/sales/create') }}"role="search">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="drug_id" placeholder="BARCODE" value="{{ request('search') }}"></input>  
+                                <input type="text" class="form-control" name="drug_id" placeholder="BARCODE" value="{{ request('search') }}">
                             </div>
                         </form>
                         <label class="control-label pt-3">จำนวน</label>

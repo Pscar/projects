@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use DB;
 use App\Sale;
 
@@ -30,11 +31,17 @@ class HomeController extends Controller
         return view('home');
     }
     public function sale(){
-        $sales = DB::table('sales')
-                ->select('total','profit','percost')
-                ->whereMonth('created_at', '8')
-                ->get();
-        return view('home',compact('sales'));
+        /*SELECT year(created_at) as y , month(created_at) as m, sum(total) as t, sum(percost) as cost 
+        FROM `sales` 
+        group by year(created_at), month(created_at)*/
+        // รับค่า user 
+       
+       $sales = Sale::selectRaw('year(created_at) as y , month(created_at) as m , day(created_at) as d , sum(total) as t , sum(percost) as cost ,sum(profit) as p')
+                    ->groupBy('d','y','m')
+                    ->get();    
+
+       return view('home', compact('sales'));
     }
-    
+
+     
 }

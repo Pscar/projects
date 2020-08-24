@@ -90,7 +90,7 @@ class BillsController extends Controller
             foreach($lots as $lot){//เรียกข้อมูล ใน saleผ่าน product ผ่าน lots เก็บตัวแปร lot 
                 if($lot->stock_amount > $sale->amount){                    
                     $percost = $sale->amount * $lot->percost;
-                    $sum += $percost;
+                    $sum += $percost; // ต้นทุน
                     //ตัดสต๊อกใน Lot
                     Lot::where('id',$lot->id)->decrement('stock_amount', $sale->amount);
                     // เมื่อ amount = 0 จะออกจาก loop
@@ -100,7 +100,7 @@ class BillsController extends Controller
                     //เช็คจำนวน stock_amount ใน lots 
                     $stock_amount =  $lot->stock_amount; // where amount จาก ตาราง lots      
                     //สต็อคที่ถูกขาย * ต้นทุนแต่ละชิ้น       
-                    $percost = $stock_amount * $lot->percost;
+                    $percost = $stock_amount * $lot->percost; //= ต้นทุน 
                     $sum += $percost;
                     //ตัดสต๊อกใน Lot // ตัดโดย $lot -> stock_amount เพราะเอาค่า $sale->amount มาจากการอัพเดท
                     Lot::where('id',$lot->id)->decrement('stock_amount', $lot->stock_amount);               
@@ -109,7 +109,7 @@ class BillsController extends Controller
                     
                 }                    
             }
-            $profit = $sale->total - $sum;
+            $profit = $sale->total - $sum; // = กำไร
             // POSITION 2
             //update profit / percost
             $bill->sales() // เรียกผ่าน Relations 
