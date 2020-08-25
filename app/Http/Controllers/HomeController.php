@@ -35,12 +35,15 @@ class HomeController extends Controller
         FROM `sales` 
         group by year(created_at), month(created_at)*/
         // รับค่า user 
-       
-       $sales = Sale::selectRaw('year(created_at) as y , month(created_at) as m , day(created_at) as d , sum(total) as t , sum(percost) as cost ,sum(profit) as p')
-                    ->groupBy('d','y','m')
-                    ->get();    
-
-       return view('home', compact('sales'));
+       $sales = Sale::selectRaw('year(created_at) as y , month(created_at) as m , sum(total) as t , sum(percost) as cost ,sum(profit) as p')
+                    ->groupBy('y','m')
+                    ->get();
+       $sale =  Sale::selectRaw('month(created_at) as m ,day(created_at) as d , sum(total) as t , sum(percost) as cost ,sum(profit) as p')
+                    ->groupBy('m','d')
+                    ->orderBy('d','asc')
+                    ->whereMonth('created_at', '8')
+                    ->get();
+       return view('home', compact('sales','sale'));
     }
 
      

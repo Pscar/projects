@@ -33,8 +33,8 @@
             font-weight: 120 !important;
             
         }
-
-    </style>
+       
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <script src="{{ asset('js/moment-with-locales.min.js') }}" ></script>
@@ -170,6 +170,12 @@
               <a href="{{ url('/products') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
                 <p style="font-family: 'Mitr', sans-serif;">ข้อมูลยา</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('/categorys') }}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p style="font-family: 'Mitr', sans-serif;">ข้อมูลประเภทยา</p>
               </a>
             </li>
         @endif

@@ -19,8 +19,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>ยา</th>
-                                        <th>ราคาขาย</th>
-                                        <th>จำนวน</th>
+                                        <th>ราคาขาย (บาท)</th>
+                                        <th>จำนวน (ชิ้น)</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -35,7 +35,7 @@
                                                 <form method="POST" action="{{ url('/sales' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                     {{ method_field('DELETE') }}
                                                     {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Sale" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Sale" onclick="return confirm(&quot;ยืนยันลบรายการยา delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </form>                                          
                                             </td>
                                         </tr>
@@ -56,11 +56,11 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">ผู้ใช้ปัจจุบัน </label>
-                            <input class="form-control" value="{{ Auth::user()->name }}" readonly></input>
+                            <input class="form-control" value="{{ Auth::user()->name }}" readonly>
                         </div>
                         <div class="form-group">
                             <label class="control-label">สถานะผู้ใช้</label>
-                            <input class="form-control" value="{{ Auth::user()->role }}" readonly></input>
+                            <input class="form-control" value="{{ Auth::user()->role }}" readonly>
                         </div>
                     </div>  
                     <div class="form-group text-center">
@@ -79,11 +79,19 @@
                     <div class="card-body">
                         <form method="POST" action="{{ url('/bills') }}" accept-charset="UTF-8" class="form-horizontal text-center" enctype="multipart/form-data">
                             {{ csrf_field() }} 
-                            <div class="form-group">
-                                <label class="control-label">ราคารวม</label>
-                                <h1 class="style font-size:50px;">{{ number_format($sales->sum('total')) }}</h6>   
-                                <button type="submit" class="btn btn-success btn-sm">สั่งสินค้า</button> 
+                            <div class="form-group form-inline">
+                                <label class="col-lg-4">รวม (ชิ้น)</label> 
+                                <div class="col-lg-3">
+                                    <input class="form-control" style="width:170px;" value="{{ number_format($sales->sum('amount'))}}" readonly>
+                                </div>
                             </div>
+                            <div class="form-group form-inline">
+                                <label class="col-lg-4">ราคารวม</label> 
+                                <div class="col-lg-2">
+                                    <input class="form-control" style="width:170px;" value="{{ number_format($sales->sum('total')) }}" readonly>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-sm">สั่งสินค้า</button> 
                         </form>
                     </div>
                 </div>

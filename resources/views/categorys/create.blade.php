@@ -1,14 +1,12 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="container">
+    <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
-            
-
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Create New category</div>
+                    <div class="card-header">สร้างประเภทยา</div>
                     <div class="card-body">
-                        <a href="{{ url('/categorys') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/categorys') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
                         <br />
                         <br />
                         

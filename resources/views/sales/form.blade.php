@@ -24,7 +24,6 @@
 </div>
 <div class="form-group {{ $errors->has('stock_ps') ? 'has-error' : ''}}">
     <label for="pro_name" class="control-label">{{ 'คงเหลือ' }}</label>
-    
     <input class="form-control" name="stock_ps" type="text" id="stock_ps" alert value="{{ isset($sale->stock_ps) ? $sale->stock_ps : $product->stock_ps }}" readonly> 
     {!! $errors->first('stock_ps', '<p class="help-block">:message</p>') !!}
 </div>
