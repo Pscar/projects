@@ -3,7 +3,7 @@
 <section class="content">
     <div class="container-fluid pt-3 px-lg-5">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">ยอดขายประจำปี <?php echo date ("Y"); ?></h3>
@@ -29,9 +29,9 @@
                                 chart: {
                                     
                                 },
-                                    bars: 'horizontal',
-                                    hAxis: {format: 'decimal'},
-                                    width: 1000,
+                                    bars: 'vertical',
+                                    vAxis: {format: 'decimal'},
+                                    width: 900,
                                     height: 500,
                                 };
                                 var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
@@ -45,25 +45,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">ยอดขายประจำปี <?php echo date ("Y"); ?></h3>
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="chart">
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="col-md-12">
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">ยอดขายประจำเดือน <?php echo date ("M"); ?></h3>
+                    <h3 class="card-title">ยอดขายประจำเดือน สิงหาคม</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                         </button>
@@ -91,7 +76,7 @@
                                 },
                                     bars: 'vertical',
                                     vAxis: {format: 'decimal'},
-                                    width: 1000,
+                                    width: 900,
                                     height: 500,
                                 };
                                 var chart = new google.charts.Bar(document.getElementById('columnchart'));

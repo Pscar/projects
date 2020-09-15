@@ -6,13 +6,16 @@
                 <div class="card">
                     <div class="card-body">
                         <label class="control-label">สแกนสินค้า</label>
-                        <form method="GET" action="{{ url('/sales/create') }}"role="search">
+                        <form method="POST" action="{{ url('/sales') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                            {{ csrf_field() }}
                             <div class="input-group">
-                                <input type="text" class="form-control" name="drug_id" placeholder="BARCODE" value="{{ request('search') }}">
+                                <input type="text" class="form-control" name="drug_id" placeholder="BARCODE" value="{{ request('search') }}" autofocus>
+                                <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : '1'}}">
+                                    <button type="submit" onclick="myFunction" class="btn btn-success d-none" >Save</button>
                             </div>
                         </form>
                     </div>
-                    <div class="card-body" style="height:428px;">
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead class="text-center">
@@ -35,7 +38,7 @@
                                                 <form method="POST" action="{{ url('/sales' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                     {{ method_field('DELETE') }}
                                                     {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Sale" onclick="return confirm(&quot;ยืนยันลบรายการยา delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Sale" onclick="return confirm(&quot;ยืนยันลบรายการยา&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </form>                                          
                                             </td>
                                         </tr>
@@ -64,16 +67,10 @@
                         </div>
                     </div>  
                     <div class="form-group text-center">
-                        <a href="{{ url('/sales/create') }}" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="Showproduct">
-                            <i class="fa fa-cart-plus" aria-hidden="true"></i> เพิ่มจำนวนสินค้า
-                        </a>
                         <a href="{{ url('/bills') }}" class="btn btn-success btn-sm">
                             <i class="fa fa-shopping-basket" aria-hidden="true"></i> รายการขาย
                         </a>
                     </div>  
-                <body>
-                    @include('sales/model')
-                </body>  
                 </div> 
                 <div class="card">
                     <div class="card-body">
@@ -98,10 +95,6 @@
             </div> 
         </div>         
     </div>
-
-    
-   
-
 @endsection
 
 

@@ -62,11 +62,13 @@ class SalesController extends Controller
     public function store(Request $request)
     {
         //ยืนยันการสั่งซื้อ   
-        $requestData = $request->all(); // where barcode 
+        $requestData = $request->all();
+        $product= Product::where('drug_id',$requestData['drug_id'])->firstOrFail(); // เรียกค่า drug_id จากตาราง product
+        $requestData['product_id'] = $product->id;// requersData product_id
         //คำนวณราคาสินค้า sumvat
-        $requestData['total'] = $requestData['saleprice'] * $requestData['amount'] + $requestData['saleprice'] * $requestData['amount'] * 0.07 ;
+        $requestData['total'] = $requestData['saleprice'] = $product->saleprice * $requestData['amount'] + $requestData['saleprice'] = $product->saleprice * $requestData['amount'] * 0.07 ;
         //ระบุ user_id
-        $requestData['user_id'] = Auth::id(); // requersData product_id
+        $requestData['user_id'] = Auth::id(); 
 
         // create sale submit
         Sale::create($requestData);

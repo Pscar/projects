@@ -21,6 +21,7 @@ Route::middleware(['auth', 'role:staff,admin'])->group(function () {
     Route::resource('bills', 'BillController');
     Route::resource('categorys', 'CategoryController');
     Route::resource('sales', 'SalesController');
+    Route::put('sales/{id}', 'SalesController@update');
     Route::resource('products', 'ProductController');
     Route::resource('lots', 'LotsController');
     Route::resource('bills', 'BillsController');
