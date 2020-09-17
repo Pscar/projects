@@ -1,59 +1,63 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document" style="max-width:1200px;">
         <div class="modal-content">
-            <div class="modal-header">
-                <form method="GET" action="{{ url('/sales/create') }}" accept-charset="UTF-8"   role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="drug_id" placeholder="BARCODE"  value="{{ request('search') }}">
-                        <span class="input-group-append">
-                            <button class="btn btn-secondary"type="submit">
-                            <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
-                </form>         
-            </div>
+            <div class="modal-header">Payment</div>
             <div class="modal-body">
-                <div class="table-responsive text-center">
-                    <table id="example" class="table-hover">
-                        <thead>
-                            <tr>
-                                <th>รหัสยา</th>
-                                <th>ยา</th>                                      
-                                <th>ราคา</th>
-                                <th></th>
-                                <th>คงเหลือ</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($products as $item)
-                                <tr>
-                                    <td>{{ $item->drug_id}}</td>
-                                    <td>{{ $item->pro_name }}</td>                                                           
-                                    <td>{{ $item->saleprice }}</td>
-                                    <td><a href="{{ url('/sales/create') }}?drug_id={{ $item->drug_id }}" title="scan">
-                                        <button class="btn btn-success">เพิ่มสินค้า</button>
-                                    </td>
-                                    <!--เช็คสถานะ ถ้าสต็อคหมดจะไม่สามารถสแกนสินค้าได้-->
-                                    @if($item->stock_ps == 0)
-                                        <td>{{$item->stock_ps}}</td>
-                                    @else
-                                        <td></td>
-                                    @endif 
-                                    <td>
-                                        @if($item->stock_ps >= 100)
-                                            <span class="badge badge-success">สินค้าพร้อมขาย</span>
-                                        @elseif($item->stock_ps == 0)
-                                            <span class="badge badge-danger">สินค้าหมดแล้ว</span>  
-                                        @else
-                                            <span class="badge badge-warning">สินค้าจะหมดแล้ว</span>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="card">
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <form method="POST" action="{{ url('/bills') }}" accept-charset="UTF-8" class="form-horizontal text-center" enctype="multipart/form-data">
+                                            {{ csrf_field() }} 
+                                            <div class="form-group form-inline">
+                                                <label class="col-lg-4">ยอดที่จ่าย</label> 
+                                                <div class="col-lg-2">
+                                                    <input class="form-control" value="{{ number_format($sales->sum('total')) }}" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-inline">
+                                                <label class="col-lg-4">รับเงินมา</label> 
+                                                <div class="col-lg-2">
+                                                    <input class="form-control" value="{{ number_format($sales->sum('total')) }}" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group form-inline">
+                                                <label class="col-lg-4">เงินทอน</label> 
+                                                <div class="col-lg-2">
+                                                    <input class="form-control" value="{{ number_format($sales->sum('total')) }}" readonly>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-success btn-sm">สั่งสินค้า</button> 
+                                        </form>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="calculator card">
+                                            <input type="text" class="calculator-screen z-depth-1" value="" disabled />
+                                            <div class="calculator-keys">
+                                                <button type="button" value="7" class="btn btn-light waves-effect">7</button>
+                                                <button type="button" value="8" class="btn btn-light waves-effect">8</button>
+                                                <button type="button" value="9" class="btn btn-light waves-effect">9</button>
+                                                <button type="button" value="4" class="btn btn-light waves-effect">4</button>
+                                                <button type="button" value="5" class="btn btn-light waves-effect">5</button>
+                                                <button type="button" value="6" class="btn btn-light waves-effect">6</button>
+                                                <button type="button" value="1" class="btn btn-light waves-effect">1</button>
+                                                <button type="button" value="2" class="btn btn-light waves-effect">2</button>
+                                                <button type="button" value="3" class="btn btn-light waves-effect">3</button>
+                                                <button type="button" value="0" class="btn btn-light waves-effect">0</button>
+                                                <button type="button" class="decimal function btn btn-secondary" value=".">.</button>
+                                                <button type="button" class="all-clear function btn btn-danger btn-sm" value="all-clear">AC</button>
+                                                <button type="button" class="equal-sign operator btn btn-default" value="=">=</button>
+                                                <button type="button" class="operator btn btn-info" value="+">+</button>
+                                                <button type="button" class="operator btn btn-info" value="-">-</button>
+                                                <button type="button" class="operator btn btn-info" value="*">&times;</button>
+                                                <button type="button" class="operator btn btn-info" value="/">&divide;</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -63,8 +67,108 @@
     </div>
 </div>
 <script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    } );
+  const calculator = {
+  displayValue: '{{ number_format($sales->sum('total')) }}',
+  firstOperand: null,
+  waitingForSecondOperand: false,
+  operator: null,
+};
+
+function inputDigit(digit) {
+  const { displayValue, waitingForSecondOperand } = calculator;
+
+  if (waitingForSecondOperand === true) {
+    calculator.displayValue = digit;
+    calculator.waitingForSecondOperand = false;
+  } else {
+    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+  }
+}
+
+function inputDecimal(dot) {
+  // If the `displayValue` does not contain a decimal point
+  if (!calculator.displayValue.includes(dot)) {
+    // Append the decimal point
+    calculator.displayValue += dot;
+  }
+}
+
+function handleOperator(nextOperator) {
+  const { firstOperand, displayValue, operator } = calculator
+  const inputValue = parseFloat(displayValue);
+
+  if (operator && calculator.waitingForSecondOperand)  {
+    calculator.operator = nextOperator;
+    return;
+  }
+
+  if (firstOperand == null) {
+    calculator.firstOperand = inputValue;
+  } else if (operator) {
+    const currentValue = firstOperand || 0;
+    const result = performCalculation[operator](currentValue, inputValue);
+
+    calculator.displayValue = String(result);
+    calculator.firstOperand = result;
+  }
+
+  calculator.waitingForSecondOperand = true;
+  calculator.operator = nextOperator;
+}
+
+const performCalculation = {
+  '/': (firstOperand, secondOperand) => firstOperand / secondOperand,
+
+  '*': (firstOperand, secondOperand) => firstOperand * secondOperand,
+
+  '+': (firstOperand, secondOperand) => firstOperand + secondOperand,
+
+  '-': (firstOperand, secondOperand) => firstOperand - secondOperand,
+
+  '=': (firstOperand, secondOperand) => secondOperand
+};
+
+function resetCalculator() {
+  calculator.displayValue = '0';
+  calculator.firstOperand = null;
+  calculator.waitingForSecondOperand = false;
+  calculator.operator = null;
+}
+
+function updateDisplay() {
+  const display = document.querySelector('.calculator-screen');
+  display.value = calculator.displayValue;
+}
+
+updateDisplay();
+
+const keys = document.querySelector('.calculator-keys');
+keys.addEventListener('click', (event) => {
+  const { target } = event;
+  if (!target.matches('button')) {
+    return;
+  }
+
+  if (target.classList.contains('operator')) {
+    handleOperator(target.value);
+		updateDisplay();
+    return;
+  }
+
+  if (target.classList.contains('decimal')) {
+    inputDecimal(target.value);
+		updateDisplay();
+    return;
+  }
+
+  if (target.classList.contains('all-clear')) {
+    resetCalculator();
+		updateDisplay();
+    return;
+  }
+
+  inputDigit(target.value);
+  updateDisplay();
+});
 </script>
 

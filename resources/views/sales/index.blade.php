@@ -31,7 +31,7 @@
                                     @foreach($sales as $item)
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
-                                            <td class="text-center">{{ $item->pro_name }}</td>
+                                            <td class="text-center">{{ $item->product->pro_name }}</td>
                                             <td class="text-center">{{ $item->total }}</td>
                                             <td class="text-center">{{ $item->amount }}</td>
                                             <td class="text-center">
@@ -88,7 +88,14 @@
                                     <input class="form-control" style="width:170px;" value="{{ number_format($sales->sum('total')) }}" readonly>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success btn-sm">สั่งสินค้า</button> 
+                            <div class="form-group text-center">
+                                <a href="{{ url('/sales') }}" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="Add New Lot">
+                                    <i class="fa fa-plus" aria-hidden="true"></i> คิดเงิน
+                                </a>
+                                <body>
+                                    @include('sales/model')
+                                </body>
+                            </div>  
                         </form>
                     </div>
                 </div>
