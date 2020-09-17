@@ -4,24 +4,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card text-center"style="font-size:80px;">รายการขาย</div>
+                    <div class="card text-center"style="font-size:50px;">รายการขาย</div>
                     <div class="card-body">
-                        <a href="{{ url('/bills/create') }}" class="btn btn-success btn-sm d-none" title="Add New Bill">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        <a href="{{ url('/sales') }}" class="btn-warning btn-sm " title="Add New Sales">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i> กลับหน้าขาย
                         </a>
-                        <form method="GET" action="{{ url('/bills') }}" accept-charset="UTF-8"  role="search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
-                                <span class="input-group-append">
-                                    <button class="btn btn-secondary" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
+                        <br/>
+                        <br/>
 
-                        <br/>
-                        <br/>
                         <div class="table-responsive">
                             <table class="table text-center">
                                 <thead>

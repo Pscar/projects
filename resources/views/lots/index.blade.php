@@ -4,7 +4,7 @@
         <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card text-center"style="font-size:80px;">สต็อคเข้าใหม่</div>
+                        <div class="card text-center"style="font-size:50px;">สต็อคเข้าใหม่</div>
                         <div class="card-body">
                             <a href="{{ url('/lots/create') }}" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="Add New Lot">
                                 <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มจำนวนสินค้า
@@ -26,11 +26,11 @@
                             <br/>
                             <br/>
                             <div class="table-responsive">
-                                <table class="table text-center">
-                                    <thead>
+                                <table class="table">
+                                    <thead class="text-center">
                                         <tr>
-                                            <th>#</th>
-                                            <th>รหัสยา</th>
+                                            <th>เวลาเข้า</th>
+                                            <th>ชื่อยา</th>
                                             <th>ต้นทุน</th>
                                             <th>สต็อคเข้าใหม่</th>
                                             <th class="d-none">ต้นทุนต่อชิ้น</th>
@@ -38,21 +38,13 @@
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="text-center">
                                     @foreach($lot as $item)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td><a href="{{ url('/lots/' . $item->id) }}"> {{$item->drug_id}} </a></td>  
+                                            <td><a href="{{ url('/lots/' . $item->id) }}"> {{($item->created_at)->format('d-m-Y')}} </a></td>
+                                            <td>{{ $item->product->pro_name }}</td>  
                                             <td>{{ $item->cost }}</td>
                                             <td>{{ $item->stock_im }}</td>
-                                            <td class="d-none">{{ $item->percost}}</td>
-                                            <td class="d-none">{{ $item->stock_amount }}</td>
-                                            <td class="d-none"> {{($item->created_at)->format('d-m-Y H:i:s')}}</td>
-                                            <td class="d-none"><!--วันหมดอายุ-->
-                                            <?php
-                                                echo date("d-m-Y",strtotime("+6 months"))."<br>";
-                                            ?> 
-                                            </td>
                                             <td>
                                             
                                                 <a href="{{ url('/lots/' . $item->id) }}" title="View Lot"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>

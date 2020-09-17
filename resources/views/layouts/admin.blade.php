@@ -66,48 +66,48 @@
   </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<script src="{{ asset('js/moment-with-locales.min.js') }}" ></script>
+  <script src="{{ asset('js/moment-with-locales.min.js') }}" ></script>
 
-<!-- jQuery -->
-<script src="{{ asset ('code.jquery.com/jquery-3.5.1.js') }}"></script>
-<script src="{{ asset ('plugins/jquery/jquery.min.js') }}"></script>
-<script src="https://kit.fontawesome.com/d59a8a2721.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" charset="utf8" src="{{ asset ('http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js')}}"></script>
+  <!-- jQuery -->
+  <script src="{{ asset ('code.jquery.com/jquery-3.5.1.js') }}"></script>
+  <script src="{{ asset ('plugins/jquery/jquery.min.js') }}"></script>
+  <script src="https://kit.fontawesome.com/d59a8a2721.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" charset="utf8" src="{{ asset ('http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js')}}"></script>
 
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset ('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset ('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- ChartJS -->
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="{{ asset ('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="{{ asset ('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <!-- ChartJS -->
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-<!-- Sparkline -->
-<script src="{{ asset ('plugins/sparklines/sparkline.js') }}"></script>
-<!-- JQVMap -->
-<script src="{{ asset ('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-<script src="{{ asset ('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ asset ('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-<!-- daterangepicker -->
-<script src="{{ asset ('plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset ('plugins/daterangepicker/daterangepicker.js') }}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{ asset ('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-<!-- Summernote -->
-<script src="{{ asset ('plugins/summernote/summernote-bs4.min.js') }}"></script>
-<!-- overlayScrollbars -->
-<script src="{{ asset ('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset ('dist/js/adminlte.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset ('dist/js/pages/dashboard.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset ('dist/js/demo.js') }}"></script>
+  <!-- Sparkline -->
+  <script src="{{ asset ('plugins/sparklines/sparkline.js') }}"></script>
+  <!-- JQVMap -->
+  <script src="{{ asset ('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
+  <script src="{{ asset ('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="{{ asset ('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+  <!-- daterangepicker -->
+  <script src="{{ asset ('plugins/moment/moment.min.js') }}"></script>
+  <script src="{{ asset ('plugins/daterangepicker/daterangepicker.js') }}"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="{{ asset ('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+  <!-- Summernote -->
+  <script src="{{ asset ('plugins/summernote/summernote-bs4.min.js') }}"></script>
+  <!-- overlayScrollbars -->
+  <script src="{{ asset ('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+  <!-- AdminLTE App -->
+  <script src="{{ asset ('dist/js/adminlte.js') }}"></script>
+  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+  <script src="{{ asset ('dist/js/pages/dashboard.js') }}"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="{{ asset ('dist/js/demo.js') }}"></script>
 <div class="wrapper">
 
   @if(Auth::user()->role == "staff")
@@ -117,15 +117,15 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ url('/sales') }}" class="nav-link" style="font-family: 'Mitr', sans-serif;">หน้าจอขาย</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      </li> -->
+      <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ url('/products')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">สต็อคยาปัจจุบัน</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ url('/lots')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">สต็อคเข้าใหม่</a>
-      </li>
+      </li> -->
     </ul> 
  
   </nav>
@@ -133,7 +133,7 @@
   @if(Auth::user()->role == "admin")
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <!-- <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
@@ -147,15 +147,17 @@
         <a href="{{ url('/lots')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">ข้อมูลสต็อคใหม่</a>
       </li>
     </ul> 
- 
+  -->
   </nav>
   @endif
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
+  @if(Auth::user()->role == "staff")
+  <aside class="main-sidebar sidebar-outline-secondary elevation-4">
+  @endif
+  @if(Auth::user()->role == "admin")
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-
+  @endif
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -175,14 +177,21 @@
                with font-awesome or any other icon font library -->
         @if(Auth::user()->role == "staff")
           <li class="nav-item has-treeview menu-open">
-            <a href="{{ url('/sales') }}" class="nav-link active">
-              <p style="font-family: 'Mitr', sans-serif;">หน้าจอขาย
+            <a href="#" class="nav-link active">
+              <p style="font-family: 'Mitr', sans-serif;"> Menu
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('/bills') }}" class="nav-link active">
+                <a href="{{ url('/sales') }}" class="nav-link ">
+                  <p style="font-family: 'Mitr', sans-serif;">หน้าจอขาย</p>
+                </a>
+              </li>          
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('/bills') }}" class="nav-link ">
                   <p style="font-family: 'Mitr', sans-serif;">รายการขาย</p>
                 </a>
               </li>          

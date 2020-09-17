@@ -19,9 +19,9 @@
     <input class="form-control" name="saleprice" type="number" id="saleprice" value="{{ isset($product->saleprice) ? $product->saleprice : ''}}">
     {!! $errors->first('saleprice', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('stock_ps') ? 'has-error' : ''}}">
+<div class="form-group d-none {{ $errors->has('stock_ps') ? 'has-error' : ''}}">
     <label for="stock_ps" class="control-label">{{ 'สต็อคปัจจุบัน' }}</label>
-    <input class="form-control" name="stock_ps" type="number" id="stock_ps" value="{{ isset($product->stock_ps) ? $product->stock_ps : ''}}">
+    <input class="form-control" name="stock_ps" type="number" id="stock_ps" value="{{ isset($product->stock_ps) ? $product->stock_ps : '0'}}">
     {!! $errors->first('stock_ps', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('category_id') ? 'has-error' : ''}}">
@@ -38,5 +38,5 @@
 </div>
 
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แก้ไขรายการยา' : 'ยืนยันการเพิ่มรายการยา' }}">
 </div>

@@ -34,6 +34,11 @@
                                             <td class="text-center">{{ $item->product->pro_name }}</td>
                                             <td class="text-center">{{ $item->total }}</td>
                                             <td class="text-center">{{ $item->amount }}</td>
+                                            @if($item->stock_ps == 0)
+                                                <script>
+                                                    alert("สินค้าของคุณหมดแล้ว"); 
+                                                </script>
+                                            @endif
                                             <td class="text-center">
                                                 <form method="POST" action="{{ url('/sales' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                     {{ method_field('DELETE') }}

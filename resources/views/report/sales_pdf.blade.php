@@ -43,12 +43,11 @@ body{
 } 
 </style>
 <style>
-  table,th,td{
+  table,th,td {
       style: border: 1px solid black;
       text-align: center;
-    }   
+    }  
 </style>
-
 <h1 style="text-align:center">ร้านขายยาราชพฤกษ์</h1>
 <h2 style="text-align:center">ยอดขายในช่วงเดือน</h2>
 <h3 style="text-align:center"><b>พิมพ์ ณ วันที่ <?php echo date ("d-m-Y H:i:s"); ?><br></h3>
@@ -56,6 +55,7 @@ body{
 <div class="table-responsive">
     <table style="width:100%" class="table text-center">
         <thead>
+            <tr><td colspan="5">รายการที่ขายได้ทั้งหมด</td></tr>
             <tr>
                 <th>#</th>
                 <th>เวลาขาย</th>
@@ -65,24 +65,30 @@ body{
             </tr>
         </thead>
         <tbody>
-        @foreach($bills as $item)
-            @foreach($item->sales as $sale)
-            <tr>
-                <td>{{ $item->id }}</td>
-                <td>{{ $item->created_at }}</td>
-                <td>{{ $sale->pro_name }}</td>
-                <td>{{ $sale->amount }}</td>
-                <td>{{ $item->total}}</td>
-            </tr>
+            @foreach($bills as $item)
+                @foreach($item->sales as $sale)
+                <tr>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->created_at }}</td>
+                    <td>{{ $sale->pro_name }}</td>
+                    <td>{{ $sale->amount }}</td>
+                    <td>{{ $item->total}}</td>
+                </tr>
+                @endforeach
             @endforeach
-        @endforeach
+        </tbody>
+    </table>
+     <table style="width:100%" class="table text-center">
+        <thead>
+        <tr><td colspan="6">ยอดขายที่ขายได้ และ จำนวนของที่ขายได้</td></tr>
             <tr>
-                <td colspan="3">จำนวนของที่ขายได้</td>
-                <td rowspan="2">{{number_format($sale->sum('amount'))}}</td>
-                <td rowspan="2">{{number_format($bills->sum('total'))}}</td>
+                <th colspan="3">จำนวนของที่ขายได้</th>
+                <th colspan="3">ราคาที่ขายได้ทั้งหมด</th>
             </tr>
+        <tbody>
             <tr> 
-                <td colspan="3">ราคาที่ขายได้ทั้งหมด</td>
+                <td colspan="3">{{number_format($sale->sum('amount'))}}</td>
+                <td colspan="3">{{number_format($bills->sum('total'))}}</td>
             </tr>
         </tbody>
     </table>

@@ -19,8 +19,8 @@
                         <br/>
 
                         <div class="table-responsive">
-                            <table class="table text-center">
-                                <thead>
+                            <table class="table">
+                                <thead class="text-center">
                                     <tr>
                                         <th>รายการขายที่ {{ $bill->id }}</th>
                                         <th>รายการยา</th>
@@ -32,11 +32,11 @@
                                 @php
                                     $sales = $bill->sales;
                                 @endphp
-                                    <tbody>
+                                    <tbody class="text-center">
                                         @foreach($sales as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item->pro_name }}</td>
+                                                <td>{{ $item->product->pro_name }}</td>
                                                 <td>{{ $item->saleprice }}</td>
                                                 <td class="d-none">{{ $item->category_id }}</td>
                                                 <td>{{ $item->amount }}</td>       
@@ -44,8 +44,9 @@
                                             </tr>
                                         @endforeach                                    
                                     </tbody>                   
-                                        <tr><td colspan="6">ราคารวม {{ number_format($sales->sum('total')) }}</td></tr>
-                                        <tr><td colspan="6">ผู้ให้บริการ </td></tr>        
+                                        <tr><td colspan="6">&emsp;&emsp;&emsp;&emsp;&emsp;ผู้ให้บริการ &emsp;&emsp;&emsp;&emsp;&emsp;
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{$item->user->name}}</td></tr>        
                                     </tr> 
                                 </thead>        
                             </table>

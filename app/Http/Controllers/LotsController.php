@@ -64,7 +64,6 @@ class LotsController extends Controller
     {
    
         $requestData = $request->all();
-        
 
         $lot = Lot::create($requestData);
         //update ต้นทุนสินค้าแต่ละชิ้น

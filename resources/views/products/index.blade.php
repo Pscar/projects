@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card text-center"style="font-size:80px;">รายการสินค้า</div>
+                <div class="card text-center"style="font-size:50px;">รายการสินค้า</div>
                     <div class="card-body">
                         <form method="GET" action="{{ url('/products') }}" accept-charset="UTF-8" role="search">
                             <div class="input-group">
@@ -25,7 +25,6 @@
                         <table class="table table-sm" id="product">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>รหัสสินค้า</th>
                                     <th>ผลิตภัณฑ์</th>                                      
                                     <th>บรรจุ</th>
@@ -43,7 +42,6 @@
                             <tbody>
                                 @foreach($products as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
                                         <td> <a href="{{ url('/products/' . $item->id) }}"> {{$item->drug_id}} </a></td>
                                         <td>{{ $item->pro_name }}</td>
                                         <td>{{ $item->contain }}</td>
