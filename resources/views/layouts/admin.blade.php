@@ -101,35 +101,20 @@
   @endif
   @if(Auth::user()->role == "admin")
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <!-- <ul class="navbar-nav">
+    <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/bills') }}" class="nav-link" style="font-family: 'Mitr', sans-serif;">รายการขาย</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/products')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">ข้อมูลสต็อคปัจจุบัน</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/lots')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">ข้อมูลสต็อคใหม่</a>
-      </li>
-    </ul> 
-  -->
+    </ul>
   </nav>
   @endif
-  <!-- /.navbar -->
-
   @if(Auth::user()->role == "staff")
   <aside class="main-sidebar sidebar-outline-secondary elevation-4">
   @endif
   @if(Auth::user()->role == "admin")
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
   @endif
-    <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="{{ asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
@@ -138,12 +123,8 @@
           <a href="#" class="d-block" style="font-family: 'Mitr', sans-serif;"> {{ Auth::user()->name }} / {{ Auth::user()->role }} </a>
         </div>
       </div>
-
-  
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
         @if(Auth::user()->role == "staff")
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
@@ -187,10 +168,145 @@
             </li>
         @endif
         @if(Auth::user()->role == "admin") 
-           
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
-              <p style="font-family: 'Mitr', sans-serif;">พิมพ์รายงาน </p>
+              <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน </p>
+              <i class="right fas fa-angle-left"></i>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleJan/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน มกราคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleFeb/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน กุมภาพันธ์ </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleMar/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน มีนาคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleApr/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน เมษายน </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleMay/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน พฤษภาคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleJun/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน มิถุนายน </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleJul/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน กรกฏาคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleAug/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน สิงหาคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleSep/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน กันยายน </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleOct/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน ตุลาคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleNov/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน พฤศจิกายน </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleDec/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน ธันวาคม </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <p style="font-family: 'Mitr', sans-serif;">รายงานการสั่งซื้อยา </p>
+              <i class="right fas fa-angle-left"></i>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleJan/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน มกราคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleFeb/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน กุมภาพันธ์ </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleMar/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน มีนาคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleApr/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน เมษายน </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleMay/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน พฤษภาคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleJun/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน มิถุนายน </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleJul/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน กรกฏาคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleAug/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน สิงหาคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleSep/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน กันยายน </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleOct/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน ตุลาคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleNov/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน พฤศจิกายน </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/salemounth/saleDec/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน ธันวาคม </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <p style="font-family: 'Mitr', sans-serif;">อื่น ๆ </p>
               <i class="right fas fa-angle-left"></i>
             </a>
             <ul class="nav nav-treeview">
@@ -201,12 +317,17 @@
               </li>
               <li class="nav-item">
                 <a href="{{ url('report/stockps/pdf') }}" class="nav-link active">
-                  <p style="font-family: 'Mitr', sans-serif;">รายงานสต็อคล่าสุด </p>
+                  <p style="font-family: 'Mitr', sans-serif;">สต็อคล่าสุด </p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ url('report/sales/pdf') }}" class="nav-link active">
-                  <p style="font-family: 'Mitr', sans-serif;">รายงานการขาย </p>
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำปี </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/percost/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ต้นทุน กำไร ประจำปี </p>
                 </a>
               </li>
               <li class="nav-item">
