@@ -33,6 +33,7 @@
                                     vAxis: {format: 'decimal'},
                                     width: 900,
                                     height: 500,
+                                    hAxis: {format: 'MMM'},
                                 };
                                 var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
                                 chart.draw(data, google.charts.Bar.convertOptions(options));
@@ -59,10 +60,7 @@
                         <script type="text/javascript">
                             google.charts.load('current', {'packages':['bar']});
                             google.charts.setOnLoadCallback(drawChart);
-                            function drawChart() {
-                                var
-                                startDate = new Date("2017-10-01"),
-                                endDate = new Date("2017-10-07");
+                            function drawChart(){
                                 var data = google.visualization.arrayToDataTable([
                                 ['เดือน', 'ยอดขาย', 'ต้นทุน', 'กำไร'],
                                 @foreach($sale as $item)

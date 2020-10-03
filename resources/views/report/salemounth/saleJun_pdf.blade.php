@@ -62,7 +62,7 @@ h1 ,h2,h3 {
             <img src="{{ asset('/storage/1.png')}}"width="75" height="75" class="mr-2" alt="">
                 ร้านขายยาราชพฤกษ์
             </h1>
-            <h2 style="text-align:center">ยอดขายในช่วงเดือน</h2>
+            <h2 style="text-align:center">ต้นทุน กำไร รายการขาย</h2>
             <h3 style="text-align:center"><b>พิมพ์ ณ วันที่ <?php echo date ("d-m-Y H:i:s"); ?><br></h3> 
         </div><br><br>
         <div class="col-md-12">
@@ -71,37 +71,22 @@ h1 ,h2,h3 {
                     <thead>
                         <tr><td colspan="3">รายการที่ขายได้ทั้งหมด</td></tr>
                         <tr>
-                            <th>ชื่อยา</th>
-                            <th>จำนวน</th> 
-                            <th>ราคาขาย</th> 
+                            <th>ชื่อยา</th> 
+                            <th>ราคาที่ขาย</th>
+                            <th>ยอดรวม</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($bills as $item)
-                            @foreach($item->sales as $sale)
+                    @foreach($sales as $item)
                             <tr>
-                                <td>{{ $sale->product->pro_name }}</td>
-                                <td>{{ $sale->amount }}</td>
-                                <td>{{ $item->total}}</td>
+                                <td>{{ $item->pro_name }}</td>
+                                <td>{{ $item->saleprice }}</td>
+                                <td>{{ $item->total }}</td>
                             </tr>
-                            @endforeach
-                        @endforeach
-                    </tbody>
-                </table><br><br>
-                <table style="width:100%" class="table text-center">
-                    <thead>
-                    <tr><td colspan="9">ยอดขายที่ขายได้ และ จำนวนของที่ขายได้</td></tr>
-                        <tr>
-                            <th colspan="3">จำนวนของที่ขายได้</th>
-                            <th colspan="3">จำนวนของที่ขายได้</th>
-                            <th colspan="3">ราคาที่ขายได้ทั้งหมด</th>
-                        </tr>
-                    <tbody>
-                        <tr> 
-                            <td colspan="3">{{number_format($sale->count('pro_name'))}}</td>
-                            <td colspan="3">{{number_format($sale->sum('amount'))}}</td>
-                            <td colspan="3">{{number_format($bills->sum('total'))}}</td>
-                        </tr>
+                    @endforeach
+                    <tr>
+                    <td  colspan="3">{{ number_format($sales->sum('total')),2 }}</td></tr>
                     </tbody>
                 </table>
             </div>

@@ -65,20 +65,16 @@ class BillsController extends Controller
         //รวมราคา   
         $total = Sale::whereNull('bill_id')
                 ->where('user_id', Auth::id())->sum('total');  
-            
-
         //กำหนดราคารวม, ผู้ใช้, สถานะ แสดงผลในหน้า blade
         $requestData['total'] = $total;
         $requestData['user_id'] = Auth::id();
-
         //create bill not update bill_id
         $bill = Bill::create($requestData);
-
         //update bill_id
         Sale::whereNull('bill_id') 
             ->where('user_id', Auth::id())
             ->update(['bill_id'=> $bill->id]);
-       
+        $id = $bill->id;
         //ตัดสต็อคหลังจากอัพเดท bill_id
         $sales = $bill->sales; //เรียกข้อมูล sales ผ่าน bill
         foreach($sales as $sale){ //เรียกข้อมูล ใน salesที่ผ่าน bill เก็บตัวแปร sale
@@ -115,9 +111,8 @@ class BillsController extends Controller
             $bill->sales() // เรียกผ่าน Relations 
                 ->where('product_id',$sale->product_id)
                 ->update(['percost'=> $sum , 'profit'=> $profit]); // 1 array มี 2 column
-           
         }
-        return redirect('bills')->with('flash_message', 'Bill added!');
+            return redirect('bills')->with('flash_message', 'Bill added!');
     }
             //ไม่ได้ใช้เก็บไว้ดูเล่น
             // Lot::join('products', 'product.id', '=', 'lots.product_id') // innerjoin products product_id กับ lots product_id

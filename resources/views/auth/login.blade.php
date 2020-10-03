@@ -89,7 +89,7 @@
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
 					<div class="brand_logo_container">
-                        <img src="{{ url('/') }}/storage/1.jpg"class="brand_logo" alt="Logo">
+                        <img src="{{ url('/') }}/storage/1.png"class="brand_logo" alt="Logo">
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">

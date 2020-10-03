@@ -31,12 +31,9 @@ class HomeController extends Controller
         return view('home');
     }
     public function sale(Request $request){
-        /*SELECT year(created_at) as y , month(created_at) as m, sum(total) as t, sum(percost) as cost 
-        FROM `sales` 
-        group by year(created_at), month(created_at)*/
-        // รับค่า user    
-       $user_id = $request->get('user_id','asc');
-       $user_id =  Auth::id();
+        // SELECT DISTINCT year(created_at) as y , month(created_at) as m, sum(total) as t, sum(percost) as cost 
+        // FROM `sales` 
+        // group by year(created_at), month(created_at)
        $sales = Sale::selectRaw('year(created_at) as y , month(created_at) as m , sum(total) as t , sum(percost) as cost ,sum(profit) as p')
                     ->groupBy('y','m')
                     ->get();
@@ -45,8 +42,7 @@ class HomeController extends Controller
                     ->orderBy('d','asc')
                     ->whereMonth('created_at', '8')
                     ->get();
-       return view('home', compact('sales','sale'));
-       
+       return view('home', compact('sales','sale')); 
     }
      
 }

@@ -22,16 +22,12 @@ class SalesController extends Controller
     {
 
         $perPage = 25;
-        //ส่งข้อมูลไปที่ exampleModalmodel
-        $products = DB::table('products')//array products
-            ->select('drug_id','pro_name','saleprice','stock_ps')
-            ->get();
         //สินค้ารอจ่ายเงิน 
         $sales = Sale::whereNull('bill_id')
             ->where('user_id', Auth::id() )
             ->latest()->paginate($perPage); 
         
-        return view('sales.index', compact('sales','products'));//compact สร้าง array 
+        return view('sales.index', compact('sales'));//compact สร้าง array 
     }
 
     /**
@@ -64,17 +60,18 @@ class SalesController extends Controller
         //ยืนยันการสั่งซื้อ   
         $requestData = $request->all();
         $product= Product::where('drug_id',$requestData['drug_id'])->firstOrFail(); // เรียกค่า drug_id จากตาราง product
-        $requestData['product_id'] = $product->id;// requersData product_id
+        $requestData['product_id'] = $product->id; $requestData['pro_name'] = $product->pro_name;
+        $requestData['category_id'] = $product->category_id;
         //คำนวณราคาสินค้า sumvat
         $requestData['total'] = $requestData['saleprice'] = $product->saleprice * $requestData['amount'] + $requestData['saleprice'] = $product->saleprice * $requestData['amount'] * 0.07 ;
         //ระบุ user_id
         $requestData['user_id'] = Auth::id(); 
 
-        // create sale submit
-        Sale::create($requestData);
-        
-    
-
+        if( $requestData['amount'] > $requestData['stock_ps'] = $product->stock_ps) {
+            return redirect('sales');
+        } else {
+           Sale::create($requestData); 
+        }
         return redirect('sales')->with('flash_message', 'Sale added!');
     }
 

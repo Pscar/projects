@@ -38,37 +38,56 @@ body{
         /*font-size : 16px;*/
       }
     }
-  table,th,td{
-  border: 1px solid black;
+table,th,td {
+  border: solid black;
   text-align: center;
+  border-collapse: collapse;
 } 
+img {
+  position: absolute;
+  left: 10px;
+  top: 1px;
+}
+h1 ,h2,h3 { 
+  right: 15px;
+  margin: 0;
+  padding:0;
+}
 </style>
-
-
-<h1 style="text-align:center">ร้านขายยาราชพฤกษ์</h1>
-<h2 style="text-align:center">รายงานสั่งซื้อยา</h2>
-<h3 style="text-align:center"><b>พิมพ์ ณ วันที่ <?php echo date ("d-m-Y H:i:s"); ?><br></h3>
-
-<div class="table-responsive text-center">
-    <table style="width:100%" class="table table-sm" id="product">
-        <thead>
-          <tr>
-              <th>รหัสสินค้า</th>
-              <th>ต้นทุน</th>
-          </tr>
-        </thead>
-        <tbody> 
-          @foreach($lots as $p)
-            <tr>                  
-                <td>{{ $p->drug_id }}</td>
-                <td>{{ $p->cost}}</td>
-            </tr>
-          @endforeach
-            <tr>
-                <td>รวมรายจ่าย</td>
-                <td>{{number_format($lots->sum('cost'))}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div clas="report container">
+  <div class="row">
+    <div class="col-md-12">
+        <h1 style="text-align:center;">
+        <img src="{{ asset('/storage/1.png')}}"width="75" height="75" class="mr-2" alt="">
+            ร้านขายยาราชพฤกษ์
+        </h1>
+        <h2 style="text-align:center">ยอดขายในช่วงเดือน</h2>
+        <h3 style="text-align:center"><b>พิมพ์ ณ วันที่ <?php echo date ("d-m-Y H:i:s"); ?><br></h3> 
+    </div><br><br>
+    <div class="col-md-12">
+      <div class="table-responsive text-center">
+          <table style="width:100%" class="table table-sm" id="product">
+              <thead>
+                <tr>
+                    <th>ผลิตภัณฑ์</th>
+                    <th>ต้นทุน</th>
+                </tr>
+              </thead>
+              <tbody> 
+                @foreach($lots as $p)
+                  <tr>                  
+                      <td>{{ $p->product->pro_name }}</td>
+                      <td>{{ $p->cost}}</td>
+                  </tr>
+                @endforeach
+                  <tr>
+                      <td>รวมรายจ่าย</td>
+                      <td>{{number_format($lots->sum('cost'))}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
 </div>
   
