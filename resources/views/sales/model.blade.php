@@ -31,7 +31,7 @@
                                           function divideBy(){
                                               total = document.getElementById("total").value;
                                               payment = document.getElementById("payment").value;
-                                              result = document.getElementById("result").innerHTML = payment - total;
+                                              result = document.getElementById("result").value = payment - total +val ;
                                           }
                                         </script>
                                     </div>

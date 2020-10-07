@@ -18,7 +18,7 @@ class ExpenditureController extends Controller
   public function pdf_expenditureOct(){
     $lots =  Lot::selectRaw('drug_id, sum(cost) as cost, created_at')
                   ->groupBy('drug_id')
-                  ->whereMonth('created_at', '8')
+                  ->whereMonth('created_at', '10')
                   ->get();
     $pdf = PDF::loadView('report/expandmounth/expendOct_pdf', ['lots'=>$lots]);
     return $pdf->stream('รายงานการสั่งซื้อประจำเดือน.pdf');

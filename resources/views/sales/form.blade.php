@@ -11,16 +11,8 @@
 
 <div class="form-group {{ $errors->has('amount') ? 'has-error' : ''}}">
     <label for="amount" class="control-label">{{ 'จำนวน' }}</label>  
-    @if($product->stock_ps == 0)
         <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : ''}}" readonly>
         {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
-    <script>
-        alert("สินค้าของคุณหมดแล้ว"); 
-    </script>
-    @else
-        <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : ''}}">
-        {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
-    @endif
 </div>
 <div class="form-group {{ $errors->has('stock_ps') ? 'has-error' : ''}}">
     <label for="pro_name" class="control-label">{{ 'คงเหลือ' }}</label>

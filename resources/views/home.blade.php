@@ -3,7 +3,7 @@
 <section class="content">
     <div class="container-fluid pt-3 px-lg-5">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">ยอดขายประจำปี <?php echo date ("Y"); ?></h3>
@@ -31,7 +31,7 @@
                                 },
                                     bars: 'vertical',
                                     vAxis: {format: 'decimal'},
-                                    width: 900,
+                                    width: 350,
                                     height: 500,
                                     hAxis: {format: 'MMM'},
                                 };
@@ -46,10 +46,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="card card-info">
                 <div class="card-header">
-                    <h3 class="card-title">ยอดขายประจำเดือน สิงหาคม</h3>
+                    <h3 class="card-title">ยอดขายประจำเดือน <?php echo date ("M"); ?></h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                         </button>
@@ -74,7 +74,7 @@
                                 },
                                     bars: 'vertical',
                                     vAxis: {format: 'decimal'},
-                                    width: 900,
+                                    width: 350,
                                     height: 500,
                                 };
                                 var chart = new google.charts.Bar(document.getElementById('columnchart'));

@@ -112,7 +112,7 @@ class BillsController extends Controller
                 ->where('product_id',$sale->product_id)
                 ->update(['percost'=> $sum , 'profit'=> $profit]); // 1 array มี 2 column
         }
-            return redirect('bills')->with('flash_message', 'Bill added!');
+            return redirect("bills/$bill->id")->with('flash_message', 'Bill added!');
     }
             //ไม่ได้ใช้เก็บไว้ดูเล่น
             // Lot::join('products', 'product.id', '=', 'lots.product_id') // innerjoin products product_id กับ lots product_id

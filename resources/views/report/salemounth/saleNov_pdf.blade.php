@@ -62,7 +62,7 @@ h1 ,h2,h3 {
             <img src="{{ asset('/storage/1.png')}}"width="75" height="75" class="mr-2" alt="">
                 ร้านขายยาราชพฤกษ์
             </h1>
-            <h2 style="text-align:center">ต้นทุน กำไร รายการขาย</h2>
+            <h2 style="text-align:center">ยอดขายประจำเดือน พฤศจิกายน</h2>
             <h3 style="text-align:center"><b>พิมพ์ ณ วันที่ <?php echo date ("d-m-Y H:i:s"); ?><br></h3> 
         </div><br><br>
         <div class="col-md-12">

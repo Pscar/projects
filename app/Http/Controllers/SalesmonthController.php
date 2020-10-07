@@ -11,6 +11,21 @@ use App\Bill;
 
 class SalesmonthController extends Controller
 {
+  public function report(Request $request) {
+     
+    $requestData = $request->all();
+
+    if (!empty($yearselect)) {
+      $sales =  Sale::selectRaw('created_at, pro_name , product_id , saleprice,sum(total) as total,sum(amount) as amount')
+                    ->groupBy('product_id')
+                    ->whereYear('created_at',$requestData['yearselect'])
+                    ->get();
+    } else {
+      $sales = [];
+    }
+    return view('report',compact('sales')); // index
+    
+  }
   public function pdf_salesmonth() {
     $bills = Bill::all();
     $pdf = PDF::loadView('report/sales_pdf', ['bills'=>$bills]);
@@ -94,9 +109,9 @@ class SalesmonthController extends Controller
     return $pdf->stream('รายงานยอดขายเดือนกันยายน.pdf');
   }
   public function pdf_salesmouthOct(){
-    $sales =  Sale::selectRaw('created_at, pro_name , saleprice,sum(total) as total')
+    $sales =  Sale::selectRaw('created_at, pro_name , saleprice,sum(total) as total,sum(amount) as amount')
                   ->groupBy('pro_name')
-                  ->whereMonth('created_at', '10')
+                  ->whereMonth('created_at','10')
                   ->get();
     $pdf = PDF::loadView('report/salemounth/saleOct_pdf', ['sales'=>$sales]);
     return $pdf->stream('รายงานยอดขายเดือนตุลาคม.pdf');
@@ -110,7 +125,7 @@ class SalesmonthController extends Controller
     return $pdf->stream('รายงานยอดขายเดือนพฤศจิกายน.pdf');
   }
   public function pdf_salesmouthDec(){
-    $sales =  Sale::selectRaw('created_at, pro_name , saleprice,sum(total) as total')
+    $sales =  Sale::selectRaw('created_at, pro_name , saleprice,sum(total) as total,sum(amount) as amount ')
                   ->groupBy('pro_name')
                   ->whereMonth('created_at', '12')
                   ->get();

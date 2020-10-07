@@ -40,7 +40,7 @@ class HomeController extends Controller
        $sale =  Sale::selectRaw('month(created_at) as m ,day(created_at) as d , sum(total) as t , sum(percost) as cost ,sum(profit) as p')
                     ->groupBy('m','d')
                     ->orderBy('d','asc')
-                    ->whereMonth('created_at', '8')
+                    ->whereMonth('created_at', '10')
                     ->get();
        return view('home', compact('sales','sale')); 
     }

@@ -63,7 +63,7 @@ class SalesController extends Controller
         $requestData['product_id'] = $product->id; $requestData['pro_name'] = $product->pro_name;
         $requestData['category_id'] = $product->category_id;
         //คำนวณราคาสินค้า sumvat
-        $requestData['total'] = $requestData['saleprice'] = $product->saleprice * $requestData['amount'] + $requestData['saleprice'] = $product->saleprice * $requestData['amount'] * 0.07 ;
+        $requestData['total'] = $requestData['saleprice'] = $product->saleprice * $requestData['amount'];
         //ระบุ user_id
         $requestData['user_id'] = Auth::id(); 
 

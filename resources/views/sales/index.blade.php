@@ -30,7 +30,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($sales as $item)
-                                        <tr>  
+                                        <tr> 
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">{{ $item->product->pro_name }}</td>
                                             <td class="text-center">{{ $item->total }}</td>

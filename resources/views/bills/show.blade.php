@@ -2,13 +2,13 @@
 @section('content')
     <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">รายการขายที่ {{ $bill->id }}</div>
                     <div class="card-body">
 
                         <a href="{{ url('/bills') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
-                        <a href="{{ url('/bills/' . $bill->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไขรายการ</button></a>
+                        <a href="{{ url('/bills/' . $bill->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไขรายการ</button></a>
 
                         <form method="POST" action="{{ url('bills' . '/' . $bill->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
@@ -18,9 +18,9 @@
                         <br/>
                         <br/>
 
-                        <div class="table-responsive">
+                        <div class="table-responsive text-center">
                             <table class="table">
-                                <thead class="text-center">
+                                <thead>
                                     <tr>
                                         <th>รายการขายที่ {{ $bill->id }}</th>
                                         <th>รายการยา</th>

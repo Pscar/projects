@@ -139,25 +139,24 @@
                 </a>
               </li>          
             </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ url('/bills') }}" class="nav-link ">
-                  <p style="font-family: 'Mitr', sans-serif;">รายการขาย</p>
-                </a>
-              </li>          
-            </ul>
           </li>
           <li class="nav-header" style="font-family: 'Mitr', sans-serif;">Menu</li>          
             <li class="nav-item">
               <a href="{{ url('/bills') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
-                <p style="font-family: 'Mitr', sans-serif;">รายการขาย</p>
+                <p style="font-family: 'Mitr', sans-serif;">ข้อมูลการขาย</p>
               </a>
             </li> 
             <li class="nav-item">
               <a href="{{ url('/products') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
                 <p style="font-family: 'Mitr', sans-serif;">ข้อมูลยา</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('/products') }}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p style="font-family: 'Mitr', sans-serif;">ข้อมูลสต็อค</p>
               </a>
             </li>
             <li class="nav-item">
@@ -236,7 +235,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview menu-open">
+          <!-- <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <p style="font-family: 'Mitr', sans-serif;">รายงานการสั่งซื้อยา </p>
               <i class="right fas fa-angle-left"></i>
@@ -303,7 +302,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <p style="font-family: 'Mitr', sans-serif;">อื่น ๆ </p>

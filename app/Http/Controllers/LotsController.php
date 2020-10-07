@@ -33,7 +33,7 @@ class LotsController extends Controller
                 ->orWhere('product_id','LIKE',"%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $lot = Lot::latest()->paginate($perPage);
+            $lot = Lot::latest()->paginate($perPage); //$lot=[];
         }
 
         return view('lots.index', compact('lot','products'));

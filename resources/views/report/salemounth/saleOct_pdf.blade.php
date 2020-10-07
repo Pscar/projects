@@ -62,31 +62,37 @@ h1 ,h2,h3 {
             <img src="{{ asset('/storage/1.png')}}"width="75" height="75" class="mr-2" alt="">
                 ร้านขายยาราชพฤกษ์
             </h1>
-            <h2 style="text-align:center">ต้นทุน กำไร รายการขาย</h2>
-            <h3 style="text-align:center"><b>พิมพ์ ณ วันที่ <?php echo date ("d-m-Y H:i:s"); ?><br></h3> 
+            <h2 style="text-align:center">ยอดขายประจำเดือน ตุลาคม</h2>
+            <h3 style="text-align:center"><b>พิมพ์ ณ วันที่ <?php echo date ("d H:i:s"); ?><br></h3> 
         </div><br><br>
         <div class="col-md-12">
             <div class="table-responsive">
                 <table style="width:100%" class="table text-center">
                     <thead>
-                        <tr><td colspan="3">รายการที่ขายได้ทั้งหมด</td></tr>
+                        <tr><td colspan="4">รายการที่ขายได้ทั้งหมด</td></tr>
                         <tr>
                             <th>ชื่อยา</th> 
-                            <th>ราคาที่ขาย</th>
-                            <th>ยอดรวม</th>
+                            <th>จำนวนที่ขาย (ชิ้น)</th>
+                            <th>ราคาที่ขาย (บาท)</th>
+                            <th>ยอดรวม (บาท)</th>
 
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($sales as $item)
                             <tr>
-                                <td>{{ $item->pro_name }}</td>
-                                <td>{{ $item->saleprice }}</td>
-                                <td>{{ $item->total }}</td>
+                                <td>{{ $item->pro_name }} </td>
+                                <td>{{ $item->amount }} </td>
+                                <td>{{ $item->saleprice }} </td>
+                                <td>{{ $item->total }} </td>
                             </tr>
                     @endforeach
                     <tr>
-                    <td  colspan="3">{{ number_format($sales->sum('total')),2 }}</td></tr>
+                        <td></td>
+                        <td>{{ number_format($sales->sum('amount')),2 }} (ชิ้น)</td>
+                        <td>{{ number_format($sales->sum('saleprice')),2 }} (บาท) </td>
+                        <td>{{ number_format($sales->sum('total')),2 }} (บาท) </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

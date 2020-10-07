@@ -30,8 +30,8 @@
                                     <th>บรรจุ</th>
                                     <th>คงเหลือ</th>
                                     @if(Auth::user()->role == "staff")
-                                    <th>สถานะ</th>
-                                    <th>Actions</th>
+                                    <th>สถานะขาย</th>
+                                    <th>สถานะสต็อค</th>
                                     @endif
                                     @if(Auth::user()->role == "admin")
                                     <th colspan="2">สถานะ</th>
