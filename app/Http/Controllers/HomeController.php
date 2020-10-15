@@ -44,5 +44,4 @@ class HomeController extends Controller
                     ->get();
        return view('home', compact('sales','sale')); 
     }
-     
 }

@@ -3,8 +3,8 @@
     <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
+            <div class="card text-white bg-primary text-center mb-3"style="font-size:3rem;">รายการประเภทยา</div>
                 <div class="card">
-                    <div class="card-header">ประเภทยา</div>
                     <div class="card-body">
                         <a href="{{ url('/categorys/create') }}" class="btn btn-success btn-sm" title="Add New category">
                             <i class="fa fa-plus" aria-hidden="true"></i> เพื่มข้อมูลประเภท
@@ -27,7 +27,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>ลำดับ</th>
                                         <th>ประเภท</th>
                                         <th>Actions</th>
                                     </tr>

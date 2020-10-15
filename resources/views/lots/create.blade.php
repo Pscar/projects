@@ -3,8 +3,8 @@
     <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
+            <div class="card text-white bg-info text-center mb-3"style="font-size:3rem;">สร้างรายการสต็อคใหม่</div>
                 <div class="card">
-                    <div class="card-header">เพิ่มสินค้าใหม่</div>
                     <div class="card-body">
                         <a href="{{ url('/lots') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />

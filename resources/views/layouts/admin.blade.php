@@ -144,25 +144,25 @@
             <li class="nav-item">
               <a href="{{ url('/bills') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
-                <p style="font-family: 'Mitr', sans-serif;">ข้อมูลการขาย</p>
+                <p style="font-family: 'Mitr', sans-serif;">รายการการขาย</p>
               </a>
             </li> 
             <li class="nav-item">
               <a href="{{ url('/products') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
-                <p style="font-family: 'Mitr', sans-serif;">ข้อมูลยา</p>
+                <p style="font-family: 'Mitr', sans-serif;">รายการยา</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ url('/products') }}" class="nav-link">
+              <a href="{{ url('/lots') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
-                <p style="font-family: 'Mitr', sans-serif;">ข้อมูลสต็อค</p>
+                <p style="font-family: 'Mitr', sans-serif;">รายการสต็อคใหม่</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ url('/categorys') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
-                <p style="font-family: 'Mitr', sans-serif;">ข้อมูลประเภทยา</p>
+                <p style="font-family: 'Mitr', sans-serif;">รายการประเภทยา</p>
               </a>
             </li>
         @endif
@@ -231,6 +231,26 @@
               <li class="nav-item">
                 <a href="{{ url('report/salemounth/saleDec/pdf') }}" class="nav-link active">
                   <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน ธันวาคม </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/stockps/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">สต็อคล่าสุด </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/sales/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำปี </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/percost/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ต้นทุน กำไร ประจำปี </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('report/expend/pdf') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">รายงานการสั่งซื้อยา </p>
                 </a>
               </li>
             </ul>
@@ -315,23 +335,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('report/stockps/pdf') }}" class="nav-link active">
-                  <p style="font-family: 'Mitr', sans-serif;">สต็อคล่าสุด </p>
+                <a href="{{ url('/products') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">ข้อมูลยา</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('report/sales/pdf') }}" class="nav-link active">
-                  <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำปี </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('report/percost/pdf') }}" class="nav-link active">
-                  <p style="font-family: 'Mitr', sans-serif;">ต้นทุน กำไร ประจำปี </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('report/expend/pdf') }}" class="nav-link active">
-                  <p style="font-family: 'Mitr', sans-serif;">รายงานการสั่งซื้อยา </p>
+                <a href="{{ url('/bills') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">รายการการขาย</p>
                 </a>
               </li>
             </ul>

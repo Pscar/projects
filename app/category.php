@@ -25,7 +25,7 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['name_category','name_subprkun','name_howto','name_warning','name_storage'];
+    protected $fillable = ['name_category','decription'];
 
     public function products(){
         return $this->hasMany('App\Product','category_id'); 

@@ -3,10 +3,9 @@
     <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">รายการขายที่ {{ $bill->id }}</div>
-                    <div class="card-body">
-
+            <div class="card text-white bg-success text-center mb-3"style="font-size:3rem;">รายการขายที่ {{ $bill->id }}</div>
+                <div class="card ">
+                    <div class="card-body"> 
                         <a href="{{ url('/bills') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
                         <a href="{{ url('/bills/' . $bill->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไขรายการ</button></a>
 
@@ -22,7 +21,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>รายการขายที่ {{ $bill->id }}</th>
+                                        <th>ลำดับ</th>
                                         <th>รายการยา</th>
                                         <th>ราคาขาย</th>
                                         <th class="d-none">ประเภทยา</th>
@@ -38,16 +37,12 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $item->product->pro_name }}</td>
                                                 <td>{{ $item->saleprice }}</td>
-                                                <td class="d-none">{{ $item->category_id }}</td>
                                                 <td>{{ $item->amount }}</td>       
                                                 <td>{{ $item->total }}</td>
                                             </tr>
                                         @endforeach                                    
                                     </tbody>                   
-                                        <tr><td colspan="6">&emsp;&emsp;&emsp;&emsp;&emsp;ผู้ให้บริการ &emsp;&emsp;&emsp;&emsp;&emsp;
-                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{$item->user->name}}</td></tr>        
-                                    </tr> 
+                                        <tr><td colspan="5">ผู้ให้บริการ &emsp;&emsp;&emsp;&emsp;&emsp;{{$item->user->name}}</td></tr>    
                                 </thead>        
                             </table>
                         </div>

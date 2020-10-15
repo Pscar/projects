@@ -9,33 +9,39 @@
                         <div class="row">
                             <div class="col-12">
                                 <form name="frm" method="POST" action="{{ url('/bills') }}" accept-charset="UTF-8" class="form-horizontal text-center" enctype="multipart/form-data">
-                                    {{ csrf_field() }} 
+                                    {{ csrf_field() }}
                                     <div class="form-group form-inline">
-                                        <label class="col-lg-4">ยอดจ่าย</label> 
+                                        <label class="col-lg-4">ยอดจ่าย</label>
                                         <div class="col-lg-2">
-                                            <input class="form-control" type="text"  id="total" value="{{ number_format($sales->sum('total')) }}" readonly>
+                                            <input class="form-control" name="total" type="number"  id="total" value="{{ number_format($sales->sum('total')) }}" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group form-inline">
-                                        <label class="col-lg-4">รับเงินมา</label> 
+                                        <label class="col-lg-4">รับเงินมา</label>
                                         <div class="col-lg-2">
-                                            <input class="form-control" type="text"  id="payment" autofocus>
+                                            <input class="form-control" name="payment" type="text"  id="payment" onChange="onChangePayment(value)" value="" autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group form-inline">
-                                        <label class="col-lg-4">เงินทอน</label> 
+                                        <label class="col-lg-4">เงินทอน</label>
                                         <div class="col-lg-2">
-                                          <span id="result"></span>
-                                        </div>                                              
+                                          <input class="form-control" name="result" type="number" type="number" id="result" value="0" readonly>
+                                        </div>
                                         <script>
-                                          function divideBy(){
-                                              total = document.getElementById("total").value;
-                                              payment = document.getElementById("payment").value;
-                                              result = document.getElementById("result").value = payment - total +val ;
+                                          function onChangePayment(value) {
+                                              var total = document.getElementById("total").value;
+                                              console.log(total);
+                                              var payment = document.getElementById("payment").value;
+                                              console.log(payment);
+
+                                              let result = payment - total;
+                                              console.log(result);
+
+                                              document.getElementById("result").value = result;
                                           }
                                         </script>
                                     </div>
-                                        <button type="submit" class="btn btn-success btn-sm" onclick="divideBy()"> สั่งสินค้า </button> 
+                                        <button type="submit" class="btn btn-success btn-sm"> สั่งสินค้า </button> 
                                 </form>
                             </div>
                         </div>

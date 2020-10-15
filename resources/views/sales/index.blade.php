@@ -3,14 +3,14 @@
     <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
-            <div class="card text-center"style="font-size:70px;">หน้าจอขาย</div>
+            <div class="card text-white bg-primary text-center mb-3"style="font-size:3rem;">หน้าจอขาย</div>
                 <div class="card">
                     <div class="card-body">
                         <label class="control-label">สแกนสินค้า</label>
                         <form method="POST" action="{{ url('/sales') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="input-group">
-                                <input class="form-control" name="drug_id" type="text"   placeholder="BARCODE" value="{{ request('search') }}" autofocus>
+                                <input class="form-control" name="drug_id" type="text" placeholder="BARCODE" value="{{ request('search') }}" autofocus>
                                 <input class="form-control" name="amount" type="number" id="amount" value="{{ isset($sale->amount) ? $sale->amount : '1'}}"> 
                                     <button type="submit" class="btn btn-success d-none" >Save</button>
                             </div>

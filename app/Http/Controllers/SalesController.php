@@ -67,7 +67,7 @@ class SalesController extends Controller
         //ระบุ user_id
         $requestData['user_id'] = Auth::id(); 
 
-        if( $requestData['amount'] > $requestData['stock_ps'] = $product->stock_ps) {
+        if( $requestData['amount'] > $requestData['stock_ps'] = $product->stock_ps && $product->status_sale = "souout") {
             return redirect('sales');
         } else {
            Sale::create($requestData); 

@@ -1,15 +1,13 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
 @section('content')
-    <div class="container">
+    <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
+            <div class="card bg-warning text-center mb-3"style="font-size:3rem;">แก้ไขรายการสินค้า {{$product->id}}</div>
                 <div class="card">
-                    <div class="card-header ">แก้ไขข้อมูลสินค้า </div>
-                    
+                    <div class="card-header">
                     <div class="card-body text-center">
-                        
-                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($product->drug_id, 'C128') }}" alt="barcode"/><br>
+                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($product->drug_id, 'C128') }}" alt="barcode" style="width:20rem;"><br>
                     {{$product->drug_id}}
 
                     </div>

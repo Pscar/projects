@@ -4,10 +4,10 @@
     <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
+            <div class="card text-white bg-info text-center mb-3"style="font-size:2.5rem;">สต็อคสินค้าใหม่ <br> {{ $lot->product->pro_name }} </div>
                 <div class="card">
                 <div class="card-header text-center"> 
-                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($lot->product->drug_id, 'C128') }}" alt="barcode"/><br>
-                    {{$lot->product->drug_id}}
+                    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($lot->product->drug_id, 'C128') }}" alt="barcode" style="width:20rem;"><br>
                     </div>
                     <div class="card-body">
                         

@@ -3,8 +3,8 @@
     <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
+            <div class="card text-white bg-primary text-center mb-3"style="font-size:3rem;">รายการขาย</div>
                 <div class="card">
-                    <div class="card text-center"style="font-size:50px;">รายการขาย</div>
                     <div class="card-body">
                         <a href="{{ url('/sales') }}" class="btn-warning btn-sm " title="Add New Sales">
                             <i class="fa fa-arrow-left" aria-hidden="true"></i> กลับหน้าขาย
