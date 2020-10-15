@@ -38,6 +38,9 @@
     background: #f8f9fa;
     border-top-left-radius: 10% 50%;
     border-bottom-left-radius: 10% 50%;
+    background-image: url('{{ url('/') }}/storage/2.jpg');
+    background-position: center;
+	background-size: cover;
 }
 .register-left {
     font-weight: lighter;
@@ -47,6 +50,7 @@
 .register .register-form{
     padding: 10%;
     margin-top: 10%;
+    
 }
 .btnRegister{
     float: right;
@@ -90,7 +94,8 @@
     text-align: center;
     margin-top: 8%;
     margin-bottom: -15%;
-    color: #495057;
+    color: #fff;
+    font-size:2.5rem;
 }
 .login{
     margin-top: 10%;
