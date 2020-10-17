@@ -23,7 +23,7 @@ class ViewController extends Controller
                                 ->groupBy('product_id')
                                 ->whereDate('created_at',$date)
                                 ->get();
-                return view('reportdate',['ViewsPage' => $search]);
+                return view('report.salesreport.reportdate',['ViewsPage' => $search]);
             } 
             elseif ($req->has('exportPDF'))
             {
@@ -32,7 +32,7 @@ class ViewController extends Controller
                                     ->groupBy('product_id')
                                     ->whereDate('created_at',$date)
                                     ->get();
-                $pdf = PDF::loadView('PDF_reportdate', ['PDFReport' => $PDFReport])->setPaper('a4', 'landscape');
+                $pdf = PDF::loadView('report.salesreport.PDF_reportdate', ['PDFReport' => $PDFReport])->setPaper('a4', 'landscape');
                 return $pdf->download('ยอดขายประจำวัน.pdf');
             }  
         }
@@ -42,7 +42,7 @@ class ViewController extends Controller
                             ->groupBy('product_id')
                             ->whereDate('created_at',$date)
                             ->get();
-            return view('reportdate',['ViewsPage' => $ViewsPage]);       
+            return view('report.salesreport.reportdate',['ViewsPage' => $ViewsPage]);       
          }
     }
     public function reportmonth(Request $req)
@@ -63,7 +63,7 @@ class ViewController extends Controller
                                 ->whereMonth('created_at',$month)
                                 ->whereYear('created_at',$year)
                                 ->get();
-                return view('reportmonth',['ViewsPage' => $search]);
+                return view('report.salesreport.reportmonth',['ViewsPage' => $search]);
             } 
             elseif ($req->has('exportPDF'))
             {
@@ -73,7 +73,7 @@ class ViewController extends Controller
                                     ->whereMonth('created_at',$month)
                                     ->whereYear('created_at',$year)
                                     ->get();
-                $pdf = PDF::loadView('PDF_reportmonth', ['PDFReport' => $PDFReport])->setPaper('a4', 'landscape');
+                $pdf = PDF::loadView('report.salesreport.PDF_reportmonth', ['PDFReport' => $PDFReport])->setPaper('a4', 'landscape');
                 return $pdf->download('ยอดขายประจำเดือน');
             }  
         }else{
@@ -82,7 +82,7 @@ class ViewController extends Controller
                                 ->whereMonth('created_at',$month)
                                 ->whereYear('created_at',$year)
                                 ->get();
-            return view('reportmonth',['ViewsPage' => $ViewsPage]);
+            return view('report.salesreport.reportmonth',['ViewsPage' => $ViewsPage]);
                             
         }
     }
@@ -101,7 +101,7 @@ class ViewController extends Controller
                                 ->groupBy('product_id')
                                 ->whereYear('created_at',$year)
                                 ->get();
-                return view('reportyear',['ViewsPage' => $search]);
+                return view('report.salesreport.reportyear',['ViewsPage' => $search]);
             } 
             elseif ($req->has('exportPDF'))
             {
@@ -110,7 +110,7 @@ class ViewController extends Controller
                                     ->groupBy('product_id')
                                     ->whereYear('created_at',$year)
                                     ->get();
-                $pdf = PDF::loadView('PDF_reportyear', ['PDFReport' => $PDFReport])->setPaper('a4', 'landscape');
+                $pdf = PDF::loadView('report.salesreport.PDF_reportyear', ['PDFReport' => $PDFReport])->setPaper('a4', 'landscape');
                 return $pdf->download('ยอดขายประจำปี');
             }  
         }else{
@@ -119,7 +119,7 @@ class ViewController extends Controller
                                 ->groupBy('product_id')
                                 ->whereYear('created_at',$year)
                                 ->get();
-            return view('reportyear',['ViewsPage' => $ViewsPage]);
+            return view('report.salesreport.reportyear',['ViewsPage' => $ViewsPage]);
                             
         }
     }

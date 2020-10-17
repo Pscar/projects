@@ -27,19 +27,13 @@ Route::middleware(['auth', 'role:staff,admin'])->group(function () {
    });
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('user', 'UserController');
-    Route::get('reportdate', 'ViewController@reportdate');
-    Route::post('reportdate', 'ViewController@reportdate');
-    Route::get('reportmonth', 'ViewController@reportmonth');
-    Route::post('reportmonth', 'ViewController@reportmonth');
-    Route::get('reportyear', 'ViewController@reportyear');
-    Route::post('reportyear', 'ViewController@reportyear');
     // ------------------------------report sales----------------------------------------------//
-    // Route::get('report/salesreport/reportsales_year', 'SalesmonthController@reportsalesyear');
-    // Route::get('report/salesreport/reportsales_month', 'SalesmonthController@reportsalesmonth');
-    // Route::get('report/salesreport/reportsales_date', 'SalesmonthController@reportsalesdate');
-    // Route::post('report/salesreport/reportsales_date', 'SalesmonthController@reportsalesdate');
-    // Route::post('report/salesreport/reportsales_year', 'SalesmonthController@reportsalesyear');
-    // Route::post('report/salesreport/reportsales_month', 'SalesmonthController@reportsalesmonth');
+        Route::get('report/salesreport/reportdate', 'ViewController@reportdate');
+        Route::post('report/salesreport/reportdate', 'ViewController@reportdate');
+        Route::get('report/salesreport/reportmonth', 'ViewController@reportmonth');
+        Route::post('report/salesreport/reportmonth', 'ViewController@reportmonth');
+        Route::get('report/salesreport/reportyear', 'ViewController@reportyear');
+        Route::post('report/salesreport/reportyear', 'ViewController@reportyear');
     //-----------------------------------------------------------------------------------------//
     // Route::get('report/stockps/pdf', 'StockpsController@pdf_index');
     // Route::get('report/expend/pdf', 'ExpenditureController@pdf_expenditure');
