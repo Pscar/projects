@@ -55,56 +55,50 @@ h1 ,h2,h3 {
 }
 
 </style>
+
 <div clas="report container">
     <div class="row">
         <div class="col-md-12">
             <h1 style="text-align:center;">
-            <img src="{{ asset('/storage/1.png')}}"width="75" height="75" class="mr-2" alt="">
+                <img src="{{ asset('/storage/1.png')}}"width="75" height="75" class="mr-2" alt="">
                 ร้านขายยาราชพฤกษ์
             </h1>
-            <h2 style="text-align:center">ต้นทุน กำไร รายการขาย</h2>
-            <h3 style="text-align:center"><b>พิมพ์ ณ วันที่ <?php echo date ("d-m-Y H:i:s"); ?><br></h3> 
-        </div><br><br>
+            <h2 style="text-align:center;"> ยอดขายประจำเดือน  </h2>
+            <h3 style="text-align:center"><b> {{ request('month') }} / {{ request('year') }} <br></h3> 
+        </div>
+        <br/>
+        <br/>
+
         <div class="col-md-12">
             <div class="table-responsive">
                 <table style="width:100%" class="table text-center">
                     <thead>
-                        <tr><td colspan="3">รายการที่ขายได้ทั้งหมด</td></tr>
+                    <tr><td colspan="4">รายการที่ขายได้ทั้งหมด</td></tr>
                         <tr>
-                            <th>ชื่อยา</th>
-                            <th>ต้นทุน</th> 
-                            <th>กำไร</th> 
+                            <th>ชื่อยา</th> 
+                            <th>จำนวนที่ขาย (ชิ้น)</th>
+                            <th>ราคาที่ขาย (บาท)</th>
+                            <th>ยอดรวม (บาท)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($bills as $item)
-                            @foreach($item->sales as $sale)
+                        @foreach ($PDFReport as $PDFReports)
                             <tr>
-                                <td>{{ $sale->product->pro_name }}</td>
-                                <td>{{ $sale->percost }}</td>
-                                <td>{{ $sale->profit}}</td>
+                                <td>{{ $PDFReports->pro_name }}</td>
+                                <td>{{ $PDFReports->amount }}</td>
+                                <td>{{ $PDFReports->saleprice }}</td>
+                                <td>{{ $PDFReports->total }}</td>
                             </tr>
-                            @endforeach
                         @endforeach
-                    </tbody>
-                </table><br><br>
-                <table style="width:100%" class="table text-center">
-                    <thead>
                         <tr>
-                            <th colspan="3">ต้นทุน</th>
-                            <th colspan="3">กำไร</th>
-                            <th colspan="3">คงเหลือ</th>
-                        </tr>
-                    <tbody>
-                        <tr> 
-                            <td colspan="3">{{ number_format($sale->sum('percost')) }}</td>
-                            <td colspan="3">{{ number_format($sale->sum('profit')) }}</td>
-                            <td colspan="3">{{ ($sale->sum('profit')) - ($sale->sum('percost'))}}</td>
+                            <td>ทั้งหมด</td>
+                            <td>{{ number_format($PDFReports->sum('amount')),2 }} (ชิ้น)</td>
+                            <td>{{ number_format($PDFReports->sum('saleprice')),2 }} (บาท)</td>
+                            <td>{{ number_format($PDFReports->sum('total')),2 }} (บาท)</td>
                         </tr>
                     </tbody>
-                </table>
+                </table> 
             </div>
-        </div>  
+        </div>
     </div>
 </div>
-  
