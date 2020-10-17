@@ -73,12 +73,14 @@ h1 ,h2,h3 {
             <div class="table-responsive">
                 <table style="width:100%" class="table text-center">
                     <thead>
-                    <tr><td colspan="4">รายการที่ขายได้ทั้งหมด</td></tr>
+                    <tr><td colspan="6">รายการที่ขายได้ทั้งหมด</td></tr>
                         <tr>
                             <th>ชื่อยา</th> 
                             <th>จำนวนที่ขาย (ชิ้น)</th>
                             <th>ราคาที่ขาย (บาท)</th>
                             <th>ยอดรวม (บาท)</th>
+                            <th>ต้นทุน (บาท)</th>
+                            <th>กำไร (บาท) </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,6 +90,8 @@ h1 ,h2,h3 {
                                 <td>{{ $PDFReports->amount }}</td>
                                 <td>{{ $PDFReports->saleprice }}</td>
                                 <td>{{ $PDFReports->total }}</td>
+                                <td>{{ $PDFReports->percost}}</td>
+                                <td>{{ $PDFReports->profit }}</td>
                             </tr>
                         @endforeach
                         <tr>
@@ -95,6 +99,8 @@ h1 ,h2,h3 {
                             <td>{{ number_format($PDFReports->sum('amount')),2 }} (ชิ้น)</td>
                             <td>{{ number_format($PDFReports->sum('saleprice')),2 }} (บาท)</td>
                             <td>{{ number_format($PDFReports->sum('total')),2 }} (บาท)</td>
+                            <td>{{ number_format($PDFReports->sum('percost')),2 }} (บาท)</td>
+                            <td>{{ number_format($PDFReports->sum('profit')),2 }} (บาท)</td>
                         </tr>
                     </tbody>
                 </table> 

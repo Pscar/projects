@@ -27,7 +27,7 @@ Route::middleware(['auth', 'role:staff,admin'])->group(function () {
    });
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('user', 'UserController');
-    // ------------------------------report sales----------------------------------------------//
+    // ------------------------------รายงานยอดชาย----------------------------------------------//
         Route::get('report/salesreport/reportdate', 'ViewController@reportdate');
         Route::post('report/salesreport/reportdate', 'ViewController@reportdate');
         Route::get('report/salesreport/reportmonth', 'ViewController@reportmonth');
@@ -35,8 +35,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('report/salesreport/reportyear', 'ViewController@reportyear');
         Route::post('report/salesreport/reportyear', 'ViewController@reportyear');
     //-----------------------------------------------------------------------------------------//
-    // Route::get('report/stockps/pdf', 'StockpsController@pdf_index');
-    // Route::get('report/expend/pdf', 'ExpenditureController@pdf_expenditure');
+    //---------------------------------รายงานสั่งซื้อ------------------------------------------//
+    Route::get('report/expendreport/reportexpendituremonth', 'ViewController@reportexpendituremonth');
+    Route::post('report/expendreport/reportexpendituremonth', 'ViewController@reportexpendituremonth');
+    //-------------------------------รายงานสต็อค-------------------------------------------------------//
+    Route::get('report/stockps/pdf', 'StockpsController@pdf_index');
     // Route::get('report/salesreport/percost/pdf', 'SalesmonthController@pdf_percost');  
 });
 Route::get('/home', 'HomeController@index')->name('home');    

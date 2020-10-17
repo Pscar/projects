@@ -43,12 +43,12 @@ table,th,td {
   text-align: center;
   border-collapse: collapse;
 } 
-img {
+.logo {
   position: absolute;
-  left: 10px;
+  left: 50px;
   top: 1px;
 }
-h1 ,h2,h3 { 
+h1,h2,h3 { 
   right: 15px;
   margin: 0;
   padding:0;
@@ -58,11 +58,10 @@ h1 ,h2,h3 {
   <div class="row">
     <div class="col-md-12">
         <h1 style="text-align:center;">
-        <img src="{{ asset('/storage/1.png')}}"width="75" height="75" class="mr-2" alt="">
+        <img src="{{ asset('/storage/1.png')}}" id="logo" width="75" height="75" class="mr-2" alt="">
             ร้านขายยาราชพฤกษ์
         </h1>
-        <h2 style="text-align:center">ยอดขายในช่วงเดือน</h2>
-        <h3 style="text-align:center"><b>พิมพ์ ณ วันที่ <?php echo date ("d-m-Y H:i:s"); ?><br></h3> 
+        <h2 style="text-align:center">รายงานการสั่งซื้อสินค้า {{ request('month') }} / {{ request('year') }} </h2>
     </div><br><br>
     <div class="col-md-12">
       <div class="table-responsive text-center">
@@ -74,15 +73,18 @@ h1 ,h2,h3 {
                 </tr>
               </thead>
               <tbody> 
-                @foreach($lots as $p)
-                  <tr>                  
-                      <td>{{ $p->product->pro_name }}</td>
-                      <td>{{ $p->cost}}</td>
-                  </tr>
+                @foreach ($PDFReport as $PDFReports)
+                    <tr>
+                    <td> <br>
+                        <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($PDFReports->drug_id, 'C128') }}"><br>
+                        {{ $PDFReports->drug_id }}
+                    </td>
+                    <td>{{ $PDFReports->cost}}</td>
+                    </tr>
                 @endforeach
                   <tr>
                       <td>รวมรายจ่าย</td>
-                      <td>{{number_format($lots->sum('cost'))}}</td>
+                      <td>{{number_format($PDFReports->sum('cost'))}}</td>
                   </tr>
               </tbody>
           </table>
@@ -90,4 +92,3 @@ h1 ,h2,h3 {
     </div>
   </div>
 </div>
-  

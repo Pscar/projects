@@ -140,10 +140,10 @@
                             {{ __('สมัครสมาชิก') }}
                         </a>&emsp;
                         @if (Route::has('password.request'))
-                            <a class="btn btn-success" href="{{ route('password.request') }}">
+                            <a class="btn btn-success" href="#">
                                 {{ __('ลืมรหัสผ่าน?') }}
                             </a>
-                        @endif
+                        @endif <!--href="{{ route('password.request') }}-->
 					</div>
 				</div>
 			</div>

@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-4">
                         <button type="submit" class="btn btn-success" name="search" ><i class="fa fa-search"></i> Search</button>
-                        <button type="submit" class="btn btn-secondary" name="exportPDF"> <i class="fa fa-file"></i> รายงานประจำปี PDF </button>
+                        <button type="submit" class="btn btn-secondary" name="exportPDF"> <i class="fa fa-file"></i> ยอดขายประจำปี PDF </button>
                     </div>
                 </div>
             </form>

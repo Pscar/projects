@@ -59,13 +59,13 @@
                                         @if(Auth::user()->role == "staff")
                                         <td>
                                             @if($item->stock_ps > 100)
-                                                <span class="badge badge-success">สินค้าพร้อมขาย</span>
+                                                <span class="badge badge-pill badge-success">สินค้าพร้อมขาย</span>
                                             @elseif($item->stock_ps == 0)
-                                                <span class="badge badge-danger">สินค้าหมดแล้ว</span>  
+                                                <span class="badge badge-pill badge-danger">สินค้าหมดแล้ว</span>  
                                             @elseif($item->stock_ps <=20)
-                                                <span class="badge badge-warning">สินค้าจะหมดแล้ว</span>
+                                                <span class="badge badge-pill badge-warning">สินค้าจะหมดแล้ว</span>
                                             @else
-                                                <span class="badge badge-success">สินค้าพร้อมขาย</span>
+                                                <span class="badge badge-pill badge-success">สินค้าพร้อมขาย</span>
                                             @endif
                                         </td>
                                         @endif

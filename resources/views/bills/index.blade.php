@@ -20,7 +20,7 @@
                                         <th>ผู้ใช้งาน</th>
                                         <th>ราคารวม</th>
                                         <th>เวลาขาย</th>
-                                        <th>Actions</th>
+                                        <!-- <th>Actions</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,7 +33,7 @@
                                         <!--------------------------->
                                         <td>{{($item->created_at)->format('d-m-Y H:i:s')}}
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             <a href="{{ url('/bills/' . $item->id) }}" title="View Bill"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/bills/' . $item->id . '/edit') }}" title="Edit Bill"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
@@ -42,7 +42,7 @@
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm d-none" title="Delete Bill" onclick="return confirm(&quot;ลบ?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
-                                        </td>
+                                        </td> -->
                                     </tr>
                                 @endforeach
                                 </tbody>

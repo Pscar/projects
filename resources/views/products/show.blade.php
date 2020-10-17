@@ -18,9 +18,9 @@
                             {{ csrf_field() }}
                         <button type="submit" class="btn btn-danger btn-sm " title="Delete Product" onclick="return confirm(&quot;ยืนยันการลบสินค้า?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบรายการ</button>
                         </form> -->
-                        <a href="{{ url('/lots') }}" class="btn btn-success btn-sm" title="Add New Lot">
+                        <!-- <a href="{{ url('/lots') }}" class="btn btn-success btn-sm" title="Add New Lot">
                             <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มจำนวนสินค้า
-                        </a>
+                        </a> -->
                         <br/>
                         <br/>
 
@@ -70,27 +70,27 @@
                                             <td>{{($item->created_at)->format('d-m-Y H:i:s')}}</td>
                                             <td>
                                             @if($product->category_id == 1 )
-                                                <span class="badge badge-primary">
+                                                <span class="badge badge-pill badge-primary">
                                                     {{($item->created_at->modify('+3 month'))->format('d-m-Y H:i')}}
                                                 </span>        
-                                                @elseif($product->category_id == 2)
-                                                <span class="badge badge-primary">
+                                            @elseif($product->category_id == 2)
+                                                <span class="badge badge-pill badge-primary">
                                                     {{($item->created_at->modify('+3 month'))->format('d-m-Y H:i')}}
                                                 </span>
                                             @elseif($product->category_id == 3)
-                                                <span class="badge badge-success">
+                                                <span class="badge badge-pill badge-success">
                                                     {{($item->created_at->modify('+2 year'))->format('d-m-Y H:i')}}
                                                 </span>
                                             @elseif($product->category_id == 4)
-                                                <span class="badge badge-secondary">
+                                                <span class="badge badge-pill badge-secondary">
                                                     {{($item->created_at->modify('+1 year'))->format('d-m-Y H:i')}}
                                                 </span>  
                                             @elseif($product->category_id == 5)
-                                                <span class="badge badge-primary">
+                                                <span class="badge badge-pill badge-primary">
                                                     {{($item->created_at->modify('+3 month'))->format('d-m-Y H:i')}}
                                                 </span>  
                                             @elseif($product->category_id == 6)
-                                                <span class="badge badge-success"> 
+                                                <span class="badge badge-pill badge-success"> 
                                                     {{($item->created_at->modify('+2 year'))->format('d-m-Y H:i')}}
                                                 </span>    
                                             @else

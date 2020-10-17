@@ -137,6 +137,11 @@
                 <a href="{{ url('/sales') }}" class="nav-link ">
                   <p style="font-family: 'Mitr', sans-serif;">หน้าจอขาย</p>
                 </a>
+              </li>    
+              <li class="nav-item">
+                <a href="{{ url('/lots') }}" class="nav-link ">
+                  <p style="font-family: 'Mitr', sans-serif;">เพิ่มสต็อคสินค้า</p>
+                </a>
               </li>          
             </ul>
           </li>
@@ -188,21 +193,16 @@
                   <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำปี </p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
+                <a href="{{ url('report/expendreport/reportexpendituremonth') }}" class="nav-link active">
+                  <p style="font-family: 'Mitr', sans-serif;">รายงานการสั่งซื้อยาประจำเดือน </p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{ url('report/stockps/pdf') }}" class="nav-link active">
                   <p style="font-family: 'Mitr', sans-serif;">สต็อคล่าสุด </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{ url('report/percost/pdf') }}" class="nav-link active">
-                  <p style="font-family: 'Mitr', sans-serif;">ต้นทุน กำไร ประจำปี </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('report/expend/pdf') }}" class="nav-link active">
-                  <p style="font-family: 'Mitr', sans-serif;">รายงานการสั่งซื้อยา </p>
-                </a>
-              </li> -->
             </ul>
           </li>
           <li class="nav-item has-treeview menu-open">
