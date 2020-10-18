@@ -56,7 +56,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $admin = $request->get('admin');
+        $staff = $request->get('staff');
         $requestData = $request->all();
         
         User::create($requestData);
@@ -87,6 +88,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        
         $user = User::findOrFail($id);
 
         return view('user.edit', compact('user'));
