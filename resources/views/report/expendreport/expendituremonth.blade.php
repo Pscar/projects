@@ -72,6 +72,46 @@
                 </div>
             </div>
         </div>
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">กราฟรายงานสั่งซื้อสินค้า : {{ request('month') }}</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart">
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['bar']});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart(){
+                            var data = google.visualization.arrayToDataTable([
+                            ['สินค้า','สต็อคเข้า', 'สต็อคปัจจุบัน'],
+                            @foreach ($ViewsPage as $ViewsPages)
+                                [ "{{$ViewsPages->drug_id }}",{{ $ViewsPages->stock_im }},{{ $ViewsPages->stock_amount }} ],
+                            @endforeach
+                            ]);
+
+                            var options = {
+                            chart: {
+                                
+                            },
+                                bars: 'vertical',
+                                vAxis: {format: 'decimal'},
+                                width: 950,
+                                height: 650,
+                            };
+                            var chart = new google.charts.Bar(document.getElementById('columnchart'));
+                            chart.draw(data, google.charts.Bar.convertOptions(options));
+                        }
+                    </script>
+                    <body>
+                        <div id="columnchart"></div>
+                    </body>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

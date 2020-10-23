@@ -33,7 +33,7 @@
                                         <tr> 
                                             <td class="text-center">{{ $loop->iteration }}</td>
                                             <td class="text-center">{{ $item->product->pro_name }}</td>
-                                            <td class="text-center">{{ $item->total }}</td>
+                                            <td class="text-center">{{ $item->saleprice}}</td>
                                             <td class="text-center">{{ $item->amount }}</td>
                                             <td class="text-center">
                                                 <form method="POST" action="{{ url('/sales' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">

@@ -50,7 +50,7 @@ class LotsController extends Controller
         //แสดงคิวรี่
         $product = Product::where('drug_id',$drug_id)->firstOrFail();
         
-        return view('lots.create',compact('product'));
+        return view("lots.create",compact('product'));
     }
 
     /**

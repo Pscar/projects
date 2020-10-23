@@ -13,7 +13,7 @@
                                     <div class="form-group form-inline">
                                         <label class="col-lg-4">ยอดจ่าย</label>
                                         <div class="col-lg-2">
-                                            <input class="form-control" name="total" type="number"  id="total" value="{{ number_format($sales->sum('total')) }}" readonly>
+                                            <input class="form-control" name="total" type="text"  id="total" value="{{ $sales->sum('total') }}" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group form-inline">
@@ -25,19 +25,16 @@
                                     <div class="form-group form-inline">
                                         <label class="col-lg-4">เงินทอน</label>
                                         <div class="col-lg-2">
-                                          <input class="form-control" name="result" type="number" type="number" id="result" value="0" readonly>
+                                          <input class="form-control" name="result" type="text" id="result" value="0" readonly>
                                         </div>
                                         <script>
                                           function onChangePayment(value) {
                                               var total = document.getElementById("total").value;
-                                              console.log(total);
                                               var payment = document.getElementById("payment").value;
-                                              console.log(payment);
-
-                                              let result = payment - total;
-                                              console.log(result);
-
-                                              document.getElementById("result").value = result;
+                                                let result = payment - total;
+                                                let res = Intl.NumberFormat().format(result);
+                                            document.getElementById("result").value = res;
+                                                    //total.REPLACE(',' , ''); // 1,745 ==> 1745 str ==> 1745 parse int/float
                                           }
                                         </script>
                                     </div>

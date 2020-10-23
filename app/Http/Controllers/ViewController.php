@@ -21,8 +21,9 @@ class ViewController extends Controller
             if ($req->has('search'))
             {
                 // select search
-                $search = Sale::selectRaw('created_at, pro_name , product_id , saleprice,sum(total) as total,
-                        sum(amount) as amount')
+                $search = Sale::selectRaw('created_at, pro_name , product_id , saleprice,
+                sum(total) as t, sum(amount) as amount, sum(profit) as p,
+                sum(percost) as c')
                                 ->groupBy('product_id')
                                 ->whereDate('created_at',$date)
                                 ->get();
@@ -43,7 +44,7 @@ class ViewController extends Controller
             else
         {
             $ViewsPage = Sale::selectRaw('created_at, pro_name , product_id , saleprice,
-            sum(total) as total,sum(amount) as amount')
+            sum(total) as total,sum(amount) as amount, sum(profit) as p, sum(percost) as c')
                             ->groupBy('product_id')
                             ->whereDate('created_at',$date)
                             ->get();
@@ -63,8 +64,9 @@ class ViewController extends Controller
             if ($req->has('search'))
             {
                 // select search
-                $search = Sale::selectRaw('created_at, pro_name , product_id , saleprice,sum(total) as total,
-                sum(amount) as amount')
+                $search = Sale::selectRaw('created_at, pro_name , product_id , saleprice,
+                sum(total) as t, sum(amount) as amount, sum(profit) as p,
+                sum(percost) as c')
                                 ->groupBy('product_id')
                                 ->whereMonth('created_at',$month)
                                 ->whereYear('created_at',$year)
@@ -84,7 +86,9 @@ class ViewController extends Controller
                 return $pdf->download('รายงานยอดขายประจำเดือน');
             }  
         }else{
-            $ViewsPage = Sale::selectRaw('created_at, pro_name , product_id , saleprice,sum(total) as total,sum(amount) as amount')
+            $ViewsPage = Sale::selectRaw('created_at, pro_name , product_id , saleprice,
+            sum(total) as t, sum(amount) as amount, sum(profit) as p,
+            sum(percost) as c')
                                 ->groupBy('product_id')
                                 ->whereMonth('created_at',$month)
                                 ->whereYear('created_at',$year)
@@ -104,7 +108,9 @@ class ViewController extends Controller
             if ($req->has('search'))
             {
                 // select search
-                $search = Sale::selectRaw('created_at, pro_name , product_id , saleprice,sum(total) as total,sum(amount) as amount')
+                $search = Sale::selectRaw('created_at, pro_name , product_id , saleprice,
+                sum(total) as t, sum(amount) as amount, sum(profit) as p,
+                sum(percost) as c')
                                 ->groupBy('product_id')
                                 ->whereYear('created_at',$year)
                                 ->get();
@@ -123,7 +129,9 @@ class ViewController extends Controller
             }  
         }else{
 
-            $ViewsPage = Sale::selectRaw('created_at, pro_name , product_id , saleprice,sum(total) as total,sum(amount) as amount')
+            $ViewsPage = Sale::selectRaw('created_at, pro_name , product_id , saleprice,
+            sum(total) as t, sum(amount) as amount, sum(profit) as p,
+            sum(percost) as c')
                                 ->groupBy('product_id')
                                 ->whereYear('created_at',$year)
                                 ->get();
@@ -141,7 +149,7 @@ class ViewController extends Controller
         $month = $req->get('month');
         $year = $req->get('year');
             if ($req->has('search')) {
-            $search =  Lot::selectRaw('drug_id, sum(cost) as cost, created_at')
+            $search =  Lot::selectRaw('drug_id, sum(cost) as cost, created_at,stock_im,stock_amount')
                             ->groupBy('drug_id')
                             ->whereMonth('created_at', $month)
                             ->whereYear('created_at', $year)

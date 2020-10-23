@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::middleware(['auth', 'role:staff,admin'])->group(function () {
+Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::resource('bills', 'BillController');
     Route::resource('categorys', 'CategoryController');
     Route::resource('sales', 'SalesController');
@@ -43,5 +43,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Route::get('report/salesreport/percost/pdf', 'SalesmonthController@pdf_percost');  
 });
 Route::get('/home', 'HomeController@index')->name('home');    
-Route::get('/home', 'HomeController@sale');   
+// Route::get('/home', 'HomeController@sale');   
 

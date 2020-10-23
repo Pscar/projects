@@ -87,20 +87,20 @@ h1 ,h2,h3 {
                         @foreach ($PDFReport as $PDFReports)
                             <tr>
                                 <td>{{ $PDFReports->pro_name }}</td>
-                                <td>{{ $PDFReports->amount }}</td>
-                                <td>{{ $PDFReports->saleprice }}</td>
-                                <td>{{ $PDFReports->total }}</td>
-                                <td>{{ $PDFReports->percost}}</td>
-                                <td>{{ $PDFReports->profit }}</td>
+                                <td>{{ number_format($PDFReports->amount) }}</td>
+                                <td>{{ number_format($PDFReports->saleprice),2 }}</td>
+                                <td>{{ number_format($PDFReports->total),2 }}</td>
+                                <td>{{ number_format($PDFReports->percost),2 }}</td>
+                                <td>{{ number_format($PDFReports->profit),2 }}</td>
                             </tr>
                         @endforeach
                         <tr>
                             <td>ทั้งหมด</td>
-                            <td>{{ number_format($PDFReports->sum('amount')),2 }} (ชิ้น)</td>
-                            <td>{{ number_format($PDFReports->sum('saleprice')),2 }} (บาท)</td>
-                            <td>{{ number_format($PDFReports->sum('total')),2 }} (บาท)</td>
-                            <td>{{ number_format($PDFReports->sum('percost')),2 }} (บาท)</td>
-                            <td>{{ number_format($PDFReports->sum('profit')),2 }} (บาท)</td>
+                            <td>{{ number_format($PDFReports->amount),2 }} (ชิ้น)</td>
+                            <td>{{ number_format($PDFReports->saleprice),2 }} (บาท)</td>
+                            <td>{{ number_format($PDFReports->total),2 }} (บาท)</td>
+                            <td>{{ number_format($PDFReports->percost),2 }} (บาท)</td>
+                            <td>{{ number_format($PDFReports->profit),2 }} (บาท)</td>
                         </tr>
                     </tbody>
                 </table> 
