@@ -67,18 +67,14 @@ class SalesController extends Controller
         $requestData['total'] = $requestData['saleprice'] = $product->saleprice * $requestData['amount'];
         //ระบุ user_id
         $requestData['user_id'] = Auth::id(); 
-        $message="Registered successfully";
+        
         if($requestData['amount'] > $requestData['stock_ps'] && $product->status_sale = "souout") {
-            echo "<script>";
-            echo "alert('สินค้าคุณหมดแล้ว !');";
-            echo "</script>";
-            return redirect('sales')->back('alert','สินค้าคุณหมดแล้ว !');
-            
-            // return redirect('sales')->with('flash_message', 'Sale added!');
+
+            return view('sales.view');
         } else {
             Sale::create($requestData);
         }
-        return redirect('sales')->with('flash_message', 'Sale added!');
+            return redirect('sales')->with('flash_message', 'Sale added!');
     }
 
     /**

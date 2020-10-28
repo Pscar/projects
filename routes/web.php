@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('login');
 });
 
+
+
 Auth::routes();
 Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::resource('bills', 'BillController');
@@ -23,8 +25,10 @@ Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::resource('products', 'ProductController');
     Route::resource('lots', 'LotsController');
     Route::resource('bills', 'BillsController');
-
-   });
+    Route::get('/sales/view', function () {
+        return view('view');
+    });
+});
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('user', 'UserController');
     // ------------------------------รายงานยอดชาย----------------------------------------------//

@@ -38,7 +38,7 @@
                                           }
                                         </script>
                                     </div>
-                                        <button type="submit" class="btn btn-success btn-sm"> สั่งสินค้า </button> 
+                                        <button type="submit" class="btn btn-success btn-sm" onclick="return confirm(&quot;ยืนยันการขายสินค้า?&quot;)"> สั่งสินค้า </button> 
                                 </form>
                             </div>
                         </div>

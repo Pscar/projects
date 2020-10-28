@@ -20,7 +20,7 @@
 
                         <form method="POST" action="{{ url('/sales') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            
+            
                             @include ('sales.form', ['formMode' => 'create'])
 
                         </form>
