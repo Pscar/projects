@@ -3,7 +3,7 @@
     <div class="container-fluid pt-5 px-lg-5">
         <div class="row">
             <div class="col-md-12">
-            <div class="card bg-warning text-center mb-3"style="font-size:3rem;">แก้ไขรายการสต็อคที่ {{ $lot->id }}</div>
+            <div class="card bg-warning text-center mb-3"style="font-size:3rem;">แก้ไขรายการสต็อกที่ {{ $lot->id }}</div>
                 <div class="card">
                     <div class="card-body">
                         <a href="{{ url('/lots') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>

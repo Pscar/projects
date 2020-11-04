@@ -94,14 +94,6 @@ h1 ,h2,h3 {
                                 <td>{{ number_format($PDFReports->profit),2 }}</td>
                             </tr>
                         @endforeach
-                        <tr>
-                            <td>ทั้งหมด</td>
-                            <td>{{ number_format($PDFReports->amount),2 }} (ชิ้น)</td>
-                            <td>{{ number_format($PDFReports->saleprice),2 }} (บาท)</td>
-                            <td>{{ number_format($PDFReports->total),2 }} (บาท)</td>
-                            <td>{{ number_format($PDFReports->percost),2 }} (บาท)</td>
-                            <td>{{ number_format($PDFReports->profit),2 }} (บาท)</td>
-                        </tr>
                     </tbody>
                 </table> 
             </div>

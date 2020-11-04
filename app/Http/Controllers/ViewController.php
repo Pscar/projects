@@ -21,7 +21,7 @@ class ViewController extends Controller
             if ($req->has('search'))
             {
                 // select search
-                $search = Sale::selectRaw('created_at, pro_name , product_id , saleprice,
+                $search = Sale::selectRaw('created_at, pro_name , product_id , sum(saleprice) as sale,
                 sum(total) as t, sum(amount) as amount, sum(profit) as p,
                 sum(percost) as c')
                                 ->groupBy('product_id')
@@ -69,7 +69,7 @@ class ViewController extends Controller
                 sum(percost) as c')
                                 ->groupBy('product_id')
                                 ->whereMonth('created_at',$month)
-                                ->whereYear('created_at',$year)
+                                ->whereYear('created_at',$year - 543)
                                 ->get();
                 return view('report.salesreport.reportmonth',['ViewsPage' => $search]);
             } 
@@ -80,7 +80,7 @@ class ViewController extends Controller
                 sum(amount) as amount,sum(profit) as profit, sum(percost) as percost')
                                     ->groupBy('product_id')
                                     ->whereMonth('created_at',$month)
-                                    ->whereYear('created_at',$year)
+                                    ->whereYear('created_at',$year - 543)
                                     ->get();
                 $pdf = PDF::loadView('report.salesreport.PDF_reportmonth', ['PDFReport' => $PDFReport])->setPaper('a4', 'landscape');
                 return $pdf->download('รายงานยอดขายประจำเดือน');
@@ -91,7 +91,7 @@ class ViewController extends Controller
             sum(percost) as c')
                                 ->groupBy('product_id')
                                 ->whereMonth('created_at',$month)
-                                ->whereYear('created_at',$year)
+                                ->whereYear('created_at',$year - 543)
                                 ->get();
             return view('report.salesreport.reportmonth',['ViewsPage' => $ViewsPage]);
                             
@@ -112,7 +112,7 @@ class ViewController extends Controller
                 sum(total) as t, sum(amount) as amount, sum(profit) as p,
                 sum(percost) as c')
                                 ->groupBy('product_id')
-                                ->whereYear('created_at',$year)
+                                ->whereYear('created_at',$year - 543)
                                 ->get();
                 return view('report.salesreport.reportyear',['ViewsPage' => $search]);
             } 
@@ -122,7 +122,7 @@ class ViewController extends Controller
                 $PDFReport = Sale::selectRaw('created_at, pro_name , product_id , saleprice,sum(total) as total,
                 sum(amount) as amount,sum(profit) as profit, sum(percost) as percost')
                                     ->groupBy('product_id')
-                                    ->whereYear('created_at',$year)
+                                    ->whereYear('created_at',$year - 543)
                                     ->get();
                 $pdf = PDF::loadView('report.salesreport.PDF_reportyear', ['PDFReport' => $PDFReport])->setPaper('a4', 'landscape');
                 return $pdf->download('รายงานยอดขายประจำปี');
@@ -133,7 +133,7 @@ class ViewController extends Controller
             sum(total) as t, sum(amount) as amount, sum(profit) as p,
             sum(percost) as c')
                                 ->groupBy('product_id')
-                                ->whereYear('created_at',$year)
+                                ->whereYear('created_at',$year - 543)
                                 ->get();
             return view('report.salesreport.reportyear',['ViewsPage' => $ViewsPage]);
                             
@@ -152,7 +152,7 @@ class ViewController extends Controller
             $search =  Lot::selectRaw('drug_id, sum(cost) as cost, created_at,stock_im,stock_amount')
                             ->groupBy('drug_id')
                             ->whereMonth('created_at', $month)
-                            ->whereYear('created_at', $year)
+                            ->whereYear('created_at', $year - 543)
                             ->get();
             return view('report.expendreport.expendituremonth',['ViewsPage' => $search]);
             } 
@@ -162,7 +162,7 @@ class ViewController extends Controller
                 $PDFReport = Lot::selectRaw('drug_id, sum(cost) as cost, created_at')
                                     ->groupBy('drug_id')
                                     ->whereMonth('created_at', $month)
-                                    ->whereYear('created_at', $year)
+                                    ->whereYear('created_at', $year - 543)
                                     ->get();
 
                 $pdf = PDF::loadView('report.expendreport.PDF_expendmonth', ['PDFReport' => $PDFReport])->setPaper('a4', 'landscape');
@@ -172,7 +172,7 @@ class ViewController extends Controller
             $ViewsPage = Lot::selectRaw('drug_id, sum(cost) as cost, created_at')
                                 ->groupBy('drug_id')
                                 ->whereMonth('created_at', $month)
-                                ->whereYear('created_at', $year)
+                                ->whereYear('created_at', $year - 543)
                                 ->get();
 
             return view('report.expendreport.expendituremonth',['ViewsPage' => $ViewsPage]);        

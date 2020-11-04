@@ -79,25 +79,13 @@
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset ('dist/js/demo.js') }}"></script>
 <div class="wrapper">
-
   @if(Auth::user()->role == "staff")
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <!-- <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/sales') }}" class="nav-link" style="font-family: 'Mitr', sans-serif;">หน้าจอขาย</a>
-      </li> -->
-      <!-- <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/products')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">สต็อคยาปัจจุบัน</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('/lots')}}" class="nav-link" style="font-family: 'Mitr', sans-serif;">สต็อคเข้าใหม่</a>
-      </li> -->
     </ul> 
- 
   </nav>
   @endif
   @if(Auth::user()->role == "admin")
@@ -109,12 +97,12 @@
     </ul>
   </nav>
   @endif
-  @if(Auth::user()->role == "staff")
-  <aside class="main-sidebar sidebar-outline-secondary elevation-4">
-  @endif
-  @if(Auth::user()->role == "admin")
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-  @endif
+      @if(Auth::user()->role == "staff")
+      <aside class="main-sidebar sidebar-outline-secondary elevation-4">
+      @endif
+      @if(Auth::user()->role == "admin")
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      @endif
     <div class="sidebar">
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
@@ -243,28 +231,18 @@
   </li>
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
   </aside>
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     @yield('content')
-  <!-- /.content-wrapper -->
 </div>
   <footer class="main-footer">
   <span class="text-muted">Copyright {{ date("Y") }} © <strong>ร้านหมอยาราชพฤกษ์</strong></span>
     <div class="float-right d-none d-sm-inline-block">
     </div>
   </footer>
-
-  <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
   </aside>
-  <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
 </body>
 </html>

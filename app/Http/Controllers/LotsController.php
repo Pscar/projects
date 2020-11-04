@@ -80,7 +80,7 @@ class LotsController extends Controller
         //เรียก product_id ใน tabal lot ที่มี id ของ tabal product  
         Product::where('id',$lot->product_id)->increment('stock_ps',$lot->stock_im);//update เพิ่มสต็อคสินค้า ใน tabal product ให้เท่ากับจำนวนที่ระบุใน lot
         
-        return redirect('lots')->with('flash_message', 'Lot added!');
+        return redirect("lots/$lot->id")->with('flash_message', 'Lot added!');
     
 }
 
@@ -112,7 +112,6 @@ class LotsController extends Controller
             ->select('id','pro_name','drug_id')
             ->get();
         $lot = Lot::findOrFail($id);
-
         return view('lots.edit', compact('lot','product'));
     }
 

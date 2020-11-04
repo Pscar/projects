@@ -38,7 +38,7 @@
                                 <tr>
                                     <td>{{ $ViewsPages->pro_name }}</td>
                                     <td>{{ $ViewsPages->amount }}</td>
-                                    <td>{{ $ViewsPages->saleprice }}</td>
+                                    <td>{{ $ViewsPages->sale }}</td>
                                     <td>{{ $ViewsPages->t }}</td>
                                 </tr>
                             @endforeach

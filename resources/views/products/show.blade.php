@@ -13,14 +13,7 @@
 
                         <a href="{{ url('/products') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i>  กลับ  </button></a>
                         <a href="{{ url('/products/' . $product->id . '/edit') }}" title="Edit Product"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>แก้ไขรายการสินค้า</button></a>
-                        <!-- <form method="POST" action="{{ url('products' . '/' . $product->id) }}" accept-charset="UTF-8" style="display:inline">
-                            {{ method_field('DELETE') }}
-                            {{ csrf_field() }}
-                        <button type="submit" class="btn btn-danger btn-sm " title="Delete Product" onclick="return confirm(&quot;ยืนยันการลบสินค้า?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> ลบรายการ</button>
-                        </form> -->
-                        <!-- <a href="{{ url('/lots') }}" class="btn btn-success btn-sm" title="Add New Lot">
-                            <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มจำนวนสินค้า
-                        </a> -->
+                    
                         <br/>
                         <br/>
 

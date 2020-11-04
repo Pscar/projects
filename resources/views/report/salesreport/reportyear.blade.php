@@ -10,7 +10,7 @@
                 <div class="form-row">
                     <div class="col-4">
                         @php
-                            $start_at = 2020;
+                            $start_at = 2020 + 543;
                         @endphp
                         <select class="form-control" name="year" id="year" >
                             <option value="">เลือกปี</option>
@@ -50,7 +50,7 @@
                                     <td>{{ $ViewsPages->pro_name }}</td>
                                     <td>{{ $ViewsPages->amount }}</td>
                                     <td>{{ $ViewsPages->saleprice }}</td>
-                                    <td>{{ $ViewsPages->total }}</td>
+                                    <td>{{ $ViewsPages->t }}</td>
                                 </tr>
                             @endforeach
                             
