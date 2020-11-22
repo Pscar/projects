@@ -60,20 +60,26 @@ class SalesController extends Controller
         //ยืนยันการสั่งซื้อ   
         $requestData = $request->all();
         $product= Product::where('drug_id',$requestData['drug_id'])->firstOrFail(); // เรียกค่า drug_id จากตาราง product
+
         $requestData['product_id'] = $product->id; $requestData['pro_name'] = $product->pro_name;
         $requestData['category_id'] = $product->category_id;
-        $requestData['stock_ps']= $product->stock_ps;
+        $requestData['stock_ps'] = $product->stock_ps;
+        $requestData['status_sale'] = $product->status_sale;
+        
         //คำนวณราคาสินค้า sumvat
         $requestData['total'] = $requestData['saleprice'] = $product->saleprice * $requestData['amount'];
         //ระบุ user_id
         $requestData['user_id'] = Auth::id(); 
         
-        if($requestData['amount'] > $requestData['stock_ps'] && $product->status_sale = "souout") {
+        if($requestData['amount'] > $requestData['stock_ps'] ) {
 
             return view('sales.view');
-        } else {
-            Sale::create($requestData);
+            
+        } elseif ($requestData['status_sale'] == "souout") {
+
+            return view ('sales.souout');
         }
+            Sale::create($requestData);
             return redirect('sales')->with('flash_message', 'Sale added!');
     }
 

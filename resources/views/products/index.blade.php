@@ -47,12 +47,9 @@
                                         <td> 
                                             @switch($item->status_sale)
                                                 @case("redysale")
-                                                    <div><span class="badge badge-pill badge-primary">ขายสินค้า</span></div>
-                                                    <div>{{ $item->redysale_at}}</div>
-                                                @break  
+                                                    <div><span class="badge badge-pill badge-primary">ขายสินค้า</span></div>                                                @break  
                                                 @case("souout")
                                                     <div><span class="badge badge-pill badge-dark">ยกเลิกขายสินค้า</span></div>
-                                                    <div>{{ $item->souout_at}}</div>
                                                 @break
                                             @endswitch  
                                         </td>
@@ -82,7 +79,7 @@
                                                             </select> 
                                                         <button type="submit" class="btn btn-warning btn-sm"onclick="return confirm(&quot;ยืนยันการยกเลิกขายสินค้า?&quot;)">submit</button>
                                                     @break
-                                                    @case("souout")  
+                                                    @case("souout")     
                                                             <select class="custom-select" style="max-width:10rem;" name="status_sale" onchange="status_sale">                                                          
                                                                 <option value="redysale">ขายสินค้า</option>
                                                                 <option value="souout">ยกเลิกขายสินค้า</option>  

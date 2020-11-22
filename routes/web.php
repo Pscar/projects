@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['auth', 'role:staff'])->group(function () {
+Route::middleware(['auth', 'role:staff,admin'])->group(function () {
     Route::resource('bills', 'BillController');
     Route::resource('categorys', 'CategoryController');
     Route::resource('sales', 'SalesController');
@@ -33,7 +33,6 @@ Route::middleware(['auth', 'role:staff'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function ()
  {
     Route::resource('user', 'UserController');
-    Route::resource('products', 'ProductController');
     // ------------------------------รายงานยอดชาย----------------------------------------------//
         Route::get('report/salesreport/reportdate', 'ViewController@reportdate');
         Route::post('report/salesreport/reportdate', 'ViewController@reportdate');
