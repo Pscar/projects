@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 
 Auth::routes();
+
 Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::resource('bills', 'BillController');
     Route::resource('categorys', 'CategoryController');
@@ -29,8 +30,10 @@ Route::middleware(['auth', 'role:staff'])->group(function () {
         return view('view');
     });
 });
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function ()
+ {
     Route::resource('user', 'UserController');
+    Route::resource('products', 'ProductController');
     // ------------------------------รายงานยอดชาย----------------------------------------------//
         Route::get('report/salesreport/reportdate', 'ViewController@reportdate');
         Route::post('report/salesreport/reportdate', 'ViewController@reportdate');
@@ -44,8 +47,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('report/expendreport/reportexpendituremonth', 'ViewController@reportexpendituremonth');
     //-------------------------------รายงานสต็อค-------------------------------------------------------//
     Route::get('report/stockps/pdf', 'StockpsController@pdf_index');
-    // Route::get('report/salesreport/percost/pdf', 'SalesmonthController@pdf_percost');  
+
 });
+
 Route::get('/home', 'HomeController@index')->name('home');    
-// Route::get('/home', 'HomeController@sale');   
 

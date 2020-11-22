@@ -21,9 +21,11 @@ class LotsController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-        $products = DB::table('products')//array products
+
+        $products = DB::table('products')
             ->select('drug_id','pro_name','saleprice')
             ->get();
+
         if (!empty($keyword)) {
             $lot = Lot::where('deteexp_at', 'LIKE', "%$keyword%")
                 ->orWhere('drug_id', 'LIKE', "%$keyword%")
@@ -47,7 +49,7 @@ class LotsController extends Controller
     public function create(Request $request)
     {
         $drug_id  = $request->get('drug_id');
-        //แสดงคิวรี่
+        
         $product = Product::where('drug_id',$drug_id)->firstOrFail();
         
         return view("lots.create",compact('product'));
@@ -66,19 +68,19 @@ class LotsController extends Controller
         $requestData = $request->all();
 
         $lot = Lot::create($requestData);
+
         //update ต้นทุนสินค้าแต่ละชิ้น
         Lot::whereNull('percost') 
             ->where('id', $lot->id)
             ->update(['percost'=> $lot->cost / $lot->stock_im]);
+            
         //update stock_amount = stock_im 
         Lot::whereNull('stock_amount') 
             ->where('user_id', Auth::id())
             ->update(['stock_amount'=> $lot->stock_im]);
         //update lot_id in product   
     
-            
-        //เรียก product_id ใน tabal lot ที่มี id ของ tabal product  
-        Product::where('id',$lot->product_id)->increment('stock_ps',$lot->stock_im);//update เพิ่มสต็อคสินค้า ใน tabal product ให้เท่ากับจำนวนที่ระบุใน lot
+        Product::where('id',$lot->product_id)->increment('stock_ps',$lot->stock_im);
         
         return redirect("lots/$lot->id")->with('flash_message', 'Lot added!');
     

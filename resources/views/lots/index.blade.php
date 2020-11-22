@@ -29,8 +29,8 @@
                                 <table class="table">
                                     <thead class="text-center">
                                         <tr>
-                                            <th>เวลาเข้า</th>
                                             <th>บาร์โค้ด</th>
+                                            <th>เวลาเข้า</th>
                                             <th>ต้นทุน</th>
                                             <th>สต็อคเก่า</th>
                                             <th>สต็อคปัจจุบัน</th>

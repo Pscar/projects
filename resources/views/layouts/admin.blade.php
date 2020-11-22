@@ -150,7 +150,7 @@
             <li class="nav-item">
               <a href="{{ url('/lots') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
-                <p style="font-family: 'Mitr', sans-serif;">รายการสต็อคใหม่</p>
+                <p style="font-family: 'Mitr', sans-serif;">รายการสต็อกใหม่</p>
               </a>
             </li>
             <li class="nav-item">
@@ -189,7 +189,7 @@
               </li>
               <li class="nav-item">
                 <a href="{{ url('report/stockps/pdf') }}" class="nav-link active">
-                  <p style="font-family: 'Mitr', sans-serif;">สต็อคล่าสุด </p>
+                  <p style="font-family: 'Mitr', sans-serif;">สต็อกล่าสุด </p>
                 </a>
               </li>
             </ul>

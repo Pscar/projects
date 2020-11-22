@@ -14,6 +14,6 @@ class StockpsController extends Controller
         ->select('*')
         ->get();
         $pdf = PDF::loadView('report/product_pdf', ['products'=>$products] );
-        return $pdf->stream('รายงานสต็อค.pdf'); //แบบนี้จะ stream มา preview
+        return $pdf->stream('รายงานสต็อค.pdf'); 
   }
 }

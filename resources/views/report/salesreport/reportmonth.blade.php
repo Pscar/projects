@@ -94,13 +94,13 @@
                             ]);
 
                             var options = {
-                            chart: {
-                                
-                            },
                                 bars: 'vertical',
                                 vAxis: {format: 'decimal'},
-                                width: 950,
-                                height: 650,
+                                width: 650,
+                                height: 450,
+                                bar: {groupWidth: "95%"},
+                                legend: { position: "none" },
+                                
                             };
                             var chart = new google.charts.Bar(document.getElementById('columnchart'));
                             chart.draw(data, google.charts.Bar.convertOptions(options));

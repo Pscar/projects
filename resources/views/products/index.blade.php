@@ -74,22 +74,22 @@
                                             <form method="POST" action="{{ url('/products' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('PATCH') }}
                                                 {{ csrf_field() }}
-                                                @switch($item->status_sale)
+                                                    @switch($item->status_sale)
                                                     @case("redysale")  
-                                                        <select class="custom-select" style="max-width:10rem; name="status_sale" onchange="status_sale">
-                                                            <option value="redysale">ขายสินค้า</option>                                                           
-                                                            <option value="souout">ยกเลิกขายสินค้า</option>  
-                                                        </select> 
-                                                    <button type="submit" class="btn btn-warning btn-sm"onclick="return confirm(&quot;ยืนยันการยกเลิกขายสินค้า?&quot;)">submit</button>
+                                                            <select class="custom-select" style="max-width:10rem;" name="status_sale" onchange="status_sale">
+                                                                <option value="redysale">ขายสินค้า</option>                                                           
+                                                                <option value="souout">ยกเลิกขายสินค้า</option>  
+                                                            </select> 
+                                                        <button type="submit" class="btn btn-warning btn-sm"onclick="return confirm(&quot;ยืนยันการยกเลิกขายสินค้า?&quot;)">submit</button>
                                                     @break
                                                     @case("souout")  
-                                                        <select class="custom-select"style="max-width:10rem;" name="status_sale" onchange="status_sale">                                                          
-                                                            <option value="redysale">ขายสินค้า</option>
-                                                            <option value="souout">ยกเลิกขายสินค้า</option>  
-                                                        </select> 
-                                                    <button type="submit" class="btn btn-warning btn-sm"onclick="return confirm(&quot;ยืนยันการขายสินค้า?&quot;)">submit</button>
+                                                            <select class="custom-select" style="max-width:10rem;" name="status_sale" onchange="status_sale">                                                          
+                                                                <option value="redysale">ขายสินค้า</option>
+                                                                <option value="souout">ยกเลิกขายสินค้า</option>  
+                                                            </select> 
+                                                        <button type="submit" class="btn btn-warning btn-sm"onclick="return confirm(&quot;ยืนยันการขายสินค้า?&quot;)">submit</button>
                                                     @break  
-                                                @endswitch  
+                                                    @endswitch  
                                             </form>
                                         @endif
                                         </td>                                   

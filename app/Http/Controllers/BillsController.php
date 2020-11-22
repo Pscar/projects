@@ -62,65 +62,55 @@ class BillsController extends Controller
     {
         
         $requestData = $request->all();
-        //รวมราคา   
+
         $total = Sale::whereNull('bill_id')
                 ->where('user_id', Auth::id())->sum('total');  
-        //กำหนดราคารวม, ผู้ใช้, สถานะ แสดงผลในหน้า blade
+
         $requestData['total'] = $total;
         $requestData['user_id'] = Auth::id();
-        //create bill not update bill_id
         $bill = Bill::create($requestData);
-        //update bill_id
+
         Sale::whereNull('bill_id') 
             ->where('user_id', Auth::id())
             ->update(['bill_id'=> $bill->id]);
         $id = $bill->id;
-        //ตัดสต็อคหลังจากอัพเดท bill_id
-        $sales = $bill->sales; //เรียกข้อมูล sales ผ่าน bill
-        foreach($sales as $sale){ //เรียกข้อมูล ใน salesที่ผ่าน bill เก็บตัวแปร sale
-            Product::where('id',$sale->product_id)->decrement('stock_ps', $sale->amount);
-            //คิวรี่ ข้อมูล Lots โดยใช้ Product_id เรียงค่า created_at จากน้อยไปมาก                                         
-            $lots = $sale->product->lots()->orderBy('created_at','asc')->get();//เรียกผ่าน Relations 
-            // POSITION 1
-            $sum = 0;
-            foreach($lots as $lot){//เรียกข้อมูล ใน saleผ่าน product ผ่าน lots เก็บตัวแปร lot 
-                if($lot->stock_amount > $sale->amount){                    
+        $sales = $bill->sales; 
+
+        foreach($sales as $sale) { 
+
+            Product::where('id',$sale->product_id)->decrement('stock_ps', $sale->amount);                                         
+            $lots = $sale->product->lots()->orderBy('created_at','asc')->get();
+            
+            $sum = 0; 
+            foreach ($lots as $lot) {
+
+                if($lot->stock_amount > $sale->amount) {                    
                     $percost = $sale->amount * $lot->percost;
-                    $sum += $percost; // ต้นทุน
-                    //ตัดสต๊อกใน Lot
-                    Lot::where('id',$lot->id)->decrement('stock_amount', $sale->amount);
-                    // เมื่อ amount = 0 จะออกจาก loop
-                    $lot->stock_amount = 0; 
-                    break; 
-                }else if($lot->stock_amount <= $sale->amount){
-                    //เช็คจำนวน stock_amount ใน lots 
-                    $stock_amount =  $lot->stock_amount; // where amount จาก ตาราง lots      
-                    //สต็อคที่ถูกขาย * ต้นทุนแต่ละชิ้น       
-                    $percost = $stock_amount * $lot->percost; //= ต้นทุน 
                     $sum += $percost;
-                    //ตัดสต๊อกใน Lot // ตัดโดย $lot -> stock_amount เพราะเอาค่า $sale->amount มาจากการอัพเดท
+                   
+                    Lot::where('id',$lot->id)->decrement('stock_amount', $sale->amount);
+                    $lot->stock_amount = 0; 
+                    break;  
+
+                } else if ($lot->stock_amount <= $sale->amount) {
+
+                    $stock_amount =  $lot->stock_amount;     
+                    $percost = $stock_amount * $lot->percost; 
+                    $sum += $percost;
+
                     Lot::where('id',$lot->id)->decrement('stock_amount', $lot->stock_amount);               
-                    //product ของลูกค้าต้องลดลงตามจำนวนที่ตัดสต๊อก $sale->amount ถูก update เป็นค่าต่อไปเพื่อใช้ใน if
                     $sale->amount = $sale->amount - $lot->stock_amount; 
                     
                 }                    
             }
-            $profit = $sale->total - $sum; // = กำไร
-            // POSITION 2
-            //update profit / percost
-            $bill->sales() // เรียกผ่าน Relations 
+            $profit = $sale->total - $sum;
+            
+            $bill->sales() 
                 ->where('product_id',$sale->product_id)
-                ->update(['percost'=> $sum , 'profit'=> $profit]); // 1 array มี 2 column
+                ->update(['percost'=> $sum , 'profit'=> $profit]); 
         }
             return redirect("bills/$bill->id")->with('flash_message', 'Bill added!');
     }
-            //ไม่ได้ใช้เก็บไว้ดูเล่น
-            // Lot::join('products', 'product.id', '=', 'lots.product_id') // innerjoin products product_id กับ lots product_id
-                // ->join('sales','product_id', '=', 'products.product_id') // innerjoin sales product_id กับ products product_id
-                // ->where('lots.product_id',$sales->product_id)                    
-                // ->orderBy('created_at','asc'); 
-            //$id =  $lot->id; เรียก lot id มาใช้งาน // $new_lot = Lot::where('id',$lot->id)->firstOrFail();    // $stock_amount = $new_lot->stock_amount;
-            //$sale->amount -= $lot->stock_amount;
      /**Display the specified resource.
      *
      * @param  int  $id
