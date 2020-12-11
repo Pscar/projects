@@ -17,7 +17,7 @@
 			margin: 0;
 			padding: 0;
 			height: 100%;
-			background-image: url('{{ url('/') }}/storage/2.jpg');
+			background-image: url('{{ url('/') }}/storage/images/2.jpg');
             font-family: "Mitr", sans-serif !important;
 			min-height: 100%;
 			background-position: center;

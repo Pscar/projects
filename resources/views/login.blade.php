@@ -18,7 +18,7 @@
 		margin: 0;
 		padding: 0;
 		height: 100%;
-		background-image: url('{{ url('/') }}/storage/2.jpg');
+		background-image: url('{{ url('/') }}/storage/images/2.jpg');
 		font-family: "Mitr", sans-serif !important;
 		min-height: 100%;
 		background-position: center;
@@ -92,7 +92,7 @@
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
 					<div class="brand_logo_container">
-                        <img src="{{ url('/') }}/storage/3.jpg"class="brand_logo" alt="Logo">
+                        <img src="{{ url('/storage/images/2.jpg') }}" class="brand_logo" alt="Logo">
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
