@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeColumnsToInformationsTable extends Migration
+class ChangeColumnsCategoryNameCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class ChangeColumnsToInformationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('informations', function (Blueprint $table) {
-            $table->string('tel')->nullable()->change();
+        Schema::table('categorys', function (Blueprint $table) {
+            $table->string('name_category')->change();
         });
     }
 
@@ -25,7 +25,7 @@ class ChangeColumnsToInformationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('informations', function (Blueprint $table) {
+        Schema::table('categorys', function (Blueprint $table) {
             //
         });
     }

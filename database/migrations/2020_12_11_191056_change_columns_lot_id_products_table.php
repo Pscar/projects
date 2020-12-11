@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRoleToSalesTable extends Migration
+class ChangeColumnsLotIdProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class AddRoleToSalesTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string("role")->default("stranger")->nullable();
-            $table->string("tel")->nullable();
-            
-        });
+        Schema::table('products', function (Blueprint $table) {
+            $table->renameColumn('lot_id','user_id')->nullable();
+        });    
     }
 
     /**
@@ -27,7 +25,7 @@ class AddRoleToSalesTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('products', function (Blueprint $table) {
             //
         });
     }
