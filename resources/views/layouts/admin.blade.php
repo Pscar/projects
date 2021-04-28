@@ -85,7 +85,7 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-    </ul> 
+    </ul>
   </nav>
   @endif
   @if(Auth::user()->role == "admin")
@@ -126,21 +126,21 @@
                 <a href="{{ url('/sales') }}" class="nav-link ">
                   <p style="font-family: 'Mitr', sans-serif;">หน้าจอขาย</p>
                 </a>
-              </li>    
+              </li>
               <li class="nav-item">
                 <a href="{{ url('/lots') }}" class="nav-link ">
                   <p style="font-family: 'Mitr', sans-serif;">เพิ่มสต็อคสินค้า</p>
                 </a>
-              </li>          
+              </li>
             </ul>
           </li>
-          <li class="nav-header" style="font-family: 'Mitr', sans-serif;">Menu</li>          
+          <li class="nav-header" style="font-family: 'Mitr', sans-serif;">Menu</li>
             <li class="nav-item">
               <a href="{{ url('/bills') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
                 <p style="font-family: 'Mitr', sans-serif;">รายการการขาย</p>
               </a>
-            </li> 
+            </li>
             <li class="nav-item">
               <a href="{{ url('/products') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
@@ -160,7 +160,7 @@
               </a>
             </li>
         @endif
-        @if(Auth::user()->role == "admin") 
+        @if(Auth::user()->role == "admin")
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <p style="font-family: 'Mitr', sans-serif;">รายงานยอดขาย</p>
@@ -171,7 +171,7 @@
                 <a href="{{ url('/report/salesreport/reportdate') }}" class="nav-link active">
                   <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำวัน </p>
                 </a>
-              </li>      
+              </li>
               <li class="nav-item">
                 <a href="{{ url('/report/salesreport/reportmonth') }}" class="nav-link active">
                   <p style="font-family: 'Mitr', sans-serif;">ยอดขายประจำเดือน</p>

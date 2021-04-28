@@ -2,17 +2,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400&display=swap" rel="stylesheet">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
 <!------ Include the above in your HEAD tag ---------->
 <!DOCTYPE html>
 <html>
-    
+
 <head>
     <title> ร้านหมอยาราชพฤกษ์ </title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
-<style>
+{{-- <style>
 	body,input
 	html {
 		margin: 0;
@@ -50,7 +51,7 @@
 		background: #000;
 		padding: 10px;
 		text-align: center;
-		
+
 	}
 	.brand_logo {
 		height: 150px;
@@ -86,8 +87,8 @@
 	.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
 		background-color: #000 !important;
 	}
-</style>
-	<div class="container h-100">
+</style> --}}
+	{{-- <div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
@@ -126,11 +127,11 @@
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="remember">
                                     {{ __('Remember Me') }}
-                                </label>	
+                                </label>
 							</div>
-						</div>  
-                        <div class="d-flex justify-content-center mt-3 login_container"> 
-                            <button type="submit" name="button" class="btn login_btn">เข้าสู่ระบบ</button>       
+						</div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button type="submit" name="button" class="btn login_btn">เข้าสู่ระบบ</button>
                         </div>
 					</form>
 				</div>
@@ -148,4 +149,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}

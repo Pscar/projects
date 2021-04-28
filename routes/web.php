@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,8 +13,9 @@
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('base');
 });
+
 
 
 
@@ -49,5 +51,5 @@ Route::middleware(['auth', 'role:admin'])->group(function ()
 
 });
 
-Route::get('/home', 'HomeController@index')->name('home');    
+Route::get('/home', 'HomeController@index')->name('home');
 
