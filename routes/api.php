@@ -20,4 +20,7 @@ Route::get('/products', 'API\ProductController@index'); //ทั้งหมด
 Route::post('/products/create', 'Api\ProductController@store');
 //-----------------------------SALES--------------------------------//
 Route::get('/sales', 'Api\SaleController@index');
+Route::get('/sales/{id}', 'Api\SaleController@show');
 Route::post('/sales/create', 'Api\SaleController@store');
+Route::put('update', 'Api\SaleController@update');
+Route::delete('delete/{id}','Api\SaleController@destroy');

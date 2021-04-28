@@ -1,31 +1,27 @@
 import React, { useState, useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
 import { SaleContext } from '../../store/SaleContext';
-import Saleapi from '../../Api/Saleapi';
 
 const Form = () => {
     const { createSale, sales } = React.useContext(SaleContext);
-    console.log("🚀 ~ file: Form.js ~ line 8 ~ Form ~ sales", sales)
+    console.log("🚀 ~ file: Form.js ~ line 6 ~ Form ~ sales", sales)
     const [drug_id, setDrug_id] = useState('')
+    const [amount, setAmount] = useState(1)
 
-    const addSaleChange = e => {
-        setDrug_id(e.target.value)
-    }
-    const addSale = async event => {
-        event.preventDefault();
-        const saleNew = {
+    const addSale = e => {
+        // e.preventDefault();
+        const sales = {
             drug_id,
+            amount
         }
-        createSale(saleNew);
-        // setSales([...sales, { drug_id: textInput, amount: 1 }])
+        createSale(sales);
         setDrug_id('');
     }
+
     const BarcodeInput = React.useRef();
 
     useEffect(() => {
         BarcodeInput.current.focus();
     }, [])
-
 
     return (
         <form className="form" autoComplete="off" onSubmit={addSale}>
@@ -39,7 +35,7 @@ const Form = () => {
                     aria-describedby="button-addon2"
                     placeholder="Barcode"
                     value={drug_id}
-                    onChange={addSaleChange}
+                    onChange={(e) => setDrug_id(e.target.value)}
                 />
                 <input
                     type="text"
@@ -48,8 +44,8 @@ const Form = () => {
                     className="form-control"
                     aria-describedby="button-addon2"
                     placeholder="Barcode"
-                    value="1"
-                    onChange={addSaleChange}
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
                 />
                 <div className="input-group-append">
                     <button className="btn btn-outline-secondary" type="submit" id="button-addon2">Create</button>
@@ -60,3 +56,4 @@ const Form = () => {
 }
 
 export default Form
+        // setSales([...sales, { drug_id: textInput, amount: 1 }])

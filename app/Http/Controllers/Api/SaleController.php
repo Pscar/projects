@@ -62,7 +62,7 @@ class SaleController extends Controller
      */
     public function show($id)
     {
-        //
+        return $id ? Sale::find($id) : Sale::all();
     }
 
     /**
@@ -72,9 +72,26 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $sales = Sale::find($request->id);
+        $product = Product::where('drug_id', $request['drug_id'])->firstOrFail();
+
+        $sales->drug_id = $request->drug_id;
+        $sales->amount = $request->amount;
+        $sales->product_id = $product->id;
+        $sales->saleprice = $product->saleprice;
+        $sales->pro_name = $product->pro_name;
+
+        $sales->total = $request['saleprice'] = $sales->saleprice * $request['amount'];
+
+        $result = $sales->save();
+
+        if ($result) {
+            return ["Result" => "Update"];
+        } else {
+            return ["Error"];
+        }
     }
 
     /**
@@ -85,6 +102,13 @@ class SaleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sales = Sale::find($id);
+        $result = $sales->delete();
+
+        if ($result) {
+            return ["Result" => "Delete"];
+        } else {
+            return ["Error"];
+        }
     }
 }

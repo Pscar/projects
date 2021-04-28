@@ -4,22 +4,7 @@ import Saleapi from '../../Api/Saleapi';
 import SaleList from './SaleList';
 
 const Sales = () => {
-    const { sales, setSales, loadeing } = React.useContext(SaleContext)
-
-    // const fetchData = () => {
-    //     Saleapi.getAll()
-    //         .then(response => {
-    //             setSales(response.data);
-    //             console.log(response.data);
-    //         })
-    //         .catch(e => {
-    //             console.log(e);
-    //         });
-    // }
-
-    // React.useEffect(() => {
-    //     fetchData();
-    // }, [])
+    const { sales } = React.useContext(SaleContext)
 
     return (
         <div className="container">
@@ -34,9 +19,9 @@ const Sales = () => {
                         <th scope="col">saleprice</th>
                     </tr>
                 </thead>
-                {/* {sales.map((item) => {
-                    return <SaleList key={item.id} {...item} />
-                })} */}
+                {sales.map((item, id) => {
+                    return <SaleList key={id} {...item} />
+                })}
             </table>
         </div>
     )
