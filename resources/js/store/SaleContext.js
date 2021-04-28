@@ -1,14 +1,23 @@
-import React, { useReducer, useState, useEffect } from 'react';
-import { SaleReducer, initialState } from '../reducer/SaleReducer';
+import React, { useReducer, useEffect } from 'react';
+import { SaleReducer } from '../reducer/SaleReducer';
 import Saleapi from '../Api/Saleapi';
-import axios from 'axios';
+
 
 export const SaleContext = React.createContext();
 
+const initialState = {
+    loading: false,
+    sales: [],
+    total: 0,
+    amount: 0,
+}
+
 export const SaleProvider = ({ children }) => {
     const [state, dispatch] = useReducer(SaleReducer, initialState);
+    console.log("🚀 ~ file: SaleContext.js ~ line 9 ~ SaleProvider ~ state", state)
 
     function createSale(sales) {
+        dispatch({ type: 'LOADING' })
         Saleapi.create(sales)
             .then(response => {
                 dispatch({
@@ -22,6 +31,7 @@ export const SaleProvider = ({ children }) => {
     }
 
     function FetchData() {
+        dispatch({ type: 'LOADING' })
         Saleapi.getAll()
             .then(response => {
                 dispatch({
@@ -42,10 +52,3 @@ export const SaleProvider = ({ children }) => {
         </SaleContext.Provider>
     )
 }
-
-
-
-        // dispatch({
-        //     type: 'CREATE_SALE',
-        //     payload: sales
-        // })

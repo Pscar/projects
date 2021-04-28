@@ -1,14 +1,10 @@
-
-export const initialState = {
-    sales: [],
-}
 export const SaleReducer = (state, action) => {
     switch (action.type) {
         case 'CREATE_SALE':
-            return {
-                ...state,
-                sales: [...state.sales, action.payload]
-            }
+            return { ...state, sales: action.payload, loading: false }
+
+        case 'LOADING':
+            return { ...state, loading: true }
         case 'FETCH_SUCCESS':
             return {
                 sales: action.payload

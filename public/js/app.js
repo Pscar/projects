@@ -66673,10 +66673,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Sales_Sales__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Sales/Sales */ "./resources/js/components/Sales/Sales.js");
-/* harmony import */ var _Sales_Form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Sales/Form */ "./resources/js/components/Sales/Form.js");
-/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../css/app.css */ "./resources/css/app.css");
-/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_css_app_css__WEBPACK_IMPORTED_MODULE_5__);
-
+/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../css/app.css */ "./resources/css/app.css");
+/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_css_app_css__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -66688,7 +66686,7 @@ __webpack_require__.r(__webpack_exports__);
 var Example = function Example() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container mt-5 mb-5"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_store_SaleContext__WEBPACK_IMPORTED_MODULE_1__["SaleProvider"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sales_Form__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sales_Sales__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_store_SaleContext__WEBPACK_IMPORTED_MODULE_1__["SaleProvider"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Sales_Sales__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Example);
@@ -66699,10 +66697,59 @@ if (document.getElementById('example')) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Sales/Form.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/Sales/Form.js ***!
-  \***********************************************/
+/***/ "./resources/js/components/Sales/SaleList.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/Sales/SaleList.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var SaleList = function SaleList(_ref) {
+  var sales = _ref.sales;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "table table-hover"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }, "pro_name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }, "product_id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }, "amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }, "total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }, "saleprice"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, sales.map(function (items) {
+    var drug_id = items.drug_id,
+        pro_name = items.pro_name,
+        product_id = items.product_id,
+        amount = items.amount,
+        total = items.total,
+        saleprice = items.saleprice,
+        id = items.id;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      key: id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      scope: "row"
+    }, drug_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, pro_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, product_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, amount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, saleprice));
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SaleList);
+
+/***/ }),
+
+/***/ "./resources/js/components/Sales/Sales.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/Sales/Sales.js ***!
+  \************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -66711,6 +66758,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _store_SaleContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store/SaleContext */ "./resources/js/store/SaleContext.js");
+/* harmony import */ var _SaleList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SaleList */ "./resources/js/components/Sales/SaleList.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -66726,12 +66774,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var Form = function Form() {
-  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0___default.a.useContext(_store_SaleContext__WEBPACK_IMPORTED_MODULE_1__["SaleContext"]),
-      createSale = _React$useContext.createSale,
-      sales = _React$useContext.sales;
 
-  console.log("🚀 ~ file: Form.js ~ line 6 ~ Form ~ sales", sales);
+var Sales = function Sales() {
+  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0___default.a.useContext(_store_SaleContext__WEBPACK_IMPORTED_MODULE_1__["SaleContext"]),
+      sales = _React$useContext.sales,
+      createSale = _React$useContext.createSale;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -66743,8 +66790,7 @@ var Form = function Form() {
       amount = _useState4[0],
       setAmount = _useState4[1];
 
-  var addSale = function addSale(e) {
-    // e.preventDefault();
+  var addSale = function addSale() {
     var sales = {
       drug_id: drug_id,
       amount: amount
@@ -66757,7 +66803,9 @@ var Form = function Form() {
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     BarcodeInput.current.focus();
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "form",
     autoComplete: "off",
     onSubmit: addSale
@@ -66792,91 +66840,29 @@ var Form = function Form() {
     className: "btn btn-outline-secondary",
     type: "submit",
     id: "button-addon2"
-  }, "Create"))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Form); // setSales([...sales, { drug_id: textInput, amount: 1 }])
-
-/***/ }),
-
-/***/ "./resources/js/components/Sales/SaleList.js":
-/*!***************************************************!*\
-  !*** ./resources/js/components/Sales/SaleList.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var SaleList = function SaleList(_ref) {
-  var drug_id = _ref.drug_id,
-      pro_name = _ref.pro_name,
-      product_id = _ref.product_id,
-      amount = _ref.amount,
-      total = _ref.total,
-      saleprice = _ref.saleprice;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "row"
-  }, drug_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, pro_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, product_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, amount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, saleprice)));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (SaleList);
-
-/***/ }),
-
-/***/ "./resources/js/components/Sales/Sales.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/Sales/Sales.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _store_SaleContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store/SaleContext */ "./resources/js/store/SaleContext.js");
-/* harmony import */ var _Api_Saleapi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Api/Saleapi */ "./resources/js/Api/Saleapi.js");
-/* harmony import */ var _SaleList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SaleList */ "./resources/js/components/Sales/SaleList.js");
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-
-
-
-
-
-var Sales = function Sales() {
-  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0___default.a.useContext(_store_SaleContext__WEBPACK_IMPORTED_MODULE_1__["SaleContext"]),
-      sales = _React$useContext.sales;
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-    className: "table table-hover"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "#"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "pro_name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "product_id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "saleprice"))), sales.map(function (item, id) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SaleList__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
-      key: id
-    }, item));
-  })));
+  }, "Create")))), sales.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SaleList__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    sales: sales
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Sales);
+{
+  /* <table className="table table-hover">
+                 <thead>
+                     <tr>
+                         <th scope="col">#</th>
+                         <th scope="col">pro_name</th>
+                         <th scope="col">product_id</th>
+                         <th scope="col">amount</th>
+                         <th scope="col">total</th>
+                         <th scope="col">saleprice</th>
+                     </tr>
+                 </thead>
+                 {sales.map((item, id) => {
+                     return <SaleList key={id} {...item} />
+                 })}
+             </table> */
+}
 
 /***/ }),
 
@@ -66884,39 +66870,29 @@ var Sales = function Sales() {
 /*!*********************************************!*\
   !*** ./resources/js/reducer/SaleReducer.js ***!
   \*********************************************/
-/*! exports provided: initialState, SaleReducer */
+/*! exports provided: SaleReducer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SaleReducer", function() { return SaleReducer; });
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var initialState = {
-  sales: []
-};
 var SaleReducer = function SaleReducer(state, action) {
   switch (action.type) {
     case 'CREATE_SALE':
       return _objectSpread(_objectSpread({}, state), {}, {
-        sales: [].concat(_toConsumableArray(state.sales), [action.payload])
+        sales: action.payload,
+        loading: false
+      });
+
+    case 'LOADING':
+      return _objectSpread(_objectSpread({}, state), {}, {
+        loading: true
       });
 
     case 'FETCH_SUCCESS':
@@ -66946,8 +66922,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _reducer_SaleReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducer/SaleReducer */ "./resources/js/reducer/SaleReducer.js");
 /* harmony import */ var _Api_Saleapi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Api/Saleapi */ "./resources/js/Api/Saleapi.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -66963,17 +66937,27 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var SaleContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext();
+var initialState = {
+  loading: false,
+  sales: [],
+  total: 0,
+  amount: 0
+};
 var SaleProvider = function SaleProvider(_ref) {
   var children = _ref.children;
 
-  var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_0__["useReducer"])(_reducer_SaleReducer__WEBPACK_IMPORTED_MODULE_1__["SaleReducer"], _reducer_SaleReducer__WEBPACK_IMPORTED_MODULE_1__["initialState"]),
+  var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_0__["useReducer"])(_reducer_SaleReducer__WEBPACK_IMPORTED_MODULE_1__["SaleReducer"], initialState),
       _useReducer2 = _slicedToArray(_useReducer, 2),
       state = _useReducer2[0],
       dispatch = _useReducer2[1];
 
+  console.log("🚀 ~ file: SaleContext.js ~ line 9 ~ SaleProvider ~ state", state);
+
   function createSale(sales) {
+    dispatch({
+      type: 'LOADING'
+    });
     _Api_Saleapi__WEBPACK_IMPORTED_MODULE_2__["default"].create(sales).then(function (response) {
       dispatch({
         type: 'CREATE_SALE',
@@ -66985,6 +66969,9 @@ var SaleProvider = function SaleProvider(_ref) {
   }
 
   function FetchData() {
+    dispatch({
+      type: 'LOADING'
+    });
     _Api_Saleapi__WEBPACK_IMPORTED_MODULE_2__["default"].getAll().then(function (response) {
       dispatch({
         type: 'FETCH_SUCCESS',
@@ -67004,10 +66991,7 @@ var SaleProvider = function SaleProvider(_ref) {
       createSale: createSale
     }
   }, children);
-}; // dispatch({
-//     type: 'CREATE_SALE',
-//     payload: sales
-// })
+};
 
 /***/ }),
 
