@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SaleList = ({ sales }) => {
+const SaleList = ({ sales, removeSale }) => {
     return (
         <table className="table table-hover">
             <thead>
@@ -11,6 +11,7 @@ const SaleList = ({ sales }) => {
                     <th scope="col">amount</th>
                     <th scope="col">total</th>
                     <th scope="col">saleprice</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
 
@@ -25,6 +26,11 @@ const SaleList = ({ sales }) => {
                             <td>{amount}</td>
                             <td>{total}</td>
                             <td>{saleprice}</td>
+                            <td>
+                                <button type="button" className="btn btn-danger" onClick={() => removeSale(id)}>
+                                    remove
+                                </button>
+                            </td>
                         </tr>
                     );
                 })}

@@ -3,7 +3,7 @@ import { SaleContext } from '../../store/SaleContext';
 import SaleList from './SaleList';
 
 const Sales = () => {
-    const { sales, createSale } = React.useContext(SaleContext)
+    const { sales, createSale, removeSale } = React.useContext(SaleContext)
     const [drug_id, setDrug_id] = useState('')
     const [amount, setAmount] = useState(1)
 
@@ -52,25 +52,10 @@ const Sales = () => {
                 </div>
             </form>
             {sales.length > 0 && (
-                <SaleList sales={sales} />
+                <SaleList sales={sales} removeSale={removeSale} />
             )}
         </div>
     )
 }
 
 export default Sales
-{/* <table className="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">pro_name</th>
-                        <th scope="col">product_id</th>
-                        <th scope="col">amount</th>
-                        <th scope="col">total</th>
-                        <th scope="col">saleprice</th>
-                    </tr>
-                </thead>
-                {sales.map((item, id) => {
-                    return <SaleList key={id} {...item} />
-                })}
-            </table> */}
