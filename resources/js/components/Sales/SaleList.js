@@ -1,41 +1,48 @@
 import React from 'react';
 
-const SaleList = ({ sales, removeSale }) => {
+const SaleList = ({ sales, removeSale, isEditing }) => {
     return (
-        <table className="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">pro_name</th>
-                    <th scope="col">product_id</th>
-                    <th scope="col">amount</th>
-                    <th scope="col">total</th>
-                    <th scope="col">saleprice</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-
-            <tbody>
+        <div>
+            <table className="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">pro_name</th>
+                        {/* <th scope="col">amount</th>
+                    <th scope="col">total</th> */}
+                        <th scope="col">saleprice</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
                 {sales.map((items) => {
-                    const { drug_id, pro_name, product_id, amount, total, saleprice, id } = items;
                     return (
-                        <tr key={id}>
-                            <th scope="row">{drug_id}</th>
-                            <td>{pro_name}</td>
-                            <td>{product_id}</td>
-                            <td>{amount}</td>
-                            <td>{total}</td>
-                            <td>{saleprice}</td>
-                            <td>
-                                <button type="button" className="btn btn-danger" onClick={() => removeSale(id)}>
-                                    remove
-                                </button>
-                            </td>
-                        </tr>
+                        <tbody key={items.id}>
+                            <tr>
+                                <th scope="row">{items.drug_id}</th>
+                                <td>{items.pro_name}</td>
+                                <td>{items.saleprice}</td>
+                                <td>
+                                    {isEditing ?
+                                        <button type="button" className="btn btn-primary">
+                                            submit
+                                        </button> :
+                                        <button type="button" className="btn btn-warning">
+                                            edit
+                                        </button>
+                                    }
+                                </td>
+                                <td>
+                                    <button type="button" className="btn btn-danger" onClick={() => removeSale(items.id)}>
+                                        remove
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
                     );
                 })}
-            </tbody>
-        </table>
+            </table>
+        </div>
+
     )
 }
 

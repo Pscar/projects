@@ -6,6 +6,9 @@ export const getAll = () => {
 export const create = data => {
     return axiosInstance.post("/sales/create", data)
 }
+export const update = (id, data) => {
+    return axiosInstance.put(`/update/${id}`, data);
+  }
 export const remove = id => {
     return axiosInstance.delete(`/delete/${id}`);
 };
@@ -13,5 +16,6 @@ export const remove = id => {
 export default {
     getAll,
     create,
+    update,
     remove
 };

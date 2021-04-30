@@ -67284,13 +67284,14 @@ if(false) {}
 /*!*************************************!*\
   !*** ./resources/js/Api/Saleapi.js ***!
   \*************************************/
-/*! exports provided: getAll, create, remove, default */
+/*! exports provided: getAll, create, update, remove, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getAll", function() { return getAll; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create", function() { return create; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update", function() { return update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "remove", function() { return remove; });
 /* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./axios */ "./resources/js/Api/axios.js");
 
@@ -67300,12 +67301,16 @@ var getAll = function getAll() {
 var create = function create(data) {
   return _axios__WEBPACK_IMPORTED_MODULE_0__["default"].post("/sales/create", data);
 };
+var update = function update(id, data) {
+  return _axios__WEBPACK_IMPORTED_MODULE_0__["default"].put("/update/".concat(id), data);
+};
 var remove = function remove(id) {
   return _axios__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]("/delete/".concat(id));
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
   getAll: getAll,
   create: create,
+  update: update,
   remove: remove
 });
 
@@ -67454,6 +67459,41 @@ if (document.getElementById('example')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Sales/Alert.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/Sales/Alert.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Alert = function Alert(_ref) {
+  var type = _ref.type,
+      msg = _ref.msg,
+      removeAlert = _ref.removeAlert,
+      sales = _ref.sales;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var timeout = setTimeout(function () {
+      removeAlert();
+    }, 3000);
+    return function () {
+      return clearTimeout(timeout);
+    };
+  }, [sales]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "alert alert-".concat(type)
+  }, msg);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Alert);
+
+/***/ }),
+
 /***/ "./resources/js/components/Sales/SaleList.js":
 /*!***************************************************!*\
   !*** ./resources/js/components/Sales/SaleList.js ***!
@@ -67469,8 +67509,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var SaleList = function SaleList(_ref) {
   var sales = _ref.sales,
-      removeSale = _ref.removeSale;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      removeSale = _ref.removeSale,
+      isEditing = _ref.isEditing;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
     className: "table table-hover"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "col"
@@ -67478,33 +67519,26 @@ var SaleList = function SaleList(_ref) {
     scope: "col"
   }, "pro_name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "col"
-  }, "product_id"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
-  }, "total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-    scope: "col"
   }, "saleprice"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
     scope: "col"
-  }, "Actions"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, sales.map(function (items) {
-    var drug_id = items.drug_id,
-        pro_name = items.pro_name,
-        product_id = items.product_id,
-        amount = items.amount,
-        total = items.total,
-        saleprice = items.saleprice,
-        id = items.id;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-      key: id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+  }, "Actions"))), sales.map(function (items) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
+      key: items.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
       scope: "row"
-    }, drug_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, pro_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, product_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, amount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, saleprice), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, items.drug_id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, items.pro_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, items.saleprice), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, isEditing ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "btn btn-primary"
+    }, "submit") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "btn btn-warning"
+    }, "edit")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "button",
       className: "btn btn-danger",
       onClick: function onClick() {
-        return removeSale(id);
+        return removeSale(items.id);
       }
-    }, "remove")));
+    }, "remove"))));
   })));
 };
 
@@ -67525,6 +67559,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _store_SaleContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store/SaleContext */ "./resources/js/store/SaleContext.js");
 /* harmony import */ var _SaleList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SaleList */ "./resources/js/components/Sales/SaleList.js");
+/* harmony import */ var _Alert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Alert */ "./resources/js/components/Sales/Alert.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -67541,11 +67578,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Sales = function Sales() {
   var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0___default.a.useContext(_store_SaleContext__WEBPACK_IMPORTED_MODULE_1__["SaleContext"]),
       sales = _React$useContext.sales,
       createSale = _React$useContext.createSale,
       removeSale = _React$useContext.removeSale;
+
+  console.log("🚀 ~ file: Sales.js ~ line 7 ~ Sales ~ sales", sales);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -67557,13 +67597,43 @@ var Sales = function Sales() {
       amount = _useState4[0],
       setAmount = _useState4[1];
 
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    show: false,
+    msg: '',
+    type: ''
+  }),
+      _useState6 = _slicedToArray(_useState5, 2),
+      alert = _useState6[0],
+      setAlert = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      isEditing = _useState8[0],
+      setIsEditing = _useState8[1];
+
+  var showAlert = function showAlert() {
+    var show = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    var msg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+    var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+    setAlert({
+      show: show,
+      type: type,
+      msg: msg
+    });
+  };
+
   var addSale = function addSale() {
-    var sales = {
-      drug_id: drug_id,
-      amount: amount
-    };
-    createSale(sales);
-    setDrug_id('');
+    if (!drug_id) {
+      showAlert(true, 'danger', 'please enter value');
+    } else {
+      showAlert(true, 'success', 'item added to the list');
+      var _sales = {
+        drug_id: drug_id,
+        amount: amount
+      };
+      createSale(_sales);
+      setDrug_id('');
+    }
   };
 
   var BarcodeInput = react__WEBPACK_IMPORTED_MODULE_0___default.a.useRef();
@@ -67576,7 +67646,10 @@ var Sales = function Sales() {
     className: "form",
     autoComplete: "off",
     onSubmit: addSale
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, alert.show && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Alert__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({}, alert, {
+    removeAlert: showAlert,
+    items: sales
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "input-group mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
@@ -67609,7 +67682,8 @@ var Sales = function Sales() {
     id: "button-addon2"
   }, "Create")))), sales.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SaleList__WEBPACK_IMPORTED_MODULE_2__["default"], {
     sales: sales,
-    removeSale: removeSale
+    removeSale: removeSale,
+    isEditing: isEditing
   }));
 };
 
@@ -67642,6 +67716,14 @@ var SaleReducer = function SaleReducer(state, action) {
         sales: action.payload,
         loading: false
       });
+    // case 'EDIT_SALE':
+    //     const editSale = action.payload;
+    //     const editSale = state.sales.map((items) => {
+    //         if (items.id === editSale.id) {
+    //             return editSale
+    //         }
+    //         return items
+    //     });
 
     case 'REMOVE_SALE':
       return _objectSpread(_objectSpread({}, state), {}, {
@@ -67721,7 +67803,7 @@ var SaleProvider = function SaleProvider(_ref) {
       state = _useReducer2[0],
       dispatch = _useReducer2[1];
 
-  function createSale(sales) {
+  var createSale = function createSale(sales) {
     _Api_Saleapi__WEBPACK_IMPORTED_MODULE_3__["default"].create(sales).then(function (response) {
       dispatch({
         type: 'CREATE_SALE',
@@ -67730,15 +67812,27 @@ var SaleProvider = function SaleProvider(_ref) {
     })["catch"](function (error) {
       console.log(error);
     });
-  }
+  }; // const editSale = () => {
+  //     Saleapi.update()
+  //         .then(response => {
+  //             dispatch({
+  //                 type: 'EDIT_SALE',
+  //                 payload: response.data
+  //             });
+  //         })
+  //         .catch(e => {
+  //             console.log(e);
+  //         });
+  // }
 
-  function removeSale(id) {
+
+  var removeSale = function removeSale(id) {
     _Api_Saleapi__WEBPACK_IMPORTED_MODULE_3__["default"].remove(id);
     dispatch({
       type: 'REMOVE_SALE',
       payload: id
     });
-  }
+  };
 
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     var fetchData = /*#__PURE__*/function () {

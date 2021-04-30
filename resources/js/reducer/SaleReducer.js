@@ -5,6 +5,15 @@ export const SaleReducer = (state, action) => {
         case 'CREATE_SALE':
             return { ...state, sales: action.payload, loading: false }
 
+        // case 'EDIT_SALE':
+        //     const editSale = action.payload;
+        //     const editSale = state.sales.map((items) => {
+        //         if (items.id === editSale.id) {
+        //             return editSale
+        //         }
+        //         return items
+        //     });
+
         case 'REMOVE_SALE':
             return { ...state, sales: state.sales.filter((items) => items.id !== action.payload) }
 
@@ -17,3 +26,4 @@ export const SaleReducer = (state, action) => {
         default: return state;
     }
 }
+

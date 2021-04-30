@@ -15,7 +15,7 @@ const initialState = {
 export const SaleProvider = ({ children }) => {
     const [state, dispatch] = useReducer(SaleReducer, initialState);
 
-    function createSale(sales) {
+    const createSale = (sales) => {
         Saleapi.create(sales)
             .then(response => {
                 dispatch({
@@ -27,8 +27,20 @@ export const SaleProvider = ({ children }) => {
                 console.log(error)
             });
     }
+    // const editSale = () => {
+    //     Saleapi.update()
+    //         .then(response => {
+    //             dispatch({
+    //                 type: 'EDIT_SALE',
+    //                 payload: response.data
+    //             });
+    //         })
+    //         .catch(e => {
+    //             console.log(e);
+    //         });
+    // }
 
-    function removeSale(id) {
+    const removeSale = (id) => {
         Saleapi.remove(id)
         dispatch({ type: 'REMOVE_SALE', payload: id })
     }
