@@ -1,16 +1,16 @@
 import React from 'react';
-import { SaleProvider } from '../store/SaleContext';
 import ReactDOM from 'react-dom';
+import { SaleProvider } from '../store/SaleContext';
+import { ProductProvider } from '../store/ProductContext';
 import Sales from './Sales/Sales';
-// import Product from './Product/Product';
-// import SearchInput from './Product/SearchInput';
+import Model from './Product/Model';
 import '../../css/app.css';
 const Example = () => {
     return (
         <div className="container mt-5 mb-5">
-            <SaleProvider>
-                <Sales />
-            </SaleProvider>
+            <ProductProvider>
+                <Model />
+            </ProductProvider>
         </div>
     );
 

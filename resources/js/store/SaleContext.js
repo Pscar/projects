@@ -55,6 +55,10 @@ export const SaleProvider = ({ children }) => {
         fetchData();
     }, [])
 
+    // useEffect(() => {
+    //     dispatch({ type: 'TOTAL_SALE' });
+    // }, [state.sales])
+
     return (
         <SaleContext.Provider value={{ sales: state.sales, createSale, removeSale }}>
             {children}

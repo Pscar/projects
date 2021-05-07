@@ -77,8 +77,8 @@ class SaleController extends Controller
         $sales = Sale::find($request->id);
         $product = Product::where('drug_id', $request['drug_id'])->firstOrFail();
 
-        $sales->drug_id = $request->drug_id;
-        $sales->amount = $request->amount;
+        $sales->drug_id = $product->drug_id;
+        $sales->amount = $product->amount;
         $sales->product_id = $product->id;
         $sales->saleprice = $product->saleprice;
         $sales->pro_name = $product->pro_name;
